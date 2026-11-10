@@ -1,0 +1,131 @@
+{
+  "pageTitles": {
+    "payments": "Payments",
+    "vouchers": "Purchase vouchers",
+    "voucherCreate": "Create voucher",
+    "voucherTransactions": "Transactions"
+  },
+  "billing": {
+    "breadcrumb": "Breadcrumb",
+    "payments": "Payments",
+    "vouchers": "Purchase vouchers",
+    "createVoucher": "Create voucher",
+    "transactionsDetails": "Transactions",
+    "summary": "Summary",
+    "unpaidInvoices": "Unpaid invoices",
+    "totalInvoices": "Total invoices",
+    "pendingAmount": "Amounts awaiting payment",
+    "totalPaid": "Total paid",
+    "paymentsHistory": "Payment history",
+    "searchOrder": "Search orders",
+    "noResults": "No matching results",
+    "orderNumber": "Order no.:",
+    "completePayment": "Complete payment",
+    "orderDetails": "Order details",
+    "amount": "Amount",
+    "paymentMethod": "Payment method",
+    "transactionDate": "Transaction date",
+    "paymentStatus": {
+      "pending": "Awaiting payment",
+      "paid": "Paid",
+      "failed": "Payment failed"
+    },
+    "paymentMethods": {
+      "bankTransfer": "Bank transfer",
+      "card": "Payment card"
+    },
+    "totalSales": "Total sales",
+    "currentBalance": "Current balance",
+    "installmentRequests": "Installment requests",
+    "downloadExcel": "Download Excel",
+    "filters": {
+      "search": "Search",
+      "status": "Invoice status",
+      "startDate": "Start date",
+      "endDate": "End date"
+    },
+    "table": {
+      "provider": "Installment provider",
+      "orderNumber": "Order no.",
+      "name": "Name",
+      "phone": "Mobile",
+      "amount": "Amount",
+      "date": "Date",
+      "notes": "Notes",
+      "status": "Status",
+      "none": "None"
+    },
+    "installmentStatus": {
+      "paid": "Paid",
+      "processing": "Processing",
+      "rejected": "Rejected"
+    },
+    "providers": {
+      "tabby": "Tabby",
+      "tamara": "Tamara"
+    },
+    "installments": {
+      "heroTitle": "Installment services with Auto X",
+      "heroSubtitle": "Make buying easier for your customers with installment plans offered with our partners",
+      "requestService": "Contact us to apply",
+      "advantagesTitle": "Why pay in installments with AUTO X",
+      "advantagesSubtitle": "Flexible options and clear steps to buy what you need",
+      "advantages": {
+        "speed": {
+          "title": "Fast and easy",
+          "text": "Get the service running in your shop quickly"
+        },
+        "commission": {
+          "title": "Lowest commission",
+          "text": "The lowest commission rate for installment plans"
+        },
+        "sales": { "title": "More sales", "text": "An immediate boost in sales" },
+        "customers": {
+          "title": "New customers",
+          "text": "Varied and convenient installment options"
+        }
+      },
+      "stepsTitle": "How to create a purchase voucher",
+      "stepsSubtitle": "From creating your wallet to the voucher",
+      "step": "Step {number}",
+      "steps": {
+        "create": { "title": "Create a payment", "text": "Enter the amount you want to split" },
+        "customer": {
+          "title": "Enter customer details",
+          "text": "Add the customer's name and mobile number"
+        },
+        "payment": {
+          "title": "Customer pays",
+          "text": "The customer pays and you are notified with the details"
+        }
+      },
+      "ctaTitle": "Ready to create your wallet?",
+      "ctaText": "Contact our customer service team to set up your e-wallet and activate installments with Tabby or Tamara"
+    },
+    "voucherForm": {
+      "welcome": "Welcome!",
+      "intro": "Create a purchase voucher now",
+      "customerInfo": "Customer details",
+      "customerName": "Customer name",
+      "customerNamePlaceholder": "Fahad Alotaibi",
+      "phone": "Mobile number",
+      "note": "Note",
+      "notePlaceholder": "Write a note",
+      "amountTitle": "Amount incl. VAT",
+      "amountLabel": "Enter the amount including VAT",
+      "invoiceMatches": "Matches the invoice",
+      "confirmation": "Confirmation",
+      "acceptTerms": "I have read and agree to the {terms}",
+      "terms": "terms and conditions",
+      "submit": "Create voucher",
+      "success": "Request sent",
+      "viewRequests": "View installment requests",
+      "errors": {
+        "customerName": "Enter the customer's name",
+        "phone": "Enter a valid 9-digit mobile number starting with 5",
+        "amount": "Enter an amount greater than zero",
+        "terms": "You must accept the terms and conditions"
+      }
+    }
+  }
+}

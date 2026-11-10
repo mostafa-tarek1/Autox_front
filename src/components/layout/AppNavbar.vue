@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { onClickOutside } from '@vueuse/core'
+import { storeToRefs } from 'pinia'
+import { ref, useTemplateRef, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 
 import NotificationIcon from '@/assets/icons/notification-02--stroke-rounded.svg'
 import CartIcon from '@/assets/icons/shopping-cart-01--stroke-rounded.svg'
+import CartPopover from '@/components/shop/CartPopover.vue'
 import AppLogo from '@/components/ui/AppLogo.vue'
 import { navItems } from '@/composables/useNavItems'
+import { useCartStore } from '@/stores/cart'
 
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import NavIconButton from './NavIconButton.vue'
@@ -16,15 +20,22 @@ const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const isMenuOpen = ref(false)
+const isCartOpen = ref(false)
+const cartRoot = useTemplateRef<HTMLElement>('cartRoot')
+const { itemsCount } = storeToRefs(useCartStore())
 
+onClickOutside(cartRoot, () => (isCartOpen.value = false))
 watch(
   () => route.fullPath,
-  () => (isMenuOpen.value = false),
+  () => {
+    isMenuOpen.value = false
+    isCartOpen.value = false
+  },
 )
 
 /** Mock session data for the UI phase. */
 const user = { name: 'فهد العتيبي' }
-const counts = { notifications: 3, cart: 5 }
+const notificationsCount = 3
 
 function logout(): void {
   router.push({ name: 'login' })
@@ -54,10 +65,30 @@ function logout(): void {
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-4">
-        <NavIconButton :label="t('nav.cart')" :count="counts.cart" to="/cart">
-          <CartIcon class="size-6" aria-hidden="true" />
-        </NavIconButton>
-        <NavIconButton :label="t('nav.notifications')" :count="counts.notifications">
+        <div ref="cartRoot" class="relative">
+          <NavIconButton
+            :label="t('nav.cart')"
+            :count="itemsCount"
+            aria-haspopup="dialog"
+            :aria-expanded="isCartOpen"
+            @click="isCartOpen = !isCartOpen"
+          >
+            <CartIcon class="size-6" aria-hidden="true" />
+          </NavIconButton>
+          <Transition
+            enter-active-class="transition duration-150 ease-out"
+            enter-from-class="opacity-0 -translate-y-1"
+            leave-active-class="transition duration-100 ease-in"
+            leave-to-class="opacity-0 -translate-y-1"
+          >
+            <CartPopover
+              v-if="isCartOpen"
+              class="absolute end-0 top-full z-40 mt-3"
+              @close="isCartOpen = false"
+            />
+          </Transition>
+        </div>
+        <NavIconButton :label="t('nav.notifications')" :count="notificationsCount">
           <NotificationIcon class="size-6" aria-hidden="true" />
         </NavIconButton>
         <LanguageSwitcher class="hidden sm:block" />

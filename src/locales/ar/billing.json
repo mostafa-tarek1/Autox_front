@@ -1,0 +1,125 @@
+{
+  "pageTitles": {
+    "payments": "المدفوعات",
+    "vouchers": "قسائم الشراء",
+    "voucherCreate": "انشاء قسيمة شراء",
+    "voucherTransactions": "تفاصيل العمليات"
+  },
+  "billing": {
+    "breadcrumb": "مسار التنقل",
+    "payments": "المدفوعات",
+    "vouchers": "قسائم الشراء",
+    "createVoucher": "انشاء قسيمة",
+    "transactionsDetails": "تفاصيل العمليات",
+    "summary": "ملخص",
+    "unpaidInvoices": "فواتير غير مدفوعه",
+    "totalInvoices": "اجمالي الفواتير",
+    "pendingAmount": "مبالغ بانتظار الدفع",
+    "totalPaid": "اجمالي المدفوعات",
+    "paymentsHistory": "سجل المدفوعات",
+    "searchOrder": "ابحث عن الطلب",
+    "noResults": "لا توجد نتائج مطابقة",
+    "orderNumber": "رقم الطلب:",
+    "completePayment": "استكمال الدفع",
+    "orderDetails": "تفاصيل الطلب",
+    "amount": "المبلغ",
+    "paymentMethod": "طريقة الدفع",
+    "transactionDate": "تاريخ العملية",
+    "paymentStatus": {
+      "pending": "بانتظار الدفع",
+      "paid": "مدفوع",
+      "failed": "فشل الدفع"
+    },
+    "paymentMethods": {
+      "bankTransfer": "تحويل بنكي",
+      "card": "بطاقة دفع"
+    },
+    "totalSales": "اجمالي المبيعات",
+    "currentBalance": "الرصيد الحالي",
+    "installmentRequests": "طلبات التقسيط",
+    "downloadExcel": "تحميل Excel",
+    "filters": {
+      "search": "البحث",
+      "status": "حالة الفاتورة",
+      "startDate": "تاريخ البداية",
+      "endDate": "تاريخ الانتهاء"
+    },
+    "table": {
+      "provider": "مزود التقسيط",
+      "orderNumber": "رقم الطلب",
+      "name": "الاسم",
+      "phone": "رقم الجوال",
+      "amount": "المبلغ",
+      "date": "التاريخ",
+      "notes": "ملاحظات",
+      "status": "الحالة",
+      "none": "لا يوجد"
+    },
+    "installmentStatus": {
+      "paid": "تم الدفع",
+      "processing": "جاري المعالجة",
+      "rejected": "مرفوضة"
+    },
+    "providers": {
+      "tabby": "تابي",
+      "tamara": "تمارا"
+    },
+    "installments": {
+      "heroTitle": "خدمات التقسيط مع Auto X",
+      "heroSubtitle": "سهل لعملاءك عملية الشراء من خلال خدامات التقسيط التي نوفرها بالتعاون مع مزودي الخدمة",
+      "requestService": "تواصل لطلب الخدمة",
+      "advantagesTitle": "مزايا التقسيط مع AUTO X",
+      "advantagesSubtitle": "خيارات مرنة وخطوات واضحة لشراء ما تحتاجه",
+      "advantages": {
+        "speed": { "title": "السرعة والسهولة", "text": "سرعة تفعيل الخدمة في محلك" },
+        "commission": { "title": "أقل نسبة عمولة", "text": "نقدم لك أقل نسبة عمولة لخدمة التقسيط" },
+        "sales": { "title": "زيادة المبيعات", "text": "زيادة فورية في المبيعات" },
+        "customers": {
+          "title": "الحصول علي عملاء جدد",
+          "text": "بتوفير خيارات تقسيط متنوعة ومريحة"
+        }
+      },
+      "stepsTitle": "خطوات إنشاء قسيمة شراء",
+      "stepsSubtitle": "من إنشاء المحفظة إلى قسيمة الشراء",
+      "step": "الخطوة {number}",
+      "steps": {
+        "create": { "title": "انشيء عملية دفع", "text": "ادخل المبلغ الذي تريد تقسيطه" },
+        "customer": {
+          "title": "ادخل معلومات العميل",
+          "text": "قم بإدخال معلومات العميل مثل الاسم ورقم الجوال"
+        },
+        "payment": {
+          "title": "اتمام الدفع من العميل",
+          "text": "يقوم العميل بالدفع وسيتم اعلامك بالتفاصيل"
+        }
+      },
+      "ctaTitle": "هل تريد إنشاء محفظتك الآن؟",
+      "ctaText": "تواصل مع فريق خدمة العملاء لمساعدتك في إنشاء محفظتك الإلكترونية وتفعيل خدمة التقسيط مع تابي أو تمارا"
+    },
+    "voucherForm": {
+      "welcome": "مرحبا بك!",
+      "intro": "قم بإنشاء قسيمة شراء الآن",
+      "customerInfo": "معلومات العميل",
+      "customerName": "اسم العميل",
+      "customerNamePlaceholder": "فهد العتيبي",
+      "phone": "رقم الجوال",
+      "note": "ملاحظة",
+      "notePlaceholder": "اكتب ملاحظه",
+      "amountTitle": "المبلغ مع الضريبة",
+      "amountLabel": "ادخل المبلغ مع الضريبة VAT",
+      "invoiceMatches": "معادلة الفاتورة",
+      "confirmation": "التأكيد",
+      "acceptTerms": "لقد قرأت واوافق علي {terms}",
+      "terms": "الشروط والاحكام",
+      "submit": "انشاء القسيمة",
+      "success": "تم ارسال الطلب",
+      "viewRequests": "عرض طلبات التقسيط",
+      "errors": {
+        "customerName": "ادخل اسم العميل",
+        "phone": "ادخل رقم جوال صحيح يبدأ بـ 5 ومكون من 9 أرقام",
+        "amount": "ادخل مبلغا أكبر من صفر",
+        "terms": "يجب الموافقة على الشروط والاحكام"
+      }
+    }
+  }
+}

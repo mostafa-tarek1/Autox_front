@@ -1,0 +1,19 @@
+{
+  "pageTitles": { "quotes": "طلبات عروض الاسعار" },
+  "quotes": {
+    "title": "طلبات عروض الاسعار",
+    "offersSubmitted": "تم تقديم {count} عروض",
+    "awaitingOffers": "بانتظار تقديم عروض",
+    "requestDate": "تاريخ الطلب:",
+    "deleteRequest": "حذف الطلب",
+    "quantity": "عدد: {count}",
+    "viewOffers": "رؤية العروض",
+    "submittedOffers": "عروض الاسعار المقدمه",
+    "offersCount": "{count} عروض مقدمة",
+    "lowestPrice": "اقل سعر",
+    "accept": "قبول",
+    "offerAccepted": "تم قبول عرض {merchant}",
+    "empty": "لا توجد طلبات عروض اسعار حاليا",
+    "searchParts": "ابحث عن قطع الغيار"
+  }
+}

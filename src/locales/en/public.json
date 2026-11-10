@@ -1,0 +1,134 @@
+{
+  "pageTitles": {
+    "landing": "Your wholesale car parts platform",
+    "contact": "Contact us",
+    "privacy": "Privacy policy",
+    "terms": "Terms & conditions",
+    "excelSearch": "Excel search"
+  },
+  "public": {
+    "breadcrumb": "Breadcrumb",
+    "landing": {
+      "login": "Log in",
+      "nav": {
+        "home": "Home",
+        "about": "About us",
+        "features": "Features",
+        "testimonials": "Reviews"
+      },
+      "hero": {
+        "badge": "Your wholesale car parts platform",
+        "title": "Every spare part you need, in one place.",
+        "traderSignup": "Create a trader account",
+        "supplierSignup": "Create a supplier account"
+      },
+      "about": {
+        "badge": "About us",
+        "title": "We connect you with the right supplier and make parts trading simple.",
+        "description": "A digital platform built for wholesale car-parts trading. It brings retailers and suppliers together in one place and makes it clearer and easier to find products, compare quotations and manage purchase orders."
+      },
+      "stats": {
+        "parts": "parts in the catalog",
+        "categories": "main categories",
+        "brands": "brands",
+        "carMakes": "car makes"
+      },
+      "features": {
+        "badge": "Features",
+        "title": "Why work with Auto X",
+        "cta": "Get started now",
+        "items": {
+          "smartSearch": {
+            "title": "Smart parts search",
+            "description": "Search by part name, number or description to find the products you need quickly."
+          },
+          "suppliers": {
+            "title": "A network of suppliers",
+            "description": "Explore a wide range of parts offered by suppliers on a single platform."
+          },
+          "quotes": {
+            "title": "Flexible quotation requests",
+            "description": "Send your request with the quantities you need and compare supplier offers before you buy."
+          },
+          "orders": {
+            "title": "Easier purchase orders",
+            "description": "Add products to your cart and manage orders with a buying experience built for traders."
+          }
+        }
+      },
+      "testimonials": {
+        "badge": "Reviews",
+        "title": "What our customers say"
+      },
+      "cta": {
+        "title": "Ready to upgrade how you buy spare parts?",
+        "description": "Join Auto X and discover an easier way to find products and do business with suppliers.",
+        "button": "Create your account"
+      }
+    },
+    "contact": {
+      "formTitle": "How can we help?",
+      "infoTitle": "Contact details",
+      "channels": {
+        "call": "Call us",
+        "email": "Email us"
+      },
+      "fields": {
+        "name": "Full name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Your message"
+      },
+      "placeholders": {
+        "name": "Fahad Alotaibi",
+        "email": "username{'@'}gmail.com",
+        "subject": "I have a problem with an order"
+      },
+      "errors": {
+        "required": "This field is required",
+        "email": "Enter a valid email address"
+      },
+      "submit": "Send",
+      "sent": "Your message was sent. We'll get back to you soon."
+    },
+    "legal": {
+      "contents": "On this page"
+    },
+    "excel": {
+      "upload": "Upload file",
+      "types": "Types:",
+      "allTypes": "All types",
+      "inStock": "{count} in stock",
+      "addToCart": "Add to cart",
+      "noOffer": "No offer",
+      "unavailable": "Currently unavailable",
+      "notifySellers": "Ask sellers to stock this part",
+      "badges": {
+        "cheapest": "Lowest",
+        "matches": "Match"
+      },
+      "columns": {
+        "part": "Name & part number",
+        "quantity": "Quantity",
+        "original": "Original",
+        "mobis": "Mobis",
+        "korean": "Korean",
+        "chinese": "Chinese"
+      },
+      "modal": {
+        "pasteTitle": "Paste from Excel",
+        "pasteDescription": "Copy the cells from Excel (part number and quantity) and paste them below, or type the numbers one per line.",
+        "pasteHint": "Separated by tabs, commas or semicolons, exactly as Excel copies them. A part-number column is enough; quantity is optional.",
+        "columnsTitle": "Choose columns",
+        "columnsDescription": "Pick the columns to get better results",
+        "previewTitle": "Data preview",
+        "itemsCount": "{count} items",
+        "partNumber": "Part number",
+        "quantity": "Quantity",
+        "column": "Column {letter}",
+        "back": "Back",
+        "next": "Next"
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import App from '@/App.vue'
 import { i18n } from '@/plugins/i18n'
@@ -12,9 +12,10 @@ describe('App', () => {
     await router.isReady()
 
     const wrapper = mount(App, { global: { plugins: [createPinia(), i18n, router] } })
-    await new Promise((resolve) => setTimeout(resolve, 50))
-
-    expect(wrapper.text()).toContain('ابحث، قارن، واطلب قطع غيار السيارات بسهولة')
+    await vi.waitFor(
+      () => expect(wrapper.text()).toContain('ابحث، قارن، واطلب قطع غيار السيارات بسهولة'),
+      { timeout: 5000 },
+    )
     expect(document.documentElement.dir).toBe('rtl')
     expect(document.documentElement.lang).toBe('ar')
   })

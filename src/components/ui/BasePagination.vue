@@ -38,7 +38,10 @@ const cell =
 </script>
 
 <template>
-  <nav :aria-label="t('common.pagination')" class="flex items-center gap-[13px]">
+  <nav
+    :aria-label="t('common.pagination')"
+    class="flex flex-wrap items-center justify-center gap-2 sm:gap-[13px]"
+  >
     <button
       type="button"
       :class="[cell, 'bg-white hover:border-accent disabled:opacity-50']"

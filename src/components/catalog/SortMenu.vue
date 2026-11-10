@@ -20,7 +20,7 @@ const options: SortOption[] = ['priceAsc', 'mostRequested', 'originalOnly']
     <template #trigger="{ toggle, menuId }">
       <button
         type="button"
-        class="flex h-[41px] w-[132px] items-center justify-between gap-1.5 rounded-xl border-[0.5px] border-line bg-white p-2"
+        class="flex h-[41px] min-w-[132px] items-center justify-between gap-1.5 rounded-xl border-[0.5px] border-line bg-white p-2"
         aria-haspopup="menu"
         :aria-expanded="open"
         :aria-controls="menuId"
@@ -28,7 +28,9 @@ const options: SortOption[] = ['priceAsc', 'mostRequested', 'originalOnly']
       >
         <span class="flex items-center gap-1.5">
           <FilterIcon class="size-4 text-ink" aria-hidden="true" />
-          <span class="text-body-sm text-ink">{{ t(`catalog.sort.${sort}`) }}</span>
+          <span class="text-body-sm whitespace-nowrap text-ink">{{
+            t(`catalog.sort.${sort}`)
+          }}</span>
         </span>
         <ArrowDownIcon class="size-4 text-ink" aria-hidden="true" />
       </button>

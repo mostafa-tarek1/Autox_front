@@ -8,8 +8,10 @@ import SearchPanel from '@/components/catalog/SearchPanel.vue'
 import SortMenu from '@/components/catalog/SortMenu.vue'
 import HomeHero from '@/components/home/HomeHero.vue'
 import BasePagination from '@/components/ui/BasePagination.vue'
+import { useAddedToCartToast } from '@/components/shop/useAddedToCartToast'
 import { carBrands, recentSearches, searchResults } from '@/mocks/catalog'
-import type { PartOrigin, SortOption } from '@/types/catalog'
+import { useCartStore } from '@/stores/cart'
+import type { PartOrigin, Product, SortOption } from '@/types/catalog'
 
 const { t } = useI18n()
 
@@ -17,7 +19,22 @@ const recent = ref([...recentSearches])
 const sort = ref<SortOption>('priceAsc')
 const page = ref(1)
 const brandSelection = ref<{ brandId: string; origin: PartOrigin } | null>(null)
-const quantities = ref<Record<string, number>>({})
+const cart = useCartStore()
+const toast = useAddedToCartToast()
+
+function quantityOf(product: Product): number {
+  return cart.items.find((item) => item.id === product.id)?.quantity ?? 0
+}
+
+function updateQuantity(product: Product, next: number): void {
+  const current = quantityOf(product)
+  if (next > current) {
+    cart.add(product, next - current)
+    toast.show()
+  } else {
+    cart.setQuantity(product.id, next)
+  }
+}
 const totalResults = 300
 </script>
 
@@ -49,8 +66,8 @@ const totalResults = 300
         <li v-for="product in searchResults" :key="product.id">
           <ProductCard
             :product="product"
-            :quantity="quantities[product.id] ?? 0"
-            @update:quantity="quantities[product.id] = $event"
+            :quantity="quantityOf(product)"
+            @update:quantity="updateQuantity(product, $event)"
           />
         </li>
       </ul>

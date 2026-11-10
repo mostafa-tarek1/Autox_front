@@ -1,0 +1,115 @@
+{
+  "pageTitles": {
+    "orders": "الطلبات",
+    "orderDetails": "تفاصيل الطلب",
+    "returnRequest": "ارجاع الطلب",
+    "returns": "المرتجعات"
+  },
+  "orders": {
+    "breadcrumb": "مسار التنقل",
+    "home": "الرئيسية",
+    "orders": "الطلبات",
+    "titles": {
+      "current": "الطلبات الحالية",
+      "previous": "الطلبات السابقة",
+      "returns": "المرتجعات",
+      "details": "تفاصيل الطلب",
+      "returnRequest": "ارجاع الطلب"
+    },
+    "tabs": {
+      "label": "تصنيف الطلبات",
+      "current": "الطلبات الحالية",
+      "previous": "طلبات سابقة",
+      "returns": "المرتجعات"
+    },
+    "search": "ابحث عن الطلب",
+    "empty": "لا توجد طلبات مطابقة",
+    "meta": {
+      "seller": "البائع:",
+      "orderNumber": "رقم الطلب:",
+      "orderDate": "تاريخ الطلب:",
+      "total": "الاجمالي:",
+      "totalPaid": "اجمالي المدفوع:",
+      "trackingNumber": "رقم التتبع:"
+    },
+    "pieces": "{count} قطع",
+    "shipment": "الشحنة {number}",
+    "actions": {
+      "details": "تفاصيل الطلب",
+      "invoice": "الفاتورة",
+      "cancel": "الغاء الطلب",
+      "payNow": "ادفع الآن",
+      "notifySellers": "اشعار البائعين لتوفير الكمية",
+      "delete": "حذف الطلب",
+      "edit": "تعديل الطلب",
+      "reportProblem": "الابلاغ عن مشكلة",
+      "return": "ارجاع الطلب"
+    },
+    "status": {
+      "awaitingAvailability": "بانتظار تأكيد التوفر",
+      "quantityUnavailable": "الكمية غير متوفرة",
+      "awaitingPayment": "بانتظار الدفع",
+      "awaitingPaymentConfirmation": "بانتظار تأكيد الدفع",
+      "preparing": "جاري تجهيز الطلب",
+      "shipping": "التجهيز والشحن",
+      "delivered": "تم التوصيل",
+      "completed": "تم التوصيل"
+    },
+    "tracker": {
+      "label": "مراحل الطلب",
+      "paid": "تم الدفع",
+      "shipping": "التجهيز والشحن",
+      "delivered": "تم التوصيل",
+      "done": "مكتملة",
+      "pending": "لم تبدأ بعد"
+    },
+    "details": {
+      "shipping": "تفاصيل الشحن",
+      "address": "العنوان:",
+      "payment": "الدفع",
+      "cardEnding": "بطاقة الدفع تنتهي ب {digits}",
+      "summary": "ملخص الطلب",
+      "piecesCount": "عدد القطع",
+      "subtotal": "سعر المنتجات",
+      "vat": "ضريبة القيمة المضافة",
+      "grandTotal": "اجمالي السعر",
+      "notFound": "لم يتم العثور على الطلب"
+    }
+  },
+  "returns": {
+    "status": {
+      "underReview": "تحت المراجعة",
+      "rejected": "تم الرفض",
+      "refunded": "تم استرجاع الطلب"
+    },
+    "notes": "ملاحظات",
+    "reason": "سبب الاسترجاع",
+    "rejectionReason": "سبب الرفض",
+    "photos": "صور الطلب",
+    "photoAlt": "صورة {index} من صور الطلب",
+    "empty": "لا توجد طلبات استرجاع",
+    "form": {
+      "intro": "يرجي ملأ البيانات التالية لإرجاع الطلب",
+      "reason": "سبب ارجاع الطلب",
+      "reasonPlaceholder": "اختر",
+      "photos": "يرجي ارفاق صور الطلب",
+      "notes": "اضافة ملاحظات",
+      "notesPlaceholder": "اكتب هنا",
+      "itemsTitle": "اختر المنتج الذي تريد ارجاعه والكمية",
+      "selectItem": "اختيار {part} للإرجاع",
+      "submit": "ارسال الطلب",
+      "reasonRequired": "يرجى اختيار سبب الإرجاع",
+      "itemsRequired": "يرجى اختيار منتج واحد على الأقل",
+      "reasons": {
+        "damaged": "يوجد بعض المنتجات تالفه",
+        "wrongPart": "القطعة غير مطابقة للطلب",
+        "notAsDescribed": "المنتج مختلف عن الوصف",
+        "other": "سبب آخر"
+      }
+    },
+    "success": {
+      "title": "تم ارسال الطلب",
+      "track": "متابعة حالة الطلب"
+    }
+  }
+}

@@ -6,7 +6,7 @@ defineProps<{ label?: string; error?: string; hint?: string; forId: string; requ
 <template>
   <div class="flex flex-col gap-2">
     <label v-if="label" :for="forId" class="text-label text-secondary">
-      {{ label }}<span v-if="required" class="text-error" aria-hidden="true"> *</span>
+      {{ label }}
     </label>
     <slot />
     <p v-if="error" :id="`${forId}-error`" class="text-caption text-error" role="alert">

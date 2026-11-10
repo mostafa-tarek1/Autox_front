@@ -1,0 +1,115 @@
+{
+  "pageTitles": {
+    "orders": "Orders",
+    "orderDetails": "Order details",
+    "returnRequest": "Return order",
+    "returns": "Returns"
+  },
+  "orders": {
+    "breadcrumb": "Breadcrumb",
+    "home": "Home",
+    "orders": "Orders",
+    "titles": {
+      "current": "Current orders",
+      "previous": "Previous orders",
+      "returns": "Returns",
+      "details": "Order details",
+      "returnRequest": "Return order"
+    },
+    "tabs": {
+      "label": "Order categories",
+      "current": "Current orders",
+      "previous": "Previous orders",
+      "returns": "Returns"
+    },
+    "search": "Search orders",
+    "empty": "No matching orders",
+    "meta": {
+      "seller": "Seller:",
+      "orderNumber": "Order no.:",
+      "orderDate": "Order date:",
+      "total": "Total:",
+      "totalPaid": "Total paid:",
+      "trackingNumber": "Tracking no.:"
+    },
+    "pieces": "{count} pcs",
+    "shipment": "Shipment {number}",
+    "actions": {
+      "details": "Order details",
+      "invoice": "Invoice",
+      "cancel": "Cancel order",
+      "payNow": "Pay now",
+      "notifySellers": "Ask sellers to restock",
+      "delete": "Delete order",
+      "edit": "Edit order",
+      "reportProblem": "Report a problem",
+      "return": "Return order"
+    },
+    "status": {
+      "awaitingAvailability": "Awaiting availability",
+      "quantityUnavailable": "Quantity unavailable",
+      "awaitingPayment": "Awaiting payment",
+      "awaitingPaymentConfirmation": "Awaiting payment confirmation",
+      "preparing": "Preparing order",
+      "shipping": "Preparing & shipping",
+      "delivered": "Delivered",
+      "completed": "Delivered"
+    },
+    "tracker": {
+      "label": "Order progress",
+      "paid": "Paid",
+      "shipping": "Preparing & shipping",
+      "delivered": "Delivered",
+      "done": "completed",
+      "pending": "not started"
+    },
+    "details": {
+      "shipping": "Shipping details",
+      "address": "Address:",
+      "payment": "Payment",
+      "cardEnding": "Card ending in {digits}",
+      "summary": "Order summary",
+      "piecesCount": "Number of parts",
+      "subtotal": "Products price",
+      "vat": "VAT",
+      "grandTotal": "Total price",
+      "notFound": "Order not found"
+    }
+  },
+  "returns": {
+    "status": {
+      "underReview": "Under review",
+      "rejected": "Rejected",
+      "refunded": "Refunded"
+    },
+    "notes": "Notes",
+    "reason": "Return reason",
+    "rejectionReason": "Rejection reason",
+    "photos": "Order photos",
+    "photoAlt": "Order photo {index}",
+    "empty": "No return requests",
+    "form": {
+      "intro": "Please fill in the details below to return the order",
+      "reason": "Return reason",
+      "reasonPlaceholder": "Choose",
+      "photos": "Please attach photos of the order",
+      "notes": "Add notes",
+      "notesPlaceholder": "Write here",
+      "itemsTitle": "Choose the products to return and their quantity",
+      "selectItem": "Select {part} for return",
+      "submit": "Submit request",
+      "reasonRequired": "Please choose a return reason",
+      "itemsRequired": "Please choose at least one product",
+      "reasons": {
+        "damaged": "Some products are damaged",
+        "wrongPart": "Part does not match the order",
+        "notAsDescribed": "Product differs from the description",
+        "other": "Other reason"
+      }
+    },
+    "success": {
+      "title": "Request sent",
+      "track": "Track request status"
+    }
+  }
+}

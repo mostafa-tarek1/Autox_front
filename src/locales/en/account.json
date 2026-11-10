@@ -1,0 +1,125 @@
+{
+  "pageTitles": {
+    "account": "My account",
+    "accountCompany": "Company information",
+    "accountAddresses": "Shipping addresses",
+    "wallet": "Wallet",
+    "walletWithdraw": "Wallet withdrawal request"
+  },
+  "account": {
+    "title": "My account",
+    "breadcrumb": "Breadcrumb",
+    "verified": "Verified",
+    "sections": "Account sections",
+    "edit": "Edit",
+    "save": "Save",
+    "nav": {
+      "personal": "Personal information",
+      "company": "Company information",
+      "addresses": "Shipping addresses"
+    },
+    "personal": {
+      "title": "Personal details",
+      "name": "Name",
+      "fullName": "Full name",
+      "phone": "Mobile number",
+      "email": "Email",
+      "saved": "Personal details saved"
+    },
+    "company": {
+      "title": "Company information",
+      "formTitle": "Company details",
+      "name": "Company name",
+      "companyName": "Company name",
+      "unifiedNumber": "Unified number",
+      "commercialRegister": "Commercial register number",
+      "taxNumber": "VAT number",
+      "nationalAddress": "National address",
+      "nationalAddressPlaceholder": "Address",
+      "documents": "Documents",
+      "companyDocuments": "Company documents",
+      "documentsHint": "Please attach the commercial register, the VAT certificate (if any) and the national address proof",
+      "submit": "Save details",
+      "viewDocument": "View {name}",
+      "replaceDocument": "Replace {name}",
+      "documentKinds": {
+        "commercialRegister": "Commercial register",
+        "taxRegister": "VAT register",
+        "nationalAddress": "National address proof"
+      }
+    },
+    "addresses": {
+      "title": "Shipping addresses",
+      "add": "Add new",
+      "addTitle": "Add shipping address",
+      "editTitle": "Edit shipping address",
+      "label": "Address name",
+      "labelPlaceholder": "e.g. Main warehouse",
+      "address": "Full address",
+      "addressPlaceholder": "District, city, country",
+      "editAddress": "Edit {name}",
+      "empty": "No shipping addresses yet",
+      "defaultLabel": "Address {number}"
+    },
+    "validation": {
+      "required": "This field is required",
+      "minLength": "Must be at least {min} characters",
+      "phone": "Enter a valid Saudi mobile number starting with 05",
+      "email": "Enter a valid email address",
+      "digits": "Must be {length} digits",
+      "taxNumber": "VAT number is 15 digits starting and ending with 3",
+      "unifiedNumber": "Unified number is 10 digits starting with 7"
+    }
+  },
+  "wallet": {
+    "title": "Wallet",
+    "balance": "Wallet balance",
+    "withdraw": "Withdraw from wallet",
+    "transactions": "Transactions",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "downloadExcel": "Download Excel",
+    "empty": "No transactions in this period",
+    "columns": {
+      "reference": "Order no.",
+      "operation": "Operation",
+      "amount": "Amount",
+      "date": "Date",
+      "note": "Notes",
+      "status": "Status"
+    },
+    "operations": {
+      "withdraw": "Withdrawal",
+      "payment": "Payment",
+      "deposit": "Deposit"
+    },
+    "statuses": {
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "pending": "Under review"
+    },
+    "noNote": "None",
+    "withdrawForm": {
+      "title": "Wallet withdrawal request",
+      "subtitle": "Fill in the following details",
+      "amountStep": "Amount to withdraw",
+      "amount": "Enter the amount",
+      "bankStep": "Bank account",
+      "bankAccount": "Choose a bank account",
+      "vatStep": "Amount including VAT",
+      "vatAmount": "Enter the amount including VAT",
+      "invoiceMatch": "Invoice reconciliation",
+      "confirmStep": "Confirmation",
+      "agreePrefix": "I have read and agree to the",
+      "terms": "terms and conditions",
+      "submit": "Submit withdrawal request",
+      "amountInvalid": "Enter an amount greater than zero",
+      "amountTooHigh": "The amount exceeds your wallet balance",
+      "vatTooLow": "The amount including VAT can't be lower than the requested amount",
+      "mustAgree": "You must accept the terms and conditions",
+      "successTitle": "Withdrawal request sent",
+      "successText": "We'll review your request and transfer the amount to your bank account within 3 business days",
+      "backToWallet": "Back to wallet"
+    }
+  }
+}

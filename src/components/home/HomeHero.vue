@@ -17,9 +17,7 @@ const { t } = useI18n()
       aria-hidden="true"
     />
     <div class="page-container flex flex-col items-center gap-[30px]">
-      <h1
-        class="max-w-[736px] text-center text-[28px] leading-[44px] font-bold text-white sm:text-display"
-      >
+      <h1 class="max-w-[736px] text-center text-[28px]/[44px] font-bold text-white sm:text-display">
         {{ t('home.heroTitle') }}
       </h1>
       <img

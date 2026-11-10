@@ -1,0 +1,125 @@
+{
+  "pageTitles": {
+    "account": "حسابي",
+    "accountCompany": "معلومات المؤسسة",
+    "accountAddresses": "عناوين الشحن",
+    "wallet": "المحفظة",
+    "walletWithdraw": "طلب سحب من المحفظة"
+  },
+  "account": {
+    "title": "حسابي",
+    "breadcrumb": "مسار التنقل",
+    "verified": "موثق",
+    "sections": "أقسام الحساب",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "nav": {
+      "personal": "المعلومات الشخصية",
+      "company": "معلومات المؤسسة",
+      "addresses": "عناوين الشحن"
+    },
+    "personal": {
+      "title": "البيانات الشخصية",
+      "name": "الاسم",
+      "fullName": "الاسم الشخصي",
+      "phone": "رقم الجوال",
+      "email": "البريد الالكتروني",
+      "saved": "تم حفظ البيانات الشخصية"
+    },
+    "company": {
+      "title": "معلومات المؤسسة",
+      "formTitle": "بيانات الشركة",
+      "name": "اسم المؤسسة",
+      "companyName": "اسم الشركة",
+      "unifiedNumber": "الرقم الموحد",
+      "commercialRegister": "رقم السجل التجاري",
+      "taxNumber": "رقم السجل الضريبي",
+      "nationalAddress": "العنوان الوطني",
+      "nationalAddressPlaceholder": "العنوان",
+      "documents": "المستندات",
+      "companyDocuments": "مستندات المنشأة",
+      "documentsHint": "يرجي إرفاق السجل التجاري, وشهادة التسجيل الضريبي (إن وجدت) , وإثبات العنوان الوطني",
+      "submit": "اضافة البيانات",
+      "viewDocument": "عرض {name}",
+      "replaceDocument": "تعديل {name}",
+      "documentKinds": {
+        "commercialRegister": "السجل التجاري",
+        "taxRegister": "السجل الضريبي",
+        "nationalAddress": "اثبات العنوان الوطني"
+      }
+    },
+    "addresses": {
+      "title": "عناوين الشحن",
+      "add": "اضافة جديد",
+      "addTitle": "اضافة عنوان شحن",
+      "editTitle": "تعديل عنوان الشحن",
+      "label": "اسم العنوان",
+      "labelPlaceholder": "مثال: المستودع الرئيسي",
+      "address": "العنوان بالتفصيل",
+      "addressPlaceholder": "الحي، المدينة، الدولة",
+      "editAddress": "تعديل {name}",
+      "empty": "لا توجد عناوين شحن بعد",
+      "defaultLabel": "العنوان {number}"
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "minLength": "يجب ألا يقل عن {min} أحرف",
+      "phone": "أدخل رقم جوال سعودي صحيح يبدأ بـ 05",
+      "email": "أدخل بريدا الكترونيا صحيحا",
+      "digits": "يجب أن يتكون من {length} أرقام",
+      "taxNumber": "الرقم الضريبي يتكون من 15 رقما ويبدأ وينتهي بـ 3",
+      "unifiedNumber": "الرقم الموحد يتكون من 10 أرقام ويبدأ بـ 7"
+    }
+  },
+  "wallet": {
+    "title": "المحفظة",
+    "balance": "رصيد المحفظة",
+    "withdraw": "سحب من المحفظة",
+    "transactions": "العمليات",
+    "startDate": "تاريخ البداية",
+    "endDate": "تاريخ الانتهاء",
+    "downloadExcel": "تحميل Excel",
+    "empty": "لا توجد عمليات في هذه الفترة",
+    "columns": {
+      "reference": "رقم الطلب",
+      "operation": "العملية",
+      "amount": "المبلغ",
+      "date": "التاريخ",
+      "note": "ملاحظات",
+      "status": "الحالة"
+    },
+    "operations": {
+      "withdraw": "سحب",
+      "payment": "دفع",
+      "deposit": "ايداع"
+    },
+    "statuses": {
+      "accepted": "مقبولة",
+      "rejected": "مرفوضة",
+      "pending": "قيد المراجعة"
+    },
+    "noNote": "لا يوجد",
+    "withdrawForm": {
+      "title": "طلب سحب من المحفظة",
+      "subtitle": "املأ البيانات التاليه",
+      "amountStep": "المبلغ المطلوب سحبه",
+      "amount": "ادخل المبلغ",
+      "bankStep": "الحساب البنكي",
+      "bankAccount": "اختر الحساب البنكي",
+      "vatStep": "المبلغ مع الضريبة",
+      "vatAmount": "ادخل المبلغ مع الضريبة VAT",
+      "invoiceMatch": "معادلة الفاتورة",
+      "confirmStep": "التأكيد",
+      "agreePrefix": "لقد قرأت واوفق علي",
+      "terms": "الشروط والاحكام",
+      "submit": "تقديم طلب السحب",
+      "amountInvalid": "أدخل مبلغا أكبر من صفر",
+      "amountTooHigh": "المبلغ أكبر من رصيد المحفظة",
+      "vatTooLow": "المبلغ مع الضريبة يجب ألا يقل عن المبلغ المطلوب",
+      "mustAgree": "يجب الموافقة على الشروط والاحكام",
+      "successTitle": "تم إرسال طلب السحب",
+      "successText": "سنراجع طلبك ونحول المبلغ إلى حسابك البنكي خلال 3 أيام عمل",
+      "backToWallet": "العودة للمحفظة"
+    }
+  }
+}

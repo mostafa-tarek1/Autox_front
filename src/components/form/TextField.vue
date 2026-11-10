@@ -21,6 +21,8 @@ withDefaults(
   { type: 'text', rows: 4 },
 )
 
+defineOptions({ inheritAttrs: false })
+
 const value = defineModel<string>({ default: '' })
 const id = useId()
 </script>
@@ -47,6 +49,7 @@ const id = useId()
         :dir="dir"
         :aria-invalid="error ? true : undefined"
         :aria-describedby="error ? `${id}-error` : hint ? `${id}-hint` : undefined"
+        v-bind="$attrs"
         class="min-w-0 flex-1 resize-none bg-transparent text-label text-ink outline-none placeholder:text-secondary/50"
       />
       <input
@@ -61,6 +64,7 @@ const id = useId()
         :dir="dir"
         :aria-invalid="error ? true : undefined"
         :aria-describedby="error ? `${id}-error` : hint ? `${id}-hint` : undefined"
+        v-bind="$attrs"
         class="min-w-0 flex-1 bg-transparent text-label text-ink outline-none placeholder:text-secondary/50"
       />
       <slot name="suffix" />

@@ -1,0 +1,19 @@
+{
+  "pageTitles": { "quotes": "Quotation requests" },
+  "quotes": {
+    "title": "Quotation requests",
+    "offersSubmitted": "{count} offers received",
+    "awaitingOffers": "Awaiting offers",
+    "requestDate": "Request date:",
+    "deleteRequest": "Delete request",
+    "quantity": "Qty: {count}",
+    "viewOffers": "View offers",
+    "submittedOffers": "Submitted price offers",
+    "offersCount": "{count} offers submitted",
+    "lowestPrice": "Lowest price",
+    "accept": "Accept",
+    "offerAccepted": "Offer from {merchant} accepted",
+    "empty": "You have no quotation requests yet",
+    "searchParts": "Search for parts"
+  }
+}

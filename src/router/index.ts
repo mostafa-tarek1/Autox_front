@@ -11,8 +11,31 @@ const modules = import.meta.glob<RouteRecordRaw[]>('./routes/*.ts', {
   import: 'default',
 })
 
+/** Merges the `/` + layout records declared by several feature files into one per layout. */
+function mergeLayoutRoots(records: RouteRecordRaw[]): RouteRecordRaw[] {
+  const merged: RouteRecordRaw[] = []
+  const rootsByLayout = new Map<unknown, RouteRecordRaw>()
+  for (const record of records) {
+    const isLayoutRoot =
+      record.path === '/' && 'component' in record && record.children && !record.name
+    if (!isLayoutRoot) {
+      merged.push(record)
+      continue
+    }
+    const existing = rootsByLayout.get(record.component)
+    if (existing) {
+      existing.children = [...(existing.children ?? []), ...(record.children ?? [])]
+    } else {
+      const root = { ...record, children: [...(record.children ?? [])] } as RouteRecordRaw
+      rootsByLayout.set(record.component, root)
+      merged.push(root)
+    }
+  }
+  return merged
+}
+
 const routes: RouteRecordRaw[] = [
-  ...Object.values(modules).flat(),
+  ...mergeLayoutRoots(Object.values(modules).flat()),
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',

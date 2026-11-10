@@ -18,6 +18,11 @@ const { t } = useI18n()
 
 const term = ref('')
 
+function searchRecent(item: string): void {
+  term.value = item
+  submit()
+}
+
 function submit(): void {
   const value = term.value.trim()
   if (value) {
@@ -76,10 +81,7 @@ function submit(): void {
           type="button"
           dir="ltr"
           class="text-body-sm text-primary hover:underline"
-          @click="
-            term = item
-            submit()
-          "
+          @click="searchRecent(item)"
         >
           {{ item }}
         </button>

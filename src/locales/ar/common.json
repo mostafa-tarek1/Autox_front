@@ -1,5 +1,7 @@
 {
-  "app": { "name": "أوتو إكس" },
+  "app": {
+    "name": "أوتو إكس"
+  },
   "common": {
     "quantity": "الكمية",
     "increase": "زيادة",
@@ -31,7 +33,8 @@
     "account": "حسابي",
     "payments": "المدفوعات",
     "logout": "تسجيل الخروج",
-    "userMenu": "قائمة المستخدم"
+    "userMenu": "قائمة المستخدم",
+    "breadcrumb": "مسار التنقل"
   },
   "footer": {
     "terms": "الشروط والاحكام",

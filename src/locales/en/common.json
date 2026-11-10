@@ -1,5 +1,7 @@
 {
-  "app": { "name": "Auto-X" },
+  "app": {
+    "name": "Auto-X"
+  },
   "common": {
     "quantity": "Quantity",
     "increase": "Increase",
@@ -31,7 +33,8 @@
     "account": "My account",
     "payments": "Payments",
     "logout": "Log out",
-    "userMenu": "User menu"
+    "userMenu": "User menu",
+    "breadcrumb": "Breadcrumb"
   },
   "footer": {
     "terms": "Terms & conditions",
