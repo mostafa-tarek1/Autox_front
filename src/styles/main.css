@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Values are filled in from the Figma file (Auto-X) once the
+ * design is extracted; every component reads colors, fonts and radii from
+ * here, never from hard-coded hex values.
+ */
+@theme {
+  --font-sans: 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply min-h-dvh bg-white text-neutral-900;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
