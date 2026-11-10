@@ -1,10 +1,9 @@
 <script setup lang="ts">
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { useId } from 'vue'
 
 import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
-
-import ShopDialog from './ShopDialog.vue'
 
 import type { RouteLocationRaw } from 'vue-router'
 
@@ -16,7 +15,8 @@ const messageId = useId()
 </script>
 
 <template>
-  <ShopDialog
+  <BaseModal
+    panel-class="max-w-[385px] rounded-2xl px-6 py-12"
     v-model:open="open"
     tone="surface"
     :labelled-by="messageId"
@@ -31,5 +31,5 @@ const messageId = useId()
       </div>
       <BaseButton block :to="actionTo" @click="emit('action')">{{ actionLabel }}</BaseButton>
     </div>
-  </ShopDialog>
+  </BaseModal>
 </template>

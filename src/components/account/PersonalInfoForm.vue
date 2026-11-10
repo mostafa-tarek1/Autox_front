@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import MailIcon from '@/assets/icons/mail-01--stroke-rounded.svg?component'
-import PhoneIcon from '@/assets/icons/smart-phone-01--stroke-rounded.svg?component'
-import UserIcon from '@/assets/icons/user--stroke-rounded.svg?component'
+import MailIcon from '@/assets/icons/mail-01--stroke-rounded.svg'
+import PhoneIcon from '@/assets/icons/smart-phone-01--stroke-rounded.svg'
+import UserIcon from '@/assets/icons/user--stroke-rounded.svg'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import type { AccountProfile } from '@/mocks/account'

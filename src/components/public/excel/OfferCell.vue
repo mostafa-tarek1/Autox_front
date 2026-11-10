@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import QuantityStepper from '@/components/ui/QuantityStepper.vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -7,8 +8,6 @@ import HotPriceIcon from '@/assets/icons/hot-price--solid-rounded.svg'
 import CartAddIcon from '@/assets/icons/shopping-cart-add-01--stroke-rounded.svg'
 import TickIcon from '@/assets/icons/tick-02--solid-rounded.svg'
 import type { ExcelOffer } from '@/mocks/public'
-
-import OfferQuantity from './OfferQuantity.vue'
 
 const props = defineProps<{ offer: ExcelOffer; requestedQuantity: number; partNumber: string }>()
 const emit = defineEmits<{ addToCart: [offerId: string, quantity: number] }>()
@@ -54,7 +53,10 @@ const formatPrice = (amount: number) =>
     <p class="text-body-sm text-muted">{{ t('public.excel.inStock', { count: offer.stock }) }}</p>
     <p class="text-body-sm text-muted">{{ offer.supplier }}</p>
     <div class="flex w-full items-center gap-2">
-      <OfferQuantity
+      <QuantityStepper
+        variant="surface"
+        size="fluid"
+        :min="1"
         v-model="quantity"
         :max="offer.stock"
         :label="t('catalog.quantityFor', { part: partNumber })"

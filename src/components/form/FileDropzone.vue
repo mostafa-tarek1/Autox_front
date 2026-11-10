@@ -9,6 +9,8 @@ import FormField from './FormField.vue'
 const props = withDefaults(
   defineProps<{
     label?: string
+    /** Text inside the drop area; defaults to "ارفاق". */
+    title?: string
     accept?: string
     hint?: string
     error?: string
@@ -58,7 +60,7 @@ function onDrop(event: DragEvent): void {
       @drop.prevent="onDrop"
     >
       <FileUploadIcon class="size-8 text-ink" aria-hidden="true" />
-      <span class="text-label text-ink">{{ file ? file.name : t('form.attach') }}</span>
+      <span class="text-label text-ink">{{ file ? file.name : (title ?? t('form.attach')) }}</span>
       <span class="text-caption text-secondary">{{ hint ?? t('form.allowedFiles') }}</span>
       <input
         :id="id"

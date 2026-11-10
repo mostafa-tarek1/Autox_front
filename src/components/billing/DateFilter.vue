@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useId } from 'vue'
 
-import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg?component'
+import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg'
 
 /** Date input styled like the Figma "input" with a calendar icon; the label stays visually hidden. */
 defineProps<{ label: string }>()

@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import QuantityStepper from '@/components/ui/QuantityStepper.vue'
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
 
-import OrderAmount from './OrderAmount.vue'
-import ReturnQuantityStepper from './ReturnQuantityStepper.vue'
 import type { OrderItem } from './types'
 
 defineProps<{ item: OrderItem }>()
@@ -50,8 +50,11 @@ const checkboxId = useId()
     </label>
 
     <div class="flex w-[82px] shrink-0 flex-col items-center gap-2">
-      <OrderAmount :amount="item.price" class="text-h4 text-ink" />
-      <ReturnQuantityStepper
+      <PriceTag :grouping="false" :amount="item.price" class="text-h4 text-ink" />
+      <QuantityStepper
+        variant="surface"
+        size="sm"
+        :min="1"
         v-model="quantity"
         :max="item.quantity"
         :disabled="!selected"

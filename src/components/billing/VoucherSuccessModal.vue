@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import TickIcon from '@/assets/icons/tick-02--solid-standard.svg?component'
+import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
 

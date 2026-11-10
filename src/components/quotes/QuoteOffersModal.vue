@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import HotPriceIcon from '@/assets/icons/hot-price--solid-rounded.svg?component'
-import AmountText from '@/components/billing/AmountText.vue'
+import HotPriceIcon from '@/assets/icons/hot-price--solid-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseChip from '@/components/ui/BaseChip.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
@@ -46,7 +46,7 @@ const cheapestId = computed(
             </BaseChip>
           </div>
           <div class="flex items-center gap-6">
-            <AmountText :amount="offer.price" class="text-h3 text-primary" />
+            <PriceTag :amount="offer.price" class="text-h3 text-primary" />
             <BaseButton @click="emit('accept', offer)">{{ t('quotes.accept') }}</BaseButton>
           </div>
         </li>

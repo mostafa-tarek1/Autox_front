@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/** Codes read left to right in every locale. */
 import { nextTick, onMounted, ref, useTemplateRef, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -91,7 +92,6 @@ function onPaste(event: ClipboardEvent): void {
 </script>
 
 <template>
-  <!-- Codes read left to right in every locale. -->
   <div
     dir="ltr"
     class="flex items-center gap-4 sm:gap-6"

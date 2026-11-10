@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
 import BuildingIcon from '@/assets/icons/building-03--stroke-rounded.svg'
@@ -6,7 +7,6 @@ import BorderIcon from '@/assets/icons/border-full--stroke-rounded.svg'
 import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg'
 import PaymentIcon from '@/assets/icons/payment-02--stroke-rounded.svg'
 
-import OrderAmount from './OrderAmount.vue'
 import OrderMeta from './OrderMeta.vue'
 import OrderStatusChip from './OrderStatusChip.vue'
 import type { Order } from './types'
@@ -36,7 +36,7 @@ const { t } = useI18n()
         <span class="text-secondary">{{
           t(order.kind === 'placed' ? 'orders.meta.totalPaid' : 'orders.meta.total')
         }}</span>
-        <OrderAmount :amount="order.total" class="text-h4 text-primary" />
+        <PriceTag :grouping="false" :amount="order.total" class="text-h4 text-primary" />
       </span>
     </div>
     <div class="flex flex-wrap items-center gap-4">

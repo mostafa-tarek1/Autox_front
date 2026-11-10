@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import CreditCardIcon from '@/assets/icons/credit-card--stroke-rounded.svg'
 import LocationIcon from '@/assets/icons/location-04--stroke-rounded.svg'
 import OrderActionButton from '@/components/orders/OrderActionButton.vue'
-import OrderAmount from '@/components/orders/OrderAmount.vue'
 import OrderMeta from '@/components/orders/OrderMeta.vue'
 import OrderSummaryBar from '@/components/orders/OrderSummaryBar.vue'
 import PageHero from '@/components/layout/PageHero.vue'
@@ -78,18 +78,26 @@ const completedSteps = computed(() => {
               </div>
               <div class="flex items-center justify-between">
                 <dt>{{ t('orders.details.subtotal') }}</dt>
-                <dd><OrderAmount :amount="order.subtotal" class="text-h4 text-primary" /></dd>
+                <dd>
+                  <PriceTag
+                    :grouping="false"
+                    :amount="order.subtotal"
+                    class="text-h4 text-primary"
+                  />
+                </dd>
               </div>
               <div class="flex items-center justify-between">
                 <dt>{{ t('orders.details.vat') }}</dt>
-                <dd><OrderAmount :amount="order.vat" class="text-h4 text-primary" /></dd>
+                <dd>
+                  <PriceTag :grouping="false" :amount="order.vat" class="text-h4 text-primary" />
+                </dd>
               </div>
             </dl>
             <div
               class="flex items-center justify-between rounded-lg bg-surface p-2 text-body-md text-secondary"
             >
               <span>{{ t('orders.details.grandTotal') }}</span>
-              <OrderAmount :amount="order.grandTotal" class="text-h3 text-primary" />
+              <PriceTag :grouping="false" :amount="order.grandTotal" class="text-h3 text-primary" />
             </div>
           </div>
         </section>

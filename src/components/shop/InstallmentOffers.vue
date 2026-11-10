@@ -1,10 +1,9 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
 import tabbyLogo from '@/assets/images/shop/tabby-installments.webp'
 import tamaraLogo from '@/assets/images/shop/tamara-installments.webp'
-
-import ShopPrice from './ShopPrice.vue'
 
 /** "يمكنك التقسيط عن طريق" — tabby / tamara offers (Figma 359:6154). */
 defineProps<{ monthlyFrom: number }>()
@@ -50,7 +49,7 @@ const providers = [
         <div class="flex min-w-0 flex-col items-start gap-2">
           <p class="flex items-center gap-3">
             <span class="text-h4 text-ink">{{ t('shop.payment.startingFrom') }}</span>
-            <ShopPrice :amount="monthlyFrom" size="lg" tone="primary" />
+            <PriceTag :amount="monthlyFrom" size="lg" tone="primary" />
           </p>
           <p class="text-body-sm text-secondary">{{ t('shop.payment.installmentsHint') }}</p>
           <a

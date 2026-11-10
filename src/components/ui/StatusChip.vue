@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, type Component } from 'vue'
 
-import AlertIcon from '@/assets/icons/alert-circle--stroke-rounded.svg?component'
-import CancelIcon from '@/assets/icons/cancel-circle--stroke-rounded.svg?component'
-import CheckIcon from '@/assets/icons/checkmark-circle-01--stroke-rounded.svg?component'
-import HotPriceIcon from '@/assets/icons/hot-price--stroke-rounded.svg?component'
+import AlertIcon from '@/assets/icons/alert-circle--stroke-rounded.svg'
+import CancelIcon from '@/assets/icons/cancel-circle--stroke-rounded.svg'
+import CheckIcon from '@/assets/icons/checkmark-circle-01--stroke-rounded.svg'
+import HotPriceIcon from '@/assets/icons/hot-price--stroke-rounded.svg'
 
 export type StatusTone = 'pending' | 'success' | 'paid' | 'error' | 'processing' | 'highlight'
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import UserIcon from '@/assets/icons/user--stroke-rounded.svg?component'
+import UserIcon from '@/assets/icons/user--stroke-rounded.svg'
 import AccountCard from '@/components/account/AccountCard.vue'
 import AccountDetailList from '@/components/account/AccountDetailList.vue'
-import AccountModal from '@/components/account/AccountModal.vue'
 import PersonalInfoForm from '@/components/account/PersonalInfoForm.vue'
 import { useAccountState } from '@/components/account/useAccountState'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -38,7 +38,13 @@ function save(values: Pick<AccountProfile, 'name' | 'phone' | 'email'>): void {
     <AccountDetailList :items="details" />
   </AccountCard>
 
-  <AccountModal v-model:open="isEditing" :title="t('account.personal.title')">
+  <BaseModal
+    tone="surface"
+    panel-class="max-w-[582px] px-5 py-14 sm:px-10"
+    title-class="mb-6 text-h2"
+    v-model:open="isEditing"
+    :title="t('account.personal.title')"
+  >
     <PersonalInfoForm v-if="isEditing" :profile="state.profile" @save="save" />
-  </AccountModal>
+  </BaseModal>
 </template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+/** Small pill above section titles ("من نحن", "المميزات"...). */
 withDefaults(defineProps<{ tone?: 'light' | 'dark' }>(), { tone: 'light' })
 </script>
 
 <template>
-  <!-- Small pill above section titles ("من نحن", "المميزات"...). -->
   <span
     class="inline-flex items-center justify-center rounded-full border-[0.5px] border-accent/20 bg-accent/16 backdrop-blur-[8px]"
     :class="

@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import CheckboxField from '@/components/form/CheckboxField.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
 
-import AccountModal from '@/components/account/AccountModal.vue'
 import StepCard from '@/components/account/StepCard.vue'
 import { useAccountState } from '@/components/account/useAccountState'
 import SelectField from '@/components/form/SelectField.vue'
@@ -121,39 +122,21 @@ function backToWallet(): void {
               :error="errors.vatAmount"
               @update:model-value="form.vatAmount = sanitize($event)"
             />
-            <label class="flex items-center gap-2 text-body-md text-ink">
-              <input
-                v-model="form.invoiceMatched"
-                type="checkbox"
-                class="size-5 rounded border border-secondary/60 bg-surface accent-primary"
-              />
+            <CheckboxField v-model="form.invoiceMatched">
               {{ t('wallet.withdrawForm.invoiceMatch') }}
-            </label>
+            </CheckboxField>
           </div>
         </StepCard>
       </section>
 
       <section class="rounded-3xl bg-white p-5 shadow-card sm:p-8">
         <StepCard :step="4" :title="t('wallet.withdrawForm.confirmStep')">
-          <div class="flex flex-col gap-2">
-            <label class="flex items-center gap-2 text-body-md text-ink">
-              <input
-                v-model="form.agreed"
-                type="checkbox"
-                class="size-5 rounded border border-secondary/60 bg-surface accent-primary"
-                :aria-invalid="errors.agreed ? true : undefined"
-              />
-              <span>
-                {{ t('wallet.withdrawForm.agreePrefix') }}
-                <RouterLink to="/terms" target="_blank" class="text-match underline">
-                  {{ t('wallet.withdrawForm.terms') }}
-                </RouterLink>
-              </span>
-            </label>
-            <p v-if="errors.agreed" class="text-caption text-error" role="alert">
-              {{ errors.agreed }}
-            </p>
-          </div>
+          <CheckboxField v-model="form.agreed" :error="errors.agreed">
+            {{ t('wallet.withdrawForm.agreePrefix') }}
+            <RouterLink to="/terms" target="_blank" class="text-match underline">
+              {{ t('wallet.withdrawForm.terms') }}
+            </RouterLink>
+          </CheckboxField>
         </StepCard>
       </section>
 
@@ -163,12 +146,14 @@ function backToWallet(): void {
     </form>
   </div>
 
-  <AccountModal
+  <BaseModal
+    tone="surface"
+    panel-class="max-w-[420px] px-5 py-14 sm:px-10"
+    title-class="mb-6 text-h2"
     v-model:open="isDone"
     :title="t('wallet.withdrawForm.successTitle')"
-    width="max-w-[420px]"
   >
     <p class="mb-6 text-body-md text-secondary">{{ t('wallet.withdrawForm.successText') }}</p>
     <BaseButton block @click="backToWallet">{{ t('wallet.withdrawForm.backToWallet') }}</BaseButton>
-  </AccountModal>
+  </BaseModal>
 </template>

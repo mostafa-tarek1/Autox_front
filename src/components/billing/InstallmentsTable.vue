@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
 import { providerLogos, type InstallmentRequest, type InstallmentStatus } from '@/mocks/billing'
 
-import AmountText from './AmountText.vue'
 import { formatDate } from './formatDate'
-import StatusChip, { type StatusTone } from './StatusChip.vue'
+import StatusChip, { type StatusTone } from '@/components/ui/StatusChip.vue'
 
 defineProps<{ requests: InstallmentRequest[] }>()
 const { t } = useI18n()
@@ -65,7 +65,7 @@ const columns = ['orderNumber', 'name', 'phone', 'amount', 'date', 'notes', 'sta
           <td class="border-b-[0.6px] border-line pe-6">{{ request.customerName }}</td>
           <td class="border-b-[0.6px] border-line pe-6 tabular-nums">{{ request.phone }}</td>
           <td class="border-b-[0.6px] border-line pe-6 text-h4 text-primary">
-            <AmountText :amount="request.amount" />
+            <PriceTag :amount="request.amount" />
           </td>
           <td class="border-b-[0.6px] border-line pe-6 tabular-nums">
             {{ formatDate(request.date) }}
@@ -111,7 +111,7 @@ const columns = ['orderNumber', 'name', 'phone', 'amount', 'date', 'notes', 'sta
         <dt class="text-secondary">{{ t('billing.table.phone') }}</dt>
         <dd class="text-ink tabular-nums">{{ request.phone }}</dd>
         <dt class="text-secondary">{{ t('billing.table.amount') }}</dt>
-        <dd class="font-semibold text-primary"><AmountText :amount="request.amount" /></dd>
+        <dd class="font-semibold text-primary"><PriceTag :amount="request.amount" /></dd>
         <dt class="text-secondary">{{ t('billing.table.date') }}</dt>
         <dd class="text-ink tabular-nums">{{ formatDate(request.date) }}</dd>
         <dt class="text-secondary">{{ t('billing.table.notes') }}</dt>

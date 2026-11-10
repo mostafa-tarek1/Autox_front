@@ -1,11 +1,10 @@
 <script setup lang="ts">
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { ref, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import ProductCard from '@/components/catalog/ProductCard.vue'
 import type { Product } from '@/types/catalog'
-
-import ShopDialog from './ShopDialog.vue'
 
 /** "القطع البديلة" (Figma 192:2932): substitute parts for an unavailable cart line. */
 defineProps<{ parts: Product[] }>()
@@ -25,7 +24,7 @@ function onQuantity(product: Product, quantity: number): void {
 </script>
 
 <template>
-  <ShopDialog
+  <BaseModal
     v-model:open="open"
     :labelled-by="titleId"
     tone="surface"
@@ -45,5 +44,5 @@ function onQuantity(product: Product, quantity: number): void {
         />
       </li>
     </ul>
-  </ShopDialog>
+  </BaseModal>
 </template>

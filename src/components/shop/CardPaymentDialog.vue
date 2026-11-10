@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { computed, reactive, ref, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -10,8 +11,6 @@ import LockIcon from '@/assets/icons/square-lock-02--stroke-rounded.svg'
 import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-
-import ShopDialog from './ShopDialog.vue'
 
 /**
  * Card form → result (Figma "payment" set 226:5817). UI only: the card fields are never sent
@@ -62,7 +61,7 @@ function reset(): void {
 </script>
 
 <template>
-  <ShopDialog
+  <BaseModal
     v-model:open="open"
     :labelled-by="titleId"
     panel-class="max-w-[584px] rounded-3xl px-6 py-16 sm:px-10"
@@ -152,5 +151,5 @@ function reset(): void {
         t('shop.cart.trackOrder')
       }}</BaseButton>
     </div>
-  </ShopDialog>
+  </BaseModal>
 </template>

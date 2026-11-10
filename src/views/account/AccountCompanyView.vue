@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import BuildingIcon from '@/assets/icons/building-03--stroke-rounded.svg?component'
+import BuildingIcon from '@/assets/icons/building-03--stroke-rounded.svg'
 import FileIcon from '@/assets/icons/file-02--solid-rounded.svg'
 import EditIcon from '@/assets/icons/pencil-edit-02--solid-rounded.svg'
 import ViewIcon from '@/assets/icons/view--solid-rounded.svg'
 import AccountCard from '@/components/account/AccountCard.vue'
 import AccountDetailList from '@/components/account/AccountDetailList.vue'
-import AccountModal from '@/components/account/AccountModal.vue'
 import CompanyInfoForm, { type CompanyFormValues } from '@/components/account/CompanyInfoForm.vue'
 import { useAccountState } from '@/components/account/useAccountState'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -88,7 +88,13 @@ function save(values: CompanyFormValues): void {
     </AccountDetailList>
   </AccountCard>
 
-  <AccountModal v-model:open="isEditing" :title="t('account.company.formTitle')">
+  <BaseModal
+    tone="surface"
+    panel-class="max-w-[582px] px-5 py-14 sm:px-10"
+    title-class="mb-6 text-h2"
+    v-model:open="isEditing"
+    :title="t('account.company.formTitle')"
+  >
     <CompanyInfoForm v-if="isEditing" :company="state.company" @save="save" />
-  </AccountModal>
+  </BaseModal>
 </template>

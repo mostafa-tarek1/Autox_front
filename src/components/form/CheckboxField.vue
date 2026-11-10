@@ -8,7 +8,7 @@ const id = useId()
 
 <template>
   <div class="flex flex-col gap-1">
-    <label :for="id" class="flex w-fit cursor-pointer items-center gap-2 text-body-md text-black">
+    <label :for="id" class="flex w-fit cursor-pointer items-center gap-2 text-body-md text-ink">
       <input
         :id="id"
         v-model="checked"

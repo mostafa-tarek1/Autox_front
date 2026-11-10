@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
 import SecurityCheckIcon from '@/assets/icons/security-check--solid-rounded.svg'
 
-import OrderAmount from './OrderAmount.vue'
 import type { OrderItem } from './types'
 
 /**
@@ -53,8 +53,20 @@ const { t } = useI18n()
       <span class="text-body-sm text-secondary">{{
         t('orders.pieces', { count: item.quantity })
       }}</span>
-      <OrderAmount v-if="variant === 'rich'" :amount="item.price" class="text-h4 text-primary" />
-      <OrderAmount v-else :amount="item.price" decimals small class="text-body-sm text-ink" />
+      <PriceTag
+        :grouping="false"
+        v-if="variant === 'rich'"
+        :amount="item.price"
+        class="text-h4 text-primary"
+      />
+      <PriceTag
+        :grouping="false"
+        v-else
+        :amount="item.price"
+        decimals
+        small-symbol
+        class="text-body-sm text-ink"
+      />
     </div>
   </div>
 </template>

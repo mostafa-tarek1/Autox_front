@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 
@@ -12,7 +13,6 @@ import TrolleyIcon from '@/assets/icons/trolley-02--stroke-standard.svg'
 import BrandThumb from '@/components/shop/BrandThumb.vue'
 import CheckoutHero from '@/components/shop/CheckoutHero.vue'
 import OriginChip from '@/components/shop/OriginChip.vue'
-import ShopPrice from '@/components/shop/ShopPrice.vue'
 import SummaryRow from '@/components/shop/SummaryRow.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { confirmedOrder } from '@/mocks/shop'
@@ -53,7 +53,7 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
             <div class="flex items-center gap-1">
               <PaymentIcon class="size-4 text-ink" aria-hidden="true" />
               <dt class="text-secondary">{{ t('shop.confirmation.totalPaid') }}</dt>
-              <dd><ShopPrice :amount="totalWithDelivery" tone="primary" /></dd>
+              <dd><PriceTag size="md" :amount="totalWithDelivery" tone="primary" /></dd>
             </div>
           </dl>
         </div>
@@ -135,7 +135,7 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
               <span class="text-body-sm text-secondary">{{
                 t('shop.confirmation.pieces', { count: item.quantity })
               }}</span>
-              <ShopPrice :amount="item.unitPrice" tone="primary" />
+              <PriceTag size="md" :amount="item.unitPrice" tone="primary" />
             </div>
           </li>
         </ul>

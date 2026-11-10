@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -8,7 +9,6 @@ import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
 import CopyableValue from './CopyableValue.vue'
-import ShopPrice from './ShopPrice.vue'
 import type { BankAccount } from './types'
 
 /** Bank transfer instructions + confirmation form (Figma 226:6083). */
@@ -49,7 +49,7 @@ async function submit(): Promise<void> {
     <form class="flex flex-col gap-4 p-6" novalidate @submit.prevent="submit">
       <div class="flex items-center gap-6 rounded-lg bg-surface p-2">
         <span class="text-body-md text-secondary">{{ t('shop.bankTransfer.amount') }}</span>
-        <ShopPrice :amount="props.amount" size="lg" tone="primary" />
+        <PriceTag :amount="props.amount" size="lg" tone="primary" />
       </div>
 
       <h3 class="text-h4 text-ink">{{ t('shop.bankTransfer.accountDetails') }}</h3>
@@ -109,6 +109,7 @@ async function submit(): Promise<void> {
         <FileDropzone
           v-model="form.receipt"
           :label="t('shop.bankTransfer.receipt')"
+          :title="t('shop.bankTransfer.receiptUpload')"
           :hint="t('form.allowedFiles')"
           required
         />

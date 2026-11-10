@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import EditIcon from '@/assets/icons/pencil-edit-02--solid-rounded.svg'
-import LocationIcon from '@/assets/icons/location-04--stroke-rounded.svg?component'
+import LocationIcon from '@/assets/icons/location-04--stroke-rounded.svg'
 import AccountCard from '@/components/account/AccountCard.vue'
-import AccountModal from '@/components/account/AccountModal.vue'
 import AddressForm from '@/components/account/AddressForm.vue'
 import { useAccountState } from '@/components/account/useAccountState'
 import BaseButton from '@/components/ui/BaseButton.vue'
@@ -74,7 +74,10 @@ function save(values: Pick<ShippingAddress, 'label' | 'address'>): void {
     </p>
   </AccountCard>
 
-  <AccountModal
+  <BaseModal
+    tone="surface"
+    panel-class="max-w-[582px] px-5 py-14 sm:px-10"
+    title-class="mb-6 text-h2"
     v-model:open="isModalOpen"
     :title="editedAddress ? t('account.addresses.editTitle') : t('account.addresses.addTitle')"
   >
@@ -85,5 +88,5 @@ function save(values: Pick<ShippingAddress, 'label' | 'address'>): void {
       :default-label="t('account.addresses.defaultLabel', { number: state.addresses.length + 1 })"
       @save="save"
     />
-  </AccountModal>
+  </BaseModal>
 </template>

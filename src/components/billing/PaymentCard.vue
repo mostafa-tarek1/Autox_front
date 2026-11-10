@@ -1,18 +1,18 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import BorderIcon from '@/assets/icons/border-full--stroke-rounded.svg?component'
-import CalendarIcon from '@/assets/icons/calendar-02--duotone-rounded.svg?component'
-import MoneyIcon from '@/assets/icons/money-04--duotone-rounded.svg?component'
-import PaymentIcon from '@/assets/icons/payment-02--duotone-rounded.svg?component'
+import BorderIcon from '@/assets/icons/border-full--stroke-rounded.svg'
+import CalendarIcon from '@/assets/icons/calendar-02--duotone-rounded.svg'
+import MoneyIcon from '@/assets/icons/money-04--duotone-rounded.svg'
+import PaymentIcon from '@/assets/icons/payment-02--duotone-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import type { Payment } from '@/mocks/billing'
 
-import AmountText from './AmountText.vue'
 import { formatDate } from './formatDate'
 import InfoItem from './InfoItem.vue'
-import StatusChip, { type StatusTone } from './StatusChip.vue'
+import StatusChip, { type StatusTone } from '@/components/ui/StatusChip.vue'
 
 const props = defineProps<{ payment: Payment }>()
 const emit = defineEmits<{ pay: [payment: Payment] }>()
@@ -67,7 +67,7 @@ const statusTone = computed<StatusTone>(() => {
 
     <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-36 sm:gap-y-4">
       <InfoItem :label="t('billing.amount')" :icon="MoneyIcon">
-        <AmountText :amount="payment.amount" class="text-primary" />
+        <PriceTag :amount="payment.amount" class="text-primary" />
       </InfoItem>
       <InfoItem :label="t('billing.paymentMethod')" :icon="PaymentIcon">
         {{ t(`billing.paymentMethods.${payment.method}`) }}

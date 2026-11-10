@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import QuantityStepper from '@/components/ui/QuantityStepper.vue'
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import DeleteIcon from '@/assets/icons/delete-01--stroke-standard.svg'
 
 import BrandThumb from './BrandThumb.vue'
-import CartQuantityStepper from './CartQuantityStepper.vue'
 import OriginChip from './OriginChip.vue'
-import ShopPrice from './ShopPrice.vue'
 import type { CartItem } from './types'
 
 const props = withDefaults(defineProps<{ item: CartItem; removable?: boolean }>(), {
@@ -39,8 +39,11 @@ const quantity = computed({
       </div>
 
       <div class="flex items-center justify-between gap-6 sm:justify-end">
-        <ShopPrice :amount="item.unitPrice * item.quantity" size="xl" />
-        <CartQuantityStepper
+        <PriceTag tone="ink" :amount="item.unitPrice * item.quantity" size="xl" />
+        <QuantityStepper
+          variant="surface"
+          :min="1"
+          size="md"
           v-model="quantity"
           :label="t('catalog.quantityFor', { part: item.partNumber })"
         />

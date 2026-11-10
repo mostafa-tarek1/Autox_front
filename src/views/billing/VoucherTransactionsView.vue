@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import FileDownloadIcon from '@/assets/icons/file-download--stroke-rounded.svg?component'
-import SearchIcon from '@/assets/icons/search-01--stroke-rounded.svg?component'
-import CartCheckIcon from '@/assets/icons/shopping-cart-check-out-01--duotone-rounded.svg?component'
-import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg?component'
-import AmountText from '@/components/billing/AmountText.vue'
+import FileDownloadIcon from '@/assets/icons/file-download--stroke-rounded.svg'
+import SearchIcon from '@/assets/icons/search-01--stroke-rounded.svg'
+import CartCheckIcon from '@/assets/icons/shopping-cart-check-out-01--duotone-rounded.svg'
+import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
 import DateFilter from '@/components/billing/DateFilter.vue'
 import InstallmentsTable from '@/components/billing/InstallmentsTable.vue'
 import PageHero from '@/components/layout/PageHero.vue'
@@ -60,7 +60,7 @@ const filteredRequests = computed(() => {
   <div class="page-container flex flex-col gap-10 pt-10">
     <section class="grid grid-cols-1 gap-6 md:grid-cols-2" :aria-label="t('billing.summary')">
       <StatCard size="lg" :label="t('billing.currentBalance')" :icon="WalletIcon">
-        <AmountText :amount="installmentSummary.currentBalance" class="text-primary" />
+        <PriceTag :amount="installmentSummary.currentBalance" class="text-primary" />
       </StatCard>
       <StatCard
         size="lg"
@@ -68,7 +68,7 @@ const filteredRequests = computed(() => {
         :icon="CartCheckIcon"
         icon-color="text-orange"
       >
-        <AmountText :amount="installmentSummary.totalSales" class="text-primary" />
+        <PriceTag :amount="installmentSummary.totalSales" class="text-primary" />
       </StatCard>
     </section>
 

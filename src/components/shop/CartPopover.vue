@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import QuantityStepper from '@/components/ui/QuantityStepper.vue'
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 
@@ -9,8 +11,6 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import { useCartStore } from '@/stores/cart'
 
 import BrandThumb from './BrandThumb.vue'
-import CartQuantityStepper from './CartQuantityStepper.vue'
-import ShopPrice from './ShopPrice.vue'
 
 /**
  * Mini cart opened from the navbar cart button (Figma "cart" 173:1645).
@@ -61,8 +61,10 @@ const { items } = storeToRefs(cart)
             </div>
           </div>
           <div class="flex w-[82px] shrink-0 flex-col items-center gap-2">
-            <ShopPrice :amount="item.unitPrice" />
-            <CartQuantityStepper
+            <PriceTag tone="ink" size="md" :amount="item.unitPrice" />
+            <QuantityStepper
+              variant="surface"
+              :min="1"
               :model-value="item.quantity"
               size="sm"
               @update:model-value="cart.setQuantity(item.id, $event)"

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg?component'
-import DeleteIcon from '@/assets/icons/delete-01--stroke-standard.svg?component'
+import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg'
+import DeleteIcon from '@/assets/icons/delete-01--stroke-standard.svg'
 import { formatDate } from '@/components/billing/formatDate'
-import StatusChip from '@/components/billing/StatusChip.vue'
+import StatusChip from '@/components/ui/StatusChip.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import type { QuoteRequest } from '@/mocks/quotes'
 

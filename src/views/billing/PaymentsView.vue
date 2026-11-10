@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import ClockIcon from '@/assets/icons/clock-01--duotone-rounded.svg?component'
-import SearchIcon from '@/assets/icons/search-01--stroke-standard.svg?component'
-import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg?component'
-import AmountText from '@/components/billing/AmountText.vue'
+import ClockIcon from '@/assets/icons/clock-01--duotone-rounded.svg'
+import SearchIcon from '@/assets/icons/search-01--stroke-standard.svg'
+import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
 import PageHero from '@/components/layout/PageHero.vue'
 import PaymentCard from '@/components/billing/PaymentCard.vue'
 import StatCard from '@/components/billing/StatCard.vue'
@@ -37,10 +37,10 @@ const filteredPayments = computed(() => {
       :aria-label="t('billing.summary')"
     >
       <StatCard :label="t('billing.totalPaid')" :icon="WalletIcon">
-        <AmountText :amount="paymentSummary.totalPaid" class="text-ink" />
+        <PriceTag :amount="paymentSummary.totalPaid" class="text-ink" />
       </StatCard>
       <StatCard :label="t('billing.pendingAmount')" :icon="ClockIcon">
-        <AmountText :amount="paymentSummary.pendingAmount" class="text-error" />
+        <PriceTag :amount="paymentSummary.pendingAmount" class="text-error" />
       </StatCard>
       <StatCard :label="t('billing.totalInvoices')" :icon="WalletIcon">
         <span class="text-ink tabular-nums">{{ paymentSummary.totalInvoices }}</span>

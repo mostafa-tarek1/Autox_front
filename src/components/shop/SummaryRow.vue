@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShopPrice from './ShopPrice.vue'
+import PriceTag from '@/components/ui/PriceTag.vue'
 
 withDefaults(defineProps<{ label: string; amount?: number; text?: string; emphasis?: boolean }>(), {
   emphasis: false,
@@ -13,7 +13,7 @@ withDefaults(defineProps<{ label: string; amount?: number; text?: string; emphas
   >
     <dt class="text-body-md text-secondary">{{ label }}</dt>
     <dd class="text-body-md text-secondary">
-      <ShopPrice
+      <PriceTag
         v-if="amount !== undefined"
         :amount="amount"
         :size="emphasis ? 'lg' : 'md'"

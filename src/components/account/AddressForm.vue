@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import LocationIcon from '@/assets/icons/location-04--stroke-rounded.svg?component'
-import NoteIcon from '@/assets/icons/note-01--stroke-rounded.svg?component'
+import LocationIcon from '@/assets/icons/location-04--stroke-rounded.svg'
+import NoteIcon from '@/assets/icons/note-01--stroke-rounded.svg'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import type { ShippingAddress } from '@/mocks/account'

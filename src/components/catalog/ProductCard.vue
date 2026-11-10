@@ -67,7 +67,7 @@ const borderClass = computed(() => {
     </div>
 
     <div class="flex items-center justify-between gap-6 sm:w-[200px] sm:justify-end">
-      <PriceTag :amount="product.price" />
+      <PriceTag :amount="product.price" decimals size="lg" tone="ink" />
       <QuantityStepper
         v-model="quantity"
         :label="t('catalog.quantityFor', { part: product.partNumber })"
