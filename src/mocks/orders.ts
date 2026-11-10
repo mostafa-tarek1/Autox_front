@@ -36,7 +36,48 @@ function shipment(id: string, number: number, status: Shipment['status'], count:
 
 const base = { number: '#AX-10248', date: '15/10/2027', total: 2000 }
 
+/** "Current orders" (Figma 588:16862). */
 export const currentOrders: Order[] = [
+  {
+    ...base,
+    id: 'ord-1004',
+    kind: 'placed',
+    status: 'awaitingPaymentConfirmation',
+    trackingNumber: '#AX-10248',
+    items: [item('p1-a'), item('p1-b')],
+    untrackedItems: [item('p1-c')],
+    shipments: [],
+  },
+  {
+    ...base,
+    id: 'ord-1005',
+    kind: 'placed',
+    status: 'shipping',
+    items: [],
+    shipments: [shipment('s1', 1, 'shipping', 2), shipment('s2', 2, 'delivered', 1)],
+  },
+  {
+    ...base,
+    id: 'ord-1006',
+    kind: 'placed',
+    status: 'shipping',
+    items: [],
+    untrackedItems: [item('p3-a'), item('p3-b')],
+    shipments: [],
+  },
+  {
+    ...base,
+    id: 'ord-1007',
+    kind: 'placed',
+    status: 'delivered',
+    items: [],
+    untrackedItems: [item('p4-a')],
+    shipments: [],
+  },
+]
+
+/** Seller requests still waiting for availability or payment (Figma 235:10299, `?tab=requests`). */
+export const requestOrders: Order[] = [
   {
     ...base,
     id: 'ord-1001',
@@ -64,31 +105,6 @@ export const currentOrders: Order[] = [
     items: [item('r3-a', 2000), item('r3-b', 160)],
     shipments: [],
   },
-  {
-    ...base,
-    id: 'ord-1004',
-    kind: 'placed',
-    status: 'awaitingPaymentConfirmation',
-    trackingNumber: '#AX-10248',
-    items: [item('p1-a'), item('p1-b'), item('p1-c')],
-    shipments: [],
-  },
-  {
-    ...base,
-    id: 'ord-1005',
-    kind: 'placed',
-    status: 'preparing',
-    items: [],
-    shipments: [shipment('s1', 1, 'shipping', 2), shipment('s2', 2, 'delivered', 1)],
-  },
-  {
-    ...base,
-    id: 'ord-1006',
-    kind: 'placed',
-    status: 'shipping',
-    items: [item('p3-a'), item('p3-b')],
-    shipments: [],
-  },
 ]
 
 export const previousOrders: Order[] = Array.from({ length: 3 }, (_, index) => ({
@@ -102,7 +118,9 @@ export const previousOrders: Order[] = Array.from({ length: 3 }, (_, index) => (
 }))
 
 export function findOrderDetails(id: string): OrderDetails | undefined {
-  const order = [...currentOrders, ...previousOrders].find((candidate) => candidate.id === id)
+  const order = [...currentOrders, ...requestOrders, ...previousOrders].find(
+    (candidate) => candidate.id === id,
+  )
   if (!order) {
     return undefined
   }
@@ -132,7 +150,7 @@ export const returnRequests: ReturnRequest[] = [
     date: '15/10/2027',
     status: 'refunded',
     reason: 'يوجد بعض المنتجات تالفه',
-    notes: 'وجدت احد المنتجات تالفه ولا تصلح للاستخدام',
+    notes: 'وجدت احد المنتجات تالفه ولا تصلح للاستخدام ارجو استبدالها',
     photos: [returnPhoto, returnPhoto],
   },
   {
@@ -142,7 +160,7 @@ export const returnRequests: ReturnRequest[] = [
     date: '15/10/2027',
     status: 'underReview',
     reason: 'يوجد بعض المنتجات تالفه',
-    notes: 'وجدت احد المنتجات تالفه ولا تصلح للاستخدام',
+    notes: 'وجدت احد المنتجات تالفه ولا تصلح للاستخدام ارجو استبدالها',
     photos: [returnPhoto, returnPhoto],
   },
   {
@@ -152,7 +170,7 @@ export const returnRequests: ReturnRequest[] = [
     date: '15/10/2027',
     status: 'rejected',
     reason: 'يوجد بعض المنتجات تالفه',
-    notes: 'وجدت احد المنتجات تالفه ولا تصلح للاستخدام',
+    notes: 'وجدت احد المنتجات تالفه ولا تصلح للاستخدام ارجو استبدالها',
     rejectionReason: 'لقد مر اكثر من 3 ايام علي طلب المنتج لذلك لا يمكن ارجاعه',
     photos: [returnPhoto, returnPhoto],
   },

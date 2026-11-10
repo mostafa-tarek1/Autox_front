@@ -21,7 +21,8 @@ const cart = useCartStore()
 const { items, itemsCount, subtotal, vat, total } = storeToRefs(cart)
 
 const isSentDialogOpen = ref(false)
-const quoteThreshold = QUOTE_THRESHOLD.toLocaleString('en-US')
+/** The design writes the threshold with a dot separator ("10.000"). */
+const quoteThreshold = QUOTE_THRESHOLD.toLocaleString('de-DE')
 
 function requestAvailability(): void {
   cart.isAvailabilityChecked = false
@@ -35,7 +36,7 @@ function goToAvailability(): void {
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.cart.title')" step="cart">
+  <CheckoutLayout :title="t('shop.cart.title')" step="cart" :strip-gap="88">
     <ShopCard :title="t('shop.cart.orders')" body-class="flex flex-col gap-4 p-6">
       <div v-if="!items.length" class="flex flex-col items-center gap-4 py-12 text-center">
         <span class="grid size-16 place-items-center rounded-full bg-surface text-primary">

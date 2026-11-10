@@ -85,12 +85,12 @@ function submit(): void {
         :icon="FileIcon"
         :error="errors.unifiedNumber"
       />
-      <div role="group" :aria-labelledby="documentsLabelId" class="flex flex-col gap-2">
+      <div role="group" :aria-labelledby="documentsLabelId" class="flex flex-col gap-1">
         <p :id="documentsLabelId" class="text-label text-secondary">
           {{ t('account.company.companyDocuments') }}
         </p>
         <p class="text-body-sm text-secondary/80">{{ t('account.company.documentsHint') }}</p>
-        <FileDropzone v-model="attachment" />
+        <FileDropzone v-model="attachment" class="mt-1" />
       </div>
     </div>
     <BaseButton type="submit" class="self-start">{{ t('account.company.submit') }}</BaseButton>

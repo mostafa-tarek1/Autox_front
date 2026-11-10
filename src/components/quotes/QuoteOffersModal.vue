@@ -25,8 +25,8 @@ const cheapestId = computed(
 </script>
 
 <template>
-  <BaseModal v-model:open="open" width="max-w-[644px]">
-    <div class="flex flex-col gap-6 sm:p-2">
+  <BaseModal v-model:open="open" panel-class="max-w-[644px] p-6 sm:p-8" close-class="top-4 end-4">
+    <div class="flex flex-col gap-6">
       <header class="flex flex-col gap-2">
         <h2 class="text-h3 text-ink">{{ t('quotes.submittedOffers') }}</h2>
         <p class="text-body-sm text-ink">{{ t('quotes.offersCount', { count: offers.length }) }}</p>
@@ -46,7 +46,7 @@ const cheapestId = computed(
             </BaseChip>
           </div>
           <div class="flex items-center gap-6">
-            <PriceTag :amount="offer.price" class="text-h3 text-primary" />
+            <PriceTag :amount="offer.price" class="text-h3 text-primary [&_svg]:text-secondary" />
             <BaseButton @click="emit('accept', offer)">{{ t('quotes.accept') }}</BaseButton>
           </div>
         </li>

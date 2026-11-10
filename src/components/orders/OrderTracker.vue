@@ -21,7 +21,10 @@ const steps = computed(() =>
     class="relative mx-auto flex w-full max-w-[602px] items-start justify-between"
     :aria-label="t('orders.tracker.label')"
   >
-    <span class="absolute inset-x-[67px] top-3 h-px bg-line" aria-hidden="true" />
+    <span
+      class="absolute inset-x-[67px] top-3 h-px bg-[repeating-linear-gradient(to_right,var(--color-line)_0_4px,transparent_4px_8px)]"
+      aria-hidden="true"
+    />
     <li
       v-for="step in steps"
       :key="step.key"

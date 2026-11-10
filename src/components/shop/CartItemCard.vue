@@ -11,7 +11,7 @@ import OriginChip from './OriginChip.vue'
 import type { CartItem } from './types'
 
 const props = withDefaults(defineProps<{ item: CartItem; removable?: boolean }>(), {
-  removable: true,
+  removable: false,
 })
 const emit = defineEmits<{ 'update:quantity': [value: number]; remove: [] }>()
 const { t } = useI18n()

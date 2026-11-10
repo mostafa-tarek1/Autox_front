@@ -103,7 +103,19 @@ export const payments: Payment[] = [
 
 export const installmentSummary = { totalSales: 100000, currentBalance: 200000 }
 
-const statuses: InstallmentStatus[] = ['paid', 'processing', 'rejected']
+/** Row order as in the Figma table (490:8428). */
+const requestStatuses: InstallmentStatus[] = [
+  'paid',
+  'processing',
+  'rejected',
+  'paid',
+  'paid',
+  'paid',
+  'rejected',
+  'paid',
+  'rejected',
+  'paid',
+]
 
 export const installmentRequests: InstallmentRequest[] = Array.from({ length: 10 }, (_, index) => ({
   id: `inst-${index + 1}`,
@@ -113,6 +125,6 @@ export const installmentRequests: InstallmentRequest[] = Array.from({ length: 10
   amount: 2000,
   date: '2026-10-05',
   note: null,
-  status: statuses[index % statuses.length] ?? 'paid',
-  provider: index % 4 === 1 ? 'tamara' : 'tabby',
+  status: requestStatuses[index] ?? 'paid',
+  provider: index === 1 || index === 4 ? 'tamara' : 'tabby',
 }))

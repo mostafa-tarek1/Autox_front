@@ -4,7 +4,8 @@
     "contact": "تواصل معنا",
     "privacy": "سياسة الخصوصية",
     "terms": "الشروط والاحكام",
-    "excelSearch": "البحث بملف Excel"
+    "excelSearch": "البحث بملف Excel",
+    "splash": "أوتو إكس"
   },
   "public": {
     "breadcrumb": "مسار التنقل",
@@ -128,6 +129,13 @@
         "column": "عمود {letter}",
         "back": "رجوع",
         "next": "التالي"
+      },
+      "origins": {
+        "original": "اصلي",
+        "korean": "كوري",
+        "japanese": "ياباني",
+        "chinese": "صيني",
+        "taiwanese": "تايواني"
       }
     }
   }

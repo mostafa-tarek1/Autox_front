@@ -25,18 +25,19 @@ const columns = ['reference', 'operation', 'amount', 'date', 'note', 'status'] a
 
 <template>
   <div class="overflow-x-auto">
-    <table class="w-full min-w-[880px] border-separate border-spacing-0 text-start">
+    <table class="w-full min-w-[880px] table-fixed border-separate border-spacing-0 text-start">
       <thead>
         <tr>
           <th
             v-for="(column, index) in columns"
             :key="column"
             scope="col"
-            class="h-14 bg-surface text-start text-body-md font-normal text-ink"
+            class="h-[60px] border-b-4 border-transparent bg-surface bg-clip-padding text-start text-body-md font-normal text-ink"
             :class="[
               index === 0 && 'w-[129px] rounded-s-2xl ps-6',
               index === columns.length - 1 && 'rounded-e-2xl',
-              index > 0 && 'w-[195px]',
+              index > 0 && index < columns.length - 1 && 'w-[195px]',
+              index > 0 && 'ps-6',
             ]"
           >
             {{ t(`wallet.columns.${column}`) }}
@@ -52,10 +53,10 @@ const columns = ['reference', 'operation', 'amount', 'date', 'note', 'status'] a
         <tr
           v-for="transaction in transactions"
           :key="transaction.id"
-          class="[&>td]:border-b-[0.6px] [&>td]:border-line"
+          class="[&>td]:border-b [&>td]:border-line/60 [&>td+td]:ps-6"
         >
-          <td class="h-16 ps-6 text-body-md text-secondary" dir="ltr">
-            <span class="rtl:block rtl:text-right">{{ transaction.reference }}</span>
+          <td class="h-16 ps-6 text-body-md text-secondary">
+            <span dir="ltr">{{ transaction.reference }}</span>
           </td>
           <td class="text-body-md text-success">
             {{ t(`wallet.operations.${transaction.operation}`) }}

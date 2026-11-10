@@ -50,7 +50,7 @@ const id = useId()
         :aria-invalid="error ? true : undefined"
         :aria-describedby="error ? `${id}-error` : hint ? `${id}-hint` : undefined"
         v-bind="$attrs"
-        class="min-w-0 flex-1 resize-none bg-transparent text-label text-ink outline-none placeholder:text-secondary/50"
+        class="min-w-0 flex-1 resize-none bg-transparent text-body-md font-normal text-ink outline-none placeholder:text-label placeholder:leading-5 placeholder:text-secondary/50"
       />
       <input
         v-else
@@ -65,7 +65,7 @@ const id = useId()
         :aria-invalid="error ? true : undefined"
         :aria-describedby="error ? `${id}-error` : hint ? `${id}-hint` : undefined"
         v-bind="$attrs"
-        class="min-w-0 flex-1 bg-transparent text-label text-ink outline-none placeholder:text-secondary/50"
+        class="min-w-0 flex-1 bg-transparent text-body-md font-normal text-ink outline-none placeholder:text-label placeholder:leading-5 placeholder:text-secondary/50"
       />
       <slot name="suffix" />
     </div>

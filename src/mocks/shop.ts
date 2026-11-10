@@ -21,10 +21,14 @@ function cartItem(id: string, overrides: Partial<CartItem>): CartItem {
   }
 }
 
+/**
+ * Closest consistent data to the designs: line totals 10,500 / 200 / 200 (cart 588:15922),
+ * products 10,900 + VAT 100 = 11,000, unit price 200 in the mini cart, 5 pieces in the navbar badge.
+ */
 export const initialCartItems: CartItem[] = [
   cartItem('cart-1', { unitPrice: 3500, availability: 'partial', availableQuantity: 2 }),
-  cartItem('cart-2', { availability: 'available', supplier: 'الشركة رقم 4' }),
-  cartItem('cart-3', { availability: 'unavailable', supplier: 'الشركة رقم 9' }),
+  cartItem('cart-2', { quantity: 1, availability: 'available', supplier: 'الشركة رقم 4' }),
+  cartItem('cart-3', { quantity: 1, availability: 'unavailable', supplier: 'الشركة رقم 9' }),
 ]
 
 /** Line totals above this amount (SAR) can be sent as a quotation request. */
@@ -51,7 +55,7 @@ export const bankAccount: BankAccount = {
 
 export const alternativeParts: Product[] = Array.from({ length: 3 }, (_, index) => ({
   id: `alt-${index + 1}`,
-  title: 'بنز بستم ايسوزو',
+  title: 'بنز بستم ايسوزو اصلي',
   partNumber: '04465-0K240',
   supplier: 'الشركة رقم 8',
   brandLogo: hyundai,

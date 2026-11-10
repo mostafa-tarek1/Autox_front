@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BasePagination from '@/components/ui/BasePagination.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -13,6 +14,7 @@ import { paymentSummary, payments } from '@/mocks/billing'
 
 const { t } = useI18n()
 const query = ref('')
+const page = ref(1)
 
 const filteredPayments = computed(() => {
   const term = query.value.trim().replace(/^#/, '').toLowerCase()
@@ -31,16 +33,21 @@ const filteredPayments = computed(() => {
     ]"
   />
 
-  <div class="page-container flex flex-col gap-12 pt-12">
+  <div
+    class="page-container flex flex-col items-center gap-12 pt-12 pb-[73px] xl:w-[1208px] xl:max-w-none"
+  >
     <section
-      class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
+      class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
       :aria-label="t('billing.summary')"
     >
       <StatCard :label="t('billing.totalPaid')" :icon="WalletIcon">
-        <PriceTag :amount="paymentSummary.totalPaid" class="text-ink" />
+        <PriceTag :amount="paymentSummary.totalPaid" class="text-ink [&_svg]:text-secondary" />
       </StatCard>
       <StatCard :label="t('billing.pendingAmount')" :icon="ClockIcon">
-        <PriceTag :amount="paymentSummary.pendingAmount" class="text-error" />
+        <PriceTag
+          :amount="paymentSummary.pendingAmount"
+          class="text-error [&_svg]:text-secondary"
+        />
       </StatCard>
       <StatCard :label="t('billing.totalInvoices')" :icon="WalletIcon">
         <span class="text-ink tabular-nums">{{ paymentSummary.totalInvoices }}</span>
@@ -50,7 +57,7 @@ const filteredPayments = computed(() => {
       </StatCard>
     </section>
 
-    <section class="flex flex-col gap-8" aria-labelledby="payments-history">
+    <section class="flex w-full flex-col gap-8" aria-labelledby="payments-history">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 id="payments-history" class="text-h3 text-ink">{{ t('billing.paymentsHistory') }}</h2>
         <label
@@ -76,5 +83,7 @@ const filteredPayments = computed(() => {
         {{ t('billing.noResults') }}
       </p>
     </section>
+
+    <BasePagination v-model="page" :total="20" />
   </div>
 </template>

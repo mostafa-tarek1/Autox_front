@@ -59,7 +59,8 @@
       "removeProduct": "Remove this product",
       "viewAlternatives": "View alternative parts",
       "continue": "Continue to checkout",
-      "alternativesTitle": "Alternative parts"
+      "alternativesTitle": "Alternative parts",
+      "partialHintTwo": "Only 2 pieces of this product are available"
     },
     "shipping": {
       "title": "Shipping details",
@@ -101,7 +102,10 @@
         "number": "Card number",
         "expiry": "Expiry date",
         "cvv": "CVV",
-        "pay": "Pay"
+        "pay": "Pay",
+        "invalidNumber": "Card number is invalid",
+        "invalidExpiry": "Use MM/YY for the expiry date",
+        "invalidCvv": "Security code is invalid"
       },
       "success": "Payment successful",
       "successHint": "Thank you, we received your payment and confirmed your order. You can track it from this page.",
@@ -136,7 +140,9 @@
       "submit": "Confirm transfer and send receipt",
       "pendingTitle": "Waiting for payment verification",
       "pendingHint": "This usually takes about 30 minutes",
-      "confirmed": "Payment confirmed"
+      "confirmed": "Payment confirmed",
+      "required": "This field is required",
+      "datePlaceholder": "Date"
     },
     "confirmation": {
       "title": "Confirmation",

@@ -11,7 +11,7 @@ defineProps<{ testimonial: Testimonial }>()
   >
     <QuoteIcon class="size-7 text-primary" aria-hidden="true" />
     <blockquote class="text-h4 text-ink">«{{ testimonial.quote }}»</blockquote>
-    <hr class="my-2 w-full border-line" />
+    <hr class="w-full border-line" />
     <figcaption class="flex flex-col items-start gap-1">
       <span class="text-body-md text-ink">{{ testimonial.name }}</span>
       <span class="text-body-sm text-secondary">{{ testimonial.role }}</span>

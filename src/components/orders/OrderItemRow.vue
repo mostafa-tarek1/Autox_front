@@ -2,7 +2,7 @@
 import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
-import SecurityCheckIcon from '@/assets/icons/security-check--solid-rounded.svg'
+import SecurityCheckIcon from '@/assets/icons/security-check--stroke-rounded.svg'
 
 import type { OrderItem } from './types'
 

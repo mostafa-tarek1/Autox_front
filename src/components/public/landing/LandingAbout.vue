@@ -40,7 +40,7 @@ const { t } = useI18n()
           aria-hidden="true"
         />
         <dl
-          class="absolute inset-x-4 bottom-6 grid grid-cols-2 gap-y-4 rounded-3xl border border-white/30 bg-linear-to-r from-white/30 to-white/10 p-5 backdrop-blur-[8px] sm:inset-x-auto sm:bottom-12 sm:left-1/2 sm:w-[837px] sm:max-w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:grid-cols-4 sm:gap-y-0"
+          class="absolute inset-x-4 bottom-6 grid grid-cols-2 gap-y-4 rounded-3xl border border-white/30 bg-linear-to-r from-white/30 to-neutral-400/30 p-5 backdrop-blur-[8px] sm:inset-x-auto sm:bottom-12 sm:left-1/2 sm:w-[837px] sm:max-w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:grid-cols-4 sm:gap-y-0"
         >
           <div
             v-for="(stat, index) in landingStats"

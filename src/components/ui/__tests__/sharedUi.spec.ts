@@ -61,3 +61,17 @@ describe('BaseModal', () => {
     wrapper.unmount()
   })
 })
+
+describe('AppFooter', () => {
+  it.each([
+    ['default', true],
+    ['guest', false],
+  ] as const)('%s variant renders the links row: %s', async (variant, hasLinks) => {
+    const { default: AppFooter } = await import('@/components/layout/AppFooter.vue')
+    const { default: router } = await import('@/router')
+    const wrapper = mount(AppFooter, { props: { variant }, global: { plugins: [i18n, router] } })
+
+    expect(wrapper.find('a[href="/terms"]').exists()).toBe(hasLinks)
+    expect(wrapper.text()).toContain(`© ${new Date().getFullYear()} Auto X`)
+  })
+})

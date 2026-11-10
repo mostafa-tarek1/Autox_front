@@ -10,8 +10,13 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <BaseModal v-model:open="open" width="max-w-[320px]">
-    <div class="flex flex-col items-center gap-6 pt-2">
+  <BaseModal
+    v-model:open="open"
+    tone="surface"
+    panel-class="max-w-[320px] rounded-2xl p-6"
+    close-class="top-0.5 start-0.5 [&_svg]:size-5"
+  >
+    <div class="flex flex-col items-center gap-6">
       <div class="flex flex-col items-center gap-2">
         <span class="grid size-10 place-items-center rounded-full bg-accent text-primary">
           <TickIcon class="size-8" aria-hidden="true" />

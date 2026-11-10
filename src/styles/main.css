@@ -97,8 +97,21 @@
   @apply mx-auto w-full max-w-page px-4 sm:px-6 xl:px-0;
 }
 
-/* Thin accent scrollbar used by the brands list. */
+/* 5px accent scrollbar on a surface track (brands list in the design). */
 @utility scrollbar-accent {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-accent) transparent;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--color-surface);
+    border-radius: 999px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 999px;
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-surface);
+  }
 }

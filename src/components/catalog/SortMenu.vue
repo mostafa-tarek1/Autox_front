@@ -27,12 +27,12 @@ const options: SortOption[] = ['priceAsc', 'mostRequested', 'originalOnly']
         @click="toggle"
       >
         <span class="flex items-center gap-1.5">
-          <FilterIcon class="size-4 text-ink" aria-hidden="true" />
+          <FilterIcon class="size-4 text-secondary" aria-hidden="true" />
           <span class="text-body-sm whitespace-nowrap text-ink">{{
             t(`catalog.sort.${sort}`)
           }}</span>
         </span>
-        <ArrowDownIcon class="size-4 text-ink" aria-hidden="true" />
+        <ArrowDownIcon class="size-4 text-secondary" aria-hidden="true" />
       </button>
     </template>
     <DropdownItem

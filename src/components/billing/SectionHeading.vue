@@ -8,7 +8,7 @@ withDefaults(defineProps<{ title: string; subtitle?: string; inverted?: boolean;
   <header class="flex flex-col items-center gap-3 text-center">
     <h2
       :id="id"
-      class="text-[26px] leading-9 font-bold sm:text-h1"
+      class="text-[26px]/9 font-bold sm:text-h1"
       :class="inverted ? 'text-white' : 'text-ink'"
     >
       {{ title }}

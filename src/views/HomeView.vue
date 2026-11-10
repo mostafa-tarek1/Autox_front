@@ -41,7 +41,7 @@ const totalResults = 300
 <template>
   <HomeHero />
 
-  <div class="page-container relative z-10 -mt-[108px]">
+  <div class="page-container relative z-10 -mt-16 sm:-mt-[108px]">
     <SearchPanel :recent="recent" @remove-recent="recent.splice($event, 1)" />
   </div>
 

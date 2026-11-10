@@ -72,11 +72,17 @@ const completedSteps = computed(() => {
           </h2>
           <div class="flex flex-col gap-4 px-4 pb-4">
             <dl class="flex flex-col gap-4 text-body-md text-secondary">
-              <div class="flex items-center justify-between">
+              <div class="flex h-7 items-center justify-between">
                 <dt>{{ t('orders.details.piecesCount') }}</dt>
-                <dd>{{ t('orders.pieces', { count: piecesCount }) }}</dd>
+                <dd>
+                  <i18n-t keypath="orders.pieces" tag="span" scope="global">
+                    <template #count>
+                      <span class="text-h4 text-ink">{{ piecesCount }}</span>
+                    </template>
+                  </i18n-t>
+                </dd>
               </div>
-              <div class="flex items-center justify-between">
+              <div class="flex h-7 items-center justify-between">
                 <dt>{{ t('orders.details.subtotal') }}</dt>
                 <dd>
                   <PriceTag
@@ -86,7 +92,7 @@ const completedSteps = computed(() => {
                   />
                 </dd>
               </div>
-              <div class="flex items-center justify-between">
+              <div class="flex h-7 items-center justify-between">
                 <dt>{{ t('orders.details.vat') }}</dt>
                 <dd>
                   <PriceTag :grouping="false" :amount="order.vat" class="text-h4 text-primary" />

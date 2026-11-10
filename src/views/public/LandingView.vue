@@ -50,7 +50,7 @@ onBeforeUnmount(() => observer?.disconnect())
       <LandingTestimonials />
       <LandingCta />
     </main>
-    <AppFooter />
+    <AppFooter variant="guest" />
     <SupportFab />
   </div>
 </template>

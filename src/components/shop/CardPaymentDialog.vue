@@ -25,12 +25,23 @@ type Stage = 'form' | 'success' | 'failed'
 const stage = ref<Stage>('form')
 const isSubmitting = ref(false)
 const card = reactive({ number: '', expiry: '', cvv: '' })
+const showErrors = ref(false)
 
 const digits = computed(() => card.number.replace(/\D/g, ''))
-const isValid = computed(
-  () =>
-    digits.value.length >= 15 && /^\d{2}\/\d{2}$/.test(card.expiry) && /^\d{3,4}$/.test(card.cvv),
-)
+const errors = computed(() => ({
+  number: digits.value.length >= 15 ? undefined : t('shop.payment.card.invalidNumber'),
+  expiry: /^\d{2}\/\d{2}$/.test(card.expiry) ? undefined : t('shop.payment.card.invalidExpiry'),
+  cvv: /^\d{3,4}$/.test(card.cvv) ? undefined : t('shop.payment.card.invalidCvv'),
+}))
+const isValid = computed(() => Object.values(errors.value).every((error) => !error))
+
+/** The pay button stays enabled as in the design; problems are shown after a submit attempt. */
+function submit(): void {
+  showErrors.value = true
+  if (isValid.value) {
+    pay()
+  }
+}
 
 function formatNumber(value: string): void {
   card.number = value
@@ -57,6 +68,7 @@ async function pay(): Promise<void> {
 
 function reset(): void {
   stage.value = 'form'
+  showErrors.value = false
 }
 </script>
 
@@ -65,15 +77,10 @@ function reset(): void {
     v-model:open="open"
     :labelled-by="titleId"
     panel-class="max-w-[584px] rounded-3xl px-6 py-16 sm:px-10"
-    close-class="top-8 start-6"
+    close-class="top-3 start-3"
     @update:open="!$event && reset()"
   >
-    <form
-      v-if="stage === 'form'"
-      class="flex flex-col gap-6"
-      novalidate
-      @submit.prevent="isValid && pay()"
-    >
+    <form v-if="stage === 'form'" class="flex flex-col gap-6" novalidate @submit.prevent="submit">
       <div class="flex flex-col items-start gap-2">
         <h2 :id="titleId" class="text-h3 text-ink">{{ t('shop.payment.card.title') }}</h2>
         <p class="flex items-center gap-2 text-body-sm text-ink">
@@ -82,7 +89,8 @@ function reset(): void {
         </p>
       </div>
 
-      <div class="flex flex-col gap-6">
+      <!-- Card values are LTR but sit at the start of the field in Arabic, as in the design. -->
+      <div class="flex flex-col gap-6 rtl:[&_input]:text-right">
         <TextField
           :model-value="card.number"
           :label="t('shop.payment.card.number')"
@@ -90,7 +98,8 @@ function reset(): void {
           :icon="CardIcon"
           dir="ltr"
           autocomplete="cc-number"
-          required
+          inputmode="numeric"
+          :error="showErrors ? errors.number : undefined"
           @update:model-value="formatNumber"
         />
         <div class="grid grid-cols-2 gap-6">
@@ -101,7 +110,8 @@ function reset(): void {
             :icon="CalendarIcon"
             dir="ltr"
             autocomplete="cc-exp"
-            required
+            inputmode="numeric"
+            :error="showErrors ? errors.expiry : undefined"
             @update:model-value="formatExpiry"
           />
           <TextField
@@ -112,12 +122,13 @@ function reset(): void {
             type="password"
             dir="ltr"
             autocomplete="cc-csc"
-            required
+            inputmode="numeric"
+            :error="showErrors ? errors.cvv : undefined"
           />
         </div>
       </div>
 
-      <BaseButton type="submit" block :disabled="!isValid" :loading="isSubmitting">
+      <BaseButton type="submit" block :loading="isSubmitting">
         {{ t('shop.payment.card.pay') }}
       </BaseButton>
     </form>

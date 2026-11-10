@@ -99,7 +99,7 @@ async function submit(): Promise<void> {
     <AuthHeading title-id="register-title" :title="t('auth.register.title')" />
 
     <form
-      class="flex w-full flex-col gap-6 [&_label]:text-white"
+      class="flex w-full flex-col gap-6 [&_label]:leading-5 [&_label]:text-white"
       novalidate
       @submit.prevent="submit"
     >
@@ -114,6 +114,7 @@ async function submit(): Promise<void> {
       <PhoneField
         v-model="form.phone"
         :bordered="false"
+        size="sm"
         :label="t('auth.fields.phone')"
         :placeholder="t('auth.placeholders.phone')"
         :error="errors.phone"
@@ -122,7 +123,7 @@ async function submit(): Promise<void> {
         v-model="form.email"
         type="email"
         dir="ltr"
-        class="[&_input]:rtl:text-right"
+        class="rtl:text-right"
         :label="t('auth.fields.email')"
         :placeholder="t('auth.placeholders.email')"
         :icon="MailIcon"
@@ -140,16 +141,20 @@ async function submit(): Promise<void> {
       <TextField
         v-model="form.unifiedNumber"
         dir="ltr"
-        class="[&_input]:rtl:text-right"
+        class="rtl:text-right"
         :label="t('auth.fields.unifiedNumber')"
         :placeholder="t('auth.placeholders.unifiedNumber')"
         :icon="FileIcon"
         :error="errors.unifiedNumber"
       />
 
-      <fieldset class="flex flex-col gap-2">
-        <legend class="text-label text-white">{{ t('auth.register.documents.title') }}</legend>
-        <p class="mt-1 text-body-sm text-white/80">{{ t('auth.register.documents.hint') }}</p>
+      <div role="group" aria-labelledby="register-documents-title" class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1">
+          <p id="register-documents-title" class="text-label leading-5 text-white">
+            {{ t('auth.register.documents.title') }}
+          </p>
+          <p class="text-body-sm text-white/80">{{ t('auth.register.documents.hint') }}</p>
+        </div>
         <div class="grid grid-cols-1 gap-2 min-[480px]:grid-cols-3">
           <DocumentTile
             v-for="key in documentKeys"
@@ -164,7 +169,7 @@ async function submit(): Promise<void> {
         <p v-if="documentError || errors.documents" class="text-caption text-white" role="alert">
           {{ documentError || errors.documents }}
         </p>
-      </fieldset>
+      </div>
 
       <BaseButton type="submit" block :loading="isSubmitting">{{
         t('auth.register.submit')

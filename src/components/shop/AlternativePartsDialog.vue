@@ -34,7 +34,8 @@ function onQuantity(product: Product, quantity: number): void {
     <header class="border-b border-line p-6">
       <h2 :id="titleId" class="text-h3 text-ink">{{ t('shop.availability.alternativesTitle') }}</h2>
     </header>
-    <ul class="flex max-h-[70vh] flex-col gap-4 overflow-y-auto p-6">
+    <!-- The design is a fixed 557px dialog whose list scrolls under the header. -->
+    <ul class="flex max-h-[min(480px,70vh)] flex-col gap-4 overflow-y-auto px-6 pt-8 pb-6">
       <li v-for="part in parts" :key="part.id">
         <ProductCard
           :product="part"

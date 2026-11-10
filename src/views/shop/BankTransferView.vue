@@ -31,7 +31,7 @@ function onSubmitted(): void {
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.payment.title')" step="payment">
+  <CheckoutLayout :title="t('shop.payment.title')" step="payment" centered-hero :strip-gap="86">
     <BankTransferForm
       v-if="stage === 'form'"
       :account="bankAccount"

@@ -38,7 +38,7 @@ const currentLabel = (code: AppLocale) =>
       >
         <img :src="flagSa" alt="" width="24" height="24" class="size-6 rounded-full object-cover" />
         <span class="text-body-sm text-secondary">{{ currentLabel(locale) }}</span>
-        <ArrowDownIcon class="size-4 text-ink" aria-hidden="true" />
+        <ArrowDownIcon class="size-4 text-secondary" aria-hidden="true" />
       </button>
     </template>
     <DropdownItem

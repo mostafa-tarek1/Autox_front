@@ -4,7 +4,8 @@
     "contact": "Contact us",
     "privacy": "Privacy policy",
     "terms": "Terms & conditions",
-    "excelSearch": "Excel search"
+    "excelSearch": "Excel search",
+    "splash": "Auto X"
   },
   "public": {
     "breadcrumb": "Breadcrumb",
@@ -128,6 +129,13 @@
         "column": "Column {letter}",
         "back": "Back",
         "next": "Next"
+      },
+      "origins": {
+        "original": "Original",
+        "korean": "Korean",
+        "japanese": "Japanese",
+        "chinese": "Chinese",
+        "taiwanese": "Taiwanese"
       }
     }
   }

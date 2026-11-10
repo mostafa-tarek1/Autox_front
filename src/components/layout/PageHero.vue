@@ -25,7 +25,7 @@ const trail = computed<Breadcrumb[]>(
 </script>
 
 <template>
-  <section class="relative isolate overflow-hidden bg-primary">
+  <section class="relative isolate mt-px overflow-hidden bg-primary">
     <XPattern class="absolute top-0 right-0 -z-10 h-[237px] w-[333px] text-accent opacity-10" />
     <div
       class="page-container flex min-h-[152px] flex-col-reverse items-start justify-center gap-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10"

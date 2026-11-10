@@ -10,8 +10,10 @@ withDefaults(
     error?: string
     dialCode?: string
     bordered?: boolean
+    /** `md` 50px (forms), `sm` 48px (auth card). */
+    size?: 'sm' | 'md'
   }>(),
-  { dialCode: '+966', bordered: true },
+  { dialCode: '+966', bordered: true, size: 'md' },
 )
 
 const phone = defineModel<string>({ default: '' })
@@ -29,8 +31,11 @@ function onInput(event: Event): void {
   <div class="flex flex-col gap-2">
     <label v-if="label" :for="inputId" class="text-label text-secondary">{{ label }}</label>
     <div
-      class="flex h-[50px] items-center gap-4 rounded-xl border bg-white p-3 transition-colors focus-within:border-accent"
-      :class="error ? 'border-error' : bordered ? 'border-line' : 'border-transparent'"
+      class="flex items-center gap-4 rounded-xl border bg-white p-3 transition-colors focus-within:border-accent"
+      :class="[
+        size === 'sm' ? 'h-12' : 'h-[50px]',
+        error ? 'border-error' : bordered ? 'border-line' : 'border-transparent',
+      ]"
     >
       <span class="flex shrink-0 items-center gap-2">
         <span class="flex items-center gap-1">

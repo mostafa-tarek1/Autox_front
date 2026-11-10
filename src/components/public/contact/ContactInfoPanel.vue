@@ -61,7 +61,7 @@ const socials = [
       </li>
     </ul>
 
-    <ul class="flex items-center gap-6" :aria-label="t('footer.social')">
+    <ul class="-mt-2.5 flex items-center gap-6" :aria-label="t('footer.social')">
       <li v-for="social in socials" :key="social.name">
         <a
           :href="social.href"

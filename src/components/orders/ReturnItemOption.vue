@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import QuantityStepper from '@/components/ui/QuantityStepper.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
-import { useId } from 'vue'
+import { useId, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
@@ -13,6 +13,9 @@ const selected = defineModel<boolean>('selected', { default: false })
 const quantity = defineModel<number>('quantity', { default: 1 })
 const { t } = useI18n()
 const checkboxId = useId()
+
+/** Picking a quantity implies the line is part of the return. */
+watch(quantity, () => (selected.value = true))
 </script>
 
 <template>
@@ -57,7 +60,6 @@ const checkboxId = useId()
         :min="1"
         v-model="quantity"
         :max="item.quantity"
-        :disabled="!selected"
         :label="t('common.quantity')"
       />
     </div>

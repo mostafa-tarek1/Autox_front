@@ -63,8 +63,7 @@ async function submit(): Promise<void> {
     :title="t('billing.vouchers')"
     :breadcrumbs="[
       { label: t('nav.home'), to: { name: 'home' } },
-      { label: t('billing.vouchers'), to: { name: 'vouchers' } },
-      { label: t('billing.createVoucher') },
+      { label: t('billing.vouchers') },
     ]"
   />
 
@@ -73,7 +72,7 @@ async function submit(): Promise<void> {
       class="page-container flex flex-col-reverse gap-6 sm:flex-row sm:items-center sm:justify-between"
     >
       <div class="flex flex-col gap-3">
-        <h2 class="text-[26px] leading-9 font-bold text-ink sm:text-h1">
+        <h2 class="text-[26px]/9 font-bold text-ink sm:text-h1">
           {{ t('billing.voucherForm.welcome') }}
         </h2>
         <p class="text-h3 text-secondary">{{ t('billing.voucherForm.intro') }}</p>
@@ -128,11 +127,7 @@ async function submit(): Promise<void> {
       <CheckboxField v-model="form.acceptedTerms" :error="errors.acceptedTerms">
         <i18n-t keypath="billing.voucherForm.acceptTerms" tag="span" scope="global">
           <template #terms>
-            <RouterLink
-              to="/terms"
-              class="text-primary underline underline-offset-2"
-              target="_blank"
-            >
+            <RouterLink to="/terms" class="text-match underline underline-offset-2" target="_blank">
               {{ t('billing.voucherForm.terms') }}
             </RouterLink>
           </template>
@@ -141,7 +136,7 @@ async function submit(): Promise<void> {
     </StepCard>
 
     <div class="flex justify-start">
-      <BaseButton type="submit" class="w-full px-[72px] sm:w-auto" :loading="isSubmitting">
+      <BaseButton type="submit" class="w-full sm:w-[238px]" :loading="isSubmitting">
         {{ t('billing.voucherForm.submit') }}
       </BaseButton>
     </div>

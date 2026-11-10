@@ -52,6 +52,7 @@ async function submit(): Promise<void> {
         :bordered="false"
         :placeholder="t('auth.fields.phone')"
         :error="phoneError"
+        size="sm"
         class="[&_label]:sr-only"
         :label="t('auth.fields.phone')"
         @focusout="touched = true"

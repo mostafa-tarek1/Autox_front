@@ -41,6 +41,9 @@ const panel = useTemplateRef<HTMLElement>('panel')
 const isLocked = useScrollLock(typeof document === 'undefined' ? null : document.body)
 let previouslyFocused: HTMLElement | null = null
 
+/** A radius in `panelClass` (e.g. rounded-2xl) replaces the default one. */
+const radiusClass = computed(() => (/(^|\s)rounded-/.test(props.panelClass) ? '' : 'rounded-3xl'))
+
 const ariaLabelledBy = computed(() => props.labelledBy ?? (props.title ? titleId : undefined))
 
 function close(): void {
@@ -89,8 +92,8 @@ onKeyStroke('Escape', () => open.value && close())
           aria-modal="true"
           tabindex="-1"
           :aria-labelledby="ariaLabelledBy"
-          class="relative my-auto w-full rounded-3xl shadow-card outline-none"
-          :class="[panelClass, width, tone === 'surface' ? 'bg-surface' : 'bg-white']"
+          class="relative my-auto w-full shadow-card outline-none"
+          :class="[radiusClass, panelClass, width, tone === 'surface' ? 'bg-surface' : 'bg-white']"
         >
           <button
             v-if="dismissible"

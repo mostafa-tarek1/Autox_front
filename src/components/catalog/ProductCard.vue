@@ -16,21 +16,22 @@ const { t } = useI18n()
 
 const isOriginal = computed(() => props.product.origin === 'original')
 
+/** Figma: "cheapest" has an outside stroke (card stays 160px), "matches" an inside one (162px). */
 const borderClass = computed(() => {
   switch (props.product.highlight) {
     case 'cheapest':
-      return 'border-accent'
+      return 'ring-1 ring-accent'
     case 'matchesRequest':
-      return 'border-match'
+      return 'border border-match'
     default:
-      return 'border-transparent'
+      return ''
   }
 })
 </script>
 
 <template>
   <article
-    class="flex flex-col gap-4 rounded-2xl border bg-white p-4 sm:flex-row sm:items-center sm:gap-8"
+    class="flex flex-col gap-4 rounded-2xl bg-white p-4 sm:flex-row sm:items-center sm:gap-8"
     :class="borderClass"
   >
     <div class="flex min-w-0 flex-1 flex-col items-start gap-2">
@@ -41,7 +42,7 @@ const borderClass = computed(() => {
             alt=""
             width="24"
             height="24"
-            class="max-h-6 w-full object-contain"
+            class="h-[19px] w-[19.5px] object-contain"
           />
         </span>
         <h3 class="text-body-md text-ink">{{ product.title }}</h3>

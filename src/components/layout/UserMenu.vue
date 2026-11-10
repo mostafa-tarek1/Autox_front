@@ -34,7 +34,7 @@ const open = ref(false)
         </span>
         <span class="flex items-center gap-1">
           <span class="max-w-32 truncate text-body-md text-secondary">{{ name }}</span>
-          <ArrowDownIcon class="size-4 text-ink" aria-hidden="true" />
+          <ArrowDownIcon class="size-4 text-secondary" aria-hidden="true" />
         </span>
       </button>
     </template>

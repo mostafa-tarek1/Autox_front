@@ -90,8 +90,9 @@ function save(values: CompanyFormValues): void {
 
   <BaseModal
     tone="surface"
-    panel-class="max-w-[582px] px-5 py-14 sm:px-10"
+    panel-class="max-w-[582px] px-5 pt-14 pb-[21px] sm:px-10"
     title-class="mb-6 text-h2"
+    close-class="top-3 start-2.5"
     v-model:open="isEditing"
     :title="t('account.company.formTitle')"
   >

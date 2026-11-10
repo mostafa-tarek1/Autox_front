@@ -4,6 +4,12 @@ import { DefaultLayout } from '@/router/layouts'
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/splash',
+    name: 'splash',
+    component: () => import('@/views/public/SplashView.vue'),
+    meta: { title: 'splash' },
+  },
+  {
     path: '/landing',
     name: 'landing',
     component: () => import('@/views/public/LandingView.vue'),

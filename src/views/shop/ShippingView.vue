@@ -45,9 +45,10 @@ function submit(): void {
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.shipping.title')" step="shipping">
+  <CheckoutLayout :title="t('shop.shipping.title')" step="shipping" :strip-gap="169">
     <ShopCard :title="t('shop.shipping.title')" body-class="p-6">
-      <form class="flex flex-col gap-4" novalidate @submit.prevent="submit">
+      <!-- Labels are 20px tall in the shipping design (form labels default to 21px). -->
+      <form class="flex flex-col gap-4 [&_label]:leading-5" novalidate @submit.prevent="submit">
         <TextField
           v-model="form.fullName"
           :label="t('shop.shipping.fullName')"
@@ -77,7 +78,7 @@ function submit(): void {
           :error="errorFor('address')"
           required
         />
-        <BaseButton type="submit" class="mt-4 min-w-[173px] self-start px-[72px]">{{
+        <BaseButton type="submit" class="min-w-[173px] self-start px-[72px]">{{
           t('shop.shipping.confirm')
         }}</BaseButton>
       </form>

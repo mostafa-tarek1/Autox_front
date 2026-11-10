@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import ArrowLeftIcon from '@/assets/icons/arrow-left-01--stroke-standard.svg'
-import CheckIcon from '@/assets/icons/checkmark-circle-01--stroke-rounded.svg'
-import CardIcon from '@/assets/icons/credit-card--stroke-rounded.svg'
 import CardValidationIcon from '@/assets/icons/credit-card-validation--duotone-rounded.svg'
 import SupportIcon from '@/assets/icons/customer-service-01--duotone-rounded.svg'
 import SupportLargeIcon from '@/assets/icons/customer-service-02--duotone-rounded.svg'
 import CartCheckIcon from '@/assets/icons/shopping-cart-check-out-01--duotone-rounded.svg'
 import UserStarIcon from '@/assets/icons/user-star-01--duotone-rounded.svg'
-import UserIcon from '@/assets/icons/user--stroke-rounded.svg'
 import heroImage from '@/assets/images/billing/installments-hero.webp'
+import ArrowLeftIcon from '@/assets/images/billing/steps/step-arrow-left.svg'
+import CheckIcon from '@/assets/images/billing/steps/step-check-circle.svg'
+import CardIcon from '@/assets/images/billing/steps/step-credit-card.svg'
+import UserIcon from '@/assets/images/billing/steps/step-user.svg'
 import IconBox from '@/components/billing/IconBox.vue'
 import PageHero from '@/components/layout/PageHero.vue'
 import SectionHeading from '@/components/billing/SectionHeading.vue'
@@ -51,10 +51,10 @@ const contactLink = '/contact'
         alt=""
         width="1200"
         height="534"
-        class="absolute inset-0 -z-20 size-full object-cover object-[center_25%]"
+        class="absolute inset-0 -z-20 size-full object-cover object-[center_25%] xl:inset-auto xl:top-[-112px] xl:left-[3px] xl:h-[798px] xl:w-[1197px] xl:max-w-none"
       />
       <div
-        class="absolute inset-0 -z-10 bg-linear-to-b from-success/10 to-black"
+        class="absolute inset-0 -z-10 bg-linear-to-b from-success/10 to-black xl:inset-auto xl:top-0 xl:left-[3px] xl:h-[562px] xl:w-[1197px]"
         aria-hidden="true"
       />
       <div
@@ -63,13 +63,13 @@ const contactLink = '/contact'
         <div class="flex max-w-[794px] flex-col gap-4">
           <h2
             id="installments-title"
-            class="text-[28px] leading-[44px] font-bold text-white sm:text-display"
+            class="text-[28px]/[44px] font-bold text-white sm:text-display"
           >
             {{ t('billing.installments.heroTitle') }}
           </h2>
           <p class="text-h3 text-white">{{ t('billing.installments.heroSubtitle') }}</p>
         </div>
-        <BaseButton :to="contactLink" class="px-[72px]">{{
+        <BaseButton :to="contactLink" class="w-[238px] max-w-full">{{
           t('billing.installments.requestService')
         }}</BaseButton>
       </div>
@@ -103,7 +103,7 @@ const contactLink = '/contact'
     </div>
   </section>
 
-  <section class="bg-surface py-16" aria-labelledby="steps-title">
+  <section class="mt-[76px] bg-surface py-16" aria-labelledby="steps-title">
     <div class="page-container flex flex-col gap-12">
       <SectionHeading
         id="steps-title"
@@ -147,27 +147,22 @@ const contactLink = '/contact'
     </div>
   </section>
 
-  <section class="bg-primary py-20" aria-labelledby="cta-title">
+  <section class="mt-[76px] bg-primary py-20" aria-labelledby="cta-title">
     <div class="page-container flex flex-col items-center gap-8 text-center">
       <span class="grid size-20 place-items-center rounded-full bg-accent p-5 text-primary">
         <SupportLargeIcon class="size-10" aria-hidden="true" />
       </span>
       <div class="flex max-w-[800px] flex-col gap-4">
-        <h2 id="cta-title" class="text-[26px] leading-9 font-bold text-white sm:text-h1">
+        <h2 id="cta-title" class="text-[26px]/9 font-bold text-white sm:text-h1">
           {{ t('billing.installments.ctaTitle') }}
         </h2>
         <p class="mx-auto max-w-[720px] text-body-lg text-white/80">
           {{ t('billing.installments.ctaText') }}
         </p>
       </div>
-      <div class="flex flex-wrap justify-center gap-4">
-        <BaseButton :to="contactLink" class="px-[72px]">{{
-          t('billing.installments.requestService')
-        }}</BaseButton>
-        <BaseButton variant="outline" :to="{ name: 'voucher-create' }">{{
-          t('billing.createVoucher')
-        }}</BaseButton>
-      </div>
+      <BaseButton :to="contactLink" class="w-[238px] max-w-full">{{
+        t('billing.installments.requestService')
+      }}</BaseButton>
     </div>
   </section>
 </template>

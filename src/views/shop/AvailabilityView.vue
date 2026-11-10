@@ -34,16 +34,18 @@ const { start: simulateSupplierReply } = useTimeoutFn(
 )
 watch(isAvailabilityChecked, (checked) => !checked && simulateSupplierReply(), { immediate: true })
 
-const canContinue = computed(
-  () =>
-    isAvailabilityChecked.value &&
-    items.value.length > 0 &&
-    items.value.every((item) => item.availability === 'available'),
-)
+/** As in the design, the buyer can continue with what is available; unresolved lines are skipped. */
+const canContinue = computed(() => isAvailabilityChecked.value && items.value.length > 0)
+
+function partialHint(count: number): string {
+  return count === 2
+    ? t('shop.availability.partialHintTwo')
+    : t('shop.availability.partialHint', { count })
+}
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.availability.title')" step="availability">
+  <CheckoutLayout :title="t('shop.availability.title')" step="availability" :strip-gap="50">
     <AvailabilityPending v-if="!isAvailabilityChecked" />
 
     <ShopCard v-else :title="t('shop.availability.details')" body-class="flex flex-col gap-4 p-6">
@@ -55,32 +57,30 @@ const canContinue = computed(
             @update:quantity="cart.setQuantity(item.id, $event)"
           >
             <template v-if="item.availability" #badge>
-              <AvailabilityBadge :status="item.availability" />
+              <!-- Unavailable lines have no action row in the design; the badge opens the alternatives. -->
+              <button
+                v-if="item.availability === 'unavailable'"
+                type="button"
+                class="rounded-full transition hover:brightness-95"
+                :aria-label="t('shop.availability.viewAlternatives')"
+                @click="isAlternativesOpen = true"
+              >
+                <AvailabilityBadge :status="item.availability" />
+              </button>
+              <AvailabilityBadge v-else :status="item.availability" />
             </template>
             <template v-if="item.availability === 'partial'" #footer>
               <CartNotice>
                 <template #icon
                   ><AlertIcon class="size-4 shrink-0 text-ink" aria-hidden="true"
                 /></template>
-                {{ t('shop.availability.partialHint', { count: item.availableQuantity ?? 0 }) }}
+                {{ partialHint(item.availableQuantity ?? 0) }}
                 <template #actions>
-                  <BaseButton variant="soft" class="h-[46px] px-4" @click="cart.remove(item.id)">
+                  <BaseButton variant="soft" class="px-4!" @click="cart.remove(item.id)">
                     {{ t('shop.availability.removeProduct') }}
                   </BaseButton>
-                  <BaseButton class="px-4" @click="cart.acceptAvailableQuantity(item.id)">
+                  <BaseButton class="px-4!" @click="cart.acceptAvailableQuantity(item.id)">
                     {{ t('shop.availability.orderAvailable') }}
-                  </BaseButton>
-                </template>
-              </CartNotice>
-            </template>
-            <template v-else-if="item.availability === 'unavailable'" #footer>
-              <CartNotice>
-                <template #actions>
-                  <BaseButton variant="soft" class="px-4" @click="cart.remove(item.id)">
-                    {{ t('shop.availability.removeProduct') }}
-                  </BaseButton>
-                  <BaseButton class="px-4" @click="isAlternativesOpen = true">
-                    {{ t('shop.availability.viewAlternatives') }}
                   </BaseButton>
                 </template>
               </CartNotice>

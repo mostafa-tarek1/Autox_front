@@ -19,7 +19,7 @@ withDefaults(defineProps<{ label: string; amount?: number; text?: string; emphas
         :size="emphasis ? 'lg' : 'md'"
         tone="primary"
       />
-      <template v-else>{{ text }}</template>
+      <slot v-else>{{ text }}</slot>
     </dd>
   </div>
 </template>

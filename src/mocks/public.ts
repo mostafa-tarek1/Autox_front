@@ -46,6 +46,12 @@ export const contactDetails = {
   email: 'username@gmail.com',
 }
 
+/** Signed-in account used to prefill the contact form until the session API exists. */
+export const contactSender = {
+  name: 'فهد العتيبي',
+  email: 'username@gmail.com',
+}
+
 /* -------------------------------------------------------------------- Legal */
 
 export type LegalBlock =
@@ -98,13 +104,12 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
       id: 'data-collected',
       title: 'البيانات التي نجمعها',
       blocks: [
-        {
-          type: 'paragraph',
-          text: 'قد تجمع المنصة الأنواع التالية من البيانات وفقًا لطبيعة استخدامك للخدمات:',
-        },
+        { type: 'paragraph', text: 'تسري هذه السياسة على جميع مستخدمي منصة Auto X، بما في ذلك:' },
         {
           type: 'list',
           items: [
+            'التجار: الذين يستخدمون المنصة للبحث عن قطع غيار السيارات وشرائها وطلب عروض الأسعار.',
+            'الموردون: الذقد تجمع المنصة الأنواع التالية من البيانات وفقًا لطبيعة استخدامك للخدمات:',
             {
               text: 'أ. بيانات الحساب والتسجيل',
               items: [
@@ -114,7 +119,7 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
                 'اسم المنشأة أو الشركة.',
                 'المسمى الوظيفي أو صفة المستخدم داخل المنشأة.',
                 'بيانات تسجيل الدخول ووسائل التحقق من الهوية.',
-                'بيانات الملف الشخصي والتفضيلات واللغة.',
+                'بيانات الملف الشخصي والتفضيلات واللغة.ين يعرضون منتجاتهم ويديرون المخزون والأسعار ويتلقون طلبات الشراء وعروض الأسعار.',
               ],
             },
           ],

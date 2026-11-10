@@ -51,7 +51,7 @@ const { items } = storeToRefs(cart)
         <li
           v-for="item in items"
           :key="item.id"
-          class="flex items-center justify-between gap-4 rounded-2xl border-[0.5px] border-line bg-white p-2"
+          class="flex h-[85px] items-center justify-between gap-4 rounded-2xl border-[0.5px] border-line bg-white p-2"
         >
           <div class="flex min-w-0 items-start gap-4">
             <BrandThumb :logo="item.brandLogo" :name="item.brandName" size="sm" tone="surface" />

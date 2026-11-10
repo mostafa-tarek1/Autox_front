@@ -44,12 +44,18 @@ const cell =
   >
     <button
       type="button"
-      :class="[cell, 'bg-white hover:border-accent disabled:opacity-50']"
+      :class="[
+        cell,
+        'group bg-white hover:border-accent disabled:cursor-not-allowed disabled:hover:border-line',
+      ]"
       :disabled="page <= 1"
       :aria-label="t('common.previous')"
       @click="go(page - 1)"
     >
-      <ArrowRightIcon class="size-5 ltr:-scale-x-100" aria-hidden="true" />
+      <ArrowRightIcon
+        class="size-5 group-disabled:opacity-50 ltr:-scale-x-100"
+        aria-hidden="true"
+      />
     </button>
     <template v-for="(item, index) in items" :key="`${item}-${index}`">
       <span
@@ -70,12 +76,15 @@ const cell =
     </template>
     <button
       type="button"
-      :class="[cell, 'bg-white hover:border-accent disabled:opacity-50']"
+      :class="[
+        cell,
+        'group bg-white hover:border-accent disabled:cursor-not-allowed disabled:hover:border-line',
+      ]"
       :disabled="page >= total"
       :aria-label="t('common.next')"
       @click="go(page + 1)"
     >
-      <ArrowLeftIcon class="size-5 ltr:-scale-x-100" aria-hidden="true" />
+      <ArrowLeftIcon class="size-5 group-disabled:opacity-50 ltr:-scale-x-100" aria-hidden="true" />
     </button>
   </nav>
 </template>

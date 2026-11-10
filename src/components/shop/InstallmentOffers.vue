@@ -9,18 +9,19 @@ import tamaraLogo from '@/assets/images/shop/tamara-installments.webp'
 defineProps<{ monthlyFrom: number }>()
 const { t } = useI18n()
 
+/** Tamara comes first (start side), as in the design. */
 const providers = [
-  {
-    key: 'tabby',
-    logo: tabbyLogo,
-    logoClass: 'size-[95px] max-w-none object-cover',
-    href: 'https://tabby.ai',
-  },
   {
     key: 'tamara',
     logo: tamaraLogo,
     logoClass: 'h-[26px] w-[81px] object-contain',
     href: 'https://tamara.co',
+  },
+  {
+    key: 'tabby',
+    logo: tabbyLogo,
+    logoClass: 'absolute top-1/2 left-1/2 size-[95px] max-w-none -translate-1/2 object-cover',
+    href: 'https://tabby.ai',
   },
 ] as const
 </script>
@@ -37,7 +38,7 @@ const providers = [
         class="flex items-center gap-[19px] rounded-xl bg-surface px-4 py-3"
       >
         <span
-          class="grid h-14 w-[87px] shrink-0 place-items-center overflow-hidden rounded-2xl bg-white"
+          class="relative grid h-14 w-[87px] shrink-0 place-items-center overflow-hidden rounded-2xl bg-white"
         >
           <img
             :src="provider.logo"
@@ -56,7 +57,7 @@ const providers = [
             :href="provider.href"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-button text-primary hover:underline"
+            class="text-button text-primary underline hover:no-underline"
           >
             {{ t('shop.payment.learnMore') }}
           </a>

@@ -52,8 +52,7 @@ const filteredRequests = computed(() => {
     :title="t('billing.vouchers')"
     :breadcrumbs="[
       { label: t('nav.home'), to: { name: 'home' } },
-      { label: t('billing.vouchers'), to: { name: 'vouchers' } },
-      { label: t('billing.transactionsDetails') },
+      { label: t('billing.vouchers') },
     ]"
   />
 

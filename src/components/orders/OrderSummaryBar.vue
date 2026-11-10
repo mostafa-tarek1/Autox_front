@@ -12,7 +12,7 @@ import OrderStatusChip from './OrderStatusChip.vue'
 import type { Order } from './types'
 
 /** Grey header strip of an order: status, seller, number, date, total + actions slot. */
-defineProps<{ order: Order }>()
+withDefaults(defineProps<{ order: Order; hideStatus?: boolean }>(), { hideStatus: false })
 const { t } = useI18n()
 </script>
 
@@ -21,7 +21,7 @@ const { t } = useI18n()
     class="flex flex-col gap-4 rounded-lg bg-surface px-4 py-3 lg:flex-row lg:items-center lg:justify-between"
   >
     <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-      <OrderStatusChip :status="order.status" />
+      <OrderStatusChip v-if="!hideStatus" :status="order.status" />
       <OrderMeta v-if="order.seller" :icon="BuildingIcon" :label="t('orders.meta.seller')">{{
         order.seller
       }}</OrderMeta>

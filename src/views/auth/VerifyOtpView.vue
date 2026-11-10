@@ -15,7 +15,14 @@ const { t } = useI18n()
 const router = useRouter()
 
 /** Phone and flow come through history state, so the number never lands in the URL. */
-const { phone, flow } = (history.state ?? {}) as { phone?: string; flow?: AuthFlow }
+const state = (history.state ?? {}) as { phone?: string; flow?: AuthFlow }
+
+/** Dev-only `?previewPhone=` lets the screen be opened directly for design comparison. */
+const previewPhone = import.meta.env.DEV
+  ? (new URLSearchParams(location.search).get('previewPhone') ?? undefined)
+  : undefined
+const phone = state.phone ?? previewPhone
+const flow = state.flow
 
 const code = ref('')
 const error = ref('')

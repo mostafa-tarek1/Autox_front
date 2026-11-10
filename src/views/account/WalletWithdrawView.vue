@@ -7,10 +7,8 @@ import { RouterLink, useRouter } from 'vue-router'
 
 import StepCard from '@/components/account/StepCard.vue'
 import { useAccountState } from '@/components/account/useAccountState'
-import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import { bankAccounts } from '@/mocks/account'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -18,7 +16,6 @@ const { state } = useAccountState()
 
 const form = reactive({
   amount: '',
-  bankAccountId: null as string | null,
   vatAmount: '',
   invoiceMatched: false,
   agreed: false,
@@ -27,25 +24,17 @@ const submitted = ref(false)
 const isSubmitting = ref(false)
 const isDone = ref(false)
 
-const bankOptions = bankAccounts.map((account) => ({
-  value: account.id,
-  label: `${account.bank} — ${account.iban}`,
-}))
-
 const errors = computed(() => {
   if (!submitted.value) {
     return {}
   }
   const amount = Number(form.amount)
   const vatAmount = Number(form.vatAmount)
-  const result: Partial<Record<'amount' | 'bankAccountId' | 'vatAmount' | 'agreed', string>> = {}
+  const result: Partial<Record<'amount' | 'vatAmount' | 'agreed', string>> = {}
   if (!form.amount || !(amount > 0)) {
     result.amount = t('wallet.withdrawForm.amountInvalid')
   } else if (amount > state.walletBalance) {
     result.amount = t('wallet.withdrawForm.amountTooHigh')
-  }
-  if (!form.bankAccountId) {
-    result.bankAccountId = t('account.validation.required')
   }
   if (!form.vatAmount || !(vatAmount > 0)) {
     result.vatAmount = t('wallet.withdrawForm.amountInvalid')
@@ -85,7 +74,7 @@ function backToWallet(): void {
 
 <template>
   <div class="page-container flex flex-col">
-    <header class="flex flex-col gap-3 py-8">
+    <header class="flex flex-col gap-3 pt-8 pb-[33px]">
       <h1 class="text-h1 leading-10 text-ink">{{ t('wallet.withdrawForm.title') }}</h1>
       <p class="text-h3 text-secondary">{{ t('wallet.withdrawForm.subtitle') }}</p>
     </header>
@@ -101,19 +90,12 @@ function backToWallet(): void {
             @update:model-value="form.amount = sanitize($event)"
           />
         </StepCard>
-        <StepCard :step="2" :title="t('wallet.withdrawForm.bankStep')">
-          <SelectField
-            v-model="form.bankAccountId"
-            :options="bankOptions"
-            :label="t('wallet.withdrawForm.bankAccount')"
-            :placeholder="t('form.choose')"
-            :error="errors.bankAccountId"
-          />
-        </StepCard>
+        <!-- The design has no field here: payouts go to the bank account on file. -->
+        <StepCard :step="2" :title="t('wallet.withdrawForm.bankStep')" />
       </section>
 
       <section class="rounded-3xl bg-white p-5 shadow-card sm:p-8">
-        <StepCard :step="3" :title="t('wallet.withdrawForm.vatStep')">
+        <StepCard :step="3" :title="t('wallet.withdrawForm.vatStep')" size="lg">
           <div class="flex flex-col gap-6">
             <TextField
               :model-value="form.vatAmount"
@@ -130,8 +112,8 @@ function backToWallet(): void {
       </section>
 
       <section class="rounded-3xl bg-white p-5 shadow-card sm:p-8">
-        <StepCard :step="4" :title="t('wallet.withdrawForm.confirmStep')">
-          <CheckboxField v-model="form.agreed" :error="errors.agreed">
+        <StepCard :step="4" :title="t('wallet.withdrawForm.confirmStep')" size="lg">
+          <CheckboxField v-model="form.agreed" :error="errors.agreed" class="[&>label]:min-h-7">
             {{ t('wallet.withdrawForm.agreePrefix') }}
             <RouterLink to="/terms" target="_blank" class="text-match underline">
               {{ t('wallet.withdrawForm.terms') }}

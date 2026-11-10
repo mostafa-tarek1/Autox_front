@@ -25,9 +25,13 @@ const editableStatuses: OrderStatus[] = [
 const cancellableStatuses: OrderStatus[] = ['awaitingPaymentConfirmation', 'shipping']
 
 const isEditable = computed(() => editableStatuses.includes(props.order.status))
-const isCancellable = computed(() => cancellableStatuses.includes(props.order.status))
+/** Orders already split into shipments can no longer be cancelled as a whole. */
+const isCancellable = computed(
+  () => cancellableStatuses.includes(props.order.status) && !props.order.shipments.length,
+)
 const isPlaced = computed(() => props.order.kind === 'placed')
 const isCompleted = computed(() => props.order.status === 'completed')
+const isDelivered = computed(() => props.order.status === 'delivered')
 const detailsRoute = computed(() => ({ name: 'order-details', params: { id: props.order.id } }))
 </script>
 
@@ -36,7 +40,8 @@ const detailsRoute = computed(() => ({ name: 'order-details', params: { id: prop
     class="flex flex-col gap-6 rounded-3xl border border-line bg-white p-4 shadow-card"
     :aria-label="`${t('orders.meta.orderNumber')} ${order.number}`"
   >
-    <OrderSummaryBar :order="order">
+    <!-- In the list, split orders show the status on each shipment instead. -->
+    <OrderSummaryBar :order="order" :hide-status="order.shipments.length > 0">
       <template #actions>
         <template v-if="isEditable">
           <OrderActionButton v-if="order.status === 'awaitingPayment'" tone="accent">
@@ -72,6 +77,12 @@ const detailsRoute = computed(() => ({ name: 'order-details', params: { id: prop
           <OrderActionButton v-if="isCancellable" tone="danger" @click="emit('cancel', order.id)">
             {{ t('orders.actions.cancel') }}
           </OrderActionButton>
+          <OrderActionButton
+            v-else-if="isDelivered"
+            :to="{ name: 'order-return', params: { id: order.id } }"
+          >
+            {{ t('orders.actions.return') }}
+          </OrderActionButton>
         </template>
       </template>
     </OrderSummaryBar>
@@ -91,19 +102,30 @@ const detailsRoute = computed(() => ({ name: 'order-details', params: { id: prop
       />
     </div>
 
-    <div v-else class="flex flex-col items-start gap-8 rounded-2xl border border-line p-3">
-      <OrderMeta
-        v-if="order.trackingNumber"
-        :icon="BorderIcon"
-        :label="t('orders.meta.trackingNumber')"
+    <div v-else class="flex flex-col gap-2">
+      <div
+        v-if="order.items.length"
+        class="flex flex-col items-start gap-8 rounded-2xl border border-line p-3"
       >
-        <span dir="ltr">{{ order.trackingNumber }}</span>
-      </OrderMeta>
-      <ul class="flex w-full flex-col gap-8">
-        <li v-for="item in order.items" :key="item.id">
-          <OrderItemRow :item="item" />
-        </li>
-      </ul>
+        <OrderMeta
+          v-if="order.trackingNumber"
+          :icon="BorderIcon"
+          :label="t('orders.meta.trackingNumber')"
+        >
+          <span dir="ltr">{{ order.trackingNumber }}</span>
+        </OrderMeta>
+        <ul class="flex w-full flex-col gap-8">
+          <li v-for="item in order.items" :key="item.id">
+            <OrderItemRow :item="item" />
+          </li>
+        </ul>
+      </div>
+      <OrderItemRow
+        v-for="item in order.untrackedItems ?? []"
+        :key="item.id"
+        :item="item"
+        class="rounded-2xl border border-line p-3"
+      />
     </div>
   </article>
 </template>

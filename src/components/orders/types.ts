@@ -47,8 +47,11 @@ export interface Order {
   seller?: string
   date: string
   total: number
+  /** Placed orders: tracking number of the grouped `items` block. */
   trackingNumber?: string
   items: OrderItem[]
+  /** Placed orders: lines shown as their own cards, outside the tracked block. */
+  untrackedItems?: OrderItem[]
   shipments: Shipment[]
 }
 

@@ -65,7 +65,7 @@ function downloadExcel(): void {
 <template>
   <PageHero :title="t('wallet.title')" :breadcrumbs="breadcrumbs" />
 
-  <div class="page-container mt-12 flex flex-col gap-12">
+  <div class="page-container mt-12 flex flex-col gap-12 xl:max-w-[1208px]">
     <WalletBalanceCard :balance="state.walletBalance" />
 
     <section class="flex flex-col gap-4" aria-labelledby="transactions-title">
@@ -89,7 +89,7 @@ function downloadExcel(): void {
         </div>
       </div>
 
-      <div class="flex flex-col items-center gap-11 rounded-3xl bg-white p-2 pb-11">
+      <div class="flex flex-col items-center gap-6 rounded-3xl bg-white py-2 ps-4 pe-2 pb-6">
         <WalletTransactionsTable :transactions="filteredTransactions" class="w-full" />
         <BasePagination v-if="filteredTransactions.length" v-model="page" :total="totalPages" />
       </div>

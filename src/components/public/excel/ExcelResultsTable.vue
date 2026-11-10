@@ -7,7 +7,7 @@ import type { ExcelResultRow } from '@/mocks/public'
 
 import OfferCell from './OfferCell.vue'
 
-defineProps<{ rows: ExcelResultRow[]; columns: Array<{ key: string }> }>()
+const props = defineProps<{ rows: ExcelResultRow[]; columns: Array<{ key: string }> }>()
 const emit = defineEmits<{
   addToCart: [offerId: string, quantity: number]
   notify: [rowId: string]
@@ -15,6 +15,12 @@ const emit = defineEmits<{
 const { t } = useI18n()
 
 const hasOffers = (row: ExcelResultRow) => Object.keys(row.offers).length > 0
+
+/** Rows sit 30px from the dividers between them; the first row is 24px below the header. */
+function rowCellClass(rowIndex: number): string[] {
+  const isLast = rowIndex === props.rows.length - 1
+  return [rowIndex === 0 ? 'pt-6' : 'pt-[30px]', isLast ? '' : 'border-b border-line pb-[30px]']
+}
 </script>
 
 <template>
@@ -30,14 +36,14 @@ const hasOffers = (row: ExcelResultRow) => Object.keys(row.offers).length > 0
           <th scope="col" class="h-14 rounded-s-lg bg-surface px-4 text-start font-normal">
             {{ t('public.excel.columns.part') }}
           </th>
-          <th scope="col" class="bg-surface px-4 text-start font-normal">
+          <th scope="col" class="bg-surface ps-[38px] text-start font-normal">
             {{ t('public.excel.columns.quantity') }}
           </th>
           <th
             v-for="(column, index) in columns"
             :key="column.key"
             scope="col"
-            class="bg-surface px-4 text-start font-normal"
+            class="bg-surface ps-5 text-start font-normal"
             :class="index === columns.length - 1 && 'rounded-e-lg'"
           >
             {{ t(`public.excel.columns.${column.key}`) }}
@@ -46,11 +52,7 @@ const hasOffers = (row: ExcelResultRow) => Object.keys(row.offers).length > 0
       </thead>
       <tbody>
         <tr v-for="(row, rowIndex) in rows" :key="row.id" class="align-top">
-          <th
-            scope="row"
-            class="pt-6 pb-[30px] font-normal"
-            :class="rowIndex < rows.length - 1 && 'border-b border-line'"
-          >
+          <th scope="row" class="font-normal" :class="rowCellClass(rowIndex)">
             <div
               class="flex flex-col items-start justify-center gap-1 rounded-lg bg-surface px-4 text-start"
               :class="hasOffers(row) ? 'h-[162px]' : 'h-[88px] py-4'"
@@ -62,16 +64,16 @@ const hasOffers = (row: ExcelResultRow) => Object.keys(row.offers).length > 0
 
           <template v-if="hasOffers(row)">
             <td
-              class="px-4 pt-6 pb-[30px] align-middle text-body-md text-ink tabular-nums"
-              :class="rowIndex < rows.length - 1 && 'border-b border-line'"
+              class="ps-[39px] align-middle text-body-md text-ink tabular-nums"
+              :class="rowCellClass(rowIndex)"
             >
               {{ row.requestedQuantity }}
             </td>
             <td
               v-for="column in columns"
               :key="column.key"
-              class="ps-4 pt-6 pb-[30px]"
-              :class="rowIndex < rows.length - 1 && 'border-b border-line'"
+              class="ps-4"
+              :class="rowCellClass(rowIndex)"
             >
               <OfferCell
                 v-if="row.offers[column.key]"
@@ -91,8 +93,8 @@ const hasOffers = (row: ExcelResultRow) => Object.keys(row.offers).length > 0
           <td
             v-else
             :colspan="columns.length + 1"
-            class="px-4 pt-6 pb-[30px] align-middle"
-            :class="rowIndex < rows.length - 1 && 'border-b border-line'"
+            class="ps-[60px] align-middle"
+            :class="rowCellClass(rowIndex)"
           >
             <div class="flex items-center gap-4">
               <span class="text-body-md text-ink">{{ t('public.excel.unavailable') }}</span>

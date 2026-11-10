@@ -105,7 +105,6 @@
       "amountStep": "Amount to withdraw",
       "amount": "Enter the amount",
       "bankStep": "Bank account",
-      "bankAccount": "Choose a bank account",
       "vatStep": "Amount including VAT",
       "vatAmount": "Enter the amount including VAT",
       "invoiceMatch": "Invoice reconciliation",

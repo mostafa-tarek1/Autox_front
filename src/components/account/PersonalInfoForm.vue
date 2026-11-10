@@ -48,6 +48,7 @@ function submit(): void {
         :error="errors.phone"
         autocomplete="tel-national"
         dir="ltr"
+        class="rtl:text-right"
       />
       <TextField
         v-model="values.email"
@@ -57,6 +58,7 @@ function submit(): void {
         :error="errors.email"
         autocomplete="email"
         dir="ltr"
+        class="rtl:text-right"
       />
     </div>
     <BaseButton type="submit" class="self-start px-10">{{ t('account.save') }}</BaseButton>

@@ -3,6 +3,7 @@ import PriceTag from '@/components/ui/PriceTag.vue'
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import ArrowDownIcon from '@/assets/icons/arrow-down-01--stroke-standard.svg'
 import InfoIcon from '@/assets/icons/information-circle--duotone-rounded.svg'
 import FileDropzone from '@/components/form/FileDropzone.vue'
 import TextField from '@/components/form/TextField.vue'
@@ -20,6 +21,9 @@ const { t, tm, rt } = useI18n()
 
 const form = reactive({ reference: '', date: '', receipt: null as File | null })
 const isSubmitting = ref(false)
+const showErrors = ref(false)
+/** Shown as a placeholder text field until focused, like the design's "التاريخ" select. */
+const isDateFocused = ref(false)
 const isValid = computed(() => Boolean(form.reference.trim() && form.date && form.receipt))
 const instructions = computed(() =>
   (tm('shop.bankTransfer.instructions') as unknown as string[]).map((line) => rt(line)),
@@ -28,6 +32,7 @@ const today = new Date().toISOString().slice(0, 10)
 
 async function submit(): Promise<void> {
   if (!isValid.value || !form.receipt) {
+    showErrors.value = true
     return
   }
   isSubmitting.value = true
@@ -78,44 +83,63 @@ async function submit(): Promise<void> {
           class="flex flex-col items-start gap-2 rounded-xl border border-line bg-surface px-6 py-4"
         >
           <h4 class="flex items-center gap-2 text-h4 text-ink">
-            <InfoIcon class="size-6 text-primary" aria-hidden="true" />
+            <InfoIcon class="size-6 text-orange" aria-hidden="true" />
             {{ t('shop.bankTransfer.instructionsTitle') }}
           </h4>
-          <ul class="list-inside list-disc ps-8 text-body-sm text-muted">
-            <li v-for="line in instructions" :key="line">{{ line }}</li>
+          <ul class="text-body-sm text-muted">
+            <li v-for="line in instructions" :key="line" class="before:content-['•_']">
+              {{ line }}
+            </li>
           </ul>
         </aside>
       </div>
 
-      <h3 class="mt-2 text-h4 text-ink">{{ t('shop.bankTransfer.confirmTitle') }}</h3>
-      <div class="flex flex-col gap-8 rounded-xl border border-line bg-white px-6 py-4">
+      <h3 class="text-h4 text-ink">{{ t('shop.bankTransfer.confirmTitle') }}</h3>
+      <div
+        class="flex flex-col gap-8 rounded-xl border border-line bg-white px-6 py-4 [&_label]:leading-5"
+      >
         <TextField
           v-model="form.reference"
           :label="t('shop.bankTransfer.reference')"
           :placeholder="t('shop.bankTransfer.referencePlaceholder')"
           dir="ltr"
-          required
+          :error="
+            showErrors && !form.reference.trim() ? t('shop.bankTransfer.required') : undefined
+          "
         />
         <label class="flex flex-col gap-2">
-          <span class="text-label text-secondary">{{ t('shop.bankTransfer.date') }}</span>
-          <input
-            v-model="form.date"
-            type="date"
-            :max="today"
-            required
-            class="h-12 rounded-xl border border-line bg-white px-4 text-label text-ink outline-none focus:border-accent"
-          />
+          <span class="text-label leading-5 text-secondary">{{ t('shop.bankTransfer.date') }}</span>
+          <span
+            class="relative flex h-12 items-center rounded-xl border bg-white px-4 focus-within:border-accent"
+            :class="showErrors && !form.date ? 'border-error' : 'border-line'"
+          >
+            <input
+              v-model="form.date"
+              :type="isDateFocused || form.date ? 'date' : 'text'"
+              :max="today"
+              :placeholder="t('shop.bankTransfer.datePlaceholder')"
+              :aria-invalid="showErrors && !form.date ? true : undefined"
+              class="min-w-0 flex-1 bg-transparent pe-6 text-label text-ink outline-none placeholder:text-secondary/50"
+              @focus="isDateFocused = true"
+              @blur="isDateFocused = false"
+            />
+            <ArrowDownIcon
+              v-if="!isDateFocused && !form.date"
+              class="pointer-events-none absolute end-4 size-4 text-ink"
+              aria-hidden="true"
+            />
+          </span>
         </label>
         <FileDropzone
           v-model="form.receipt"
           :label="t('shop.bankTransfer.receipt')"
           :title="t('shop.bankTransfer.receiptUpload')"
           :hint="t('form.allowedFiles')"
-          required
+          :error="showErrors && !form.receipt ? t('shop.bankTransfer.required') : undefined"
         />
       </div>
 
-      <BaseButton type="submit" block :disabled="!isValid" :loading="isSubmitting">
+      <BaseButton type="submit" block :loading="isSubmitting">
         {{ t('shop.bankTransfer.submit') }}
       </BaseButton>
     </form>

@@ -23,7 +23,7 @@ const features = [
     <li
       v-for="(feature, index) in features"
       :key="feature.key"
-      class="relative flex items-center gap-3 rounded-2xl p-6 shadow-card"
+      class="relative flex items-center gap-3 rounded-2xl p-6"
       :class="
         index > 0 &&
         'lg:before:absolute lg:before:start-0 lg:before:top-1/2 lg:before:h-[60px] lg:before:w-px lg:before:-translate-y-1/2 lg:before:bg-line'

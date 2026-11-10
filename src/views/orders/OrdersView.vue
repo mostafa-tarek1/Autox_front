@@ -6,17 +6,26 @@ import { useRoute } from 'vue-router'
 import OrderCard from '@/components/orders/OrderCard.vue'
 import PageHero from '@/components/layout/PageHero.vue'
 import OrdersToolbar from '@/components/orders/OrdersToolbar.vue'
-import { currentOrders, previousOrders } from '@/mocks/orders'
+import { currentOrders, previousOrders, requestOrders } from '@/mocks/orders'
 
 const { t } = useI18n()
 const route = useRoute()
 
-const tab = computed(() => (route.query.tab === 'previous' ? 'previous' : 'current'))
+type ListTab = 'current' | 'previous' | 'requests'
+
+const tab = computed<ListTab>(() =>
+  route.query.tab === 'previous' || route.query.tab === 'requests' ? route.query.tab : 'current',
+)
+const sources: Record<ListTab, typeof currentOrders> = {
+  current: currentOrders,
+  previous: previousOrders,
+  requests: requestOrders,
+}
 const search = ref('')
 const removed = ref<Set<string>>(new Set())
 
 const orders = computed(() => {
-  const source = tab.value === 'previous' ? previousOrders : currentOrders
+  const source = sources[tab.value]
   const term = search.value.trim().toLowerCase()
   return source.filter(
     (order) =>
@@ -39,7 +48,7 @@ function remove(id: string): void {
     ]"
   />
   <div class="page-container mt-12 flex flex-col gap-6">
-    <OrdersToolbar v-model:search="search" :active="tab" />
+    <OrdersToolbar v-model:search="search" :active="tab === 'requests' ? 'current' : tab" />
     <ul v-if="orders.length" class="flex flex-col gap-6">
       <li v-for="order in orders" :key="order.id">
         <OrderCard :order="order" @delete="remove" @cancel="remove" />

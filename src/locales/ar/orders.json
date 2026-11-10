@@ -14,7 +14,8 @@
       "previous": "الطلبات السابقة",
       "returns": "المرتجعات",
       "details": "تفاصيل الطلب",
-      "returnRequest": "ارجاع الطلب"
+      "returnRequest": "ارجاع الطلب",
+      "requests": "الطلبات"
     },
     "tabs": {
       "label": "تصنيف الطلبات",

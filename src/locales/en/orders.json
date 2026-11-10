@@ -14,7 +14,8 @@
       "previous": "Previous orders",
       "returns": "Returns",
       "details": "Order details",
-      "returnRequest": "Return order"
+      "returnRequest": "Return order",
+      "requests": "Orders"
     },
     "tabs": {
       "label": "Order categories",

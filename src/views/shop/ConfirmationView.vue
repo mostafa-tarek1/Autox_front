@@ -28,7 +28,7 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
 
   <div class="page-container mt-12">
     <article
-      class="flex flex-col gap-2 rounded-3xl bg-white p-4 sm:p-6"
+      class="mx-auto flex max-w-[1182px] flex-col gap-2 rounded-3xl bg-white p-4 sm:p-6"
       aria-labelledby="order-number"
     >
       <header
@@ -62,17 +62,20 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
         </BaseButton>
       </header>
 
-      <div class="flex flex-col gap-8 pt-4">
+      <div class="flex flex-col gap-8">
         <div class="grid gap-4 lg:grid-cols-2">
           <section class="rounded-2xl border border-line" aria-labelledby="confirm-summary">
             <header class="border-b border-line p-4">
               <h2 id="confirm-summary" class="text-h4 text-black">{{ t('shop.summary.title') }}</h2>
             </header>
             <dl class="flex flex-col gap-4 p-4">
-              <SummaryRow
-                :label="t('shop.summary.itemsCount')"
-                :text="t('shop.summary.pieces', { count: itemsCount })"
-              />
+              <SummaryRow :label="t('shop.summary.itemsCount')">
+                <i18n-t keypath="shop.summary.pieces" tag="span" scope="global">
+                  <template #count>
+                    <strong class="text-h4 text-ink">{{ itemsCount }}</strong>
+                  </template>
+                </i18n-t>
+              </SummaryRow>
               <SummaryRow :label="t('shop.summary.subtotal')" :amount="subtotal" />
               <SummaryRow :label="t('shop.summary.vat')" :amount="vat" />
               <SummaryRow :label="t('shop.summary.delivery')" :amount="delivery" />
@@ -81,7 +84,10 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
             </dl>
           </section>
           <div class="flex flex-col gap-4">
-            <section class="rounded-2xl border border-line pb-6" aria-labelledby="confirm-payment">
+            <section
+              class="min-h-[184px] rounded-2xl border border-line pb-6"
+              aria-labelledby="confirm-payment"
+            >
               <header class="flex items-center justify-between gap-2 border-b border-line p-4">
                 <h2 id="confirm-payment" class="text-h4 text-black">
                   {{ t('shop.confirmation.payment') }}
@@ -99,7 +105,10 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
               </p>
             </section>
 
-            <section class="rounded-2xl border border-line pb-6" aria-labelledby="confirm-shipping">
+            <section
+              class="flex-1 rounded-2xl border border-line pb-6"
+              aria-labelledby="confirm-shipping"
+            >
               <header class="border-b border-line p-4">
                 <h2 id="confirm-shipping" class="text-h4 text-black">
                   {{ t('shop.confirmation.shippingDetails') }}
@@ -135,7 +144,7 @@ const { items, itemsCount, subtotal, vat, delivery, totalWithDelivery } = storeT
               <span class="text-body-sm text-secondary">{{
                 t('shop.confirmation.pieces', { count: item.quantity })
               }}</span>
-              <PriceTag size="md" :amount="item.unitPrice" tone="primary" />
+              <PriceTag size="md" :amount="item.unitPrice * item.quantity" tone="primary" />
             </div>
           </li>
         </ul>

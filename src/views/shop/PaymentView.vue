@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
@@ -41,6 +41,20 @@ const selected = computed<string | null>({
   set: (value) => (paymentMethod.value = value as PaymentMethod),
 })
 
+const isInstallment = computed(
+  () => paymentMethod.value === 'tabby' || paymentMethod.value === 'tamara',
+)
+
+/**
+ * The design has no "continue" button: picking a card opens the card dialog and bank transfer
+ * goes to its page. Installment providers show their offers first, then continue.
+ */
+watch(paymentMethod, (method) => {
+  if (method && method !== 'tabby' && method !== 'tamara') {
+    proceed()
+  }
+})
+
 /** Lowest monthly instalment shown in the tabby / tamara offer (24 months). */
 const monthlyFrom = computed(() => Math.ceil(total.value / 24))
 
@@ -63,8 +77,8 @@ function proceed(): void {
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.payment.title')" step="payment">
-    <ShopCard body-class="flex flex-col gap-8 p-6">
+  <CheckoutLayout :title="t('shop.payment.title')" step="payment" :strip-gap="167">
+    <ShopCard body-class="flex flex-col gap-8 px-6 pt-4 pb-6" header-class="py-3.5">
       <template #header>
         <h2 id="payment-methods-title" class="text-h3 text-black">
           {{ t('shop.payment.chooseMethod') }}
@@ -89,11 +103,12 @@ function proceed(): void {
         </PaymentMethodOption>
       </fieldset>
 
-      <InstallmentOffers :monthly-from="monthlyFrom" />
-
-      <BaseButton class="self-start px-[72px]" :disabled="!paymentMethod" @click="proceed">
-        {{ t('shop.payment.continue') }}
-      </BaseButton>
+      <template v-if="isInstallment">
+        <InstallmentOffers :monthly-from="monthlyFrom" />
+        <BaseButton class="self-start px-[72px]" @click="proceed">
+          {{ t('shop.payment.continue') }}
+        </BaseButton>
+      </template>
     </ShopCard>
 
     <template #aside>

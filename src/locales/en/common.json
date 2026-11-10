@@ -41,7 +41,7 @@
     "privacy": "Privacy policy",
     "contact": "Contact us",
     "taxNumber": "VAT number",
-    "rights": "© {year} Auto X. All rights reserved",
+    "rights": "{brand}. All rights reserved",
     "social": "Our social accounts"
   },
   "features": {

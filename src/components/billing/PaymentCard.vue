@@ -31,7 +31,9 @@ const statusTone = computed<StatusTone>(() => {
 </script>
 
 <template>
-  <article class="flex flex-col gap-6 rounded-3xl border border-line bg-white p-4 shadow-card">
+  <article
+    class="flex flex-col gap-6 rounded-3xl border border-line bg-white px-4 pt-4 pb-3 shadow-card"
+  >
     <header
       class="flex flex-col gap-3 rounded-lg bg-surface px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
     >
@@ -49,7 +51,7 @@ const statusTone = computed<StatusTone>(() => {
         <BaseButton
           variant="outline"
           size="sm"
-          class="h-[38px]"
+          class="h-[38px] px-6!"
           :to="`/orders/${payment.orderNumber}`"
         >
           {{ t('billing.orderDetails') }}
@@ -57,7 +59,7 @@ const statusTone = computed<StatusTone>(() => {
         <BaseButton
           v-if="payment.status === 'pending'"
           size="sm"
-          class="h-9"
+          class="h-9 px-6!"
           @click="emit('pay', payment)"
         >
           {{ t('billing.completePayment') }}
@@ -67,7 +69,7 @@ const statusTone = computed<StatusTone>(() => {
 
     <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-36 sm:gap-y-4">
       <InfoItem :label="t('billing.amount')" :icon="MoneyIcon">
-        <PriceTag :amount="payment.amount" class="text-primary" />
+        <PriceTag :amount="payment.amount" class="text-primary [&_svg]:text-secondary" />
       </InfoItem>
       <InfoItem :label="t('billing.paymentMethod')" :icon="PaymentIcon">
         {{ t(`billing.paymentMethods.${payment.method}`) }}

@@ -14,7 +14,7 @@ defineProps<{ items: DetailItem[] }>()
     <div
       v-for="item in items"
       :key="item.label"
-      class="flex flex-col gap-1 border-t border-line py-3 first:border-t-0 first:pt-0 last:pb-0"
+      class="flex flex-col gap-1 border-t border-line pt-[11px] pb-3 first:border-t-0 first:pt-0 last:pb-0"
     >
       <dt class="text-body-sm text-secondary">{{ item.label }}</dt>
       <dd

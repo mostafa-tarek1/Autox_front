@@ -45,24 +45,18 @@ export interface WalletTransaction {
   status: WalletStatus
 }
 
-export interface BankAccount {
-  id: string
-  bank: string
-  iban: string
-}
-
 export const accountProfile: AccountProfile = {
   name: 'فهد العتيبي',
-  phone: '0551234567',
+  phone: '05512345678',
   email: 'username@gmail.com',
   isVerified: true,
 }
 
 export const companyInfo: CompanyInfo = {
-  name: 'مؤسسة التقوى لقطع الغيار',
-  unifiedNumber: '7001234567',
+  name: 'مؤسسة التقوي لقطع الغيار',
+  unifiedNumber: '123456789',
   commercialRegister: '1010123456',
-  taxNumber: '300123456700003',
+  taxNumber: '123456789',
   nationalAddress: 'الرياض, السعودية',
   documents: [
     { kind: 'commercialRegister', url: '#' },
@@ -73,15 +67,10 @@ export const companyInfo: CompanyInfo = {
 
 export const shippingAddresses: ShippingAddress[] = [
   { id: 'address-1', label: 'العنوان 1', address: 'حي النرجس, الرياض, المملكة العربية السعودية' },
-  { id: 'address-2', label: 'العنوان 2', address: 'حي النرجس, الرياض, المملكة العربية السعودية' },
+  { id: 'address-2', label: 'العنوان 1', address: 'حي النرجس, الرياض, المملكة العربية السعودية' },
 ]
 
 export const walletBalance = 200_000
-
-export const bankAccounts: BankAccount[] = [
-  { id: 'bank-1', bank: 'مصرف الراجحي', iban: 'SA03 8000 0000 6080 1016 7519' },
-  { id: 'bank-2', bank: 'البنك الأهلي السعودي', iban: 'SA44 1000 0000 1234 5678 9012' },
-]
 
 function transaction(
   index: number,

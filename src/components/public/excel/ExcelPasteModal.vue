@@ -64,8 +64,12 @@ function submit(): void {
 </script>
 
 <template>
-  <BaseModal v-model:open="open" width="max-w-[994px]">
-    <div class="flex flex-col gap-10 p-2 sm:p-8">
+  <BaseModal
+    v-model:open="open"
+    panel-class="max-w-[994px] p-6 pt-12 sm:p-10"
+    close-class="top-4 end-4"
+  >
+    <div class="flex flex-col gap-10">
       <section
         v-if="step === 'paste'"
         class="flex flex-col gap-4"

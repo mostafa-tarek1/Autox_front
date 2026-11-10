@@ -43,7 +43,9 @@ onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-  <div class="page-container flex flex-col gap-8 pt-12 lg:flex-row lg:items-start">
+  <div
+    class="page-container flex flex-col gap-8 pt-12 pb-16 lg:flex-row lg:items-start lg:pb-[195px]"
+  >
     <nav
       :aria-label="t('public.legal.contents')"
       class="rounded-2xl bg-white py-2 shadow-card lg:sticky lg:top-24 lg:w-[282px] lg:shrink-0"
@@ -76,7 +78,7 @@ onBeforeUnmount(() => observer?.disconnect())
         <h2 :id="`${section.id}-title`" class="text-h2 text-ink">
           {{ index + 1 }}. {{ section.title }}
         </h2>
-        <div class="text-body-sm text-ink">
+        <div class="text-body-sm text-ink marker:text-[10px]">
           <template v-for="(block, blockIndex) in section.blocks" :key="blockIndex">
             <p v-if="block.type === 'paragraph'">{{ block.text }}</p>
             <h3 v-else-if="block.type === 'subheading'" class="text-body-sm">{{ block.text }}</h3>

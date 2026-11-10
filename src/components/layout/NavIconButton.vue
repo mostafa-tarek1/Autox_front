@@ -10,12 +10,12 @@ defineProps<{ label: string; count?: number; to?: RouteLocationRaw }>()
     :to="to"
     :type="to ? undefined : 'button'"
     :aria-label="count ? `${label} (${count})` : label"
-    class="relative grid size-10 place-items-center rounded-full border-[0.5px] border-line bg-surface p-2 text-ink transition-colors hover:border-accent"
+    class="relative grid size-10 place-items-center rounded-full border-[0.5px] border-line bg-surface p-2 text-primary transition-colors hover:border-accent"
   >
     <slot />
     <span
       v-if="count"
-      class="absolute -top-0 end-0 grid size-[18px] translate-x-0 place-items-center rounded-full bg-error text-[11px] leading-none font-bold text-white ltr:translate-x-1/3 rtl:-translate-x-1/3"
+      class="absolute top-0 right-0 grid size-[18px] place-items-center rounded-full bg-error text-button text-white"
       aria-hidden="true"
     >
       {{ count > 9 ? '9+' : count }}

@@ -60,8 +60,12 @@ function onDrop(event: DragEvent): void {
       @drop.prevent="onDrop"
     >
       <FileUploadIcon class="size-8 text-ink" aria-hidden="true" />
-      <span class="text-label text-ink">{{ file ? file.name : (title ?? t('form.attach')) }}</span>
-      <span class="text-caption text-secondary">{{ hint ?? t('form.allowedFiles') }}</span>
+      <span class="text-label leading-5 text-ink">{{
+        file ? file.name : (title ?? t('form.attach'))
+      }}</span>
+      <span dir="ltr" class="text-caption leading-4 text-secondary">{{
+        hint ?? t('form.allowedFiles')
+      }}</span>
       <input
         :id="id"
         type="file"
