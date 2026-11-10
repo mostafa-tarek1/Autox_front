@@ -1,0 +1,55 @@
+{
+  "app": { "name": "أوتو إكس" },
+  "common": {
+    "quantity": "الكمية",
+    "increase": "زيادة",
+    "decrease": "تقليل",
+    "currency": "ريال سعودي",
+    "pagination": "التنقل بين الصفحات",
+    "previous": "السابق",
+    "next": "التالي",
+    "close": "إغلاق",
+    "comingSoon": "قريبا"
+  },
+  "form": {
+    "attach": "ارفاق",
+    "allowedFiles": "PNG أو JPG أو PDF",
+    "fileTooLarge": "حجم الملف يجب ألا يتجاوز {size} ميجابايت",
+    "choose": "اختر"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "orders": "الطلبات",
+    "quotes": "عروض الاسعار",
+    "vouchers": "قسائم الشراء",
+    "contact": "تواصل معنا",
+    "notifications": "الإشعارات",
+    "cart": "سلة المشتريات",
+    "mainMenu": "القائمة الرئيسية",
+    "openMenu": "فتح القائمة",
+    "language": "اللغة",
+    "account": "حسابي",
+    "payments": "المدفوعات",
+    "logout": "تسجيل الخروج",
+    "userMenu": "قائمة المستخدم"
+  },
+  "footer": {
+    "terms": "الشروط والاحكام",
+    "privacy": "سياسة الخصوصية",
+    "contact": "تواصل معنا",
+    "taxNumber": "الرقم الضريبي",
+    "rights": "© {year} Auto X جميع الحقوق محفوظة",
+    "social": "حساباتنا على مواقع التواصل"
+  },
+  "features": {
+    "securePayments": "عمليات الدفع آمنه",
+    "returns": "مدة استرجاع 7 ايام",
+    "trustedSuppliers": "موردين موثوقين",
+    "support": "مساعدة 24 ساعه"
+  },
+  "support": {
+    "open": "الدعم الفني",
+    "call": "اتصل بنا",
+    "whatsapp": "واتساب"
+  }
+}

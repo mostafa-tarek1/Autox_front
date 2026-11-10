@@ -1,0 +1,34 @@
+{
+  "search": {
+    "title": "البحث عن قطع الغيار",
+    "byPartNumber": "بحث برقم القطعة",
+    "uploadExcel": "رفع ملف EXCEL",
+    "placeholder": "ابحث برقم القطعه او الاسم",
+    "submit": "بحث",
+    "recent": "عمليات البحث:",
+    "removeRecent": "حذف {term} من عمليات البحث"
+  },
+  "catalog": {
+    "carBrands": "ماركات السيارات",
+    "searchBrand": "ابحث عن ماركة...",
+    "results": "نتيجة البحث",
+    "resultsCount": "{count} قطعة",
+    "quantityFor": "كمية القطعة {part}",
+    "origins": {
+      "original": "أصلي",
+      "korean": "كوري",
+      "japanese": "ياباني",
+      "chinese": "صيني",
+      "taiwanese": "تيواني"
+    },
+    "badges": {
+      "cheapest": "الاقل سعرا",
+      "matchesRequest": "مطابق لطلبك"
+    },
+    "sort": {
+      "priceAsc": "الاقل سعرا",
+      "mostRequested": "الاكثر طلبا",
+      "originalOnly": "القطع الاصلية"
+    }
+  }
+}

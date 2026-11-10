@@ -1,0 +1,55 @@
+{
+  "app": { "name": "Auto-X" },
+  "common": {
+    "quantity": "Quantity",
+    "increase": "Increase",
+    "decrease": "Decrease",
+    "currency": "Saudi riyal",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "close": "Close",
+    "comingSoon": "Coming soon"
+  },
+  "form": {
+    "attach": "Attach",
+    "allowedFiles": "PNG, JPG or PDF",
+    "fileTooLarge": "File must be {size} MB or smaller",
+    "choose": "Choose"
+  },
+  "nav": {
+    "home": "Home",
+    "orders": "Orders",
+    "quotes": "Quotations",
+    "vouchers": "Vouchers",
+    "contact": "Contact us",
+    "notifications": "Notifications",
+    "cart": "Cart",
+    "mainMenu": "Main menu",
+    "openMenu": "Open menu",
+    "language": "Language",
+    "account": "My account",
+    "payments": "Payments",
+    "logout": "Log out",
+    "userMenu": "User menu"
+  },
+  "footer": {
+    "terms": "Terms & conditions",
+    "privacy": "Privacy policy",
+    "contact": "Contact us",
+    "taxNumber": "VAT number",
+    "rights": "© {year} Auto X. All rights reserved",
+    "social": "Our social accounts"
+  },
+  "features": {
+    "securePayments": "Secure payments",
+    "returns": "7-day returns",
+    "trustedSuppliers": "Trusted suppliers",
+    "support": "24-hour support"
+  },
+  "support": {
+    "open": "Support",
+    "call": "Call us",
+    "whatsapp": "WhatsApp"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "search": {
+    "title": "Find spare parts",
+    "byPartNumber": "Search by part number",
+    "uploadExcel": "Upload EXCEL file",
+    "placeholder": "Search by part number or name",
+    "submit": "Search",
+    "recent": "Recent searches:",
+    "removeRecent": "Remove {term} from recent searches"
+  },
+  "catalog": {
+    "carBrands": "Car brands",
+    "searchBrand": "Search brands...",
+    "results": "Search results",
+    "resultsCount": "{count} parts",
+    "quantityFor": "Quantity for part {part}",
+    "origins": {
+      "original": "Original",
+      "korean": "Korean",
+      "japanese": "Japanese",
+      "chinese": "Chinese",
+      "taiwanese": "Taiwanese"
+    },
+    "badges": {
+      "cheapest": "Lowest price",
+      "matchesRequest": "Matches your request"
+    },
+    "sort": {
+      "priceAsc": "Lowest price",
+      "mostRequested": "Most requested",
+      "originalOnly": "Original parts"
+    }
+  }
+}

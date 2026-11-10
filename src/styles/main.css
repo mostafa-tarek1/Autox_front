@@ -1,24 +1,104 @@
 @import 'tailwindcss';
+@import '@fontsource/ibm-plex-sans-arabic/400.css';
+@import '@fontsource/ibm-plex-sans-arabic/500.css';
+@import '@fontsource/ibm-plex-sans-arabic/600.css';
+@import '@fontsource/ibm-plex-sans-arabic/700.css';
 
 /*
- * Design tokens. Values are filled in from the Figma file (Auto-X) once the
- * design is extracted; every component reads colors, fonts and radii from
- * here, never from hard-coded hex values.
+ * Design tokens from the Auto-X Figma file ("Design System" page + values used on screens).
+ * Components read these through Tailwind utilities (bg-primary, text-h3, shadow-card...).
+ * Never hard-code a hex value in a component.
  */
 @theme {
   --font-sans: 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
+
+  /* Colors */
+  --color-primary: #0b4f3f;
+  --color-primary-deep: #063a2e;
+  --color-accent: #a3e635;
+  --color-secondary: #5c6b66;
+  --color-surface: #f4f7f2;
+  --color-ink: #171c1a;
+  --color-muted: #616161;
+  --color-placeholder: #b2b2b2;
+  --color-line: #dde5df;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
+  --color-match: #007aff;
+  --color-orange: #e16a10;
+
+  /* Typography (size / line-height / weight) */
+  --text-display: 40px;
+  --text-display--line-height: 72px;
+  --text-display--font-weight: 700;
+  --text-h1: 32px;
+  --text-h1--line-height: 48px;
+  --text-h1--font-weight: 700;
+  --text-h2: 24px;
+  --text-h2--line-height: 32px;
+  --text-h2--font-weight: 600;
+  --text-h3: 20px;
+  --text-h3--line-height: 28px;
+  --text-h3--font-weight: 600;
+  --text-h4: 16px;
+  --text-h4--line-height: 28px;
+  --text-h4--font-weight: 600;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 24px;
+  --text-label: 14px;
+  --text-label--line-height: 21px;
+  --text-label--font-weight: 500;
+  --text-caption: 12px;
+  --text-caption--line-height: 18px;
+  --text-button: 14px;
+  --text-button--line-height: 20px;
+  --text-button--font-weight: 700;
+
+  /* Effects */
+  --shadow-card: 0 4px 24px rgb(0 0 0 / 0.04);
+  --shadow-soft: 0 4px 16px rgb(0 0 0 / 0.08);
+
+  /* Layout */
+  --container-page: 75rem; /* 1200px content column at the 1440px design width */
 }
 
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply min-h-dvh bg-white text-neutral-900;
+    @apply min-h-dvh bg-surface font-sans text-body-md text-ink;
   }
 
-  img {
-    @apply max-w-full;
+  img,
+  svg {
+    @apply block max-w-full;
   }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
+
+@utility page-container {
+  @apply mx-auto w-full max-w-page px-4 sm:px-6 xl:px-0;
+}
+
+/* Thin accent scrollbar used by the brands list. */
+@utility scrollbar-accent {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
 }
