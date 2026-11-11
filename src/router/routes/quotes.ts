@@ -11,7 +11,7 @@ const routes: RouteRecordRaw[] = [
         path: 'quotes',
         name: 'quotes',
         component: () => import('@/views/quotes/QuotesView.vue'),
-        meta: { title: 'quotes', nav: 'quotes' },
+        meta: { title: 'quotes', nav: 'quotes', footerGap: 129 },
       },
     ],
   },

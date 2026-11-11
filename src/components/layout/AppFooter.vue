@@ -84,7 +84,7 @@ const socials = [
         class="border-t border-line/10 pt-[15px] text-center"
         :class="variant === 'guest' ? 'mt-10' : 'page-container mt-6'"
       >
-        <i18n-t keypath="footer.rights" tag="p" class="text-body-sm">
+        <i18n-t keypath="footer.rights" tag="p" scope="global" class="text-body-sm">
           <template #brand>
             <bdi dir="ltr">© {{ year }} Auto X</bdi>
           </template>

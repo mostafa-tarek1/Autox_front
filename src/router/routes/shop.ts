@@ -46,7 +46,7 @@ const routes: RouteRecordRaw[] = [
             path: 'confirmation',
             name: 'checkout-confirmation',
             component: () => import('@/views/shop/ConfirmationView.vue'),
-            meta: { title: 'checkoutConfirmation' },
+            meta: { title: 'checkoutConfirmation', footerGap: 68 },
           },
         ],
       },

@@ -8,5 +8,7 @@ declare module 'vue-router' {
     nav?: 'home' | 'orders' | 'quotes' | 'vouchers' | 'contact'
     /** Show the "secure payments / returns / suppliers / support" strip above the footer. */
     featureStrip?: boolean
+    /** Space in px between the page content and the footer, from the page's Figma frame. */
+    footerGap?: number
   }
 }

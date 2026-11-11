@@ -89,7 +89,9 @@ function downloadExcel(): void {
         </div>
       </div>
 
-      <div class="flex flex-col items-center gap-6 rounded-3xl bg-white py-2 ps-4 pe-2 pb-6">
+      <div
+        class="flex flex-col items-center gap-6 rounded-3xl bg-white p-3 md:py-2 md:ps-4 md:pe-2 md:pb-6"
+      >
         <WalletTransactionsTable :transactions="filteredTransactions" class="w-full" />
         <BasePagination v-if="filteredTransactions.length" v-model="page" :total="totalPages" />
       </div>

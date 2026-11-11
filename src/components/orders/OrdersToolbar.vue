@@ -19,12 +19,12 @@ const tabs: Array<{ key: OrdersTab; to: RouteLocationRaw }> = [
 
 <template>
   <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-    <nav :aria-label="t('orders.tabs.label')" class="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
-      <ul class="flex items-center gap-[21px]">
+    <nav :aria-label="t('orders.tabs.label')">
+      <ul class="flex flex-wrap items-center gap-2 sm:gap-[21px]">
         <li v-for="tab in tabs" :key="tab.key">
           <RouterLink
             :to="tab.to"
-            class="inline-flex h-[46px] items-center justify-center rounded-xl border px-6 py-2 text-button whitespace-nowrap transition"
+            class="inline-flex h-[46px] items-center justify-center rounded-xl border px-4 py-2 sm:px-6 text-button whitespace-nowrap transition"
             :class="
               tab.key === active
                 ? 'border-accent bg-accent text-primary'
