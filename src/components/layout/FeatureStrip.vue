@@ -18,12 +18,12 @@ const features = [
 
 <template>
   <ul
-    class="page-container grid grid-cols-1 gap-4 rounded-xl bg-white p-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0"
+    class="page-container grid grid-cols-2 gap-3 rounded-xl bg-white p-3 sm:gap-4 sm:p-4 lg:grid-cols-4 lg:gap-0"
   >
     <li
       v-for="(feature, index) in features"
       :key="feature.key"
-      class="relative flex items-center gap-3 rounded-2xl p-6"
+      class="relative flex flex-col items-center gap-2 rounded-2xl bg-surface/50 p-3 text-center sm:flex-row sm:gap-3 sm:bg-transparent sm:p-6 sm:text-start"
       :class="
         index > 0 &&
         'lg:before:absolute lg:before:start-0 lg:before:top-1/2 lg:before:h-[60px] lg:before:w-px lg:before:-translate-y-1/2 lg:before:bg-line'
@@ -34,7 +34,7 @@ const features = [
       >
         <component :is="feature.icon" class="size-6" aria-hidden="true" />
       </span>
-      <span class="text-body-lg text-ink">{{ t(`features.${feature.key}`) }}</span>
+      <span class="text-body-sm text-ink sm:text-body-lg">{{ t(`features.${feature.key}`) }}</span>
     </li>
   </ul>
 </template>
