@@ -23,7 +23,7 @@ const options = ['all', ...props.origins] as const
       type="button"
       role="radio"
       :aria-checked="selected === option"
-      class="h-[30px] rounded-full border px-2 py-1 text-body-sm leading-5 transition-colors"
+      class="h-[30px] rounded-full border px-2 py-1 font-label text-label leading-5 transition-colors"
       :class="
         selected === option
           ? 'border-accent text-ink'

@@ -40,7 +40,7 @@ const id = useId()
         :class="[
           error ? 'border-error' : 'border-line',
           surface ? 'bg-surface' : 'bg-white',
-          value === null ? 'text-secondary/50' : 'text-ink',
+          value === null ? 'font-label text-secondary/50' : 'text-ink',
         ]"
       >
         <option :value="null" disabled>{{ placeholder }}</option>

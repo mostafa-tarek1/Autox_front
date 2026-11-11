@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<{ tone: StatusTone; withIcon?: boolean }>
 
 const tones: Record<StatusTone, { classes: string; icon?: Component }> = {
   pending: { classes: 'bg-orange/10 text-orange', icon: AlertIcon },
-  processing: { classes: 'bg-orange/10 text-orange', icon: AlertIcon },
+  processing: { classes: 'bg-processing/10 text-processing', icon: AlertIcon },
   paid: { classes: 'bg-accent/20 text-success', icon: CheckIcon },
   success: { classes: 'bg-success/10 text-success', icon: CheckIcon },
   error: { classes: 'bg-error/10 text-error', icon: CancelIcon },

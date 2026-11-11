@@ -50,7 +50,7 @@ function pick(event: Event): void {
   >
     <CheckIcon v-if="file" class="size-8 text-success" aria-hidden="true" />
     <FileUploadIcon v-else class="size-8 text-primary" aria-hidden="true" />
-    <span class="w-full truncate text-label leading-5 text-secondary">{{
+    <span class="w-full truncate font-label text-label leading-5 text-secondary">{{
       file ? file.name : label
     }}</span>
     <span class="sr-only">{{

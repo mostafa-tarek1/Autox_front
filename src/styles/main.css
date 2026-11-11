@@ -3,6 +3,7 @@
 @import '@fontsource/ibm-plex-sans-arabic/500.css';
 @import '@fontsource/ibm-plex-sans-arabic/600.css';
 @import '@fontsource/ibm-plex-sans-arabic/700.css';
+@import '@fontsource/noto-sans-arabic/500.css';
 
 /*
  * Design tokens from the Auto-X Figma file ("Design System" page + values used on screens).
@@ -11,6 +12,8 @@
  */
 @theme {
   --font-sans: 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
+  /* Figma uses Noto Sans Arabic 500 for form labels, field placeholders and small filter/section pills. */
+  --font-label: 'Noto Sans Arabic', 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
 
   /* Colors */
   --color-primary: #0b4f3f;
@@ -28,6 +31,7 @@
   --color-info: #2563eb;
   --color-match: #007aff;
   --color-orange: #e16a10;
+  --color-processing: #ff9500; /* "جاري المعالجة" status in the Figma status set */
 
   /* Typography (size / line-height / weight) */
   --text-display: 40px;

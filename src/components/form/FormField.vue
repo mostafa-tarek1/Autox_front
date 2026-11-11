@@ -5,7 +5,7 @@ defineProps<{ label?: string; error?: string; hint?: string; forId: string; requ
 
 <template>
   <div class="flex flex-col gap-2">
-    <label v-if="label" :for="forId" class="text-label leading-5 text-secondary">
+    <label v-if="label" :for="forId" class="font-label text-label leading-5 text-secondary">
       {{ label }}
     </label>
     <slot />

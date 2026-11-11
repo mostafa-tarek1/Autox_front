@@ -8,8 +8,8 @@ withDefaults(defineProps<{ tone?: 'light' | 'dark' }>(), { tone: 'light' })
     class="inline-flex items-center justify-center rounded-full border-[0.5px] border-accent/20 bg-accent/16 backdrop-blur-[8px]"
     :class="
       tone === 'dark'
-        ? 'px-3 py-2 text-body-sm text-accent'
-        : 'px-3 py-1 text-label leading-5 text-primary'
+        ? 'px-3 py-2 font-label text-label leading-5 text-accent'
+        : 'px-3 py-1 font-label text-label leading-5 text-primary'
     "
   >
     <slot />

@@ -150,7 +150,7 @@ async function submit(): Promise<void> {
 
       <div role="group" aria-labelledby="register-documents-title" class="flex flex-col gap-2">
         <div class="flex flex-col gap-1">
-          <p id="register-documents-title" class="text-label leading-5 text-white">
+          <p id="register-documents-title" class="font-label text-label leading-5 text-white">
             {{ t('auth.register.documents.title') }}
           </p>
           <p class="text-body-sm text-white/80">{{ t('auth.register.documents.hint') }}</p>

@@ -59,7 +59,7 @@ function onInput(event: Event): void {
         dir="ltr"
         :placeholder="placeholder"
         :aria-invalid="error ? true : undefined"
-        class="min-w-0 flex-1 bg-transparent text-body-md text-ink outline-none placeholder:text-body-sm placeholder:text-secondary rtl:text-right"
+        class="min-w-0 flex-1 bg-transparent text-body-md text-ink outline-none placeholder:font-label placeholder:text-label placeholder:leading-5 placeholder:text-secondary rtl:text-right"
         @input="onInput"
       />
     </div>

@@ -108,7 +108,9 @@ async function submit(): Promise<void> {
           "
         />
         <label class="flex flex-col gap-2">
-          <span class="text-label leading-5 text-secondary">{{ t('shop.bankTransfer.date') }}</span>
+          <span class="font-label text-label leading-5 text-secondary">{{
+            t('shop.bankTransfer.date')
+          }}</span>
           <span
             class="relative flex h-12 items-center rounded-xl border bg-white px-4 focus-within:border-accent"
             :class="showErrors && !form.date ? 'border-error' : 'border-line'"

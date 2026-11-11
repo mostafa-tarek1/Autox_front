@@ -77,7 +77,7 @@ const filteredRequests = computed(() => {
         <h2 id="installments-heading" class="text-h2 text-ink">
           {{ t('billing.installmentRequests') }}
         </h2>
-        <BaseButton :to="{ name: 'voucher-create' }">
+        <BaseButton size="sm" :to="{ name: 'voucher-create' }" class="-my-0.5">
           <template #icon><AddIcon class="size-5" aria-hidden="true" /></template>
           {{ t('billing.createVoucher') }}
         </BaseButton>
