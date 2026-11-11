@@ -13,6 +13,7 @@ import PageHero from '@/components/layout/PageHero.vue'
 import StatCard from '@/components/billing/StatCard.vue'
 import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
+import AddIcon from '@/assets/icons/add-01--solid-standard.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BasePagination from '@/components/ui/BasePagination.vue'
 import { installmentRequests, installmentSummary, type InstallmentStatus } from '@/mocks/billing'
@@ -72,9 +73,15 @@ const filteredRequests = computed(() => {
     </section>
 
     <section class="flex flex-col gap-6" aria-labelledby="installments-heading">
-      <h2 id="installments-heading" class="text-h2 text-ink">
-        {{ t('billing.installmentRequests') }}
-      </h2>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <h2 id="installments-heading" class="text-h2 text-ink">
+          {{ t('billing.installmentRequests') }}
+        </h2>
+        <BaseButton :to="{ name: 'voucher-create' }">
+          <template #icon><AddIcon class="size-5" aria-hidden="true" /></template>
+          {{ t('billing.createVoucher') }}
+        </BaseButton>
+      </div>
 
       <div class="flex flex-col gap-4">
         <div

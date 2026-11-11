@@ -69,9 +69,18 @@ const contactLink = '/contact'
           </h2>
           <p class="text-h3 text-white">{{ t('billing.installments.heroSubtitle') }}</p>
         </div>
-        <BaseButton :to="contactLink" class="w-[238px] max-w-full">{{
-          t('billing.installments.requestService')
-        }}</BaseButton>
+        <div class="flex flex-wrap justify-center gap-4">
+          <BaseButton :to="contactLink" class="w-[238px] max-w-full">{{
+            t('billing.installments.requestService')
+          }}</BaseButton>
+          <BaseButton
+            variant="outline"
+            :to="{ name: 'voucher-transactions' }"
+            class="w-[238px] max-w-full"
+          >
+            {{ t('billing.transactionsDetails') }}
+          </BaseButton>
+        </div>
       </div>
     </div>
   </section>

@@ -34,7 +34,8 @@
     "payments": "Payments",
     "logout": "Log out",
     "userMenu": "User menu",
-    "breadcrumb": "Breadcrumb"
+    "breadcrumb": "Breadcrumb",
+    "wallet": "Wallet"
   },
   "footer": {
     "terms": "Terms & conditions",
