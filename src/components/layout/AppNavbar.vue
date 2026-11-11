@@ -83,7 +83,7 @@ function logout(): void {
           >
             <CartPopover
               v-if="isCartOpen"
-              class="absolute end-0 top-full z-40 mt-3"
+              class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-3"
               @close="isCartOpen = false"
             />
           </Transition>

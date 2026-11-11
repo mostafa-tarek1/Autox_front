@@ -24,7 +24,7 @@ const { items } = storeToRefs(cart)
 
 <template>
   <div
-    class="flex w-[466px] max-w-[calc(100vw-2rem)] flex-col gap-[18px] rounded-3xl border-[0.6px] border-line bg-white pb-6 shadow-card"
+    class="flex max-h-[calc(100dvh-100px)] w-auto flex-col overflow-y-auto sm:w-[466px] gap-[18px] rounded-3xl border-[0.6px] border-line bg-white pb-6 shadow-card"
     role="dialog"
     :aria-label="t('shop.cart.popoverTitle')"
   >
@@ -53,15 +53,17 @@ const { items } = storeToRefs(cart)
           :key="item.id"
           class="flex h-[85px] items-center justify-between gap-4 rounded-2xl border-[0.5px] border-line bg-white p-2"
         >
-          <div class="flex min-w-0 items-start gap-4">
+          <div class="flex min-w-0 flex-1 items-start gap-4">
             <BrandThumb :logo="item.brandLogo" :name="item.brandName" size="sm" tone="surface" />
-            <div class="flex min-w-0 flex-col items-start gap-2">
-              <p class="truncate text-body-md text-ink">{{ item.title }}</p>
+            <div class="flex min-w-0 flex-1 flex-col items-start gap-2">
+              <p class="w-full truncate text-body-md text-ink" :title="item.title">
+                {{ item.title }}
+              </p>
               <p dir="ltr" class="text-body-sm text-primary">{{ item.partNumber }}</p>
             </div>
           </div>
-          <div class="flex w-[82px] shrink-0 flex-col items-center gap-2">
-            <PriceTag tone="ink" size="md" :amount="item.unitPrice" />
+          <div class="flex min-w-[82px] shrink-0 flex-col items-center gap-2">
+            <PriceTag tone="ink" size="md" :amount="item.unitPrice" class="whitespace-nowrap" />
             <QuantityStepper
               variant="surface"
               :min="1"
