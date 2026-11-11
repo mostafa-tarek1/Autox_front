@@ -511,3 +511,21 @@ export const excelResults: ExcelResultRow[] = [
     offers: {},
   },
 ]
+
+/**
+ * Mock search: one result row per searched part, reusing the design's offer rows in turn so each
+ * state (offers, partial offers, unavailable) still shows up. Replaced by the API response later.
+ */
+export function mockExcelResultsFor(
+  items: ReadonlyArray<{ partNumber: string; quantity: number }>,
+): ExcelResultRow[] {
+  return items.map((item, index) => {
+    const template = excelResults[index % excelResults.length]!
+    return {
+      ...template,
+      id: `search-${index}`,
+      partNumber: item.partNumber,
+      requestedQuantity: item.quantity,
+    }
+  })
+}

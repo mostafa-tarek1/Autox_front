@@ -12,7 +12,6 @@ defineProps<{ recent: string[] }>()
 const emit = defineEmits<{
   search: [term: string]
   removeRecent: [index: number]
-  uploadExcel: []
 }>()
 const { t } = useI18n()
 
@@ -36,12 +35,19 @@ function submit(): void {
     class="flex flex-col gap-6 rounded-3xl bg-white px-4 py-6 shadow-card sm:px-8"
     :aria-label="t('search.title')"
   >
-    <div class="flex flex-wrap gap-4">
-      <BaseButton variant="primary" size="sm" aria-pressed="true">
+    <div class="flex flex-wrap gap-4" role="tablist">
+      <BaseButton variant="primary" size="sm" role="tab" aria-selected="true">
         <template #icon><SearchIcon class="size-[18px]" aria-hidden="true" /></template>
         {{ t('search.byPartNumber') }}
       </BaseButton>
-      <BaseButton variant="soft" size="sm" class="border-line" @click="emit('uploadExcel')">
+      <BaseButton
+        :to="{ name: 'excel-search' }"
+        variant="soft"
+        size="sm"
+        class="border-line"
+        role="tab"
+        aria-selected="false"
+      >
         <template #icon><XlsIcon class="size-[18px]" aria-hidden="true" /></template>
         {{ t('search.uploadExcel') }}
       </BaseButton>

@@ -8,7 +8,7 @@ import type { ExcelSearchItem } from '@/components/public/excel/excelParser'
 import ExcelResultsTable from '@/components/public/excel/ExcelResultsTable.vue'
 import ExcelSearchPanel from '@/components/public/excel/ExcelSearchPanel.vue'
 import OriginFilter from '@/components/public/excel/OriginFilter.vue'
-import { excelOfferColumns, excelResults } from '@/mocks/public'
+import { excelOfferColumns, excelResults, mockExcelResultsFor } from '@/mocks/public'
 import type { PartOrigin, SortOption } from '@/types/catalog'
 
 const { t } = useI18n()
@@ -25,6 +25,11 @@ const visibleColumns = computed(() =>
   origin.value === 'all'
     ? excelOfferColumns
     : excelOfferColumns.filter((column) => column.origin === origin.value),
+)
+
+/** Before a search the page shows the design's sample rows. */
+const rows = computed(() =>
+  searchedItems.value.length ? mockExcelResultsFor(searchedItems.value) : excelResults,
 )
 
 function onSearch(items: ExcelSearchItem[]): void {
@@ -55,6 +60,6 @@ function onSearch(items: ExcelSearchItem[]): void {
 
     <OriginFilter v-model="origin" :origins="filterOrigins" />
 
-    <ExcelResultsTable :rows="excelResults" :columns="visibleColumns" />
+    <ExcelResultsTable :rows="rows" :columns="visibleColumns" />
   </section>
 </template>
