@@ -24,7 +24,11 @@ onKeyStroke('Escape', () => (open.value = false))
   />
   <aside
     class="fixed inset-y-0 start-0 z-50 flex w-[228px] flex-col border-e-[0.5px] border-line bg-white transition-transform lg:sticky lg:top-0 lg:h-dvh lg:translate-x-0!"
-    :class="open ? 'translate-x-0' : 'ltr:-translate-x-full rtl:translate-x-full'"
+    :class="
+      open
+        ? 'visible translate-x-0'
+        : 'invisible ltr:-translate-x-full rtl:translate-x-full lg:visible'
+    "
     :aria-label="t('dashboard.nav.label')"
   >
     <RouterLink

@@ -50,7 +50,7 @@ function view(quote: SupplierQuote): void {
 <template>
   <div class="flex flex-col gap-8">
     <section
-      class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6"
+      class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6"
       :aria-label="t('dashboard.quotes.statsLabel')"
     >
       <DashboardStatCard

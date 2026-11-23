@@ -15,7 +15,7 @@ const { t } = useI18n()
 
 <template>
   <section
-    class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6"
+    class="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4 xl:gap-6"
     :aria-label="t('dashboard.stats.label')"
   >
     <DashboardStatCard

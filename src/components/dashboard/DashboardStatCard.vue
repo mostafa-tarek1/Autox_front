@@ -22,9 +22,11 @@ withDefaults(
 </script>
 
 <template>
-  <div class="flex h-[94px] items-center gap-3 rounded-3xl bg-white px-5 py-[19px] shadow-card">
+  <div
+    class="flex flex-col items-start gap-2 rounded-2xl bg-white p-4 shadow-card sm:h-[94px] sm:flex-row sm:items-center sm:gap-3 sm:rounded-3xl sm:px-5 sm:py-[19px]"
+  >
     <span
-      class="grid size-[54px] shrink-0 place-items-center rounded-full bg-surface p-[15px]"
+      class="grid size-10 shrink-0 place-items-center rounded-full bg-surface p-2 sm:size-[54px] sm:p-[15px]"
       :class="iconClass"
     >
       <component :is="icon" class="size-6" aria-hidden="true" />
@@ -34,9 +36,9 @@ withDefaults(
         v-if="currency"
         :amount="value"
         :decimals="value !== 0"
-        class="text-h2 text-ink [&_svg]:text-secondary"
+        class="text-h3 text-ink sm:text-h2 [&_svg]:text-secondary"
       />
-      <span v-else class="text-h2 text-ink tabular-nums">{{ value }}</span>
+      <span v-else class="text-h3 text-ink tabular-nums sm:text-h2">{{ value }}</span>
       <span class="text-body-sm text-ink">{{ label }}</span>
     </span>
     <span

@@ -106,7 +106,14 @@ onKeyStroke('Escape', () => open.value && close())
           >
             <CancelIcon class="size-6" aria-hidden="true" />
           </button>
-          <h2 v-if="title" :id="titleId" class="text-ink" :class="titleClass">{{ title }}</h2>
+          <h2
+            v-if="title"
+            :id="titleId"
+            class="text-ink"
+            :class="[titleClass, dismissible && 'ps-10']"
+          >
+            {{ title }}
+          </h2>
           <slot :title-id="titleId" />
         </div>
       </div>

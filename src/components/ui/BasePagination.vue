@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useMediaQuery } from '@vueuse/core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -12,8 +13,12 @@ const { t } = useI18n()
 type PageItem = number | 'gap'
 
 /** 1 2 3 4 … 20 — the first pages, a gap, then the last page (as in the design). */
+/** Phones show fewer page numbers (1 2 … 20) so the bar stays on one line. */
+const isPhone = useMediaQuery('(max-width: 639px)')
+
 const items = computed<PageItem[]>(() => {
-  const { total, siblings } = props
+  const { total } = props
+  const siblings = isPhone.value ? 1 : props.siblings
   if (total <= siblings + 2) {
     return Array.from({ length: total }, (_, index) => index + 1)
   }
