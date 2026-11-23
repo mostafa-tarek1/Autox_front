@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AddIcon from '@/assets/icons/add-01--stroke-rounded.svg'
-import StoreAddIcon from '@/assets/icons/store-add-02--stroke-rounded.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
+import StoreAddIcon from '@/assets/icons/store-add-02--duotone-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
 /** Empty state for a new supplier (Figma "ترحيب" 768:16476). */

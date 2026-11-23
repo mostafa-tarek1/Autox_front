@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AddIcon from '@/assets/icons/add-01--stroke-rounded.svg'
-import SearchListIcon from '@/assets/icons/search-list-02--stroke-rounded.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
+import SearchListIcon from '@/assets/icons/search-list-02--stroke-standard.svg'
 import XlsIcon from '@/assets/icons/xls-02--stroke-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 

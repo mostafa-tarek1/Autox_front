@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AddIcon from '@/assets/icons/add-01--stroke-rounded.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
 import DashboardDrawer from '@/components/dashboard/shared/DashboardDrawer.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 

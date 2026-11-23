@@ -2,7 +2,7 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AddIcon from '@/assets/icons/add-01--stroke-rounded.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
 import WalletDoneIcon from '@/assets/icons/wallet-done-01--duotone-rounded.svg'
 import { useAccountState } from '@/components/account/useAccountState'
 import {

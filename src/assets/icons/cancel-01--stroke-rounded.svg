@@ -1,4 +1,6 @@
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18.9991 19L5 5.00098" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-<path d="M19 5L5.00092 18.999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1530 2018 16 16" fill="none"><g>
+<g>
+<path d="M1532.98 2020.98C1533.18 2020.78 1533.49 2020.78 1533.69 2020.98L1538 2025.29L1542.31 2020.98C1542.51 2020.78 1542.83 2020.78 1543.02 2020.98C1543.22 2021.17 1543.22 2021.49 1543.02 2021.69L1538.71 2026L1543.02 2030.31C1543.22 2030.51 1543.22 2030.82 1543.02 2031.02C1542.83 2031.22 1542.51 2031.22 1542.31 2031.02L1538 2026.71L1533.69 2031.02C1533.49 2031.22 1533.18 2031.22 1532.98 2031.02C1532.78 2030.82 1532.78 2030.51 1532.98 2030.31L1537.29 2026L1532.98 2021.69C1532.78 2021.49 1532.78 2021.17 1532.98 2020.98Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
+</g>
+</g>
 </svg>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AddIcon from '@/assets/icons/add-01--stroke-rounded.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
 import CancelIcon from '@/assets/icons/cancel-01--stroke-rounded.svg'
-import SearchListIcon from '@/assets/icons/search-list-02--stroke-rounded.svg'
+import SearchListIcon from '@/assets/icons/search-list-02--stroke-standard.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
 

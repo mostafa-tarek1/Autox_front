@@ -51,7 +51,11 @@ onKeyStroke('Escape', () => (open.value = false))
         "
         :aria-current="route.meta.dashboardSection === item.key ? 'page' : undefined"
       >
-        <component :is="item.icon" class="size-5 shrink-0" aria-hidden="true" />
+        <component
+          :is="route.meta.dashboardSection === item.key ? item.activeIcon : item.icon"
+          class="size-5 shrink-0"
+          aria-hidden="true"
+        />
         {{ t(`dashboard.nav.${item.key}`) }}
       </RouterLink>
     </nav>

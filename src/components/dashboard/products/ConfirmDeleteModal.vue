@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AlertIcon from '@/assets/icons/alert-02--stroke-rounded.svg'
+import AlertIcon from '@/assets/icons/alert-02--stroke-standard.svg'
 import CancelIcon from '@/assets/icons/cancel-01--stroke-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'

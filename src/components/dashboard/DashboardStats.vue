@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import MoneyIcon from '@/assets/icons/money-01--stroke-rounded.svg'
+import MoneyIcon from '@/assets/icons/money-01--duotone-rounded.svg'
 import CartIcon from '@/assets/icons/shopping-cart-01--duotone-rounded.svg'
 import WalletDoneIcon from '@/assets/icons/wallet-done-01--duotone-rounded.svg'
 import WalletRemoveIcon from '@/assets/icons/wallet-remove-01--duotone-rounded.svg'
