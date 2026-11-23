@@ -54,7 +54,7 @@ const totalResults = 300
     <BrandFilter
       v-model="brandSelection"
       :brands="carBrands"
-      class="lg:sticky lg:top-24 lg:max-h-[calc(100dvh-7rem)] lg:w-[292px] lg:shrink-0 lg:overflow-y-auto"
+      class="lg:sticky lg:top-24 lg:max-h-[calc(100dvh-7rem)] lg:w-[292px] lg:shrink-0"
     />
 
     <section

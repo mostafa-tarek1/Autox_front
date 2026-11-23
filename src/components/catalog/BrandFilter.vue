@@ -4,12 +4,14 @@ import { useI18n } from 'vue-i18n'
 
 import ArrowDownIcon from '@/assets/icons/arrow-down-01--stroke-standard.svg'
 import SearchIcon from '@/assets/icons/search-01--stroke-standard.svg'
+import { useLocale } from '@/composables/useLocale'
 import { useLocalizedText } from '@/composables/useLocalizedText'
 import type { CarBrand, PartOrigin } from '@/types/catalog'
 
 const props = defineProps<{ brands: CarBrand[] }>()
 const selection = defineModel<{ brandId: string; origin: PartOrigin } | null>({ default: null })
 const { t } = useI18n()
+const { direction } = useLocale()
 const localized = useLocalizedText()
 
 const query = ref('')
@@ -53,62 +55,65 @@ function isSelected(brandId: string, origin: PartOrigin): boolean {
       />
     </label>
 
-    <!-- The current design lists every brand in full, with no inner scroll area. -->
-    <ul>
-      <li v-for="brand in filteredBrands" :key="brand.id">
-        <button
-          type="button"
-          class="flex h-[64.6px] w-full items-center justify-between gap-3.5 border-b-[0.6px] border-line px-2 py-3 transition-colors hover:bg-surface"
-          :class="expandedId === brand.id && 'border-transparent bg-surface'"
-          :aria-expanded="expandedId === brand.id"
-          @click="toggle(brand.id)"
-        >
-          <span class="flex items-center gap-2">
-            <span class="grid size-10 shrink-0 place-items-center rounded-[6.67px] bg-white p-1">
-              <img
-                :src="brand.logo"
-                :alt="localized(brand.name)"
-                width="32"
-                height="32"
-                class="max-h-8 object-contain"
+    <!-- The list scrolls under the search field; the design puts its thin accent scrollbar on
+      the physical right in both directions. -->
+    <div dir="ltr" class="scrollbar-accent max-h-[581px] min-h-0 flex-1 overflow-y-auto">
+      <ul :dir="direction" class="pr-2">
+        <li v-for="brand in filteredBrands" :key="brand.id">
+          <button
+            type="button"
+            class="flex h-[64.6px] w-full items-center justify-between gap-3.5 border-b-[0.6px] border-line px-2 py-3 transition-colors hover:bg-surface"
+            :class="expandedId === brand.id && 'border-transparent bg-surface'"
+            :aria-expanded="expandedId === brand.id"
+            @click="toggle(brand.id)"
+          >
+            <span class="flex items-center gap-2">
+              <span class="grid size-10 shrink-0 place-items-center rounded-[6.67px] bg-white p-1">
+                <img
+                  :src="brand.logo"
+                  :alt="localized(brand.name)"
+                  width="32"
+                  height="32"
+                  class="max-h-8 object-contain"
+                />
+              </span>
+              <span class="text-body-md text-secondary">{{ localized(brand.name) }}</span>
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="text-body-sm text-primary">{{ brand.fromYear }}</span>
+              <ArrowDownIcon
+                class="size-4 text-secondary transition-transform"
+                :class="expandedId === brand.id && 'rotate-180'"
+                aria-hidden="true"
               />
             </span>
-            <span class="text-body-md text-secondary">{{ localized(brand.name) }}</span>
-          </span>
-          <span class="flex items-center gap-2">
-            <span class="text-body-sm text-primary">{{ brand.fromYear }}</span>
-            <ArrowDownIcon
-              class="size-4 text-secondary transition-transform"
-              :class="expandedId === brand.id && 'rotate-180'"
-              aria-hidden="true"
-            />
-          </span>
-        </button>
+          </button>
 
-        <ul v-if="expandedId === brand.id" class="flex flex-col gap-1 bg-surface p-2">
-          <li v-for="option in brand.origins" :key="option.origin">
-            <button
-              type="button"
-              class="flex h-11 w-full items-center justify-between rounded-xl border-[0.5px] bg-white p-2 transition-colors"
-              :class="
-                isSelected(brand.id, option.origin)
-                  ? 'border-accent'
-                  : 'border-transparent hover:border-line'
-              "
-              :aria-pressed="isSelected(brand.id, option.origin)"
-              @click="selection = { brandId: brand.id, origin: option.origin }"
-            >
-              <span
-                class="text-h4"
-                :class="isSelected(brand.id, option.origin) ? 'text-primary' : 'text-muted'"
+          <ul v-if="expandedId === brand.id" class="flex flex-col gap-1 bg-surface p-2">
+            <li v-for="option in brand.origins" :key="option.origin">
+              <button
+                type="button"
+                class="flex h-11 w-full items-center justify-between rounded-xl border-[0.5px] bg-white p-2 transition-colors"
+                :class="
+                  isSelected(brand.id, option.origin)
+                    ? 'border-accent'
+                    : 'border-transparent hover:border-line'
+                "
+                :aria-pressed="isSelected(brand.id, option.origin)"
+                @click="selection = { brandId: brand.id, origin: option.origin }"
               >
-                {{ t(`catalog.origins.${option.origin}`) }}
-              </span>
-              <span class="text-body-md text-primary">{{ option.count }}</span>
-            </button>
-          </li>
-        </ul>
-      </li>
-    </ul>
+                <span
+                  class="text-h4"
+                  :class="isSelected(brand.id, option.origin) ? 'text-primary' : 'text-muted'"
+                >
+                  {{ t(`catalog.origins.${option.origin}`) }}
+                </span>
+                <span class="text-body-md text-primary">{{ option.count }}</span>
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </aside>
 </template>

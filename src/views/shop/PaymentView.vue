@@ -14,6 +14,7 @@ import CardPaymentDialog from '@/components/shop/CardPaymentDialog.vue'
 import CheckoutLayout from '@/components/shop/CheckoutLayout.vue'
 import OrderSummary from '@/components/shop/OrderSummary.vue'
 import PaymentMethodOption from '@/components/shop/PaymentMethodOption.vue'
+import PaymentSuccessDialog from '@/components/shop/PaymentSuccessDialog.vue'
 import ResultDialog from '@/components/shop/ResultDialog.vue'
 import ShopCard from '@/components/shop/ShopCard.vue'
 import type { PaymentMethod } from '@/components/shop/types'
@@ -37,6 +38,7 @@ const selected = ref<string | null>(null)
 const isCardDialogOpen = ref(false)
 const isWalletDialogOpen = ref(false)
 const isSentDialogOpen = ref(false)
+const isPaidDialogOpen = ref(false)
 
 /** The design has no "continue" button: picking a method opens its next step straight away. */
 watch(selected, (method) => {
@@ -50,8 +52,8 @@ watch(selected, (method) => {
       break
     case 'tabby':
     case 'tamara':
-      // Real flow redirects to the provider's hosted checkout and comes back here.
-      isSentDialogOpen.value = true
+      // Real flow redirects to the provider's hosted checkout and comes back here, paid.
+      isPaidDialogOpen.value = true
       break
     case 'bankTransfer':
       router.push({ name: 'checkout-bank-transfer' })
@@ -60,7 +62,7 @@ watch(selected, (method) => {
 })
 
 /** Closing a dialog clears the choice so the same method can be picked again. */
-watch([isCardDialogOpen, isWalletDialogOpen, isSentDialogOpen], (openStates) => {
+watch([isCardDialogOpen, isWalletDialogOpen, isSentDialogOpen, isPaidDialogOpen], (openStates) => {
   if (openStates.every((isOpen) => !isOpen)) {
     selected.value = null
   }
@@ -69,6 +71,13 @@ watch([isCardDialogOpen, isWalletDialogOpen, isSentDialogOpen], (openStates) => 
 function onPaid(): void {
   isSentDialogOpen.value = true
 }
+
+/** Closing the payment confirmation takes the trader to the order, as its hint says. */
+watch(isPaidDialogOpen, (isOpen, wasOpen) => {
+  if (wasOpen && !isOpen) {
+    router.push({ name: 'orders' })
+  }
+})
 
 function trackOrder(): void {
   isSentDialogOpen.value = false
@@ -125,4 +134,5 @@ function trackOrder(): void {
     :action-label="t('shop.cart.trackOrder')"
     @action="trackOrder"
   />
+  <PaymentSuccessDialog v-model:open="isPaidDialogOpen" />
 </template>
