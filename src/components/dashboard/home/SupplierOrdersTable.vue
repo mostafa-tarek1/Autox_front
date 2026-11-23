@@ -142,7 +142,14 @@ const grid = 'grid grid-cols-[98px_175px_174px_199px_112px_158px] items-center g
               {{ formatDate(order.date) }}
             </td>
             <td role="cell">
-              <PriceTag :amount="order.total" decimals :grouping="false" size="md" tone="ink" />
+              <PriceTag
+                :amount="order.total"
+                decimals
+                :grouping="false"
+                size="md"
+                tone="ink"
+                class="gap-2! [&_svg]:text-secondary"
+              />
             </td>
             <td role="cell"><SupplierOrderStatus :status="order.status" /></td>
             <td role="cell" class="flex items-center gap-6">

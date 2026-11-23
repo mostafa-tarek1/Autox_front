@@ -104,10 +104,12 @@ function save(values: BankAccountValues): void {
           <hr class="border-line" />
           <div class="flex flex-col gap-1">
             <dt class="text-body-md text-secondary">{{ t('account.bank.iban') }}</dt>
-            <dd class="flex items-center justify-between gap-4">
-              <span dir="ltr" class="min-w-0 text-h4 break-words text-ink">{{
-                formatIban(account.iban)
-              }}</span>
+            <dd class="flex items-center justify-between gap-2 sm:gap-4">
+              <span
+                dir="ltr"
+                class="min-w-0 text-xs/6 font-semibold whitespace-nowrap text-ink tabular-nums min-[400px]:text-[13px] sm:text-h4"
+                >{{ formatIban(account.iban) }}</span
+              >
               <button
                 type="button"
                 class="flex shrink-0 items-center gap-1 text-body-md text-secondary hover:text-primary"
@@ -120,7 +122,7 @@ function save(values: BankAccountValues): void {
                   aria-hidden="true"
                 />
                 <CopyIcon v-else class="size-6" aria-hidden="true" />
-                {{ t('account.bank.copy') }}
+                <span class="hidden sm:inline">{{ t('account.bank.copy') }}</span>
               </button>
             </dd>
           </div>
