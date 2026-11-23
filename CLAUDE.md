@@ -23,3 +23,13 @@ The current phase is **UI only**: screens use local mock data and are wired to t
   app chrome (header, footer, sidebar) in `src/components/layout`, page shells in `src/layouts`.
 - Before finishing: `npm run type-check`, `npm run lint`, `npx vitest run`, `npm run build-only`.
 - Install packages with npm 11 (`npx -y npm@11 install`); npm 10.9 crashes on this dependency tree.
+
+## Icons still to swap for exact Figma exports
+
+The Figma vector endpoints were rate-limited while the supplier dashboard was built, so these icons
+come from Hugeicons' free set (`@hugeicons/core-free-icons`, MIT, stroke-rounded). The design uses
+the variant in brackets; replace them with node exports when the API allows:
+home-01 [solid, active sidebar link], car-01 [solid when active], money-01 [duotone in stat cards],
+add-01 [stroke-standard], search-list-02 [standard], alert-02 [standard], store-add-02 [duotone],
+cancel-02 [duotone], view, arrow-right-02, cancel-01, reload, search-replace, delete-01,
+pencil-edit-02, tick-02, coupon-01, invoice-01 (all `--stroke-rounded` files).

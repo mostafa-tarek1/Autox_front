@@ -39,6 +39,8 @@ const { t } = useI18n()
       :label="t('dashboard.stats.pending')"
       :value="stats.pendingBalance"
       :icon="WalletRemoveIcon"
+      icon-class="text-orange"
+      :hint="t('dashboard.home.pendingInfo')"
       currency
     />
   </section>

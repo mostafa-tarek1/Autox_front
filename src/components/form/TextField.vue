@@ -16,6 +16,8 @@ withDefaults(
     autocomplete?: string
     dir?: 'ltr' | 'rtl' | 'auto'
     multiline?: boolean
+    /** Surface (#F4F7F2) background instead of white, as in the dashboard product forms. */
+    surface?: boolean
     rows?: number
   }>(),
   { type: 'text', rows: 4 },
@@ -30,8 +32,9 @@ const id = useId()
 <template>
   <FormField :label="label" :error="error" :hint="hint" :for-id="id" :required="required">
     <div
-      class="flex items-center gap-2 rounded-xl border bg-white px-4 py-3 transition-colors focus-within:border-accent"
+      class="flex items-center gap-2 rounded-xl border px-4 py-3 transition-colors focus-within:border-accent"
       :class="[
+        surface ? 'bg-surface' : 'bg-white',
         error ? 'border-error' : 'border-line',
         disabled && 'opacity-60',
         multiline ? 'items-start' : 'h-12',

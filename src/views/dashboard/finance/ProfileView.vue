@@ -1,7 +1,18 @@
 <script setup lang="ts">
-import DashboardPlaceholder from '@/components/dashboard/DashboardPlaceholder.vue'
+import AccountBankView from '@/views/account/AccountBankView.vue'
+import AccountCompanyView from '@/views/account/AccountCompanyView.vue'
+import AccountPersonalView from '@/views/account/AccountPersonalView.vue'
+
+/**
+ * Supplier profile (Figma 800:9646): the same personal, company and bank-account cards as the
+ * customer "حسابي" pages, stacked on one page. Reuses those screens so both stay in sync.
+ */
 </script>
 
 <template>
-  <DashboardPlaceholder />
+  <div class="flex flex-col gap-6">
+    <AccountPersonalView />
+    <AccountCompanyView />
+    <AccountBankView />
+  </div>
 </template>

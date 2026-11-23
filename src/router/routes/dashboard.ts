@@ -2,6 +2,9 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import { DashboardLayout } from '@/router/layouts'
 
+/** Full-width product pages (catalog, add, Excel review): no sidebar in the design, site-style top bar. */
+const ProductsFocusLayout = () => import('@/components/dashboard/products/ProductsFocusLayout.vue')
+
 /** Supplier dashboard (Figma page "Dashboard"). */
 const routes: RouteRecordRaw[] = [
   {
@@ -27,34 +30,10 @@ const routes: RouteRecordRaw[] = [
         meta: { title: 'dashboardProducts', dashboardSection: 'products' },
       },
       {
-        path: 'products/catalog',
-        name: 'dashboard-catalog',
-        component: () => import('@/views/dashboard/products/CatalogView.vue'),
-        meta: { title: 'dashboardCatalog', dashboardSection: 'products' },
-      },
-      {
-        path: 'products/new',
-        name: 'dashboard-product-new',
-        component: () => import('@/views/dashboard/products/ProductNewView.vue'),
-        meta: { title: 'dashboardProductNew', dashboardSection: 'products' },
-      },
-      {
-        path: 'products/excel-review',
-        name: 'dashboard-excel-review',
-        component: () => import('@/views/dashboard/products/ExcelReviewView.vue'),
-        meta: { title: 'dashboardExcelReview', dashboardSection: 'products' },
-      },
-      {
         path: 'quotes',
         name: 'dashboard-quotes',
         component: () => import('@/views/dashboard/quotes/QuotesView.vue'),
         meta: { title: 'dashboardQuotes', dashboardSection: 'quotes' },
-      },
-      {
-        path: 'quotes/:id/offer',
-        name: 'dashboard-quote-offer',
-        component: () => import('@/views/dashboard/quotes/QuoteOfferView.vue'),
-        meta: { title: 'dashboardQuoteOffer', dashboardSection: 'quotes' },
       },
       {
         path: 'balance',
@@ -75,6 +54,49 @@ const routes: RouteRecordRaw[] = [
         meta: { title: 'dashboardProfile' },
       },
     ],
+  },
+  /** Pricing page for a quotation request: standalone (logo-only header), outside the dashboard shell. */
+  {
+    path: '/dashboard/products/catalog',
+    component: ProductsFocusLayout,
+    children: [
+      {
+        path: '',
+        name: 'dashboard-catalog',
+        component: () => import('@/views/dashboard/products/CatalogView.vue'),
+        meta: { title: 'dashboardCatalog', dashboardSection: 'products' },
+      },
+    ],
+  },
+  {
+    path: '/dashboard/products/new',
+    component: ProductsFocusLayout,
+    children: [
+      {
+        path: '',
+        name: 'dashboard-product-new',
+        component: () => import('@/views/dashboard/products/ProductNewView.vue'),
+        meta: { title: 'dashboardProductNew', dashboardSection: 'products' },
+      },
+    ],
+  },
+  {
+    path: '/dashboard/products/excel-review',
+    component: ProductsFocusLayout,
+    children: [
+      {
+        path: '',
+        name: 'dashboard-excel-review',
+        component: () => import('@/views/dashboard/products/ExcelReviewView.vue'),
+        meta: { title: 'dashboardExcelReview', dashboardSection: 'products' },
+      },
+    ],
+  },
+  {
+    path: '/dashboard/quotes/:id/offer',
+    name: 'dashboard-quote-offer',
+    component: () => import('@/views/dashboard/quotes/QuoteOfferView.vue'),
+    meta: { title: 'dashboardQuoteOffer', dashboardSection: 'quotes' },
   },
 ]
 

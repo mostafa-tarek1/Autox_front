@@ -31,7 +31,8 @@
   --color-info: #2563eb;
   --color-match: #007aff;
   --color-orange: #e16a10;
-  --color-processing: #ff9500; /* "جاري المعالجة" status in the Figma status set */
+  --color-processing: #ff9500;
+  --color-waiting: #ff923f; /* dashboard "waiting" chips: بانتظار ردك / بانتظار عرضك / بالانتظار */ /* "جاري المعالجة" status in the Figma status set */
 
   /* Typography (size / line-height / weight) */
   --text-display: 40px;

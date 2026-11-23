@@ -20,7 +20,7 @@ const open = ref(false)
     <template #trigger="{ toggle, menuId }">
       <button
         type="button"
-        class="flex h-10 items-center gap-2 rounded-full border-[0.5px] border-line bg-surface py-1 ps-1 pe-2"
+        class="flex h-10 items-center gap-2 rounded-full border-[0.5px] border-line bg-surface p-1 sm:pe-2"
         :aria-label="t('nav.userMenu')"
         aria-haspopup="menu"
         :aria-expanded="open"
@@ -31,8 +31,10 @@ const open = ref(false)
           <UserIcon class="size-4" aria-hidden="true" />
         </span>
         <span class="flex items-center gap-1">
-          <span class="max-w-32 truncate text-body-md text-secondary">{{ name }}</span>
-          <ArrowDownIcon class="size-4 text-secondary" aria-hidden="true" />
+          <span class="hidden max-w-32 truncate text-body-md text-secondary sm:inline">{{
+            name
+          }}</span>
+          <ArrowDownIcon class="hidden size-4 text-secondary sm:block" aria-hidden="true" />
         </span>
       </button>
     </template>

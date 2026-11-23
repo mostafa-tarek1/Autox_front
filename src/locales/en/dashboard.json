@@ -15,6 +15,242 @@
       "sales": "Total sales",
       "withdrawable": "Withdrawable balance",
       "pending": "Pending balance"
+    },
+    "quotes": {
+      "statsLabel": "Quotations summary",
+      "stats": {
+        "sent": "Offers sent",
+        "accepted": "Accepted offers",
+        "rejected": "Rejected offers"
+      },
+      "listTitle": "Offers",
+      "sort": {
+        "label": "Sort by",
+        "placeholder": "Choose",
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "priceHigh": "Highest price",
+        "priceLow": "Lowest price"
+      },
+      "columns": {
+        "number": "No.",
+        "customer": "Customer",
+        "date": "Offer date",
+        "offer": "Offered price",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "view": "View",
+      "viewQuote": "View request #{number}",
+      "empty": "No quotation requests yet",
+      "status": {
+        "awaitingOffer": "Awaiting your offer",
+        "offerSent": "Offer sent",
+        "awaitingPayment": "Awaiting payment",
+        "accepted": "Your offer was accepted",
+        "approved": "Accepted",
+        "closed": "Closed"
+      },
+      "details": {
+        "title": "Offer details",
+        "customerRequests": "Customer requests",
+        "offered": "Offered price",
+        "customerData": "Customer details",
+        "name": "Name",
+        "phone": "Mobile number",
+        "address": "Address",
+        "pieces": "{count} pcs"
+      },
+      "offer": {
+        "requestDate": "Request date:",
+        "quantity": "Qty: {count}",
+        "unavailable": "I don't have this quantity right now",
+        "priceTitle": "Price for the quantity",
+        "priceLabel": "Price for the quantity in riyals",
+        "priceRequired": "Enter the price",
+        "submit": "Confirm and send",
+        "sentTitle": "Your offer was sent to the customer",
+        "declinedTitle": "The customer was told the quantity isn't available",
+        "backToQuotes": "Back to quotations",
+        "notFound": "Quotation request not found",
+        "home": "Home",
+        "items": "Requested parts"
+      }
+    },
+    "finance": {
+      "label": "Balance & transactions",
+      "transactions": "Transactions",
+      "downloadExcel": "Download Excel",
+      "sortBy": "Sort by",
+      "sort": {
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "amountDesc": "Amount: high to low",
+        "amountAsc": "Amount: low to high"
+      },
+      "empty": "No transactions",
+      "noNote": "None",
+      "columns": {
+        "reference": "No.",
+        "amount": "Amount",
+        "type": "Transaction",
+        "date": "Date",
+        "note": "Notes",
+        "status": "Status"
+      },
+      "types": {
+        "partsSale": "Spare parts sale",
+        "returns": "Returns",
+        "platformFee": "Platform commission",
+        "cardFee": "Card payment fee",
+        "withdrawal": "Withdrawal"
+      },
+      "statuses": {
+        "pending": "Pending",
+        "deducted": "Deducted",
+        "accepted": "Accepted"
+      },
+      "balance": {
+        "label": "Balance summary",
+        "total": "Total balance",
+        "withdrawable": "Withdrawable balance",
+        "pending": "Pending balance",
+        "withdraw": "Request withdrawal",
+        "withdrawSent": "Request sent",
+        "pendingHint": "Released once the delivery and return period has passed",
+        "pendingHintLabel": "About the pending balance"
+      },
+      "invoices": {
+        "title": "Invoices",
+        "empty": "No invoices",
+        "view": "View",
+        "download": "Download",
+        "detailsTitle": "Invoice details",
+        "columns": {
+          "orderNumber": "Order no.",
+          "amount": "Amount",
+          "customer": "Customer",
+          "date": "Date",
+          "actions": "Actions"
+        }
+      }
+    },
+    "home": {
+      "orders": "Orders",
+      "search": "Search",
+      "sortBy": "Sort by",
+      "sort": {
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "highest": "Highest value"
+      },
+      "columns": {
+        "number": "Order no.",
+        "customer": "Customer",
+        "date": "Order date",
+        "total": "Order total",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "view": "View",
+      "cancel": "Cancel",
+      "empty": "No orders yet",
+      "status": {
+        "awaitingResponse": "Awaiting your reply",
+        "awaitingPayment": "Awaiting payment",
+        "awaitingTransferConfirmation": "Awaiting transfer confirmation",
+        "paidReadyToShip": "Paid, ready to ship",
+        "inDeliveryPeriod": "In delivery period",
+        "inReturnPeriod": "In return period",
+        "returnRequested": "Return requested",
+        "returned": "Returned",
+        "returnRejected": "Return rejected",
+        "cancelled": "Cancelled"
+      },
+      "details": {
+        "title": "Order details",
+        "reference": "Order no.:",
+        "date": "Order date:",
+        "items": "Items",
+        "pieces": "{count} pcs",
+        "total": "Total:",
+        "customer": "Customer details",
+        "name": "Name",
+        "phone": "Mobile",
+        "address": "Address",
+        "hiddenCustomer": "Details appear once the order is paid"
+      },
+      "welcome": {
+        "title": "Add your spare parts now",
+        "action": "Add spare parts"
+      },
+      "pendingInfo": "Balance held until the return period ends"
+    },
+    "products": {
+      "addTitle": "Add spare parts",
+      "addFromCatalog": "Add from catalog",
+      "addManual": "Add manually",
+      "addExcel": "Add from Excel",
+      "listTitle": "Spare parts",
+      "search": "Search parts",
+      "sortBy": "Sort by",
+      "sort": {
+        "newest": "Newest",
+        "priceAsc": "Lowest price",
+        "priceDesc": "Highest price"
+      },
+      "columns": {
+        "partNumber": "Part number",
+        "name": "Part name",
+        "type": "Type",
+        "price": "Part price",
+        "controls": "Actions"
+      },
+      "carBrand": "Car brand",
+      "namePlaceholder": "Isuzu pickup fender 19/23 original",
+      "edit": "Edit",
+      "manageAlternatives": "Manage alternatives",
+      "empty": "No spare parts yet",
+      "delete": {
+        "label": "Delete part {part}",
+        "title": "Delete this product?",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "back": "Back",
+      "add": "Add",
+      "save": "Save",
+      "newTitle": "Add a new part",
+      "editTitle": "Edit part",
+      "newAlternativeTitle": "Add a new alternative",
+      "addedSuccess": "Added successfully",
+      "savedSuccess": "Saved successfully",
+      "catalogSearch": "Search the catalog",
+      "catalogPlaceholder": "Search by part number or name",
+      "selectedCount": "{count} parts selected",
+      "excel": {
+        "title": "Upload EXCEL file",
+        "pick": "Upload file",
+        "invalidType": "Choose an Excel or CSV file",
+        "required": "Upload an Excel file"
+      },
+      "excelReviewTitle": "Review Excel results",
+      "excelCount": "You added {count} parts",
+      "confirmAdd": "Confirm and add",
+      "mainPart": "Main part",
+      "alternatives": "Alternatives",
+      "noAlternatives": "No alternatives for this part yet",
+      "addAnotherAlternative": "Add another alternative",
+      "addMethod": "How to add",
+      "errors": {
+        "partNumber": "Enter the part number",
+        "name": "Enter the part name",
+        "origin": "Choose the type",
+        "brand": "Choose the car brand",
+        "price": "Enter a valid price",
+        "selectOne": "Select at least one part",
+        "prices": "Enter a price for every selected part"
+      }
     }
   },
   "pageTitles": {

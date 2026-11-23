@@ -15,6 +15,242 @@
       "sales": "اجمالي المبيعات",
       "withdrawable": "رصيد قابل للسحب",
       "pending": "رصيد معلق"
+    },
+    "quotes": {
+      "statsLabel": "ملخص عروض الاسعار",
+      "stats": {
+        "sent": "العروض المقدمه",
+        "accepted": "العروض المقبوله",
+        "rejected": "عروض غير مقبولة"
+      },
+      "listTitle": "العروض",
+      "sort": {
+        "label": "ترتيب حسب",
+        "placeholder": "اختر",
+        "newest": "الاحدث",
+        "oldest": "الاقدم",
+        "priceHigh": "الاعلى سعرا",
+        "priceLow": "الاقل سعرا"
+      },
+      "columns": {
+        "number": "رقم",
+        "customer": "العميل",
+        "date": "تاريخ العرض",
+        "offer": "العرض المقدم",
+        "status": "الحالة",
+        "actions": "التحكم"
+      },
+      "view": "عرض",
+      "viewQuote": "عرض الطلب رقم {number}",
+      "empty": "لا توجد طلبات عروض اسعار حاليا",
+      "status": {
+        "awaitingOffer": "بانتظار عرضك",
+        "offerSent": "تم ارسال العرض",
+        "awaitingPayment": "بانتظار الدفع",
+        "accepted": "تم قبول عرضك",
+        "approved": "مقبول",
+        "closed": "مغلق"
+      },
+      "details": {
+        "title": "تفاصيل العرض",
+        "customerRequests": "طلبات العميل",
+        "offered": "العرض المقدم",
+        "customerData": "بيانات العميل",
+        "name": "الاسم",
+        "phone": "رقم الجوال",
+        "address": "العنوان",
+        "pieces": "{count} قطع"
+      },
+      "offer": {
+        "requestDate": "تاريخ الطلب:",
+        "quantity": "عدد: {count}",
+        "unavailable": "الكمية غير متوفره لدي حاليا",
+        "priceTitle": "تحديد سعر الكمية",
+        "priceLabel": "سعر الكمية بالريال",
+        "priceRequired": "ادخل سعر الكمية",
+        "submit": "تأكيد وارسال",
+        "sentTitle": "تم ارسال العرض للعميل",
+        "declinedTitle": "تم ابلاغ العميل بعدم توفر الكمية",
+        "backToQuotes": "العودة لعروض الاسعار",
+        "notFound": "طلب عرض السعر غير موجود",
+        "home": "الصفحة الرئيسية",
+        "items": "القطع المطلوبة"
+      }
+    },
+    "finance": {
+      "label": "الرصيد والمعاملات",
+      "transactions": "المعاملات",
+      "downloadExcel": "تحميل Excel",
+      "sortBy": "ترتيب حسب",
+      "sort": {
+        "newest": "الأحدث",
+        "oldest": "الأقدم",
+        "amountDesc": "المبلغ: الأعلى",
+        "amountAsc": "المبلغ: الأقل"
+      },
+      "empty": "لا توجد معاملات",
+      "noNote": "لا يوجد",
+      "columns": {
+        "reference": "رقم",
+        "amount": "المبلغ",
+        "type": "المعاملة",
+        "date": "التاريخ",
+        "note": "ملاحظات",
+        "status": "الحالة"
+      },
+      "types": {
+        "partsSale": "بيع قطع غيار",
+        "returns": "مرتجعات",
+        "platformFee": "خصم عمولة المنصة",
+        "cardFee": "خصم رسوم بطاقة الدفع",
+        "withdrawal": "سحب من الرصيد"
+      },
+      "statuses": {
+        "pending": "بالانتظار",
+        "deducted": "تم الخصم",
+        "accepted": "مقبول"
+      },
+      "balance": {
+        "label": "ملخص الرصيد",
+        "total": "اجمالي الرصيد",
+        "withdrawable": "رصيد قابل للسحب",
+        "pending": "رصيد معلق",
+        "withdraw": "طلب سحب",
+        "withdrawSent": "تم ارسال الطلب",
+        "pendingHint": "سيتم فك الحظر عنه بعد مرور مدة التسليم والارجاع",
+        "pendingHintLabel": "عن الرصيد المعلق"
+      },
+      "invoices": {
+        "title": "الفواتير",
+        "empty": "لا توجد فواتير",
+        "view": "عرض",
+        "download": "تحميل",
+        "detailsTitle": "تفاصيل الفاتورة",
+        "columns": {
+          "orderNumber": "رقم الطلب",
+          "amount": "المبلغ",
+          "customer": "العميل",
+          "date": "التاريخ",
+          "actions": "التحكم"
+        }
+      }
+    },
+    "home": {
+      "orders": "الطلبات",
+      "search": "البحث",
+      "sortBy": "ترتيب حسب",
+      "sort": {
+        "newest": "الأحدث",
+        "oldest": "الأقدم",
+        "highest": "الأعلى قيمة"
+      },
+      "columns": {
+        "number": "رقم الطلب",
+        "customer": "العميل",
+        "date": "تاريخ الطلب",
+        "total": "اجمالي الطلب",
+        "status": "الحالة",
+        "actions": "التحكم"
+      },
+      "view": "عرض",
+      "cancel": "الغاء",
+      "empty": "لا توجد طلبات",
+      "status": {
+        "awaitingResponse": "بانتظار ردك",
+        "awaitingPayment": "بانتظار الدفع",
+        "awaitingTransferConfirmation": "بانتظار تأكيد التحويل",
+        "paidReadyToShip": "مدفوع وجاهز للشحن",
+        "inDeliveryPeriod": "في مدة الاستلام",
+        "inReturnPeriod": "في مدة الارجاع",
+        "returnRequested": "عليه طلب ارجاع",
+        "returned": "مرتجع",
+        "returnRejected": "ارجاع مرفوض",
+        "cancelled": "تم الالغاء"
+      },
+      "details": {
+        "title": "تفاصيل الطلب",
+        "reference": "رقم الطلب:",
+        "date": "تاريخ الطلب:",
+        "items": "الطلبات",
+        "pieces": "{count} قطع",
+        "total": "الاجمالي:",
+        "customer": "بيانات العميل",
+        "name": "الاسم",
+        "phone": "رقم الجوال",
+        "address": "العنوان",
+        "hiddenCustomer": "سيتم اظهار البيانات بعد اتمام الدفع"
+      },
+      "welcome": {
+        "title": "قم بإضافة قطع الغيار الخاصه بك الآن",
+        "action": "اضافة قطع الغيار"
+      },
+      "pendingInfo": "رصيد بانتظار انتهاء مدة الاسترجاع"
+    },
+    "products": {
+      "addTitle": "اضافة قطع غيار",
+      "addFromCatalog": "اضافة من الكتالوج",
+      "addManual": "اضافة بشكل يدوي",
+      "addExcel": "اضافة Excel",
+      "listTitle": "قطع الغيار",
+      "search": "البحث عن قطع",
+      "sortBy": "ترتيب حسب",
+      "sort": {
+        "newest": "الأحدث",
+        "priceAsc": "الاقل سعرا",
+        "priceDesc": "الاعلى سعرا"
+      },
+      "columns": {
+        "partNumber": "رقم القطعة",
+        "name": "اسم القطعة",
+        "type": "النوع",
+        "price": "سعر القطعة",
+        "controls": "التحكم"
+      },
+      "carBrand": "ماركة السيارة",
+      "namePlaceholder": "رفرف ونيت ايسوزو19/23أصلي",
+      "edit": "تعديل",
+      "manageAlternatives": "ادارة البدائل",
+      "empty": "لا توجد قطع غيار",
+      "delete": {
+        "label": "حذف القطعة {part}",
+        "title": "هل تريد حذف المنتج؟",
+        "yes": "نعم",
+        "no": "لا"
+      },
+      "back": "رجوع",
+      "add": "اضافة",
+      "save": "حفظ",
+      "newTitle": "اضافة قطعة جديدة",
+      "editTitle": "تعديل القطعة",
+      "newAlternativeTitle": "اضافة بديل جديد",
+      "addedSuccess": "تم الاضافة بنجاح",
+      "savedSuccess": "تم الحفظ بنجاح",
+      "catalogSearch": "البحث في الكتالوج",
+      "catalogPlaceholder": "ابحث برقم القطعة او اسمها",
+      "selectedCount": "تم تحديد {count} قطع",
+      "excel": {
+        "title": "رفع ملف EXCEL",
+        "pick": "رفع الملف",
+        "invalidType": "يرجى اختيار ملف Excel أو CSV",
+        "required": "يرجى رفع ملف Excel"
+      },
+      "excelReviewTitle": "مراجعة نتائج Excel",
+      "excelCount": "قمت بإضافة {count} قطعة",
+      "confirmAdd": "تأكيد واضافة",
+      "mainPart": "القطعة الاساسية",
+      "alternatives": "البدائل",
+      "noAlternatives": "لا توجد بدائل لهذه القطعة بعد",
+      "addAnotherAlternative": "اضافة بديل اخر",
+      "addMethod": "طريقة الاضافة",
+      "errors": {
+        "partNumber": "يرجى إدخال رقم القطعة",
+        "name": "يرجى إدخال اسم القطعة",
+        "origin": "يرجى اختيار النوع",
+        "brand": "يرجى اختيار ماركة السيارة",
+        "price": "يرجى إدخال سعر صحيح",
+        "selectOne": "يرجى تحديد قطعة واحدة على الأقل",
+        "prices": "يرجى إدخال سعر لكل قطعة محددة"
+      }
     }
   },
   "pageTitles": {
@@ -23,7 +259,7 @@
     "dashboardCatalog": "الكتالوج",
     "dashboardProductNew": "اضافة قطع غيار",
     "dashboardExcelReview": "مراجعة نتائج Excel",
-    "dashboardQuotes": "عروض الاسعار",
+    "dashboardQuotes": "عروض الأسعار",
     "dashboardQuoteOffer": "اضافة عرض سعر",
     "dashboardBalance": "الرصيد والمعاملات",
     "dashboardInvoices": "الفواتير",
