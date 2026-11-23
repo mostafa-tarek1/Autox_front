@@ -62,7 +62,7 @@ function isSelected(brandId: string, origin: PartOrigin): boolean {
         <li v-for="brand in filteredBrands" :key="brand.id">
           <button
             type="button"
-            class="flex h-[64.6px] w-full items-center justify-between gap-3.5 border-b-[0.6px] border-line px-2 py-3 transition-colors hover:bg-surface"
+            class="group flex h-[64.6px] w-full items-center justify-between gap-3.5 border-b-[0.6px] border-line px-2 py-3 transition-colors hover:border-transparent hover:bg-surface"
             :class="expandedId === brand.id && 'border-transparent bg-surface'"
             :aria-expanded="expandedId === brand.id"
             @click="toggle(brand.id)"
@@ -77,7 +77,11 @@ function isSelected(brandId: string, origin: PartOrigin): boolean {
                   class="max-h-8 object-contain"
                 />
               </span>
-              <span class="text-body-md text-secondary">{{ localized(brand.name) }}</span>
+              <span
+                class="text-body-md transition-colors group-hover:text-primary"
+                :class="expandedId === brand.id ? 'text-primary' : 'text-secondary'"
+                >{{ localized(brand.name) }}</span
+              >
             </span>
             <span class="flex items-center gap-2">
               <span class="text-body-sm text-primary">{{ brand.fromYear }}</span>
@@ -97,14 +101,18 @@ function isSelected(brandId: string, origin: PartOrigin): boolean {
                 :class="
                   isSelected(brand.id, option.origin)
                     ? 'border-accent'
-                    : 'border-transparent hover:border-line'
+                    : 'group border-transparent hover:border-accent'
                 "
                 :aria-pressed="isSelected(brand.id, option.origin)"
                 @click="selection = { brandId: brand.id, origin: option.origin }"
               >
                 <span
                   class="text-h4"
-                  :class="isSelected(brand.id, option.origin) ? 'text-primary' : 'text-muted'"
+                  :class="
+                    isSelected(brand.id, option.origin)
+                      ? 'text-primary'
+                      : 'text-muted group-hover:text-primary'
+                  "
                 >
                   {{ t(`catalog.origins.${option.origin}`) }}
                 </span>

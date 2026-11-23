@@ -64,7 +64,7 @@ const grid = 'grid grid-cols-[98px_175px_178px_175px_194px_112px] gap-x-10 px-4'
             :key="row.id"
             :class="[
               grid,
-              'items-center text-body-md text-secondary',
+              'items-center text-body-md text-secondary transition-colors hover:bg-surface',
               index === transactions.length - 1 ? 'h-16' : 'h-[65px] border-b border-line',
             ]"
           >

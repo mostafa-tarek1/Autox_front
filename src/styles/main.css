@@ -69,6 +69,8 @@
   /* Effects */
   --shadow-card: 0 4px 24px rgb(0 0 0 / 0.04);
   --shadow-soft: 0 4px 16px rgb(0 0 0 / 0.08);
+  /* Side panels move in from the inline start over 0.3s (Figma MOVE_IN, ease-out). */
+  --animate-panel-in: panel-in 0.3s ease-out;
 
   /* Layout */
   --container-page: 75rem; /* 1200px content column at the 1440px design width */
@@ -119,5 +121,11 @@
   @supports not selector(::-webkit-scrollbar) {
     scrollbar-width: thin;
     scrollbar-color: var(--color-accent) var(--color-surface);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    transform: translateX(var(--panel-from, 100%));
   }
 }

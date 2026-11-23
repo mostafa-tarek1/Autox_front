@@ -76,7 +76,7 @@ const action =
             :key="invoice.id"
             :class="[
               grid,
-              'items-center text-body-md text-secondary',
+              'items-center text-body-md text-secondary transition-colors hover:bg-surface',
               index === invoices.length - 1 ? 'h-16' : 'h-[65px] border-b border-line',
             ]"
           >

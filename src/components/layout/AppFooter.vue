@@ -58,7 +58,7 @@ const socials = [
               :aria-label="social.name"
               target="_blank"
               rel="noopener noreferrer"
-              class="grid size-9 place-items-center rounded-xl bg-primary p-2 text-accent transition hover:brightness-125"
+              class="grid size-9 place-items-center rounded-xl bg-primary p-2 text-accent ring-accent transition hover:ring-1 hover:ring-inset"
             >
               <component :is="social.icon" class="size-5" aria-hidden="true" />
             </a>

@@ -81,7 +81,7 @@ onKeyStroke('Escape', () => open.value && close())
 <template>
   <Teleport to="body">
     <Transition
-      enter-active-class="transition duration-200"
+      enter-active-class="transition duration-300 ease-out"
       enter-from-class="opacity-0"
       leave-active-class="transition duration-150"
       leave-to-class="opacity-0"
@@ -102,7 +102,9 @@ onKeyStroke('Escape', () => open.value && close())
           :aria-labelledby="ariaLabelledBy"
           class="relative w-full shadow-card outline-none"
           :class="[
-            placement === 'side' ? 'min-h-full' : 'my-auto',
+            placement === 'side'
+              ? 'min-h-full animate-panel-in motion-reduce:animate-none ltr:[--panel-from:-100%]'
+              : 'my-auto',
             radiusClass,
             panelClass,
             width,

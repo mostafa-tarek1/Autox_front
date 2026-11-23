@@ -4,7 +4,6 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 import SearchIcon from '@/assets/icons/search-01--stroke-standard.svg'
-import AddAlternativeModal from '@/components/dashboard/products/AddAlternativeModal.vue'
 import AddProductsCard from '@/components/dashboard/products/AddProductsCard.vue'
 import AlternativesDrawer from '@/components/dashboard/products/AlternativesDrawer.vue'
 import ConfirmDeleteModal from '@/components/dashboard/products/ConfirmDeleteModal.vue'
@@ -32,7 +31,6 @@ const isExcelOpen = ref(false)
 const deleteId = ref<string | null>(null)
 const alternativesId = ref<string | null>(null)
 const isAlternativesOpen = ref(false)
-const isAddAlternativeOpen = ref(false)
 
 const filtered = computed(() => {
   const term = query.value.trim().toLowerCase()
@@ -128,12 +126,7 @@ function onExcelUploaded(file: File): void {
     <AlternativesDrawer
       v-model:open="isAlternativesOpen"
       :product-id="alternativesId"
-      @add-alternative="isAddAlternativeOpen = true"
-    />
-    <AddAlternativeModal
-      v-model:open="isAddAlternativeOpen"
-      @manual="addAlternative('manual')"
-      @catalog="addAlternative('catalog')"
+      @add-alternative="addAlternative"
     />
   </div>
 </template>

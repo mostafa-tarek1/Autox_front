@@ -10,7 +10,7 @@ const selected = defineModel<string | null>({ default: null })
 <template>
   <label
     class="flex min-h-[62px] cursor-pointer items-center gap-2 rounded-xl border bg-surface px-6 py-4 transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent"
-    :class="selected === value ? 'border-accent' : 'border-line hover:border-accent/60'"
+    :class="selected === value ? 'border-accent' : 'border-line hover:border-accent'"
   >
     <input v-model="selected" type="radio" :name="name" :value="value" class="sr-only" />
     <span

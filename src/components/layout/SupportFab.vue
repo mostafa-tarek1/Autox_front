@@ -11,13 +11,35 @@ const isOpen = ref(false)
 
 /** Placeholder contact details until the backend settings are wired. */
 const actions = [
-  { key: 'whatsapp', href: 'https://wa.me/966500000000', icon: WhatsappIcon },
   { key: 'call', href: 'tel:+966500000000', icon: CallingIcon },
+  { key: 'whatsapp', href: 'https://wa.me/966500000000', icon: WhatsappIcon },
 ] as const
+
+/** The design expands the button on hover; touch screens keep the tap toggle. */
+function openOnHover(event: PointerEvent): void {
+  if (event.pointerType === 'mouse') {
+    isOpen.value = true
+  }
+}
+
+/** A mouse click keeps the hover-opened menu open; taps and the keyboard toggle it. */
+function toggle(event: MouseEvent): void {
+  isOpen.value = (event as PointerEvent).pointerType === 'mouse' ? true : !isOpen.value
+}
+
+function closeOnHover(event: PointerEvent): void {
+  if (event.pointerType === 'mouse') {
+    isOpen.value = false
+  }
+}
 </script>
 
 <template>
-  <div class="fixed right-4 bottom-6 z-30 flex flex-col items-center gap-2 xl:right-8">
+  <div
+    class="fixed right-4 bottom-6 z-30 flex flex-col items-center gap-2 xl:right-8"
+    @pointerenter="openOnHover"
+    @pointerleave="closeOnHover"
+  >
     <Transition
       enter-active-class="transition duration-200"
       enter-from-class="opacity-0 translate-y-2"
@@ -45,7 +67,7 @@ const actions = [
       :aria-label="t('support.open')"
       :aria-expanded="isOpen"
       aria-controls="support-actions"
-      @click="isOpen = !isOpen"
+      @click="toggle"
     >
       <SupportIcon class="size-6" aria-hidden="true" />
     </button>

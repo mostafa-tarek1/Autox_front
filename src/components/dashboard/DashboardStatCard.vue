@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 
-import AlertIcon from '@/assets/icons/alert-circle--stroke-rounded.svg'
+import InfoHint from '@/components/account/InfoHint.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
 
 /**
@@ -16,6 +16,8 @@ withDefaults(
     currency?: boolean
     iconClass?: string
     hint?: string
+    /** Accessible name of the hint button; defaults to the tile label. */
+    hintLabel?: string
   }>(),
   { currency: false, iconClass: 'text-primary' },
 )
@@ -41,14 +43,11 @@ withDefaults(
       <span v-else class="text-h3 text-ink tabular-nums sm:text-h2">{{ value }}</span>
       <span class="text-body-sm text-ink">{{ label }}</span>
     </span>
-    <span
+    <InfoHint
       v-if="hint"
-      class="grid size-6 shrink-0 place-items-center self-center rounded-full bg-surface p-1 text-orange"
-      role="img"
-      :aria-label="hint"
-      :title="hint"
-    >
-      <AlertIcon class="size-4" aria-hidden="true" />
-    </span>
+      class="self-center [&_button]:text-orange"
+      :text="hint"
+      :label="hintLabel ?? label"
+    />
   </div>
 </template>

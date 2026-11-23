@@ -44,7 +44,11 @@ const sizeClasses: Record<StepperVariant, Record<StepperSize, string>> = {
 }
 
 const background = computed(() =>
-  props.variant === 'highlight' && quantity.value > props.min ? 'bg-accent' : 'bg-surface',
+  props.variant === 'highlight'
+    ? quantity.value > props.min
+      ? 'bg-accent'
+      : `bg-surface ${props.disabled ? '' : 'hover:bg-accent'}`
+    : 'bg-surface',
 )
 
 function step(delta: number): void {

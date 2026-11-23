@@ -5,7 +5,7 @@ import AlertIcon from '@/assets/icons/alert-circle--stroke-rounded.svg'
 
 /**
  * Small "i" button that shows a short explanation on hover, focus or tap
- * (Figma "info" tooltip 885:15936).
+ * (Figma "info" tooltips 885:15936 / 799:8546: a white bubble 6px under the icon).
  */
 defineProps<{ text: string; label: string }>()
 const isOpen = ref(false)
@@ -32,7 +32,7 @@ const tooltipId = useId()
     <span
       :id="tooltipId"
       role="tooltip"
-      class="absolute end-0 bottom-full z-20 mb-2 w-max max-w-[220px] rounded-lg border border-line bg-white px-3 py-2 text-body-sm text-secondary shadow-soft"
+      class="absolute end-0 top-full z-20 mt-1.5 w-max max-w-[260px] rounded-lg border border-line bg-white px-3 py-2 text-body-sm text-secondary shadow-soft"
       :class="isOpen ? 'block' : 'hidden'"
     >
       {{ text }}

@@ -132,7 +132,11 @@ const grid = 'grid grid-cols-[98px_175px_174px_199px_112px_158px] items-center g
             v-for="(order, index) in visibleOrders"
             :key="order.id"
             role="row"
-            :class="[grid, 'h-[65px]', index < visibleOrders.length - 1 && 'border-b border-line']"
+            :class="[
+              grid,
+              'h-[65px] transition-colors hover:bg-surface',
+              index < visibleOrders.length - 1 && 'border-b border-line',
+            ]"
           >
             <td role="cell" class="text-body-md text-secondary">#{{ order.number }}</td>
             <td role="cell" class="truncate text-body-md text-secondary">

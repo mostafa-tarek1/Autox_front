@@ -43,7 +43,9 @@ const cardClass = computed(() => {
   if (isAlternative.value) {
     return 'border border-line shadow-card'
   }
-  return props.product.highlight === 'cheapest' ? 'ring-1 ring-accent' : ''
+  return props.product.highlight === 'cheapest'
+    ? 'ring-1 ring-accent'
+    : 'ring-line transition-shadow hover:shadow-soft hover:ring-[0.5px]'
 })
 </script>
 
