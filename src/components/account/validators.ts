@@ -41,6 +41,20 @@ export const vatNumber: Validator = (value) =>
 export const unifiedNumber: Validator = (value) =>
   /^7\d{9}$/.test(value.trim()) ? null : { key: 'account.validation.unifiedNumber' }
 
+/** Removes the spaces people type or paste into an IBAN and upper-cases it. */
+export function normalizeIban(value: string): string {
+  return value.replace(/\s/g, '').toUpperCase()
+}
+
+/** Groups an IBAN in blocks of four for display: SA00 0000 0000 ... */
+export function formatIban(value: string): string {
+  return normalizeIban(value).replace(/(.{4})(?=.)/g, '$1 ')
+}
+
+/** Saudi IBAN: SA followed by 22 digits (spaces allowed). */
+export const saudiIban: Validator = (value) =>
+  /^SA\d{22}$/.test(normalizeIban(value)) ? null : { key: 'account.validation.iban' }
+
 /** Runs validators in order and returns the first failure. */
 export function validate(value: string, validators: Validator[]): ValidationError | null {
   for (const validator of validators) {

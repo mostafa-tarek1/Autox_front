@@ -1,84 +1,84 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 import AlertIcon from '@/assets/icons/alert-circle--stroke-rounded.svg'
-import BankIcon from '@/assets/icons/money-04--duotone-rounded.svg'
+import BankIcon from '@/assets/icons/bank--duotone-rounded.svg'
+import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
 import madaLogo from '@/assets/images/shop/mada.webp'
-import mastercardLogo from '@/assets/images/shop/mastercard.webp'
 import tabbyLogo from '@/assets/images/shop/tabby.webp'
 import tamaraLogo from '@/assets/images/shop/tamara.webp'
 import visaLogo from '@/assets/images/shop/visa.webp'
 import CardPaymentDialog from '@/components/shop/CardPaymentDialog.vue'
 import CheckoutLayout from '@/components/shop/CheckoutLayout.vue'
-import InstallmentOffers from '@/components/shop/InstallmentOffers.vue'
 import OrderSummary from '@/components/shop/OrderSummary.vue'
 import PaymentMethodOption from '@/components/shop/PaymentMethodOption.vue'
+import ResultDialog from '@/components/shop/ResultDialog.vue'
 import ShopCard from '@/components/shop/ShopCard.vue'
 import type { PaymentMethod } from '@/components/shop/types'
-import BaseButton from '@/components/ui/BaseButton.vue'
-import { useCartStore } from '@/stores/cart'
+import WalletPayDialog from '@/components/shop/WalletPayDialog.vue'
+import { paymentSummary, walletBalance } from '@/mocks/shop'
 
 const { t } = useI18n()
 const router = useRouter()
-const cart = useCartStore()
-const { paymentMethod, itemsCount, subtotal, vat, total } = storeToRefs(cart)
-const isCardDialogOpen = ref(false)
 
+/** Payment of an order whose availability the suppliers confirmed (Figma 622:9608). */
 const methods: Array<{ value: PaymentMethod; logo?: string }> = [
-  { value: 'visa', logo: visaLogo },
-  { value: 'mastercard', logo: mastercardLogo },
+  { value: 'wallet' },
+  { value: 'card', logo: visaLogo },
   { value: 'mada', logo: madaLogo },
   { value: 'tabby', logo: tabbyLogo },
   { value: 'tamara', logo: tamaraLogo },
   { value: 'bankTransfer' },
 ]
 
-const selected = computed<string | null>({
-  get: () => paymentMethod.value,
-  set: (value) => (paymentMethod.value = value as PaymentMethod),
-})
+const selected = ref<string | null>(null)
+const isCardDialogOpen = ref(false)
+const isWalletDialogOpen = ref(false)
+const isSentDialogOpen = ref(false)
 
-const isInstallment = computed(
-  () => paymentMethod.value === 'tabby' || paymentMethod.value === 'tamara',
-)
-
-/**
- * The design has no "continue" button: picking a card opens the card dialog and bank transfer
- * goes to its page. Installment providers show their offers first, then continue.
- */
-watch(paymentMethod, (method) => {
-  if (method && method !== 'tabby' && method !== 'tamara') {
-    proceed()
-  }
-})
-
-/** Lowest monthly instalment shown in the tabby / tamara offer (24 months). */
-const monthlyFrom = computed(() => Math.ceil(total.value / 24))
-
-function proceed(): void {
-  switch (paymentMethod.value) {
-    case 'bankTransfer':
-      router.push({ name: 'checkout-bank-transfer' })
+/** The design has no "continue" button: picking a method opens its next step straight away. */
+watch(selected, (method) => {
+  switch (method as PaymentMethod | null) {
+    case 'wallet':
+      isWalletDialogOpen.value = true
+      break
+    case 'card':
+    case 'mada':
+      isCardDialogOpen.value = true
       break
     case 'tabby':
     case 'tamara':
-      // Real flow redirects to the provider's hosted checkout.
-      router.push({ name: 'checkout-confirmation' })
+      // Real flow redirects to the provider's hosted checkout and comes back here.
+      isSentDialogOpen.value = true
       break
-    case null:
+    case 'bankTransfer':
+      router.push({ name: 'checkout-bank-transfer' })
       break
-    default:
-      isCardDialogOpen.value = true
   }
+})
+
+/** Closing a dialog clears the choice so the same method can be picked again. */
+watch([isCardDialogOpen, isWalletDialogOpen, isSentDialogOpen], (openStates) => {
+  if (openStates.every((isOpen) => !isOpen)) {
+    selected.value = null
+  }
+})
+
+function onPaid(): void {
+  isSentDialogOpen.value = true
+}
+
+function trackOrder(): void {
+  isSentDialogOpen.value = false
+  router.push({ name: 'orders' })
 }
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.payment.title')" step="payment" :strip-gap="167">
-    <ShopCard body-class="flex flex-col gap-8 px-6 pt-4 pb-6" header-class="py-3.5">
+  <CheckoutLayout :title="t('shop.payment.title')">
+    <ShopCard body-class="flex flex-col gap-4 px-6 pt-4 pb-6" header-class="py-3.5">
       <template #header>
         <h2 id="payment-methods-title" class="text-h3 text-black">
           {{ t('shop.payment.chooseMethod') }}
@@ -99,22 +99,30 @@ function proceed(): void {
           :logo="method.logo"
           :label="t(`shop.payment.methods.${method.value}`)"
         >
-          <template #icon><BankIcon class="size-5 text-primary" aria-hidden="true" /></template>
+          <template #icon>
+            <WalletIcon v-if="method.value === 'wallet'" class="size-7" aria-hidden="true" />
+            <BankIcon v-else class="size-7" aria-hidden="true" />
+          </template>
         </PaymentMethodOption>
       </fieldset>
-
-      <template v-if="isInstallment">
-        <InstallmentOffers :monthly-from="monthlyFrom" />
-        <BaseButton class="self-start px-[72px]" @click="proceed">
-          {{ t('shop.payment.continue') }}
-        </BaseButton>
-      </template>
     </ShopCard>
 
     <template #aside>
-      <OrderSummary :count="itemsCount" :subtotal="subtotal" :vat="vat" :total="total" />
+      <OrderSummary v-bind="paymentSummary" />
     </template>
   </CheckoutLayout>
 
   <CardPaymentDialog v-model:open="isCardDialogOpen" />
+  <WalletPayDialog
+    v-model:open="isWalletDialogOpen"
+    :balance="walletBalance"
+    :amount="paymentSummary.total"
+    @paid="onPaid"
+  />
+  <ResultDialog
+    v-model:open="isSentDialogOpen"
+    :message="t('shop.cart.purchaseSent')"
+    :action-label="t('shop.cart.trackOrder')"
+    @action="trackOrder"
+  />
 </template>

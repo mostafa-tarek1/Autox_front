@@ -5,7 +5,6 @@ import BorderIcon from '@/assets/icons/border-full--stroke-rounded.svg'
 import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg'
 import HelpIcon from '@/assets/icons/help-circle--stroke-rounded.svg'
 
-import OrderActionButton from './OrderActionButton.vue'
 import OrderMeta from './OrderMeta.vue'
 import OrderStatusChip from './OrderStatusChip.vue'
 import type { ReturnRequest } from './types'
@@ -28,12 +27,6 @@ const { t } = useI18n()
           request.date
         }}</OrderMeta>
       </div>
-      <OrderActionButton
-        tone="outline"
-        :to="{ name: 'order-details', params: { id: request.orderId } }"
-      >
-        {{ t('orders.actions.details') }}
-      </OrderActionButton>
     </header>
 
     <div

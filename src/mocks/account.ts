@@ -29,15 +29,39 @@ export interface ShippingAddress {
   id: string
   label: string
   address: string
+  isDefault: boolean
 }
 
-export type WalletOperation = 'withdraw' | 'payment' | 'deposit'
+export interface BankAccount {
+  id: string
+  bankId: string
+  beneficiary: string
+  /** IBAN without spaces, e.g. SA0380000000608010167519. */
+  iban: string
+  isDefault: boolean
+}
+
+/** Saudi banks offered in the bank account and withdrawal forms. */
+export const saudiBanks: Array<{ id: string; name: string }> = [
+  { id: 'alrajhi', name: 'مصرف الراجحي' },
+  { id: 'snb', name: 'البنك الأهلي السعودي' },
+  { id: 'riyad', name: 'بنك الرياض' },
+  { id: 'sab', name: 'البنك السعودي الأول' },
+  { id: 'alinma', name: 'مصرف الإنماء' },
+  { id: 'albilad', name: 'بنك البلاد' },
+  { id: 'aljazira', name: 'بنك الجزيرة' },
+  { id: 'anb', name: 'البنك العربي الوطني' },
+]
+
+export type WalletOperation =
+  'walletWithdrawal' | 'returnRefund' | 'cardFee' | 'deposit' | 'purchase' | 'withdrawal'
 export type WalletStatus = 'accepted' | 'rejected' | 'pending'
 
 export interface WalletTransaction {
   id: string
   reference: string
   operation: WalletOperation
+  /** Signed: positive credits the wallet, negative debits it. */
   amount: number
   /** ISO date (yyyy-mm-dd). */
   date: string
@@ -66,15 +90,48 @@ export const companyInfo: CompanyInfo = {
 }
 
 export const shippingAddresses: ShippingAddress[] = [
-  { id: 'address-1', label: 'العنوان 1', address: 'حي النرجس, الرياض, المملكة العربية السعودية' },
-  { id: 'address-2', label: 'العنوان 1', address: 'حي النرجس, الرياض, المملكة العربية السعودية' },
+  {
+    id: 'address-1',
+    label: 'العنوان 1',
+    address: 'حي النرجس, الرياض, المملكة العربية السعودية',
+    isDefault: true,
+  },
+  {
+    id: 'address-2',
+    label: 'العنوان 1',
+    address: 'حي النرجس, الرياض, المملكة العربية السعودية',
+    isDefault: false,
+  },
 ]
 
-export const walletBalance = 200_000
+export const bankAccounts: BankAccount[] = [
+  {
+    id: 'bank-1',
+    bankId: 'alrajhi',
+    beneficiary: 'اسم الشركة',
+    iban: 'SA0000000000000000000000',
+    isDefault: true,
+  },
+  {
+    id: 'bank-2',
+    bankId: 'alrajhi',
+    beneficiary: 'اسم الشركة',
+    iban: 'SA0000000000000000000000',
+    isDefault: false,
+  },
+]
+
+/** Wallet balances (Figma "المحفظة"): pending money is under review for a withdrawal request. */
+export const walletBalances = {
+  total: 200_000,
+  pending: 200_000,
+  withdrawable: 200_000,
+}
 
 function transaction(
   index: number,
   operation: WalletOperation,
+  amount: number,
   note: string | null,
   status: WalletStatus = 'accepted',
 ): WalletTransaction {
@@ -82,7 +139,7 @@ function transaction(
     id: `trx-${index}`,
     reference: '#12345',
     operation,
-    amount: 2000,
+    amount,
     date: '2026-10-05',
     note,
     status,
@@ -90,14 +147,14 @@ function transaction(
 }
 
 export const walletTransactions: WalletTransaction[] = [
-  transaction(1, 'withdraw', 'سحب من المحفظة'),
-  transaction(2, 'payment', 'دفع في عملية شراء'),
-  transaction(3, 'deposit', 'ايداع مبلغ من العميل'),
-  transaction(4, 'payment', 'دفع في عملية شراء', 'rejected'),
-  transaction(5, 'payment', 'دفع في عملية شراء'),
-  transaction(6, 'payment', 'دفع في عملية شراء'),
-  transaction(7, 'withdraw', null),
-  transaction(8, 'withdraw', null),
-  transaction(9, 'withdraw', null),
-  transaction(10, 'withdraw', null, 'rejected'),
+  transaction(1, 'walletWithdrawal', -2000, 'سحب من المحفظة'),
+  transaction(2, 'returnRefund', 2000, 'دفع في عملية شراء'),
+  transaction(3, 'returnRefund', 2000, 'ايداع مبلغ من العميل'),
+  transaction(4, 'cardFee', -20, 'دفع في عملية شراء'),
+  transaction(5, 'returnRefund', 2000, 'تم قبول ارجاع المنتج'),
+  transaction(6, 'deposit', 2000, 'دفع في عملية شراء'),
+  transaction(7, 'purchase', -20, null),
+  transaction(8, 'returnRefund', 2000, null),
+  transaction(9, 'walletWithdrawal', -2000, null),
+  transaction(10, 'withdrawal', 2000, null, 'rejected'),
 ]

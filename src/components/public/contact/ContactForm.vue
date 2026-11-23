@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import MailIcon from '@/assets/icons/mail-01--stroke-rounded.svg'
 import SentIcon from '@/assets/icons/sent--stroke-standard.svg'
 import UserIcon from '@/assets/icons/user--stroke-rounded.svg'
+import FileDropzone from '@/components/form/FileDropzone.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { contactSender } from '@/mocks/public'
@@ -13,6 +14,8 @@ const { t } = useI18n()
 
 /** Name and email come prefilled from the signed-in account, as in the design. */
 const form = reactive({ ...contactSender, subject: '', message: '' })
+/** Optional screenshot of the problem. */
+const attachment = ref<File | null>(null)
 const submitted = ref(false)
 const isSending = ref(false)
 const isSent = ref(false)
@@ -49,6 +52,7 @@ async function submit(): Promise<void> {
   isSending.value = false
   isSent.value = true
   Object.assign(form, { subject: '', message: '' })
+  attachment.value = null
   submitted.value = false
 }
 </script>
@@ -58,32 +62,42 @@ async function submit(): Promise<void> {
     <h2 class="text-h2 text-ink">{{ t('public.contact.formTitle') }}</h2>
 
     <div class="flex flex-col gap-5 [&_label]:leading-5">
-      <TextField
-        v-model="form.name"
-        :label="t('public.contact.fields.name')"
-        :placeholder="t('public.contact.placeholders.name')"
-        :icon="UserIcon"
-        :error="errors.name"
-        class="placeholder:text-ink/50!"
-        autocomplete="name"
-      />
-      <TextField
-        v-model="form.email"
-        type="email"
-        :label="t('public.contact.fields.email')"
-        :placeholder="t('public.contact.placeholders.email')"
-        :icon="MailIcon"
-        :error="errors.email"
-        class="placeholder:text-ink/50!"
-        autocomplete="email"
-      />
-      <TextField
-        v-model="form.subject"
-        :label="t('public.contact.fields.subject')"
-        :placeholder="t('public.contact.placeholders.subject')"
-        :error="errors.subject"
-        class="placeholder:text-ink/50!"
-      />
+      <!-- These labels are Plex 400 14/24 ink in the design; the message label keeps the Noto label style. -->
+      <div
+        class="contents [&_label]:font-sans [&_label]:text-body-sm [&_label]:font-normal [&_label]:text-ink"
+      >
+        <TextField
+          v-model="form.name"
+          :label="t('public.contact.fields.name')"
+          :placeholder="t('public.contact.placeholders.name')"
+          :icon="UserIcon"
+          :error="errors.name"
+          class="placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
+          autocomplete="name"
+        />
+        <TextField
+          v-model="form.email"
+          type="email"
+          :label="t('public.contact.fields.email')"
+          :placeholder="t('public.contact.placeholders.email')"
+          :icon="MailIcon"
+          :error="errors.email"
+          class="placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
+          autocomplete="email"
+        />
+        <TextField
+          v-model="form.subject"
+          :label="t('public.contact.fields.subject')"
+          :placeholder="t('public.contact.placeholders.subject')"
+          :error="errors.subject"
+          class="placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
+        />
+        <FileDropzone
+          v-model="attachment"
+          :label="t('public.contact.fields.attachment')"
+          accept=".png,.jpg,.jpeg,.pdf"
+        />
+      </div>
       <TextField
         v-model="form.message"
         multiline
@@ -91,7 +105,7 @@ async function submit(): Promise<void> {
         :label="t('public.contact.fields.message')"
         :placeholder="t('public.contact.placeholders.subject')"
         :error="errors.message"
-        class="h-[97px] placeholder:text-ink/50!"
+        class="h-[97px] placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
       />
 
       <div class="flex flex-wrap items-center gap-4">

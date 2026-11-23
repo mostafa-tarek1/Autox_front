@@ -37,12 +37,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/public/TermsView.vue'),
         meta: { title: 'terms' },
       },
-      {
-        path: 'search/excel',
-        name: 'excel-search',
-        component: () => import('@/views/public/ExcelSearchView.vue'),
-        meta: { title: 'excelSearch', nav: 'home', featureStrip: true },
-      },
     ],
   },
 ]

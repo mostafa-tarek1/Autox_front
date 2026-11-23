@@ -17,7 +17,6 @@ export interface Payment {
 }
 
 export interface PaymentSummary {
-  unpaidInvoices: number
   totalInvoices: number
   pendingAmount: number
   totalPaid: number
@@ -44,7 +43,6 @@ export const providerLogos: Record<InstallmentProvider, string> = {
 }
 
 export const paymentSummary: PaymentSummary = {
-  unpaidInvoices: 3,
   totalInvoices: 18,
   pendingAmount: 8200,
   totalPaid: 200000,

@@ -1,5 +1,9 @@
 {
-  "pageTitles": { "quotes": "Quotation requests" },
+  "pageTitles": {
+    "quotes": "Quotation requests",
+    "quoteRequest": "Request a quote",
+    "quotePayment": "Payment"
+  },
   "quotes": {
     "title": "Quotation requests",
     "offersSubmitted": "{count} offers received",
@@ -12,8 +16,63 @@
     "offersCount": "{count} offers submitted",
     "lowestPrice": "Lowest price",
     "accept": "Accept",
-    "offerAccepted": "Offer from {merchant} accepted",
+    "offerAccepted": "Offer from {supplier} accepted",
     "empty": "You have no quotation requests yet",
-    "searchParts": "Search for parts"
+    "searchParts": "Search for parts",
+    "request": {
+      "title": "Quote requests",
+      "heading": "Enter the number or name of the parts you need and set the quantity",
+      "part": "Part number or name",
+      "partPlaceholder": "Part number",
+      "quantity": "Quantity",
+      "more": "More",
+      "removeRow": "Remove part {index}",
+      "submit": "Send request to suppliers",
+      "success": "Request sent to suppliers",
+      "track": "Track request status",
+      "errors": {
+        "part": "Enter a part number or name"
+      }
+    },
+    "payment": {
+      "title": "Payment",
+      "backToOffers": "Back to offers",
+      "summary": "Order summary",
+      "pieces": "Pieces",
+      "piecesCount": "{count} pieces",
+      "subtotal": "Products price",
+      "vat": "VAT",
+      "total": "Total price",
+      "bankTitle": "Pay by bank transfer",
+      "bankIntro": "After transferring, enter the reference number and attach the transfer receipt",
+      "amountDue": "Amount to transfer",
+      "accountDetails": "Bank account details",
+      "bankName": "Bank name",
+      "beneficiary": "Beneficiary name",
+      "iban": "IBAN",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyLabel": "Copy {field}",
+      "instructionsTitle": "Important instructions",
+      "instructions": [
+        "Make sure the beneficiary name matches before transferring.",
+        "Transfer the full amount due.",
+        "Keep the transfer receipt to confirm the payment.",
+        "Payment is confirmed only after the transfer is reviewed and verified."
+      ],
+      "confirmTitle": "Confirm bank transfer",
+      "reference": "Transfer reference number",
+      "referencePlaceholder": "Enter the transfer reference number",
+      "date": "Transfer date",
+      "receipt": "Transfer receipt",
+      "receiptUpload": "Upload transfer receipt",
+      "submit": "Confirm transfer and send receipt",
+      "success": "Receipt sent; it will be reviewed",
+      "errors": {
+        "reference": "Enter the transfer reference number",
+        "date": "Choose the transfer date",
+        "receipt": "Attach the transfer receipt"
+      }
+    }
   }
 }

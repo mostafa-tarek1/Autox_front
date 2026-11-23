@@ -1,30 +1,37 @@
 <script setup lang="ts">
+import { useId, type Component } from 'vue'
+
 import PriceTag from '@/components/ui/PriceTag.vue'
-import { useI18n } from 'vue-i18n'
 
-import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
-import BaseButton from '@/components/ui/BaseButton.vue'
-
-defineProps<{ balance: number }>()
-const { t } = useI18n()
+/**
+ * One balance tile of the wallet (Figma 588:12932): icon box, label, amount, and an optional
+ * action (withdraw button) or hint (info icon) on the far side.
+ */
+withDefaults(
+  defineProps<{ label: string; amount: number; icon: Component; tone?: 'ink' | 'success' }>(),
+  { tone: 'ink' },
+)
+const labelId = useId()
 </script>
 
 <template>
   <section
-    class="flex flex-col gap-4 rounded-3xl bg-white px-6 py-4 shadow-card sm:flex-row sm:items-center sm:justify-between"
-    aria-labelledby="wallet-balance-label"
+    class="flex min-h-[92px] items-center justify-between gap-2 rounded-3xl bg-white px-6 py-4 shadow-card"
+    :aria-labelledby="labelId"
   >
-    <div class="flex items-center gap-2">
+    <div class="flex min-w-0 items-center gap-2">
       <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-surface p-3 text-primary">
-        <WalletIcon class="size-6" aria-hidden="true" />
+        <component :is="icon" class="size-6" aria-hidden="true" />
       </span>
-      <div class="flex flex-col gap-2">
-        <p id="wallet-balance-label" class="text-body-sm text-ink">{{ t('wallet.balance') }}</p>
-        <PriceTag tone="ink" :amount="balance" class="text-h3" />
+      <div class="flex min-w-0 flex-col gap-2">
+        <p :id="labelId" class="text-body-sm text-ink">{{ label }}</p>
+        <PriceTag
+          :amount="amount"
+          class="text-h3 [&_svg]:text-secondary"
+          :class="tone === 'success' ? 'text-success' : 'text-ink'"
+        />
       </div>
     </div>
-    <BaseButton size="sm" :to="{ name: 'wallet-withdraw' }" class="self-start sm:self-auto">
-      {{ t('wallet.withdraw') }}
-    </BaseButton>
+    <slot />
   </section>
 </template>

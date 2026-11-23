@@ -11,12 +11,33 @@ export interface RegistrationPayload {
   email: string
   companyName: string
   unifiedNumber: string
+  cityId: string
   documents: {
     commercialRegister: File
-    taxRegister: File
+    /** Optional: the design asks for it only "if available". */
+    taxRegister: File | null
     nationalAddress: File
   }
 }
+
+export interface City {
+  id: string
+  name: string
+}
+
+/** Mock cities list (the backend exposes a cities endpoint). */
+export const cities: City[] = [
+  { id: 'riyadh', name: 'الرياض' },
+  { id: 'jeddah', name: 'جدة' },
+  { id: 'makkah', name: 'مكة المكرمة' },
+  { id: 'madinah', name: 'المدينة المنورة' },
+  { id: 'dammam', name: 'الدمام' },
+  { id: 'khobar', name: 'الخبر' },
+  { id: 'qassim', name: 'القصيم' },
+  { id: 'abha', name: 'أبها' },
+  { id: 'tabuk', name: 'تبوك' },
+  { id: 'hail', name: 'حائل' },
+]
 
 /** Code the mock rejects, so the error state can be previewed. */
 export const MOCK_INVALID_OTP = '0000'

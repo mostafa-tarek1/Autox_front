@@ -158,9 +158,7 @@ function reset(): void {
       <BaseButton v-if="stage === 'failed'" block @click="reset">{{
         t('shop.payment.retry')
       }}</BaseButton>
-      <BaseButton v-else block :to="{ name: 'checkout-confirmation' }">{{
-        t('shop.cart.trackOrder')
-      }}</BaseButton>
+      <BaseButton v-else block :to="{ name: 'orders' }">{{ t('shop.cart.trackOrder') }}</BaseButton>
     </div>
   </BaseModal>
 </template>

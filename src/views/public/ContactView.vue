@@ -10,9 +10,9 @@ const { t } = useI18n()
 
 <template>
   <PageHero :title="t('pageTitles.contact')" />
-  <div class="page-container pt-12 pb-16 lg:pb-[215px]">
+  <div class="page-container pt-12 pb-16 lg:pb-[162px]">
     <div
-      class="grid overflow-hidden rounded-3xl bg-white shadow-card lg:min-h-[650px] lg:grid-cols-[611fr_589fr]"
+      class="grid overflow-hidden rounded-3xl bg-white shadow-card lg:min-h-[847px] lg:grid-cols-[611fr_589fr]"
     >
       <ContactForm />
       <ContactInfoPanel />

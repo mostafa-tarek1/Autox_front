@@ -10,9 +10,11 @@ export type OrderStatus =
   | 'shipping'
   | 'delivered'
   | 'completed'
+  | 'paid'
 
 export type ReturnStatus = 'underReview' | 'rejected' | 'refunded'
 
+/** `previous` is the "طلبات منتهية" (finished orders) tab. */
 export type OrdersTab = 'current' | 'previous' | 'returns'
 
 export interface OrderItem {
@@ -53,6 +55,23 @@ export interface Order {
   /** Placed orders: lines shown as their own cards, outside the tracked block. */
   untrackedItems?: OrderItem[]
   shipments: Shipment[]
+}
+
+/** One seller's part of an order: its own status, total and actions (Figma 235:10299). */
+export interface SellerOrder {
+  id: string
+  seller: string
+  status: OrderStatus
+  total: number
+  items: OrderItem[]
+}
+
+/** An order in the orders list: placed once from the cart, split per seller. */
+export interface OrderRequest {
+  id: string
+  number: string
+  date: string
+  sellers: SellerOrder[]
 }
 
 export interface OrderDetails extends Order {

@@ -29,7 +29,7 @@ function onInput(event: Event): void {
 
 <template>
   <div class="flex flex-col gap-2">
-    <label v-if="label" :for="inputId" class="text-label text-secondary">{{ label }}</label>
+    <label v-if="label" :for="inputId" class="text-body-sm text-ink">{{ label }}</label>
     <div
       class="flex items-center gap-4 rounded-xl border bg-white p-3 transition-colors focus-within:border-accent"
       :class="[
@@ -59,7 +59,7 @@ function onInput(event: Event): void {
         dir="ltr"
         :placeholder="placeholder"
         :aria-invalid="error ? true : undefined"
-        class="min-w-0 flex-1 bg-transparent text-body-md text-ink outline-none placeholder:font-label placeholder:text-label placeholder:leading-5 placeholder:text-secondary rtl:text-right"
+        class="min-w-0 flex-1 bg-transparent text-body-md text-ink outline-none placeholder:text-body-sm placeholder:text-secondary rtl:text-right"
         @input="onInput"
       />
     </div>

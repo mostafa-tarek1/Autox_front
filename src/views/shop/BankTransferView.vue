@@ -1,47 +1,41 @@
 <script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/core'
-import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 import BankTransferForm from '@/components/shop/BankTransferForm.vue'
 import CheckoutLayout from '@/components/shop/CheckoutLayout.vue'
 import OrderSummary from '@/components/shop/OrderSummary.vue'
-import PaymentVerification from '@/components/shop/PaymentVerification.vue'
-import { bankAccount } from '@/mocks/shop'
-import { useCartStore } from '@/stores/cart'
+import ResultDialog from '@/components/shop/ResultDialog.vue'
+import { bankAccount, paymentSummary } from '@/mocks/shop'
 
 const { t } = useI18n()
-const cart = useCartStore()
-const { itemsCount, subtotal, vat, total } = storeToRefs(cart)
+const router = useRouter()
+const isSentDialogOpen = ref(false)
 
-type Stage = 'form' | 'pending' | 'confirmed'
-const stage = ref<Stage>('form')
-
-/** Mock: the transfer is "verified" a few seconds after the receipt is sent. */
-const { start: simulateReview } = useTimeoutFn(() => (stage.value = 'confirmed'), 4000, {
-  immediate: false,
-})
-
-function onSubmitted(): void {
-  stage.value = 'pending'
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-  simulateReview()
+function trackOrder(): void {
+  isSentDialogOpen.value = false
+  router.push({ name: 'orders' })
 }
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.payment.title')" step="payment" centered-hero :strip-gap="86">
+  <CheckoutLayout :title="t('shop.payment.title')" :strip-gap="235">
     <BankTransferForm
-      v-if="stage === 'form'"
       :account="bankAccount"
-      :amount="total"
-      @submitted="onSubmitted"
+      :amount="paymentSummary.total"
+      @submitted="isSentDialogOpen = true"
     />
-    <PaymentVerification v-else :confirmed="stage === 'confirmed'" />
 
     <template #aside>
-      <OrderSummary :count="itemsCount" :subtotal="subtotal" :vat="vat" :total="total" />
+      <OrderSummary v-bind="paymentSummary" />
     </template>
   </CheckoutLayout>
+
+  <ResultDialog
+    v-model:open="isSentDialogOpen"
+    :message="t('shop.bankTransfer.sent')"
+    :action-label="t('shop.cart.trackOrder')"
+    @action="trackOrder"
+  />
 </template>

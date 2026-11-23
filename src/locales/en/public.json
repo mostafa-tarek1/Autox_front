@@ -4,7 +4,6 @@
     "contact": "Contact us",
     "privacy": "Privacy policy",
     "terms": "Terms & conditions",
-    "excelSearch": "Excel search",
     "splash": "Parts X"
   },
   "public": {
@@ -36,7 +35,7 @@
       },
       "features": {
         "badge": "Features",
-        "title": "Why work with Parts X",
+        "title": "Why work with PARTS X",
         "cta": "Get started now",
         "items": {
           "smartSearch": {
@@ -78,7 +77,8 @@
         "name": "Full name",
         "email": "Email",
         "subject": "Subject",
-        "message": "Your message"
+        "message": "Your message",
+        "attachment": "Attach a screenshot of the problem (optional)"
       },
       "placeholders": {
         "name": "Fahad Alotaibi",
@@ -94,49 +94,6 @@
     },
     "legal": {
       "contents": "On this page"
-    },
-    "excel": {
-      "upload": "Upload file",
-      "types": "Types:",
-      "allTypes": "All types",
-      "inStock": "{count} in stock",
-      "addToCart": "Add to cart",
-      "noOffer": "No offer",
-      "unavailable": "Currently unavailable",
-      "notifySellers": "Ask sellers to stock this part",
-      "badges": {
-        "cheapest": "Lowest",
-        "matches": "Match"
-      },
-      "columns": {
-        "part": "Name & part number",
-        "quantity": "Quantity",
-        "original": "Original",
-        "mobis": "Mobis",
-        "korean": "Korean",
-        "chinese": "Chinese"
-      },
-      "modal": {
-        "pasteTitle": "Paste from Excel",
-        "pasteDescription": "Copy the cells from Excel (part number and quantity) and paste them below, or type the numbers one per line.",
-        "pasteHint": "Separated by tabs, commas or semicolons, exactly as Excel copies them. A part-number column is enough; quantity is optional.",
-        "columnsTitle": "Choose columns",
-        "columnsDescription": "Pick the columns to get better results",
-        "previewTitle": "Data preview",
-        "itemsCount": "{count} items",
-        "partNumber": "Part number",
-        "quantity": "Quantity",
-        "column": "Column {letter}",
-        "back": "Back",
-        "next": "Next"
-      },
-      "origins": {
-        "original": "Original",
-        "korean": "Korean",
-        "japanese": "Japanese",
-        "chinese": "Chinese",
-        "taiwanese": "Taiwanese"
-      }
     }
   }
 }

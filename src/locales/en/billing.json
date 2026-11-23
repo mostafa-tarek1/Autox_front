@@ -12,7 +12,6 @@
     "createVoucher": "Create voucher",
     "transactionsDetails": "Transactions",
     "summary": "Summary",
-    "unpaidInvoices": "Unpaid invoices",
     "totalInvoices": "Total invoices",
     "pendingAmount": "Amounts awaiting payment",
     "totalPaid": "Total paid",
@@ -65,7 +64,7 @@
       "tamara": "Tamara"
     },
     "installments": {
-      "heroTitle": "Installment services with Parts X",
+      "heroTitle": "Installment services with PARTS X",
       "heroSubtitle": "Make buying easier for your customers with installment plans offered with our partners",
       "requestService": "Contact us to apply",
       "advantagesTitle": "Why pay in installments with PARTS X",
@@ -79,7 +78,10 @@
           "title": "Lowest commission",
           "text": "The lowest commission rate for installment plans"
         },
-        "sales": { "title": "More sales", "text": "An immediate boost in sales" },
+        "sales": {
+          "title": "More sales",
+          "text": "An immediate boost in sales"
+        },
         "customers": {
           "title": "New customers",
           "text": "Varied and convenient installment options"
@@ -89,7 +91,10 @@
       "stepsSubtitle": "From creating your wallet to the voucher",
       "step": "Step {number}",
       "steps": {
-        "create": { "title": "Create a payment", "text": "Enter the amount you want to split" },
+        "create": {
+          "title": "Create a payment",
+          "text": "Enter the amount you want to split"
+        },
         "customer": {
           "title": "Enter customer details",
           "text": "Add the customer's name and mobile number"
@@ -111,21 +116,24 @@
       "phone": "Mobile number",
       "note": "Note",
       "notePlaceholder": "Write a note",
-      "amountTitle": "Amount incl. VAT",
+      "amountTitle": "Amount and installment method",
       "amountLabel": "Enter the amount including VAT",
       "invoiceMatches": "Matches the invoice",
       "confirmation": "Confirmation",
       "acceptTerms": "I have read and agree to the {terms}",
       "terms": "terms and conditions",
       "submit": "Create voucher",
-      "success": "Request sent",
+      "success": "Voucher created",
       "viewRequests": "View installment requests",
       "errors": {
         "customerName": "Enter the customer's name",
         "phone": "Enter a valid 9-digit mobile number starting with 5",
         "amount": "Enter an amount greater than zero",
-        "terms": "You must accept the terms and conditions"
-      }
-    }
+        "terms": "You must accept the terms and conditions",
+        "provider": "Choose an installment method"
+      },
+      "installmentMethod": "Choose an installment method"
+    },
+    "createPurchaseVoucher": "Create purchase voucher"
   }
 }

@@ -1,42 +1,52 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 import CartIcon from '@/assets/icons/shopping-cart-01--duotone-rounded.svg'
-import CartItemCard from '@/components/shop/CartItemCard.vue'
-import CartNotice from '@/components/shop/CartNotice.vue'
+import CartSupplierGroup from '@/components/shop/CartSupplierGroup.vue'
 import CheckoutLayout from '@/components/shop/CheckoutLayout.vue'
+import { validateDeliveryAddress } from '@/components/shop/deliveryAddress'
+import DeliveryAddressForm from '@/components/shop/DeliveryAddressForm.vue'
 import OrderSummary from '@/components/shop/OrderSummary.vue'
 import ResultDialog from '@/components/shop/ResultDialog.vue'
 import ShopCard from '@/components/shop/ShopCard.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import { QUOTE_THRESHOLD } from '@/mocks/shop'
 import { useCartStore } from '@/stores/cart'
 
 const { t } = useI18n()
 const router = useRouter()
 const cart = useCartStore()
-const { items, itemsCount, subtotal, vat, total } = storeToRefs(cart)
+const { items, groups, address, itemsCount, subtotal, vat, total } = storeToRefs(cart)
 
+const showAddressErrors = ref(false)
 const isSentDialogOpen = ref(false)
-/** The design writes the threshold with a dot separator ("10.000"). */
-const quoteThreshold = QUOTE_THRESHOLD.toLocaleString('de-DE')
+const isAddressValid = computed(() => !Object.keys(validateDeliveryAddress(address.value)).length)
 
-function requestAvailability(): void {
-  cart.isAvailabilityChecked = false
+/**
+ * "تأكيد التوفر" sends the cart to every supplier at once. Each supplier then answers in the
+ * orders list, where the buyer pays the confirmed parts.
+ */
+async function confirmAvailability(): Promise<void> {
+  if (!isAddressValid.value) {
+    showAddressErrors.value = true
+    await nextTick()
+    document.getElementById('delivery-address')?.scrollIntoView({ behavior: 'smooth' })
+    return
+  }
   isSentDialogOpen.value = true
 }
 
-function goToAvailability(): void {
+function trackOrder(): void {
   isSentDialogOpen.value = false
-  router.push({ name: 'checkout-availability' })
+  cart.clear()
+  router.push({ name: 'orders' })
 }
 </script>
 
 <template>
-  <CheckoutLayout :title="t('shop.cart.title')" step="cart" :strip-gap="88">
+  <CheckoutLayout :title="t('shop.cart.title')" :strip-gap="81">
     <ShopCard :title="t('shop.cart.orders')" body-class="flex flex-col gap-4 p-6">
       <div v-if="!items.length" class="flex flex-col items-center gap-4 py-12 text-center">
         <span class="grid size-16 place-items-center rounded-full bg-surface text-primary">
@@ -46,33 +56,22 @@ function goToAvailability(): void {
         <p class="text-body-md text-secondary">{{ t('shop.cart.emptyHint') }}</p>
         <BaseButton :to="{ name: 'home' }">{{ t('shop.cart.browse') }}</BaseButton>
       </div>
-      <ul v-else class="flex flex-col gap-4">
-        <li v-for="item in items" :key="item.id">
-          <CartItemCard
-            :item="item"
-            @update:quantity="cart.setQuantity(item.id, $event)"
-            @remove="cart.remove(item.id)"
-          >
-            <template v-if="cart.exceedsQuoteThreshold(item)" #footer>
-              <CartNotice>
-                {{ t('shop.cart.quoteHint', { amount: quoteThreshold }) }}
-                <template #actions>
-                  <BaseButton to="/quotes">{{ t('shop.cart.requestQuote') }}</BaseButton>
-                </template>
-              </CartNotice>
-            </template>
-          </CartItemCard>
-        </li>
-      </ul>
+      <template v-else>
+        <CartSupplierGroup
+          v-for="group in groups"
+          :key="group.supplier"
+          :group="group"
+          @quantity="(id, value) => cart.setQuantity(id, value)"
+        />
+      </template>
     </ShopCard>
+
+    <DeliveryAddressForm v-if="items.length" v-model="address" :show-errors="showAddressErrors" />
 
     <template #aside>
       <OrderSummary :count="itemsCount" :subtotal="subtotal" :vat="vat" :total="total">
-        <BaseButton block :disabled="!items.length" @click="requestAvailability">
-          {{ t('shop.cart.requestAvailability') }}
-        </BaseButton>
-        <BaseButton block variant="soft" to="/quotes" :disabled="!items.length">
-          {{ t('shop.cart.requestQuantityQuote') }}
+        <BaseButton block :disabled="!items.length" @click="confirmAvailability">
+          {{ t('shop.cart.confirmAvailability') }}
         </BaseButton>
       </OrderSummary>
     </template>
@@ -82,6 +81,6 @@ function goToAvailability(): void {
     v-model:open="isSentDialogOpen"
     :message="t('shop.cart.sentToSuppliers')"
     :action-label="t('shop.cart.trackOrder')"
-    @action="goToAvailability"
+    @action="trackOrder"
   />
 </template>

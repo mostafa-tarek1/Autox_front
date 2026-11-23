@@ -14,6 +14,8 @@ import { useCartStore } from '@/stores/cart'
 
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import NavIconButton from './NavIconButton.vue'
+import { mockNotifications } from './notifications'
+import NotificationsMenu from './NotificationsMenu.vue'
 import UserMenu from './UserMenu.vue'
 
 const { t } = useI18n()
@@ -22,20 +24,24 @@ const router = useRouter()
 const isMenuOpen = ref(false)
 const isCartOpen = ref(false)
 const cartRoot = useTemplateRef<HTMLElement>('cartRoot')
+const isNotificationsOpen = ref(false)
+const notificationsRoot = useTemplateRef<HTMLElement>('notificationsRoot')
 const { itemsCount } = storeToRefs(useCartStore())
 
 onClickOutside(cartRoot, () => (isCartOpen.value = false))
+onClickOutside(notificationsRoot, () => (isNotificationsOpen.value = false))
 watch(
   () => route.fullPath,
   () => {
     isMenuOpen.value = false
     isCartOpen.value = false
+    isNotificationsOpen.value = false
   },
 )
 
 /** Mock session data for the UI phase. */
 const user = { name: 'فهد العتيبي' }
-const notificationsCount = 3
+const notifications = mockNotifications
 
 function logout(): void {
   router.push({ name: 'login' })
@@ -90,9 +96,30 @@ function logout(): void {
             />
           </Transition>
         </div>
-        <NavIconButton :label="t('nav.notifications')" :count="notificationsCount">
-          <NotificationIcon class="size-6" aria-hidden="true" />
-        </NavIconButton>
+        <div ref="notificationsRoot" class="relative">
+          <NavIconButton
+            :label="t('nav.notifications')"
+            :count="notifications.length"
+            aria-haspopup="dialog"
+            :aria-expanded="isNotificationsOpen"
+            @click="isNotificationsOpen = !isNotificationsOpen"
+          >
+            <NotificationIcon class="size-6" aria-hidden="true" />
+          </NavIconButton>
+          <Transition
+            enter-active-class="transition duration-150 ease-out"
+            enter-from-class="opacity-0 -translate-y-1"
+            leave-active-class="transition duration-100 ease-in"
+            leave-to-class="opacity-0 -translate-y-1"
+          >
+            <NotificationsMenu
+              v-if="isNotificationsOpen"
+              :notifications="notifications"
+              class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-3"
+              @close="isNotificationsOpen = false"
+            />
+          </Transition>
+        </div>
         <LanguageSwitcher class="hidden sm:block" />
         <UserMenu class="hidden sm:block" :name="user.name" @logout="logout" />
         <button

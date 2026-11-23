@@ -7,12 +7,13 @@ import EditIcon from '@/assets/icons/pencil-edit-02--solid-rounded.svg'
 import LocationIcon from '@/assets/icons/location-04--stroke-rounded.svg'
 import AccountCard from '@/components/account/AccountCard.vue'
 import AddressForm from '@/components/account/AddressForm.vue'
+import DefaultChoice from '@/components/account/DefaultChoice.vue'
 import { useAccountState } from '@/components/account/useAccountState'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import type { ShippingAddress } from '@/mocks/account'
 
 const { t } = useI18n()
-const { state, saveAddress } = useAccountState()
+const { state, saveAddress, setDefaultAddress } = useAccountState()
 
 /** `null` = closed, `'new'` = adding, otherwise the address being edited. */
 const editing = ref<ShippingAddress | 'new' | null>(null)
@@ -48,25 +49,33 @@ function save(values: Pick<ShippingAddress, 'label' | 'address'>): void {
       }}</BaseButton>
     </template>
 
-    <ul v-if="state.addresses.length" class="flex flex-col">
+    <ul v-if="state.addresses.length" class="flex flex-col gap-3">
       <li
         v-for="address in state.addresses"
         :key="address.id"
-        class="flex items-center justify-between gap-4 border-t border-line py-3 first:border-t-0 first:pt-0 last:pb-0"
+        class="flex flex-col items-start gap-4 rounded-xl border border-line p-4"
       >
-        <div class="flex min-w-0 flex-col gap-1">
-          <p class="text-body-sm text-secondary">{{ address.label }}</p>
-          <p class="text-body-lg break-words text-ink">{{ address.address }}</p>
+        <DefaultChoice
+          :selected="address.isDefault"
+          :selected-label="t('account.addresses.default')"
+          :select-label="t('account.addresses.setDefault')"
+          @select="setDefaultAddress(address.id)"
+        />
+        <div class="flex w-full flex-col items-start gap-6">
+          <div class="flex min-w-0 flex-col gap-1">
+            <p class="text-body-sm text-secondary">{{ address.label }}</p>
+            <p class="text-body-lg break-words text-ink">{{ address.address }}</p>
+          </div>
+          <button
+            type="button"
+            class="flex shrink-0 items-center gap-1 text-body-sm text-primary transition-opacity hover:opacity-70"
+            :aria-label="t('account.addresses.editAddress', { name: address.label })"
+            @click="editing = address"
+          >
+            <EditIcon class="size-4" aria-hidden="true" />
+            {{ t('account.edit') }}
+          </button>
         </div>
-        <button
-          type="button"
-          class="flex shrink-0 items-center gap-1 text-body-sm text-primary transition-opacity hover:opacity-70"
-          :aria-label="t('account.addresses.editAddress', { name: address.label })"
-          @click="editing = address"
-        >
-          <EditIcon class="size-4" aria-hidden="true" />
-          {{ t('account.edit') }}
-        </button>
       </li>
     </ul>
     <p v-else class="py-6 text-center text-body-md text-secondary">

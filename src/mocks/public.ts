@@ -3,7 +3,6 @@
  * the backend (CMS/settings) once the API is wired.
  */
 import type { AppLocale } from '@/plugins/i18n'
-import type { PartOrigin } from '@/types/catalog'
 
 /* ------------------------------------------------------------------ Landing */
 
@@ -354,178 +353,306 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
   ],
 }
 
-/** The Figma terms page has no body copy yet; these placeholder sections show the layout. */
+/** Terms and conditions copy from the Figma terms page (455:7346). */
 export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
   ar: [
     {
-      id: 'acceptance',
-      title: 'قبول الشروط',
+      id: 'introduction',
+      title: 'مقدمة',
       blocks: [
         {
           type: 'paragraph',
-          text: 'باستخدامك منصة Parts X فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق عليها، يرجى عدم استخدام المنصة.',
+          text: 'مرحبًا بك في منصة Parts X، المنصة المتخصصة في ربط موردي وتجار قطع غيار السيارات، وتسهيل عمليات البحث عن المنتجات وطلبها وتبادل عروض الأسعار وإتمام المعاملات التجارية.',
+        },
+        {
+          type: 'paragraph',
+          text: 'يُرجى قراءة هذه الشروط والأحكام بعناية قبل استخدام المنصة أو إنشاء حساب. إن تسجيلك أو استخدامك لأي من خدمات Parts X يعني موافقتك على الالتزام بجميع البنود الواردة في هذه الوثيقة.',
         },
       ],
     },
     {
-      id: 'accounts',
-      title: 'الحسابات',
+      id: 'definitions',
+      title: 'التعريفات',
       blocks: [
+        {
+          type: 'paragraph',
+          text: 'لأغراض هذه الشروط، يكون للمصطلحات التالية المعاني الموضحة أمام كل منها:',
+        },
         {
           type: 'list',
           items: [
-            'يلتزم المستخدم بتقديم بيانات صحيحة ومحدثة عند التسجيل.',
-            'المستخدم مسؤول عن الحفاظ على سرية بيانات الدخول الخاصة بحسابه.',
-            'يحق للمنصة تعليق أي حساب يخالف هذه الشروط.',
+            'المنصة: Parts X، وتشمل الموقع الإلكتروني والتطبيق والخدمات الرقمية المرتبطة بهما.',
+            'المستخدم: أي شخص أو منشأة تقوم باستخدام المنصة.',
+            'التاجر: المستخدم الذي يبحث عن قطع الغيار ويقوم بطلبها من الموردين.',
+            'المورد: الشخص أو المنشأة التي تعرض قطع غيار السيارات وتقدم عروض الأسعار من خلال المنصة.',
+            'الحساب: الحساب الإلكتروني الذي يتم إنشاؤه للوصول إلى خدمات المنصة.',
+            'الطلب: طلب شراء يقدمه التاجر للحصول على منتج أو مجموعة من المنتجات.',
           ],
         },
       ],
     },
     {
-      id: 'orders',
-      title: 'الطلبات والمدفوعات',
+      id: 'registration',
+      title: 'شروط التسجيل وإنشاء الحساب',
       blocks: [
         {
           type: 'paragraph',
-          text: 'تخضع الطلبات لتوفر القطع لدى الموردين، وتُعرض الأسعار شاملة أو غير شاملة لضريبة القيمة المضافة حسب ما هو موضح في صفحة الطلب.',
+          text: 'للاستفادة من خدمات Parts X، يجب على المستخدم الالتزام بما يلي:',
+        },
+        {
+          type: 'list',
+          items: [
+            'تقديم بيانات صحيحة ودقيقة وكاملة عند التسجيل.',
+            'أن يكون المستخدم مؤهلًا قانونيًا لممارسة النشاط التجاري أو استخدام المنصة.',
+            'استخدام الحساب للأغراض التجارية المشروعة فقط.',
+            'المحافظة على سرية بيانات تسجيل الدخول وعدم مشاركتها مع الآخرين.',
+            'تحديث بيانات الحساب عند حدوث أي تغيير عليها.',
+            'عدم إنشاء حسابات متعددة بهدف التحايل على سياسات المنصة.',
+          ],
+        },
+        {
+          type: 'paragraph',
+          text: 'يحق لإدارة Parts X طلب مستندات إضافية للتحقق من هوية المستخدم أو نشاطه التجاري قبل تفعيل الحساب أو استمرار استخدامه.',
         },
       ],
     },
     {
-      id: 'returns',
-      title: 'الاسترجاع',
+      id: 'platform-use',
+      title: 'استخدام المنصة',
       blocks: [
         {
           type: 'paragraph',
-          text: 'يمكن طلب استرجاع القطع خلال 7 أيام من تاريخ الاستلام وفقًا لسياسة الاسترجاع المعتمدة في المنصة.',
+          text: 'تتيح Parts X للمستخدمين مجموعة من الخدمات، تشمل:',
+        },
+        {
+          type: 'list',
+          items: [
+            'البحث عن قطع غيار السيارات باستخدام الاسم أو رقم القطعة أو الوصف.',
+            'استعراض المنتجات المتاحة لدى الموردين.',
+            'إرسال طلبات شراء للموردين.',
+            'استقبال عروض الأسعار ومقارنتها.',
+            'إضافة المنتجات وإدارة الكتالوج الخاص بالمورد.',
+            'إدارة الطلبات ومتابعة حالتها.',
+            'الاستفادة من خدمات المنصة الأخرى التي يتم توفيرها مستقبلًا.',
+          ],
+        },
+        {
+          type: 'paragraph',
+          text: 'يلتزم جميع المستخدمين باستخدام هذه الخدمات بطريقة قانونية ومهنية، وعدم إساءة استخدامها أو استغلالها للإضرار بالمستخدمين الآخرين.',
+        },
+      ],
+    },
+    {
+      id: 'trader-obligations',
+      title: 'التزام التجار',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'يلتزم التاجر عند استخدام المنصة بما يلي:',
+        },
+        {
+          type: 'list',
+          items: [
+            'التأكد من صحة بيانات الطلبات والكميات المطلوبة.',
+            'مراجعة مواصفات المنتجات وأرقام القطع قبل تأكيد الطلب.',
+            'الالتزام بالأسعار وشروط الشراء التي يوافق عليها.',
+            'عدم تقديم طلبات وهمية أو غير جادة.',
+            'التواصل مع الموردين بطريقة مهنية ومحترمة.',
+            'الالتزام بشروط الدفع والاستلام المتفق عليها مع المورد.',
+            'إبلاغ المورد والمنصة في حال وجود مشكلة تتعلق بالطلب.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'supplier-obligations',
+      title: 'التزام الموردين',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'يلتزم المورد المسجل على Parts X بما يلي:',
+        },
+        {
+          type: 'list',
+          items: [
+            'تقديم بيانات صحيحة عن المنتجات المعروضة.',
+            'التأكد من دقة أرقام القطع والمواصفات الفنية والصور.',
+            'تحديث الأسعار والكميات المتاحة بصورة مستمرة.',
+            'تقديم عروض أسعار واضحة تتضمن السعر والكمية وأي شروط إضافية.',
+            'الالتزام بالعروض والأسعار التي يتم تأكيدها مع التاجر.',
+            'توضيح حالة المنتجات، سواء كانت جديدة أو مستعملة أو مجددة، متى كان ذلك منطبقًا.',
+            'الالتزام بمواعيد التجهيز والشحن المتفق عليها.',
+            'عدم عرض منتجات مقلدة أو مسروقة أو غير مصرح بتداولها.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'products-pricing',
+      title: 'المنتجات والأسعار وعروض الأسعار',
+      blocks: [
+        {
+          type: 'list',
+          items: [
+            'يتحمل المورد مسؤولية صحة المعلومات المتعلقة بالمنتجات التي يعرضها.',
+            'قد تختلف الأسعار والكميات المتاحة من مورد إلى آخر.',
+            'لا يُعد عرض المنتج على المنصة تأكيدًا نهائيًا لتوفره لدى المورد.',
+            'تخضع الأسعار النهائية للتأكيد والاتفاق بين التاجر والمورد.',
+            'يجب أن تكون عروض الأسعار واضحة ومحددة المدة متى تم تحديد مدة صلاحية لها.',
+            'لا تتحمل Parts X مسؤولية أي اختلاف في بيانات المنتجات أو الأسعار ناتج عن معلومات غير صحيحة قدمها المورد.',
+          ],
         },
       ],
     },
   ],
   en: [
     {
-      id: 'acceptance',
-      title: 'Accepting the terms',
+      id: 'introduction',
+      title: 'Introduction',
       blocks: [
         {
           type: 'paragraph',
-          text: 'By using the Parts X platform you agree to these terms and conditions. If you do not agree, please do not use the platform.',
+          text: 'Welcome to Parts X, the platform that connects car-parts suppliers and traders and makes it easier to find and order products, exchange quotations and complete business transactions.',
+        },
+        {
+          type: 'paragraph',
+          text: 'Please read these terms and conditions carefully before using the platform or creating an account. Registering for or using any Parts X service means you agree to every clause in this document.',
         },
       ],
     },
     {
-      id: 'accounts',
-      title: 'Accounts',
+      id: 'definitions',
+      title: 'Definitions',
       blocks: [
+        {
+          type: 'paragraph',
+          text: 'For the purposes of these terms, the following words have the meanings given next to them:',
+        },
         {
           type: 'list',
           items: [
-            'Users must provide accurate, up-to-date information when registering.',
-            'Users are responsible for keeping their login details confidential.',
-            'The platform may suspend any account that breaches these terms.',
+            'Platform: Parts X, including the website, the app and the related digital services.',
+            'User: any person or business that uses the platform.',
+            'Trader: a user who searches for spare parts and orders them from suppliers.',
+            'Supplier: a person or business that offers car parts and sends quotations through the platform.',
+            'Account: the online account created to access the platform services.',
+            'Order: a purchase request a trader places for one or more products.',
           ],
         },
       ],
     },
     {
-      id: 'orders',
-      title: 'Orders and payments',
+      id: 'registration',
+      title: 'Registration and account',
       blocks: [
         {
           type: 'paragraph',
-          text: 'Orders depend on parts being available from suppliers. Prices are shown including or excluding VAT as stated on the order page.',
+          text: 'To use Parts X services, a user must:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Provide accurate, correct and complete information when registering.',
+            'Be legally qualified to carry out business or use the platform.',
+            'Use the account for lawful business purposes only.',
+            'Keep login details confidential and not share them with others.',
+            'Update the account details whenever they change.',
+            'Not create multiple accounts to get around platform policies.',
+          ],
+        },
+        {
+          type: 'paragraph',
+          text: "Parts X may request additional documents to verify a user's identity or business before activating an account or allowing its continued use.",
         },
       ],
     },
     {
-      id: 'returns',
-      title: 'Returns',
+      id: 'platform-use',
+      title: 'Using the platform',
       blocks: [
         {
           type: 'paragraph',
-          text: 'Parts can be returned within 7 days of delivery under the platform’s return policy.',
+          text: 'Parts X offers users a range of services, including:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Searching for car parts by name, part number or description.',
+            'Browsing the products suppliers have available.',
+            'Sending purchase orders to suppliers.',
+            'Receiving and comparing quotations.',
+            'Adding products and managing a supplier catalogue.',
+            'Managing orders and tracking their status.',
+            'Using other platform services made available in the future.',
+          ],
+        },
+        {
+          type: 'paragraph',
+          text: 'All users must use these services lawfully and professionally, and must not misuse them or use them to harm other users.',
+        },
+      ],
+    },
+    {
+      id: 'trader-obligations',
+      title: 'Trader obligations',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'When using the platform, a trader must:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Check that order details and requested quantities are correct.',
+            'Review product specifications and part numbers before confirming an order.',
+            'Honour the prices and purchase terms they agree to.',
+            'Not place fake or non-serious orders.',
+            'Communicate with suppliers professionally and respectfully.',
+            'Follow the payment and delivery terms agreed with the supplier.',
+            'Tell the supplier and the platform about any problem with an order.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'supplier-obligations',
+      title: 'Supplier obligations',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'A supplier registered on Parts X must:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Provide accurate information about the products offered.',
+            'Make sure part numbers, technical specifications and photos are accurate.',
+            'Keep prices and available quantities up to date.',
+            'Send clear quotations that state the price, quantity and any extra conditions.',
+            'Honour the offers and prices confirmed with the trader.',
+            'State whether products are new, used or refurbished where relevant.',
+            'Meet the agreed preparation and shipping times.',
+            'Not offer counterfeit, stolen or unauthorised products.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'products-pricing',
+      title: 'Products, prices and quotations',
+      blocks: [
+        {
+          type: 'list',
+          items: [
+            'The supplier is responsible for the accuracy of the product information they publish.',
+            'Prices and available quantities may differ from one supplier to another.',
+            'Listing a product on the platform does not confirm that the supplier has it in stock.',
+            'Final prices are subject to confirmation and agreement between the trader and the supplier.',
+            'Quotations must be clear and, when a validity period is set, time-limited.',
+            'Parts X is not responsible for differences in product details or prices caused by incorrect information provided by the supplier.',
+          ],
         },
       ],
     },
   ],
-}
-
-/* ------------------------------------------------------------- Excel search */
-
-/** Supplier columns shown in the Excel results table, in display order. */
-export const excelOfferColumns: Array<{ key: string; origin: PartOrigin | 'mobis' }> = [
-  { key: 'original', origin: 'original' },
-  { key: 'mobis', origin: 'mobis' },
-  { key: 'korean', origin: 'korean' },
-  { key: 'chinese', origin: 'chinese' },
-]
-
-export interface ExcelOffer {
-  id: string
-  price: number
-  stock: number
-  supplier: string
-  badge?: 'cheapest' | 'matches'
-}
-
-export interface ExcelResultRow {
-  id: string
-  partNumber: string
-  description: string
-  requestedQuantity: number
-  /** Offers keyed by column key; a missing key renders an empty cell. */
-  offers: Partial<Record<string, ExcelOffer>>
-}
-
-function offer(id: string, price: number, badge?: ExcelOffer['badge']): ExcelOffer {
-  return { id, price, stock: 20, supplier: 'الشركة رقم 8', badge }
-}
-
-export const excelResults: ExcelResultRow[] = [
-  {
-    id: 'row-1',
-    partNumber: '54500AA100',
-    description: 'مقص امامي يسار النترا 2020',
-    requestedQuantity: 2,
-    offers: {
-      original: offer('o-1', 160, 'cheapest'),
-      mobis: offer('o-2', 200, 'matches'),
-      korean: offer('o-3', 190),
-    },
-  },
-  {
-    id: 'row-2',
-    partNumber: '54500AA100',
-    description: 'مقص امامي يسار النترا 2020',
-    requestedQuantity: 2,
-    offers: {
-      original: offer('o-4', 160, 'cheapest'),
-      korean: offer('o-5', 160, 'matches'),
-    },
-  },
-  {
-    id: 'row-3',
-    partNumber: '54500AA100',
-    description: 'مقص امامي يسار النترا 2020',
-    requestedQuantity: 2,
-    offers: {},
-  },
-]
-
-/**
- * Mock search: one result row per searched part, reusing the design's offer rows in turn so each
- * state (offers, partial offers, unavailable) still shows up. Replaced by the API response later.
- */
-export function mockExcelResultsFor(
-  items: ReadonlyArray<{ partNumber: string; quantity: number }>,
-): ExcelResultRow[] {
-  return items.map((item, index) => {
-    const template = excelResults[index % excelResults.length]!
-    return {
-      ...template,
-      id: `search-${index}`,
-      partNumber: item.partNumber,
-      requestedQuantity: item.quantity,
-    }
-  })
 }

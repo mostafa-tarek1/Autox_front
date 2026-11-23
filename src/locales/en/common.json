@@ -55,5 +55,18 @@
     "open": "Support",
     "call": "Call us",
     "whatsapp": "WhatsApp"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No new notifications",
+    "kinds": {
+      "quoteOffer": {
+        "title": "New quote from {supplier}"
+      },
+      "availabilityConfirmed": {
+        "title": "Availability confirmed for order {order}",
+        "body": "Pay for the order now to complete the purchase"
+      }
+    }
   }
 }

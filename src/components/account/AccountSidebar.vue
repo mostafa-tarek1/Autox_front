@@ -12,6 +12,7 @@ const links = [
   { key: 'personal', to: { name: 'account' } },
   { key: 'company', to: { name: 'account-company' } },
   { key: 'addresses', to: { name: 'account-addresses' } },
+  { key: 'bank', to: { name: 'account-bank' } },
 ] as const
 </script>
 

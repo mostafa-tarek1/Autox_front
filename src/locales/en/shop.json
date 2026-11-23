@@ -1,40 +1,21 @@
 {
   "pageTitles": {
     "cart": "Cart",
-    "checkoutAvailability": "Availability",
-    "checkoutShipping": "Shipping details",
     "checkoutPayment": "Payment",
-    "checkoutBankTransfer": "Bank transfer",
-    "checkoutConfirmation": "Confirmation"
+    "checkoutBankTransfer": "Bank transfer"
   },
   "shop": {
-    "steps": {
-      "label": "Checkout steps",
-      "cart": "Cart",
-      "availability": "Availability",
-      "shipping": "Shipping",
-      "payment": "Payment",
-      "confirmation": "Confirmation",
-      "completed": "Completed",
-      "current": "Current step"
-    },
     "summary": {
       "title": "Order summary",
       "itemsCount": "Items",
       "pieces": "{count} pcs",
       "subtotal": "Products",
       "vat": "VAT",
-      "delivery": "Delivery",
-      "discount": "Discount",
       "total": "Total"
     },
     "cart": {
       "title": "Cart",
       "orders": "Orders",
-      "requestAvailability": "Confirm availability",
-      "requestQuantityQuote": "Request a bulk quote",
-      "requestQuote": "Request a quote",
-      "quoteHint": "You can request a quote for this product because it exceeds {amount} SAR",
       "remove": "Remove {title} from cart",
       "empty": "Your cart is empty",
       "emptyHint": "Search for the parts you need and add them to your cart",
@@ -42,60 +23,25 @@
       "popoverTitle": "Shopping cart",
       "goToCart": "Go to cart",
       "added": "Product added to your cart",
-      "sentToSuppliers": "Request sent to all suppliers",
-      "purchaseSent": "Purchase request sent",
-      "trackOrder": "Track order"
-    },
-    "availability": {
-      "title": "Availability",
-      "details": "Product details",
-      "waitingTitle": "Please wait while we check the requested quantities",
-      "waitingHint": "This can take up to two working hours",
-      "available": "Available",
-      "partial": "Partial",
-      "unavailable": "Unavailable",
-      "partialHint": "Only {count} pieces of this product are available",
-      "orderAvailable": "Order available quantity",
-      "removeProduct": "Remove this product",
-      "viewAlternatives": "View alternative parts",
-      "continue": "Continue to checkout",
-      "alternativesTitle": "Alternative parts",
-      "partialHintTwo": "Only 2 pieces of this product are available"
-    },
-    "shipping": {
-      "title": "Shipping details",
-      "fullName": "Full name",
-      "phone": "Mobile number",
-      "city": "City",
-      "district": "District",
-      "districtPlaceholder": "e.g. Al Olaya",
-      "street": "Street",
-      "streetPlaceholder": "e.g. King Fahd Road",
-      "building": "Building number",
-      "buildingPlaceholder": "e.g. 123",
-      "address": "Detailed address",
-      "addressPlaceholder": "Area, street, building",
-      "confirm": "Confirm",
-      "required": "This field is required",
-      "invalidPhone": "Invalid mobile number"
+      "sentToSuppliers": "Your request was sent to all suppliers",
+      "purchaseSent": "Your purchase order was sent",
+      "trackOrder": "Track order",
+      "confirmAvailability": "Confirm availability",
+      "addressTitle": "Delivery address",
+      "groupTotal": "{supplier} total"
     },
     "payment": {
       "title": "Payment",
       "chooseMethod": "Choose a payment method",
       "cardFeeNote": "Note: a 2.5% fee applies to Visa and Mastercard payments",
       "methods": {
-        "visa": "Visa",
-        "mastercard": "Mastercard",
+        "wallet": "Pay with wallet",
+        "card": "Visa or Mastercard",
         "mada": "mada",
         "tabby": "tabby",
         "tamara": "tamara",
         "bankTransfer": "Bank transfer"
       },
-      "continue": "Continue to payment",
-      "installmentsTitle": "Pay in installments with",
-      "startingFrom": "From",
-      "installmentsHint": "per month for up to 24 months, no late fees and Sharia compliant",
-      "learnMore": "Learn more",
       "card": {
         "title": "Card details",
         "secure": "Secure payments",
@@ -111,7 +57,13 @@
       "successHint": "Thank you, we received your payment and confirmed your order. You can track it from this page.",
       "failed": "Payment failed",
       "failedHint": "Some details look incorrect. Please try the payment again",
-      "retry": "Try again"
+      "retry": "Try again",
+      "wallet": {
+        "title": "Pay with wallet",
+        "balance": "Your current balance",
+        "pay": "Pay",
+        "insufficient": "Your wallet balance is not enough for this payment"
+      }
     },
     "bankTransfer": {
       "title": "Pay by bank transfer",
@@ -138,25 +90,25 @@
       "receipt": "Transfer receipt",
       "receiptUpload": "Upload transfer receipt",
       "submit": "Confirm transfer and send receipt",
-      "pendingTitle": "Waiting for payment verification",
-      "pendingHint": "This usually takes about 30 minutes",
-      "confirmed": "Payment confirmed",
       "required": "This field is required",
-      "datePlaceholder": "Date"
+      "datePlaceholder": "Date",
+      "sent": "Sent successfully"
     },
-    "confirmation": {
-      "title": "Confirmation",
-      "status": "Preparing order",
-      "orderNumber": "Order number:",
-      "orderDate": "Order date:",
-      "totalPaid": "Total paid:",
-      "invoice": "Invoice",
-      "payment": "Payment",
-      "paid": "Paid successfully",
-      "cardEnding": "Card ending in {digits}",
-      "shippingDetails": "Shipping details",
-      "address": "Address:",
-      "pieces": "{count} pcs"
+    "address": {
+      "fullName": "Full name",
+      "phone": "Mobile number",
+      "city": "City *",
+      "cityPlaceholder": "Choose",
+      "district": "District",
+      "districtPlaceholder": "e.g. Al Olaya",
+      "street": "Street",
+      "streetPlaceholder": "e.g. King Fahd Road",
+      "building": "Building number",
+      "buildingPlaceholder": "e.g. 123",
+      "details": "Full address",
+      "detailsPlaceholder": "Area, street, building",
+      "required": "This field is required",
+      "invalidPhone": "Invalid mobile number"
     }
   }
 }

@@ -1,8 +1,5 @@
 import type { PartOrigin } from '@/types/catalog'
 
-/** Result of the suppliers' availability check for one cart line. */
-export type AvailabilityStatus = 'available' | 'partial' | 'unavailable'
-
 export interface CartItem {
   id: string
   title: string
@@ -13,20 +10,26 @@ export interface CartItem {
   origin: PartOrigin
   unitPrice: number
   quantity: number
-  availability?: AvailabilityStatus
-  /** Pieces the supplier can deliver when availability is `partial`. */
-  availableQuantity?: number
 }
 
-export type CheckoutStep = 'cart' | 'availability' | 'shipping' | 'payment' | 'confirmation'
+/** Cart lines grouped per supplier, as the cart screen shows them (Figma 588:16341). */
+export interface CartSupplierGroup {
+  supplier: string
+  total: number
+  items: CartItem[]
+}
 
-export type PaymentMethod = 'visa' | 'mastercard' | 'mada' | 'tabby' | 'tamara' | 'bankTransfer'
+export type PaymentMethod = 'wallet' | 'card' | 'mada' | 'tabby' | 'tamara' | 'bankTransfer'
 
-export interface ShippingDetails {
+/** "عنوان التوصيل" block of the cart (Figma 588:16534). */
+export interface DeliveryAddress {
   fullName: string
   phone: string
   city: string | null
-  address: string
+  district: string
+  street: string
+  building: string
+  details: string
 }
 
 export interface BankAccount {
@@ -34,4 +37,12 @@ export interface BankAccount {
   bankLogo: string
   beneficiary: string
   iban: string
+}
+
+/** Totals of the order being paid on the payment screens. */
+export interface PaymentSummary {
+  count: number
+  subtotal: number
+  vat: number
+  total: number
 }

@@ -1,62 +1,72 @@
 <script setup lang="ts">
-import CheckboxField from '@/components/form/CheckboxField.vue'
-import BaseModal from '@/components/ui/BaseModal.vue'
-import { computed, reactive, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { RouterLink, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
+import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
 import StepCard from '@/components/account/StepCard.vue'
 import { useAccountState } from '@/components/account/useAccountState'
+import { useFormValidation } from '@/components/account/useFormValidation'
+import {
+  formatIban,
+  minLength,
+  normalizeIban,
+  required,
+  saudiIban,
+  type Validator,
+} from '@/components/account/validators'
+import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
+import { saudiBanks } from '@/mocks/account'
 
 const { t } = useI18n()
 const router = useRouter()
 const { state } = useAccountState()
 
-const form = reactive({
-  amount: '',
-  vatAmount: '',
-  invoiceMatched: false,
-  agreed: false,
-})
-const submitted = ref(false)
+const bankOptions = saudiBanks.map((bank) => ({ value: bank.id, label: bank.name }))
+
+/** A positive amount that the withdrawable balance can cover. */
+const withdrawableAmount: Validator = (value) => {
+  const amount = Number(value)
+  if (!(amount > 0)) {
+    return { key: 'wallet.withdrawForm.amountInvalid' }
+  }
+  return amount > state.wallet.withdrawable ? { key: 'wallet.withdrawForm.amountTooHigh' } : null
+}
+
+const { values, errors, check } = useFormValidation(
+  {
+    amount: '',
+    bankId: '',
+    beneficiary: '',
+    iban: '',
+  },
+  {
+    amount: [required, withdrawableAmount],
+    bankId: [required],
+    beneficiary: [required, minLength(3)],
+    iban: [required, saudiIban],
+  },
+)
+
 const isSubmitting = ref(false)
 const isDone = ref(false)
 
-const errors = computed(() => {
-  if (!submitted.value) {
-    return {}
-  }
-  const amount = Number(form.amount)
-  const vatAmount = Number(form.vatAmount)
-  const result: Partial<Record<'amount' | 'vatAmount' | 'agreed', string>> = {}
-  if (!form.amount || !(amount > 0)) {
-    result.amount = t('wallet.withdrawForm.amountInvalid')
-  } else if (amount > state.walletBalance) {
-    result.amount = t('wallet.withdrawForm.amountTooHigh')
-  }
-  if (!form.vatAmount || !(vatAmount > 0)) {
-    result.vatAmount = t('wallet.withdrawForm.amountInvalid')
-  } else if (amount > 0 && vatAmount < amount) {
-    result.vatAmount = t('wallet.withdrawForm.vatTooLow')
-  }
-  if (!form.agreed) {
-    result.agreed = t('wallet.withdrawForm.mustAgree')
-  }
-  return result
-})
-
-/** Keeps the amount fields numeric (digits and one decimal point). */
-function sanitize(value: string): string {
+/** Keeps the amount numeric (digits and one decimal point with two decimals). */
+function onAmountInput(value: string): void {
   const cleaned = value.replace(/[^\d.]/g, '')
   const [whole = '', ...decimals] = cleaned.split('.')
-  return decimals.length ? `${whole}.${decimals.join('').slice(0, 2)}` : whole
+  values.amount = decimals.length ? `${whole}.${decimals.join('').slice(0, 2)}` : whole
+}
+
+function onIbanInput(value: string): void {
+  values.iban = formatIban(normalizeIban(value).slice(0, 24))
 }
 
 async function submit(): Promise<void> {
-  submitted.value = true
-  if (Object.keys(errors.value).length) {
+  if (!check()) {
     return
   }
   isSubmitting.value = true
@@ -66,10 +76,11 @@ async function submit(): Promise<void> {
   isDone.value = true
 }
 
-function backToWallet(): void {
-  isDone.value = false
-  router.push({ name: 'wallet' })
-}
+watch(isDone, (open, wasOpen) => {
+  if (wasOpen && !open) {
+    router.push({ name: 'wallet' })
+  }
+})
 </script>
 
 <template>
@@ -79,48 +90,54 @@ function backToWallet(): void {
       <p class="text-h3 text-secondary">{{ t('wallet.withdrawForm.subtitle') }}</p>
     </header>
 
-    <form class="flex flex-col gap-6" novalidate @submit.prevent="submit">
-      <section class="flex flex-col gap-[31px] rounded-3xl bg-white p-5 shadow-card sm:p-8">
-        <StepCard :step="1" :title="t('wallet.withdrawForm.amountStep')">
+    <form
+      class="flex flex-col gap-[31px] rounded-3xl bg-white p-5 shadow-card sm:p-8"
+      novalidate
+      @submit.prevent="submit"
+    >
+      <StepCard :step="1" :title="t('wallet.withdrawForm.amountStep')">
+        <div class="sm:px-4">
           <TextField
-            :model-value="form.amount"
+            :model-value="values.amount"
             :label="t('wallet.withdrawForm.amount')"
             placeholder="0"
+            inputmode="decimal"
             :error="errors.amount"
-            @update:model-value="form.amount = sanitize($event)"
+            @update:model-value="onAmountInput"
           />
-        </StepCard>
-        <!-- The design has no field here: payouts go to the bank account on file. -->
-        <StepCard :step="2" :title="t('wallet.withdrawForm.bankStep')" />
-      </section>
+        </div>
+      </StepCard>
 
-      <section class="rounded-3xl bg-white p-5 shadow-card sm:p-8">
-        <StepCard :step="3" :title="t('wallet.withdrawForm.vatStep')" size="lg">
-          <div class="flex flex-col gap-6">
-            <TextField
-              :model-value="form.vatAmount"
-              :label="t('wallet.withdrawForm.vatAmount')"
-              placeholder="0"
-              :error="errors.vatAmount"
-              @update:model-value="form.vatAmount = sanitize($event)"
-            />
-            <CheckboxField v-model="form.invoiceMatched">
-              {{ t('wallet.withdrawForm.invoiceMatch') }}
-            </CheckboxField>
-          </div>
-        </StepCard>
-      </section>
-
-      <section class="rounded-3xl bg-white p-5 shadow-card sm:p-8">
-        <StepCard :step="4" :title="t('wallet.withdrawForm.confirmStep')" size="lg">
-          <CheckboxField v-model="form.agreed" :error="errors.agreed" class="[&>label]:min-h-7">
-            {{ t('wallet.withdrawForm.agreePrefix') }}
-            <RouterLink to="/terms" target="_blank" class="text-match underline">
-              {{ t('wallet.withdrawForm.terms') }}
-            </RouterLink>
-          </CheckboxField>
-        </StepCard>
-      </section>
+      <StepCard :step="2" :title="t('wallet.withdrawForm.bankStep')">
+        <div class="flex flex-col gap-[31px]">
+          <SelectField
+            :model-value="values.bankId || null"
+            :options="bankOptions"
+            :label="t('account.bank.bankName')"
+            :placeholder="t('form.choose')"
+            :error="errors.bankId"
+            @update:model-value="values.bankId = $event ?? ''"
+          />
+          <TextField
+            v-model="values.beneficiary"
+            :label="t('account.bank.beneficiary')"
+            :placeholder="t('account.bank.beneficiaryPlaceholder')"
+            :error="errors.beneficiary"
+            autocomplete="name"
+          />
+          <TextField
+            :model-value="values.iban"
+            :label="t('account.bank.iban')"
+            placeholder="SA00 0000 0000 0000 0000 0000"
+            :error="errors.iban"
+            dir="ltr"
+            autocomplete="off"
+            spellcheck="false"
+            class="rtl:text-right"
+            @update:model-value="onIbanInput"
+          />
+        </div>
+      </StepCard>
 
       <BaseButton type="submit" :loading="isSubmitting" class="w-full sm:w-[238px] sm:self-start">
         {{ t('wallet.withdrawForm.submit') }}
@@ -129,13 +146,16 @@ function backToWallet(): void {
   </div>
 
   <BaseModal
-    tone="surface"
-    panel-class="max-w-[420px] px-5 py-14 sm:px-10"
-    title-class="mb-6 text-h2"
     v-model:open="isDone"
-    :title="t('wallet.withdrawForm.successTitle')"
+    tone="surface"
+    panel-class="max-w-[320px] rounded-2xl px-6 py-12"
+    close-class="top-2 start-2"
   >
-    <p class="mb-6 text-body-md text-secondary">{{ t('wallet.withdrawForm.successText') }}</p>
-    <BaseButton block @click="backToWallet">{{ t('wallet.withdrawForm.backToWallet') }}</BaseButton>
+    <div class="flex flex-col items-center gap-2 text-center" role="status">
+      <span class="grid size-10 place-items-center rounded-full bg-accent text-primary">
+        <TickIcon class="size-8" aria-hidden="true" />
+      </span>
+      <p class="text-h4 text-secondary">{{ t('wallet.withdrawForm.sent') }}</p>
+    </div>
   </BaseModal>
 </template>

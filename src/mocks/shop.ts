@@ -3,42 +3,36 @@
  */
 import hyundai from '@/assets/images/car-brands/hyundai.webp'
 import bankAlrajhi from '@/assets/images/shop/bank-alrajhi.webp'
-import type { BankAccount, CartItem } from '@/components/shop/types'
-import type { Product } from '@/types/catalog'
+import type { BankAccount, CartItem, PaymentSummary } from '@/components/shop/types'
 
 function cartItem(id: string, overrides: Partial<CartItem>): CartItem {
   return {
     id,
     title: 'رفرف ونيت ايسوزو19/23أصلي',
     partNumber: '04465-0K240',
-    supplier: 'الشركة رقم 8',
+    supplier: 'الشركة رقم 9',
     brandName: 'هيونداي',
     brandLogo: hyundai,
     origin: 'original',
     unitPrice: 200,
-    quantity: 3,
+    quantity: 1,
     ...overrides,
   }
 }
 
 /**
- * Closest consistent data to the designs: line totals 10,500 / 200 / 200 (cart 588:15922),
- * products 10,900 + VAT 100 = 11,000, unit price 200 in the mini cart, 5 pieces in the navbar badge.
+ * Cart from Figma 192:3055: two suppliers, line totals 2,000 / 160 (الشركة رقم 9 → 2,160) and
+ * 200 (الشركة رقم 4), 7 pieces in all. Unit prices are derived so the line totals match.
  */
 export const initialCartItems: CartItem[] = [
-  cartItem('cart-1', { unitPrice: 3500, availability: 'partial', availableQuantity: 2 }),
-  cartItem('cart-2', { quantity: 1, availability: 'available', supplier: 'الشركة رقم 4' }),
-  cartItem('cart-3', { quantity: 1, availability: 'unavailable', supplier: 'الشركة رقم 9' }),
+  cartItem('cart-1', { quantity: 3, unitPrice: 2000 / 3 }),
+  cartItem('cart-2', { quantity: 1, unitPrice: 160 }),
+  cartItem('cart-3', { quantity: 3, unitPrice: 200 / 3, supplier: 'الشركة رقم 4' }),
 ]
-
-/** Line totals above this amount (SAR) can be sent as a quotation request. */
-export const QUOTE_THRESHOLD = 10_000
 
 export const VAT_AMOUNT = 100
 
-export const DELIVERY_FEE = 300
-
-export const shippingCities = [
+export const deliveryCities = [
   { value: 'riyadh', label: 'الرياض' },
   { value: 'jeddah', label: 'جدة' },
   { value: 'dammam', label: 'الدمام' },
@@ -46,28 +40,15 @@ export const shippingCities = [
   { value: 'madinah', label: 'المدينة المنورة' },
 ]
 
+/** Order being paid from the orders list ("ادفع الآن"), values from Figma 622:9608. */
+export const paymentSummary: PaymentSummary = { count: 9, subtotal: 8900, vat: 100, total: 9000 }
+
+/** Wallet balance shown in the "الدفع بالمحفظة" dialog (Figma 753:14027). */
+export const walletBalance = 200_000
+
 export const bankAccount: BankAccount = {
   bankName: 'مصرف الراجحي',
   bankLogo: bankAlrajhi,
   beneficiary: 'اسم الشركة',
   iban: 'SA00 0000 0000 0000 0000 0000',
-}
-
-export const alternativeParts: Product[] = Array.from({ length: 3 }, (_, index) => ({
-  id: `alt-${index + 1}`,
-  title: 'بنز بستم ايسوزو اصلي',
-  partNumber: '04465-0K240',
-  supplier: 'الشركة رقم 8',
-  brandLogo: hyundai,
-  origin: 'original',
-  price: 200,
-  highlight: 'matchesRequest',
-}))
-
-export const confirmedOrder = {
-  number: '#AX-10248',
-  date: '15/10/2027',
-  cardLastDigits: '0100',
-  recipient: 'فهد العتيبي',
-  address: 'زهرة النرجس, الرياض, المملكة العربية السعودية',
 }

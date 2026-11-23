@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 import PageHero from '@/components/layout/PageHero.vue'
 import QuoteOffersModal from '@/components/quotes/QuoteOffersModal.vue'
@@ -9,6 +10,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import { quoteRequests, type QuoteOffer, type QuoteRequest } from '@/mocks/quotes'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const requests = ref<QuoteRequest[]>(structuredClone(quoteRequests))
 const selected = ref<QuoteRequest | null>(null)
@@ -24,9 +26,13 @@ function remove(request: QuoteRequest): void {
   requests.value = requests.value.filter((item) => item.id !== request.id)
 }
 
+/** Accepting an offer moves on to paying for it by bank transfer. */
 function accept(offer: QuoteOffer): void {
   isOffersOpen.value = false
-  acceptedMessage.value = t('quotes.offerAccepted', { merchant: offer.merchant })
+  acceptedMessage.value = t('quotes.offerAccepted', { supplier: offer.supplier })
+  if (selected.value) {
+    router.push({ name: 'quote-payment', params: { id: selected.value.id } })
+  }
 }
 </script>
 

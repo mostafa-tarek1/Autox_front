@@ -1,8 +1,6 @@
 {
   "search": {
-    "title": "Find spare parts",
-    "byPartNumber": "Search by part number",
-    "uploadExcel": "Upload EXCEL file",
+    "title": "Find spare parts at the best prices",
     "placeholder": "Search by part number or name",
     "submit": "Search",
     "recent": "Recent searches:",
@@ -29,6 +27,12 @@
       "priceAsc": "Lowest price",
       "mostRequested": "Most requested",
       "originalOnly": "Original parts"
+    },
+    "alternatives": {
+      "title": "Alternative parts",
+      "show": "Show alternative parts",
+      "hide": "Hide alternative parts",
+      "for": "Alternatives for {part}"
     }
   }
 }

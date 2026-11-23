@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
+import StatusChip, { type StatusTone } from '@/components/ui/StatusChip.vue'
 import type { WalletStatus, WalletTransaction } from '@/mocks/account'
 
-import StatusChip, { type StatusTone } from '@/components/ui/StatusChip.vue'
+import SignedAmount from './SignedAmount.vue'
 
 defineProps<{ transactions: WalletTransaction[] }>()
 const { t } = useI18n()
@@ -20,7 +20,7 @@ function formatDate(iso: string): string {
   return `${Number(day)}/${Number(month)}/${year}`
 }
 
-const columns = ['reference', 'operation', 'amount', 'date', 'note', 'status'] as const
+const columns = ['reference', 'amount', 'operation', 'date', 'note', 'status'] as const
 </script>
 
 <template>
@@ -42,10 +42,10 @@ const columns = ['reference', 'operation', 'amount', 'date', 'note', 'status'] a
           }}</StatusChip>
         </div>
         <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-body-sm">
-          <dt class="text-secondary">{{ t('wallet.columns.operation') }}</dt>
-          <dd class="text-success">{{ t(`wallet.operations.${transaction.operation}`) }}</dd>
           <dt class="text-secondary">{{ t('wallet.columns.amount') }}</dt>
-          <dd><PriceTag :amount="transaction.amount" tone="primary" class="text-h4" /></dd>
+          <dd><SignedAmount :amount="transaction.amount" /></dd>
+          <dt class="text-secondary">{{ t('wallet.columns.operation') }}</dt>
+          <dd class="text-ink">{{ t(`wallet.operations.${transaction.operation}`) }}</dd>
           <dt class="text-secondary">{{ t('wallet.columns.date') }}</dt>
           <dd class="text-ink tabular-nums">{{ formatDate(transaction.date) }}</dd>
           <dt class="text-secondary">{{ t('wallet.columns.note') }}</dt>
@@ -88,10 +88,10 @@ const columns = ['reference', 'operation', 'amount', 'date', 'note', 'status'] a
             <td class="h-16 ps-6 text-body-md text-secondary">
               <span dir="ltr">{{ transaction.reference }}</span>
             </td>
-            <td class="text-body-md text-success">
+            <td><SignedAmount :amount="transaction.amount" /></td>
+            <td class="text-body-md text-secondary">
               {{ t(`wallet.operations.${transaction.operation}`) }}
             </td>
-            <td><PriceTag :amount="transaction.amount" tone="primary" class="text-h4" /></td>
             <td class="text-body-md text-secondary tabular-nums">
               {{ formatDate(transaction.date) }}
             </td>

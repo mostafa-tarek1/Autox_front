@@ -4,7 +4,8 @@
     "accountCompany": "Company information",
     "accountAddresses": "Shipping addresses",
     "wallet": "Wallet",
-    "walletWithdraw": "Wallet withdrawal request"
+    "walletWithdraw": "Wallet withdrawal request",
+    "accountBank": "Bank account"
   },
   "account": {
     "title": "My account",
@@ -16,7 +17,8 @@
     "nav": {
       "personal": "Personal information",
       "company": "Company information",
-      "addresses": "Shipping addresses"
+      "addresses": "Shipping addresses",
+      "bank": "Bank account"
     },
     "personal": {
       "title": "Personal details",
@@ -59,7 +61,9 @@
       "addressPlaceholder": "District, city, country",
       "editAddress": "Edit {name}",
       "empty": "No shipping addresses yet",
-      "defaultLabel": "Address {number}"
+      "defaultLabel": "Address {number}",
+      "default": "Default address",
+      "setDefault": "Set as default address"
     },
     "validation": {
       "required": "This field is required",
@@ -68,13 +72,34 @@
       "email": "Enter a valid email address",
       "digits": "Must be {length} digits",
       "taxNumber": "VAT number is 15 digits starting and ending with 3",
-      "unifiedNumber": "Unified number is 10 digits starting with 7"
+      "unifiedNumber": "Unified number is 10 digits starting with 7",
+      "iban": "Enter a valid Saudi IBAN: SA followed by 22 digits"
+    },
+    "bank": {
+      "title": "Bank accounts",
+      "add": "Add new",
+      "addTitle": "Add a bank account",
+      "editTitle": "Edit bank account",
+      "bankName": "Bank name",
+      "beneficiary": "Beneficiary name",
+      "beneficiaryPlaceholder": "e.g. Fahad Alotaibi",
+      "iban": "Account number (IBAN)",
+      "default": "Default account",
+      "setDefault": "Set as default account",
+      "copy": "Copy",
+      "copyField": "Copy {field}",
+      "copied": "Copied",
+      "delete": "Delete",
+      "editAccount": "Edit {name} account",
+      "deleteAccount": "Delete {name} account",
+      "submitAdd": "Add",
+      "empty": "No bank accounts yet",
+      "saved": "Request sent"
     }
   },
   "wallet": {
     "title": "Wallet",
     "balance": "Wallet balance",
-    "withdraw": "Withdraw from wallet",
     "transactions": "Transactions",
     "startDate": "Start date",
     "endDate": "End date",
@@ -89,9 +114,12 @@
       "status": "Status"
     },
     "operations": {
-      "withdraw": "Withdrawal",
-      "payment": "Payment",
-      "deposit": "Deposit"
+      "walletWithdrawal": "Wallet withdrawal",
+      "returnRefund": "Return refund",
+      "cardFee": "Card payment fee",
+      "deposit": "Deposit",
+      "purchase": "Purchase",
+      "withdrawal": "Withdrawal"
     },
     "statuses": {
       "accepted": "Accepted",
@@ -105,20 +133,16 @@
       "amountStep": "Amount to withdraw",
       "amount": "Enter the amount",
       "bankStep": "Bank account",
-      "vatStep": "Amount including VAT",
-      "vatAmount": "Enter the amount including VAT",
-      "invoiceMatch": "Invoice reconciliation",
-      "confirmStep": "Confirmation",
-      "agreePrefix": "I have read and agree to the",
-      "terms": "terms and conditions",
-      "submit": "Submit withdrawal request",
+      "submit": "Send request",
       "amountInvalid": "Enter an amount greater than zero",
-      "amountTooHigh": "The amount exceeds your wallet balance",
-      "vatTooLow": "The amount including VAT can't be lower than the requested amount",
-      "mustAgree": "You must accept the terms and conditions",
-      "successTitle": "Withdrawal request sent",
-      "successText": "We'll review your request and transfer the amount to your bank account within 3 business days",
-      "backToWallet": "Back to wallet"
-    }
+      "amountTooHigh": "Amount is higher than the withdrawable balance",
+      "sent": "Request sent"
+    },
+    "balances": "Wallet balances",
+    "pendingBalance": "Pending balance",
+    "withdrawableBalance": "Withdrawable balance",
+    "pendingInfo": "Under admin review for a withdrawal request",
+    "pendingInfoLabel": "What is the pending balance?",
+    "requestWithdraw": "Withdraw"
   }
 }

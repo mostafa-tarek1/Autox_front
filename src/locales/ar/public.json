@@ -4,7 +4,6 @@
     "contact": "تواصل معنا",
     "privacy": "سياسة الخصوصية",
     "terms": "الشروط والاحكام",
-    "excelSearch": "البحث بملف Excel",
     "splash": "بارتس اكس"
   },
   "public": {
@@ -36,7 +35,7 @@
       },
       "features": {
         "badge": "المميزات",
-        "title": "لماذا تعمل مع Parts X",
+        "title": "لماذا تعمل مع PARTS X",
         "cta": "ابدأ معنا الآن",
         "items": {
           "smartSearch": {
@@ -78,7 +77,8 @@
         "name": "الاسم الشخصي",
         "email": "البريد الالكتروني",
         "subject": "عنوان الرسالة",
-        "message": "رسالتك"
+        "message": "رسالتك",
+        "attachment": "ارفاق صورة للمشكله (اختياري)"
       },
       "placeholders": {
         "name": "فهد العتيبي",
@@ -94,49 +94,6 @@
     },
     "legal": {
       "contents": "محتويات الصفحة"
-    },
-    "excel": {
-      "upload": "رفع الملف",
-      "types": "الانواع:",
-      "allTypes": "كل الانواع",
-      "inStock": "{count} متوفر",
-      "addToCart": "إضافة إلى السلة",
-      "noOffer": "لا يوجد عرض",
-      "unavailable": "غير متوفر حاليا",
-      "notifySellers": "اشعار البائعين لتوفير القطعة",
-      "badges": {
-        "cheapest": "اقل سعر",
-        "matches": "مطابق"
-      },
-      "columns": {
-        "part": "الاسم ورقم القطعة",
-        "quantity": "الكمية",
-        "original": "اصلي",
-        "mobis": "موبيس",
-        "korean": "كوري",
-        "chinese": "صيني"
-      },
-      "modal": {
-        "pasteTitle": "لصق من Excel",
-        "pasteDescription": "انسخ الخلايا من Excel (رقم القطعة والكمية) والصقها بالأسفل، أو اكتب الأرقام سطراً سطراً.",
-        "pasteHint": "مفصولة بمسافة جدولية أو فاصلة أو فاصلة منقوطة، تماماً كما ينسخها Excel. يكفي عمود أرقام القطع؛ الكمية اختيارية.",
-        "columnsTitle": "تحديد الأعمدة",
-        "columnsDescription": "قم بتحديد الاعمدة للحصول علي نتيجة افضل",
-        "previewTitle": "معاينة البيانات",
-        "itemsCount": "{count} اصناف",
-        "partNumber": "رقم القطعة",
-        "quantity": "الكمية",
-        "column": "عمود {letter}",
-        "back": "رجوع",
-        "next": "التالي"
-      },
-      "origins": {
-        "original": "اصلي",
-        "korean": "كوري",
-        "japanese": "ياباني",
-        "chinese": "صيني",
-        "taiwanese": "تايواني"
-      }
     }
   }
 }

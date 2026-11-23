@@ -13,7 +13,7 @@ export interface QuoteItem {
 
 export interface QuoteOffer {
   id: string
-  merchant: string
+  supplier: string
   price: number
 }
 
@@ -50,9 +50,31 @@ export const quoteRequests: QuoteRequest[] = [
     items,
     offers: [1, 2, 3, 4].map((n) => ({
       id: `offer-${n}`,
-      merchant: `التاجر رقم ${n}`,
+      supplier: `الشركه رقم ${n}`,
       price: 200,
     })),
   },
   { id: 'quote-2', date: '2027-10-15', status: 'awaitingOffers', items, offers: [] },
 ]
+
+/** Totals shown on the quote payment page (values from the Figma frame 686:8455). */
+export interface QuotePaymentSummary {
+  pieces: number
+  subtotal: number
+  vat: number
+  total: number
+}
+
+export const quotePaymentSummary: QuotePaymentSummary = {
+  pieces: 9,
+  subtotal: 2000,
+  vat: 100,
+  total: 2400,
+}
+
+/** Bank account the trader transfers to (placeholder until the backend provides it). */
+export const quoteBankAccount = {
+  bankName: 'مصرف الراجحي',
+  beneficiary: 'اسم الشركة',
+  iban: 'SA00 0000 0000 0000 0000 0000',
+}

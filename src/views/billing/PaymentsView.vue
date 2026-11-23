@@ -5,6 +5,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import ClockIcon from '@/assets/icons/clock-01--duotone-rounded.svg'
+import FileIcon from '@/assets/icons/file-02--duotone-rounded.svg'
 import SearchIcon from '@/assets/icons/search-01--stroke-standard.svg'
 import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
 import PageHero from '@/components/layout/PageHero.vue'
@@ -37,7 +38,7 @@ const filteredPayments = computed(() => {
     class="page-container flex flex-col items-center gap-12 pt-12 pb-[73px] xl:w-[1208px] xl:max-w-none"
   >
     <section
-      class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
+      class="grid w-full grid-cols-1 gap-6 sm:grid-cols-3"
       :aria-label="t('billing.summary')"
     >
       <StatCard :label="t('billing.totalPaid')" :icon="WalletIcon">
@@ -49,11 +50,8 @@ const filteredPayments = computed(() => {
           class="text-error [&_svg]:text-secondary"
         />
       </StatCard>
-      <StatCard :label="t('billing.totalInvoices')" :icon="WalletIcon">
+      <StatCard :label="t('billing.totalInvoices')" :icon="FileIcon">
         <span class="text-ink tabular-nums">{{ paymentSummary.totalInvoices }}</span>
-      </StatCard>
-      <StatCard :label="t('billing.unpaidInvoices')" :icon="WalletIcon">
-        <span class="text-error tabular-nums">{{ paymentSummary.unpaidInvoices }}</span>
       </StatCard>
     </section>
 

@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import CancelCircleIcon from '@/assets/icons/cancel-circle--stroke-standard.svg'
 import SearchSolidIcon from '@/assets/icons/search-01--solid-standard.svg'
-import SearchIcon from '@/assets/icons/search-01--stroke-standard.svg'
-import XlsIcon from '@/assets/icons/xls-02--stroke-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
+/** Home search card (Figma "search" 753:9137): heading, part-number search and recent searches. */
 defineProps<{ recent: string[] }>()
 const emit = defineEmits<{
   search: [term: string]
   removeRecent: [index: number]
 }>()
 const { t } = useI18n()
+const headingId = useId()
 
 const term = ref('')
 
@@ -32,26 +32,10 @@ function submit(): void {
 
 <template>
   <section
-    class="flex flex-col gap-6 rounded-3xl bg-white px-4 py-6 shadow-card sm:px-8"
-    :aria-label="t('search.title')"
+    class="flex flex-col gap-5 rounded-3xl bg-white px-4 py-6 shadow-card sm:px-8"
+    :aria-labelledby="headingId"
   >
-    <div class="flex flex-wrap gap-4" role="tablist">
-      <BaseButton variant="primary" size="sm" role="tab" aria-selected="true">
-        <template #icon><SearchIcon class="size-[18px]" aria-hidden="true" /></template>
-        {{ t('search.byPartNumber') }}
-      </BaseButton>
-      <BaseButton
-        :to="{ name: 'excel-search' }"
-        variant="soft"
-        size="sm"
-        class="border-line"
-        role="tab"
-        aria-selected="false"
-      >
-        <template #icon><XlsIcon class="size-[18px]" aria-hidden="true" /></template>
-        {{ t('search.uploadExcel') }}
-      </BaseButton>
-    </div>
+    <h2 :id="headingId" class="text-h3 text-ink">{{ t('search.title') }}</h2>
 
     <form
       class="flex flex-col gap-4 sm:flex-row sm:items-center"

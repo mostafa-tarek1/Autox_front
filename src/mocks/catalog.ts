@@ -35,25 +35,39 @@ function product(
   index: number,
   origin: PartOrigin,
   price: number,
-  highlight?: Product['highlight'],
+  supplierNumber: number,
+  extra: Partial<Product> = {},
 ): Product {
   return {
     id: `part-${index}`,
     title: 'رفرف ونيت ايسوزو19/23أصلي',
     partNumber: '04465-0K240',
-    supplier: 'الشركة رقم 8',
+    supplier: `الشركة رقم ${supplierNumber}`,
     brandLogo: hyundai,
     origin,
     price,
-    highlight,
+    ...extra,
   }
 }
 
+const alternativeParts: Product[] = [1, 2].map((index) => ({
+  id: `alt-${index}`,
+  title: 'بنز بستم ايسوزو اصلي',
+  partNumber: '04465-0K240',
+  supplier: 'الشركة رقم 8',
+  brandLogo: hyundai,
+  origin: 'chinese',
+  price: 200,
+  highlight: 'cheapest',
+}))
+
+/** Mirrors the Home frame: cheapest offer first (with alternatives), then suppliers 2–9. */
 export const searchResults: Product[] = [
-  product(1, 'korean', 160, 'cheapest'),
-  product(2, 'original', 200, 'matchesRequest'),
-  product(3, 'taiwanese', 200),
-  ...Array.from({ length: 6 }, (_, index) => product(index + 4, 'original', 200)),
+  product(1, 'korean', 160, 1, { highlight: 'cheapest', alternatives: alternativeParts }),
+  product(2, 'original', 200, 2),
+  product(3, 'original', 200, 2),
+  product(4, 'taiwanese', 200, 3),
+  ...[4, 5, 6, 7, 8, 9].map((supplier, index) => product(index + 5, 'original', 200, supplier)),
 ]
 
 export const recentSearches: string[] = ['04465-0K240', '04465-0K240']

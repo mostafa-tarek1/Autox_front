@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import FileIcon from '@/assets/icons/file-02--stroke-rounded.svg'
 import NoteIcon from '@/assets/icons/note-01--stroke-rounded.svg'
 import UserIcon from '@/assets/icons/user--stroke-rounded.svg'
+import InstallmentProviderPicker from '@/components/billing/InstallmentProviderPicker.vue'
 import CheckboxField from '@/components/form/CheckboxField.vue'
 import PageHero from '@/components/layout/PageHero.vue'
 import StepCard from '@/components/billing/StepCard.vue'
@@ -12,15 +13,25 @@ import VoucherSuccessModal from '@/components/billing/VoucherSuccessModal.vue'
 import PhoneField from '@/components/form/PhoneField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import type { InstallmentProvider } from '@/mocks/billing'
 
 const { t } = useI18n()
 
-const form = reactive({
+const form = reactive<{
+  customerName: string
+  phone: string
+  note: string
+  amount: string
+  invoiceMatches: boolean
+  provider: InstallmentProvider | null
+  acceptedTerms: boolean
+}>({
   customerName: '',
   phone: '',
   note: '',
   amount: '',
   invoiceMatches: false,
+  provider: null,
   acceptedTerms: false,
 })
 const submitted = ref(false)
@@ -39,6 +50,7 @@ const errors = computed(() => {
     phone: /^5\d{8}$/.test(form.phone) ? undefined : t('billing.voucherForm.errors.phone'),
     amount:
       Number.isFinite(amount) && amount > 0 ? undefined : t('billing.voucherForm.errors.amount'),
+    provider: form.provider ? undefined : t('billing.voucherForm.errors.provider'),
     acceptedTerms: form.acceptedTerms ? undefined : t('billing.voucherForm.errors.terms'),
   }
 })
@@ -60,10 +72,10 @@ async function submit(): Promise<void> {
 
 <template>
   <PageHero
-    :title="t('billing.vouchers')"
+    :title="t('billing.createVoucher')"
     :breadcrumbs="[
       { label: t('nav.home'), to: { name: 'home' } },
-      { label: t('billing.vouchers') },
+      { label: t('billing.vouchers'), to: { name: 'vouchers' } },
     ]"
   />
 
@@ -121,6 +133,12 @@ async function submit(): Promise<void> {
       <CheckboxField v-model="form.invoiceMatches">{{
         t('billing.voucherForm.invoiceMatches')
       }}</CheckboxField>
+      <hr class="my-[7px] border-line" />
+      <InstallmentProviderPicker
+        v-model="form.provider"
+        :label="t('billing.voucherForm.installmentMethod')"
+        :error="errors.provider"
+      />
     </StepCard>
 
     <StepCard :step="3" :title="t('billing.voucherForm.confirmation')" title-id="voucher-confirm">

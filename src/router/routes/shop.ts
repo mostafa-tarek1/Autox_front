@@ -2,7 +2,10 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import { DefaultLayout } from '@/router/layouts'
 
-/** Cart and checkout: cart → availability → shipping → payment → confirmation. */
+/**
+ * Cart and checkout. The cart asks every supplier to confirm availability; confirmed orders are
+ * paid later from the orders list ("ادفع الآن") → payment → bank transfer when chosen.
+ */
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -16,37 +19,19 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'checkout',
-        redirect: { name: 'checkout-availability' },
+        redirect: { name: 'checkout-payment' },
         children: [
-          {
-            path: 'availability',
-            name: 'checkout-availability',
-            component: () => import('@/views/shop/AvailabilityView.vue'),
-            meta: { title: 'checkoutAvailability', featureStrip: true },
-          },
-          {
-            path: 'shipping',
-            name: 'checkout-shipping',
-            component: () => import('@/views/shop/ShippingView.vue'),
-            meta: { title: 'checkoutShipping', featureStrip: true },
-          },
           {
             path: 'payment',
             name: 'checkout-payment',
             component: () => import('@/views/shop/PaymentView.vue'),
-            meta: { title: 'checkoutPayment', featureStrip: true },
+            meta: { title: 'checkoutPayment', nav: 'orders', featureStrip: true },
           },
           {
             path: 'payment/bank-transfer',
             name: 'checkout-bank-transfer',
             component: () => import('@/views/shop/BankTransferView.vue'),
-            meta: { title: 'checkoutBankTransfer', featureStrip: true },
-          },
-          {
-            path: 'confirmation',
-            name: 'checkout-confirmation',
-            component: () => import('@/views/shop/ConfirmationView.vue'),
-            meta: { title: 'checkoutConfirmation', footerGap: 68 },
+            meta: { title: 'checkoutBankTransfer', nav: 'orders', featureStrip: true },
           },
         ],
       },

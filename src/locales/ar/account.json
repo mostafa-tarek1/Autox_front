@@ -4,7 +4,8 @@
     "accountCompany": "معلومات المؤسسة",
     "accountAddresses": "عناوين الشحن",
     "wallet": "المحفظة",
-    "walletWithdraw": "طلب سحب من المحفظة"
+    "walletWithdraw": "طلب سحب من المحفظة",
+    "accountBank": "الحساب البنكي"
   },
   "account": {
     "title": "حسابي",
@@ -16,7 +17,8 @@
     "nav": {
       "personal": "المعلومات الشخصية",
       "company": "معلومات المؤسسة",
-      "addresses": "عناوين الشحن"
+      "addresses": "عناوين الشحن",
+      "bank": "الحساب البنكي"
     },
     "personal": {
       "title": "البيانات الشخصية",
@@ -59,7 +61,9 @@
       "addressPlaceholder": "الحي، المدينة، الدولة",
       "editAddress": "تعديل {name}",
       "empty": "لا توجد عناوين شحن بعد",
-      "defaultLabel": "العنوان {number}"
+      "defaultLabel": "العنوان {number}",
+      "default": "العنوان الافتراضي",
+      "setDefault": "تحديد كعنوان افتراضي"
     },
     "validation": {
       "required": "هذا الحقل مطلوب",
@@ -68,13 +72,34 @@
       "email": "أدخل بريدا الكترونيا صحيحا",
       "digits": "يجب أن يتكون من {length} أرقام",
       "taxNumber": "الرقم الضريبي يتكون من 15 رقما ويبدأ وينتهي بـ 3",
-      "unifiedNumber": "الرقم الموحد يتكون من 10 أرقام ويبدأ بـ 7"
+      "unifiedNumber": "الرقم الموحد يتكون من 10 أرقام ويبدأ بـ 7",
+      "iban": "أدخل رقم آيبان سعودي صحيح يبدأ بـ SA ويتبعه 22 رقما"
+    },
+    "bank": {
+      "title": "الحسابات البنكية",
+      "add": "اضافة جديد",
+      "addTitle": "اضافة حساب جديد",
+      "editTitle": "تعديل الحساب البنكي",
+      "bankName": "اسم البنك",
+      "beneficiary": "اسم المستفيد",
+      "beneficiaryPlaceholder": "مثال:  فهد العتيبي",
+      "iban": "رقم الحساب IBAN",
+      "default": "الحساب الافتراضي",
+      "setDefault": "تحديد كحساب افتراضي",
+      "copy": "نسخ",
+      "copyField": "نسخ {field}",
+      "copied": "تم النسخ",
+      "delete": "حذف",
+      "editAccount": "تعديل حساب {name}",
+      "deleteAccount": "حذف حساب {name}",
+      "submitAdd": "اضافة",
+      "empty": "لا توجد حسابات بنكية بعد",
+      "saved": "تم ارسال الطلب"
     }
   },
   "wallet": {
     "title": "المحفظة",
     "balance": "رصيد المحفظة",
-    "withdraw": "سحب من المحفظة",
     "transactions": "العمليات",
     "startDate": "تاريخ البداية",
     "endDate": "تاريخ الانتهاء",
@@ -89,9 +114,12 @@
       "status": "الحالة"
     },
     "operations": {
-      "withdraw": "سحب",
-      "payment": "دفع",
-      "deposit": "ايداع"
+      "walletWithdrawal": "سحب من المحفظة",
+      "returnRefund": "ايداع اموال مرتجع",
+      "cardFee": "سحب عمولة دفع بطاقة",
+      "deposit": "ايداع",
+      "purchase": "عملية شراء",
+      "withdrawal": "سحب"
     },
     "statuses": {
       "accepted": "مقبولة",
@@ -105,20 +133,16 @@
       "amountStep": "المبلغ المطلوب سحبه",
       "amount": "ادخل المبلغ",
       "bankStep": "الحساب البنكي",
-      "vatStep": "المبلغ مع الضريبة",
-      "vatAmount": "ادخل المبلغ مع الضريبة VAT",
-      "invoiceMatch": "معادلة الفاتورة",
-      "confirmStep": "التأكيد",
-      "agreePrefix": "لقد قرأت واوفق علي",
-      "terms": "الشروط والاحكام",
-      "submit": "تقديم طلب السحب",
+      "submit": "ارسال الطلب",
       "amountInvalid": "أدخل مبلغا أكبر من صفر",
-      "amountTooHigh": "المبلغ أكبر من رصيد المحفظة",
-      "vatTooLow": "المبلغ مع الضريبة يجب ألا يقل عن المبلغ المطلوب",
-      "mustAgree": "يجب الموافقة على الشروط والاحكام",
-      "successTitle": "تم إرسال طلب السحب",
-      "successText": "سنراجع طلبك ونحول المبلغ إلى حسابك البنكي خلال 3 أيام عمل",
-      "backToWallet": "العودة للمحفظة"
-    }
+      "amountTooHigh": "المبلغ أكبر من الرصيد القابل للسحب",
+      "sent": "تم ارسال الطلب"
+    },
+    "balances": "أرصدة المحفظة",
+    "pendingBalance": "رصيد معلق",
+    "withdrawableBalance": "رصيد قابل للسحب",
+    "pendingInfo": "تحت مراجعة الادارة لطلب السحب",
+    "pendingInfoLabel": "ما هو الرصيد المعلق؟",
+    "requestWithdraw": "طلب سحب"
   }
 }

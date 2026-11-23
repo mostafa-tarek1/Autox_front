@@ -3,8 +3,12 @@ import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import DownloadIcon from '@/assets/icons/file-download--stroke-rounded.svg'
+import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
+import WalletDoneIcon from '@/assets/icons/wallet-done-01--duotone-rounded.svg'
+import WalletRemoveIcon from '@/assets/icons/wallet-remove-01--duotone-rounded.svg'
 import PageHero from '@/components/layout/PageHero.vue'
 import DateFilterField from '@/components/account/DateFilterField.vue'
+import InfoHint from '@/components/account/InfoHint.vue'
 import { useAccountState } from '@/components/account/useAccountState'
 import WalletBalanceCard from '@/components/account/WalletBalanceCard.vue'
 import WalletTransactionsTable from '@/components/account/WalletTransactionsTable.vue'
@@ -36,15 +40,21 @@ const filteredTransactions = computed(() =>
 
 watch([startDate, endDate], () => (page.value = 1))
 
+/** "+2,000" / "-20" — the sign tells credits from debits in the export. */
+function formatSignedAmount(amount: number): string {
+  const formatted = Math.abs(amount).toLocaleString('en-US', { maximumFractionDigits: 2 })
+  return `${amount < 0 ? '-' : '+'}${formatted}`
+}
+
 /** Exports the visible rows as a CSV file (opens in Excel) until the API provides an export. */
 function downloadExcel(): void {
-  const header = ['reference', 'operation', 'amount', 'date', 'note', 'status'].map((column) =>
+  const header = ['reference', 'amount', 'operation', 'date', 'note', 'status'].map((column) =>
     t(`wallet.columns.${column}`),
   )
   const rows = filteredTransactions.value.map((transaction) => [
     transaction.reference,
+    formatSignedAmount(transaction.amount),
     t(`wallet.operations.${transaction.operation}`),
-    String(transaction.amount),
     transaction.date,
     transaction.note ?? t('wallet.noNote'),
     t(`wallet.statuses.${transaction.status}`),
@@ -66,7 +76,33 @@ function downloadExcel(): void {
   <PageHero :title="t('wallet.title')" :breadcrumbs="breadcrumbs" />
 
   <div class="page-container mt-12 flex flex-col gap-12 xl:max-w-[1208px]">
-    <WalletBalanceCard :balance="state.walletBalance" />
+    <section
+      class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6"
+      :aria-label="t('wallet.balances')"
+    >
+      <WalletBalanceCard
+        :label="t('wallet.balance')"
+        :amount="state.wallet.total"
+        :icon="WalletIcon"
+      />
+      <WalletBalanceCard
+        :label="t('wallet.pendingBalance')"
+        :amount="state.wallet.pending"
+        :icon="WalletRemoveIcon"
+      >
+        <InfoHint :label="t('wallet.pendingInfoLabel')" :text="t('wallet.pendingInfo')" />
+      </WalletBalanceCard>
+      <WalletBalanceCard
+        :label="t('wallet.withdrawableBalance')"
+        :amount="state.wallet.withdrawable"
+        :icon="WalletDoneIcon"
+        tone="success"
+      >
+        <BaseButton size="sm" :to="{ name: 'wallet-withdraw' }" class="shrink-0">
+          {{ t('wallet.requestWithdraw') }}
+        </BaseButton>
+      </WalletBalanceCard>
+    </section>
 
     <section class="flex flex-col gap-4" aria-labelledby="transactions-title">
       <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">

@@ -34,7 +34,7 @@ const socials = [
 
 <template>
   <aside
-    class="relative isolate flex flex-col gap-8 overflow-hidden bg-primary p-6 sm:p-12 sm:pb-[21px]"
+    class="relative isolate flex flex-col gap-8 overflow-hidden bg-primary p-6 sm:p-12 sm:pb-8"
     :aria-labelledby="'contact-info-title'"
   >
     <XPattern
@@ -78,11 +78,11 @@ const socials = [
     <img
       :src="partsBanner"
       alt=""
-      width="372"
-      height="140"
+      width="415"
+      height="155"
       loading="lazy"
       decoding="async"
-      class="mx-auto mt-auto h-auto w-full max-w-[372px] pt-8"
+      class="mx-auto mt-auto h-auto w-full max-w-[415px] pt-8"
     />
   </aside>
 </template>

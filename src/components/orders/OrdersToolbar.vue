@@ -37,8 +37,10 @@ const tabs: Array<{ key: OrdersTab; to: RouteLocationRaw }> = [
         </li>
       </ul>
     </nav>
+    <!-- The returns tab has a wider search box than the orders tabs in the design. -->
     <label
-      class="flex h-[41px] w-full items-center gap-2 rounded-lg border-[0.5px] border-line bg-white p-2 md:w-[486px]"
+      class="flex h-[41px] w-full items-center gap-2 rounded-lg border-[0.5px] border-line bg-white p-2"
+      :class="active === 'returns' ? 'md:w-[486px]' : 'md:w-[355px]'"
     >
       <SearchIcon class="size-4 shrink-0 text-secondary" aria-hidden="true" />
       <span class="sr-only">{{ t('orders.search') }}</span>

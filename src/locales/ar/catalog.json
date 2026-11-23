@@ -1,8 +1,6 @@
 {
   "search": {
-    "title": "البحث عن قطع الغيار",
-    "byPartNumber": "بحث برقم القطعة",
-    "uploadExcel": "رفع ملف EXCEL",
+    "title": "البحث عن قطع غيار بأفضل الاسعار",
     "placeholder": "ابحث برقم القطعه او الاسم",
     "submit": "بحث",
     "recent": "عمليات البحث:",
@@ -22,13 +20,19 @@
       "taiwanese": "تيواني"
     },
     "badges": {
-      "cheapest": "الاقل سعرا",
+      "cheapest": "اقل سعر",
       "matchesRequest": "مطابق لطلبك"
     },
     "sort": {
       "priceAsc": "الاقل سعرا",
       "mostRequested": "الاكثر طلبا",
       "originalOnly": "القطع الاصلية"
+    },
+    "alternatives": {
+      "title": "القطع البديلة",
+      "show": "عرض القطع البديلة",
+      "hide": "اخفاء القطع البديلة",
+      "for": "القطع البديلة لـ {part}"
     }
   }
 }

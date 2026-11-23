@@ -1,0 +1,22 @@
+/** Notification shown in the navbar bell menu. Mock data until the API is wired. */
+export interface AppNotification {
+  id: string
+  kind: 'quoteOffer' | 'availabilityConfirmed'
+  /** Message parameters, e.g. supplier name or order number. */
+  params: Record<string, string>
+  /** Offer amount, shown under a quote-offer message. */
+  amount?: number
+  time: string
+}
+
+export const mockNotifications: AppNotification[] = [
+  {
+    id: 'n-1',
+    kind: 'quoteOffer',
+    params: { supplier: 'الشركة رقم 1' },
+    amount: 200,
+    time: '9:39 AM',
+  },
+  { id: 'n-2', kind: 'availabilityConfirmed', params: { order: '#12345' }, time: '9:39 AM' },
+  { id: 'n-3', kind: 'availabilityConfirmed', params: { order: '#12345' }, time: '9:39 AM' },
+]

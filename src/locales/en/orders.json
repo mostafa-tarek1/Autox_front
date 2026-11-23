@@ -10,17 +10,16 @@
     "home": "Home",
     "orders": "Orders",
     "titles": {
-      "current": "Current orders",
-      "previous": "Previous orders",
+      "current": "Orders",
+      "previous": "Finished orders",
       "returns": "Returns",
       "details": "Order details",
-      "returnRequest": "Return order",
-      "requests": "Orders"
+      "returnRequest": "Return order"
     },
     "tabs": {
       "label": "Order categories",
       "current": "Current orders",
-      "previous": "Previous orders",
+      "previous": "Finished orders",
       "returns": "Returns"
     },
     "search": "Search orders",
@@ -44,17 +43,20 @@
       "delete": "Delete order",
       "edit": "Edit order",
       "reportProblem": "Report a problem",
-      "return": "Return order"
+      "return": "Return order",
+      "returnOrder": "Request a return",
+      "deleteSeller": "Delete the {seller} order"
     },
     "status": {
       "awaitingAvailability": "Awaiting availability",
       "quantityUnavailable": "Quantity unavailable",
-      "awaitingPayment": "Awaiting payment",
+      "awaitingPayment": "Availability confirmed, awaiting payment",
       "awaitingPaymentConfirmation": "Awaiting payment confirmation",
       "preparing": "Preparing order",
       "shipping": "Preparing & shipping",
       "delivered": "Delivered",
-      "completed": "Delivered"
+      "completed": "Delivered",
+      "paid": "Paid"
     },
     "tracker": {
       "label": "Order progress",
@@ -75,6 +77,43 @@
       "vat": "VAT",
       "grandTotal": "Total price",
       "notFound": "Order not found"
+    },
+    "returnPolicy": {
+      "open": "View the product return policy",
+      "title": "Suppliers’ product return policy",
+      "sections": [
+        {
+          "title": "1. When a return is accepted",
+          "intro": "The buyer can request a return in these cases:",
+          "points": [
+            "Not as described: the part received differs from the specifications or details in the order.",
+            "Wrong part: a different part from the one ordered was received.",
+            "Damage or defect: the part arrived damaged or with manufacturing defects not disclosed before purchase.",
+            "Missing items: not all products or quantities on the invoice were received.",
+            "Incompatible part: the part does not fit the vehicle specifications agreed when ordering."
+          ]
+        },
+        {
+          "title": "2. When a return is not accepted",
+          "intro": "Returns cannot be accepted in these cases:",
+          "points": [
+            "The part was installed or used, unless the return is for a defect or mismatch.",
+            "Damage caused by misuse or incorrect installation.",
+            "Labels, identification numbers or the original packaging were removed, preventing verification.",
+            "Damage caused by the buyer’s storage or handling.",
+            "A part supplied to the buyer’s special specifications, except for defects or mismatch."
+          ]
+        },
+        {
+          "title": "3. Return period",
+          "intro": "",
+          "points": [
+            "Return requests must be made within 7 days of receiving the product.",
+            "Manufacturing defects are handled under the product and supplier warranty terms.",
+            "Clear photos showing the reason for the return must be attached to the request."
+          ]
+        }
+      ]
     }
   },
   "returns": {

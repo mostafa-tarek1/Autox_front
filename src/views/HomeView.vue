@@ -22,8 +22,12 @@ const brandSelection = ref<{ brandId: string; origin: PartOrigin } | null>(null)
 const cart = useCartStore()
 const toast = useAddedToCartToast()
 
+function quantityById(id: string): number {
+  return cart.items.find((item) => item.id === id)?.quantity ?? 0
+}
+
 function quantityOf(product: Product): number {
-  return cart.items.find((item) => item.id === product.id)?.quantity ?? 0
+  return quantityById(product.id)
 }
 
 function updateQuantity(product: Product, next: number): void {
@@ -35,6 +39,7 @@ function updateQuantity(product: Product, next: number): void {
     cart.setQuantity(product.id, next)
   }
 }
+
 const totalResults = 300
 </script>
 
@@ -45,7 +50,7 @@ const totalResults = 300
     <SearchPanel :recent="recent" @remove-recent="recent.splice($event, 1)" />
   </div>
 
-  <div class="page-container mt-[60px] flex flex-col gap-6 lg:flex-row lg:items-start">
+  <div class="page-container mt-[52px] flex flex-col gap-6 lg:flex-row lg:items-start">
     <BrandFilter v-model="brandSelection" :brands="carBrands" class="lg:w-[292px] lg:shrink-0" />
 
     <section
@@ -67,7 +72,9 @@ const totalResults = 300
           <ProductCard
             :product="product"
             :quantity="quantityOf(product)"
+            :alternative-quantity="quantityById"
             @update:quantity="updateQuantity(product, $event)"
+            @update:alternative-quantity="updateQuantity"
           />
         </li>
       </ul>

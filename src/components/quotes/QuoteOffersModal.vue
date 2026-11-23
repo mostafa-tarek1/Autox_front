@@ -39,7 +39,7 @@ const cheapestId = computed(
           :class="offer.id === cheapestId ? 'border-accent' : 'border-line'"
         >
           <div class="flex flex-wrap items-center gap-6">
-            <span class="text-body-sm text-ink">{{ offer.merchant }}</span>
+            <span class="text-body-sm text-ink">{{ offer.supplier }}</span>
             <BaseChip v-if="offer.id === cheapestId" tone="success" class="h-6 px-2 py-1">
               <template #icon><HotPriceIcon class="size-3.5" aria-hidden="true" /></template>
               {{ t('quotes.lowestPrice') }}

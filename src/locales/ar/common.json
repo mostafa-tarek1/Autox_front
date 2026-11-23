@@ -55,5 +55,18 @@
     "open": "الدعم الفني",
     "call": "اتصل بنا",
     "whatsapp": "واتساب"
+  },
+  "notifications": {
+    "title": "الاشعارات",
+    "empty": "لا توجد اشعارات جديدة",
+    "kinds": {
+      "quoteOffer": {
+        "title": "تم تقديم عرض سعر من {supplier}"
+      },
+      "availabilityConfirmed": {
+        "title": "تم تأكيد التوفر للطلب رقم {order}",
+        "body": "ادفع ثمن الطلب الآن لإكمال الشراء"
+      }
+    }
   }
 }

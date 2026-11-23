@@ -16,9 +16,10 @@ import {
   isValidUnifiedNumber,
 } from '@/components/auth/validation'
 import PhoneField from '@/components/form/PhoneField.vue'
+import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import { registerTrader } from '@/mocks/auth'
+import { cities, registerTrader } from '@/mocks/auth'
 
 type DocumentKey = 'commercialRegister' | 'taxRegister' | 'nationalAddress'
 
@@ -31,7 +32,10 @@ const form = reactive({
   email: '',
   companyName: '',
   unifiedNumber: '',
+  cityId: null as string | null,
 })
+
+const cityOptions = cities.map((city) => ({ value: city.id, label: city.name }))
 
 const documents = reactive<Record<DocumentKey, File | null>>({
   commercialRegister: null,
@@ -41,6 +45,9 @@ const documents = reactive<Record<DocumentKey, File | null>>({
 
 /** Order follows the design: commercial register first (start side). */
 const documentKeys: DocumentKey[] = ['commercialRegister', 'taxRegister', 'nationalAddress']
+
+/** The tax registration certificate is optional ("إن وجدت"). */
+const requiredDocuments: DocumentKey[] = ['commercialRegister', 'nationalAddress']
 
 const submitted = ref(false)
 const isSubmitting = ref(false)
@@ -56,7 +63,8 @@ const errors = computed(() => {
     email: isValidEmail(form.email) ? '' : t('auth.errors.email'),
     companyName: form.companyName.trim().length < 2 ? t('auth.errors.companyName') : '',
     unifiedNumber: isValidUnifiedNumber(form.unifiedNumber) ? '' : t('auth.errors.unifiedNumber'),
-    documents: documentKeys.some((key) => !documents[key]) ? t('auth.errors.documents') : '',
+    city: form.cityId ? '' : t('auth.errors.city'),
+    documents: requiredDocuments.some((key) => !documents[key]) ? t('auth.errors.documents') : '',
   }
 })
 
@@ -78,13 +86,14 @@ async function submit(): Promise<void> {
     return
   }
   const { commercialRegister, taxRegister, nationalAddress } = documents
-  if (!commercialRegister || !taxRegister || !nationalAddress) {
+  if (!commercialRegister || !nationalAddress || !form.cityId) {
     return
   }
   isSubmitting.value = true
   try {
     const { phone } = await registerTrader({
       ...form,
+      cityId: form.cityId,
       documents: { commercialRegister, taxRegister, nationalAddress },
     })
     await router.push({ name: 'verify-otp', state: { phone, flow: 'register' } })
@@ -99,18 +108,21 @@ async function submit(): Promise<void> {
     <AuthHeading title-id="register-title" :title="t('auth.register.title')" />
 
     <form
-      class="flex w-full flex-col gap-6 [&_label]:leading-5 [&_label]:text-white"
+      class="flex w-full flex-col gap-6 [&_label]:text-white"
       novalidate
       @submit.prevent="submit"
     >
-      <TextField
-        v-model="form.fullName"
-        :label="t('auth.fields.fullName')"
-        :placeholder="t('auth.placeholders.fullName')"
-        :icon="UserIcon"
-        :error="errors.fullName"
-        autocomplete="name"
-      />
+      <!-- Text-field labels are Plex 400 14/24 in this design; the phone label and documents title stay Noto. -->
+      <div class="contents [&_label]:font-sans [&_label]:text-body-sm [&_label]:font-normal">
+        <TextField
+          v-model="form.fullName"
+          :label="t('auth.fields.fullName')"
+          :placeholder="t('auth.placeholders.fullName')"
+          :icon="UserIcon"
+          :error="errors.fullName"
+          autocomplete="name"
+        />
+      </div>
       <PhoneField
         v-model="form.phone"
         :bordered="false"
@@ -118,42 +130,52 @@ async function submit(): Promise<void> {
         :label="t('auth.fields.phone')"
         :placeholder="t('auth.placeholders.phone')"
         :error="errors.phone"
+        class="[&_label]:font-label [&_label]:leading-5"
       />
-      <TextField
-        v-model="form.email"
-        type="email"
-        dir="ltr"
-        class="rtl:text-right"
-        :label="t('auth.fields.email')"
-        :placeholder="t('auth.placeholders.email')"
-        :icon="MailIcon"
-        :error="errors.email"
-        autocomplete="email"
-      />
-      <TextField
-        v-model="form.companyName"
-        :label="t('auth.fields.companyName')"
-        :placeholder="t('auth.placeholders.companyName')"
-        :icon="BuildingIcon"
-        :error="errors.companyName"
-        autocomplete="organization"
-      />
-      <TextField
-        v-model="form.unifiedNumber"
-        dir="ltr"
-        class="rtl:text-right"
-        :label="t('auth.fields.unifiedNumber')"
-        :placeholder="t('auth.placeholders.unifiedNumber')"
-        :icon="FileIcon"
-        :error="errors.unifiedNumber"
-      />
+      <div class="contents [&_label]:font-sans [&_label]:text-body-sm [&_label]:font-normal">
+        <TextField
+          v-model="form.email"
+          type="email"
+          dir="ltr"
+          class="rtl:text-right"
+          :label="t('auth.fields.email')"
+          :placeholder="t('auth.placeholders.email')"
+          :icon="MailIcon"
+          :error="errors.email"
+          autocomplete="email"
+        />
+        <TextField
+          v-model="form.companyName"
+          :label="t('auth.fields.companyName')"
+          :placeholder="t('auth.placeholders.companyName')"
+          :icon="BuildingIcon"
+          :error="errors.companyName"
+          autocomplete="organization"
+        />
+        <TextField
+          v-model="form.unifiedNumber"
+          dir="ltr"
+          class="rtl:text-right"
+          :label="t('auth.fields.unifiedNumber')"
+          :placeholder="t('auth.placeholders.unifiedNumber')"
+          :icon="FileIcon"
+          :error="errors.unifiedNumber"
+        />
+        <SelectField
+          v-model="form.cityId"
+          :options="cityOptions"
+          :label="t('auth.fields.city')"
+          :placeholder="t('auth.placeholders.city')"
+          :error="errors.city"
+        />
+      </div>
 
       <div role="group" aria-labelledby="register-documents-title" class="flex flex-col gap-2">
         <div class="flex flex-col gap-1">
           <p id="register-documents-title" class="font-label text-label leading-5 text-white">
             {{ t('auth.register.documents.title') }}
           </p>
-          <p class="text-body-sm text-white/80">{{ t('auth.register.documents.hint') }}</p>
+          <p class="text-body-sm text-white/70">{{ t('auth.register.documents.hint') }}</p>
         </div>
         <div class="grid grid-cols-1 gap-2 min-[480px]:grid-cols-3">
           <DocumentTile
@@ -161,7 +183,9 @@ async function submit(): Promise<void> {
             :key="key"
             :model-value="documents[key]"
             :label="t(`auth.register.documents.${key}`)"
-            :invalid="Boolean(errors.documents) && !documents[key]"
+            :invalid="
+              Boolean(errors.documents) && requiredDocuments.includes(key) && !documents[key]
+            "
             @update:model-value="onDocumentPicked(key, $event)"
             @rejected="onRejected"
           />

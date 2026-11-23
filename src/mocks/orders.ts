@@ -7,7 +7,9 @@ import type {
   Order,
   OrderDetails,
   OrderItem,
+  OrderRequest,
   ReturnRequest,
+  SellerOrder,
   Shipment,
 } from '@/components/orders/types'
 
@@ -36,97 +38,68 @@ function shipment(id: string, number: number, status: Shipment['status'], count:
 
 const base = { number: '#AX-10248', date: '15/10/2027', total: 2000 }
 
-/** "Current orders" (Figma 588:16862). */
-export const currentOrders: Order[] = [
-  {
-    ...base,
-    id: 'ord-1004',
-    kind: 'placed',
-    status: 'awaitingPaymentConfirmation',
-    trackingNumber: '#AX-10248',
-    items: [item('p1-a'), item('p1-b')],
-    untrackedItems: [item('p1-c')],
-    shipments: [],
-  },
-  {
-    ...base,
-    id: 'ord-1005',
-    kind: 'placed',
-    status: 'shipping',
-    items: [],
-    shipments: [shipment('s1', 1, 'shipping', 2), shipment('s2', 2, 'delivered', 1)],
-  },
-  {
-    ...base,
-    id: 'ord-1006',
-    kind: 'placed',
-    status: 'shipping',
-    items: [],
-    untrackedItems: [item('p3-a'), item('p3-b')],
-    shipments: [],
-  },
-  {
-    ...base,
-    id: 'ord-1007',
-    kind: 'placed',
-    status: 'delivered',
-    items: [],
-    untrackedItems: [item('p4-a')],
-    shipments: [],
-  },
-]
+function seller(
+  id: string,
+  status: SellerOrder['status'],
+  name: string,
+  total: number,
+  prices: number[],
+): SellerOrder {
+  return {
+    id,
+    seller: name,
+    status,
+    total,
+    items: prices.map((price, index) => item(`${id}-${index}`, price)),
+  }
+}
 
-/** Seller requests still waiting for availability or payment (Figma 235:10299, `?tab=requests`). */
-export const requestOrders: Order[] = [
+/** "الطلبات الحالية" (Figma 235:10299): orders split per seller, each with its own status. */
+export const currentOrders: OrderRequest[] = [
   {
-    ...base,
     id: 'ord-1001',
-    kind: 'request',
-    status: 'awaitingAvailability',
-    seller: 'شركة رقم 9',
-    items: [item('r1-a', 2000), item('r1-b', 160)],
-    shipments: [],
+    number: base.number,
+    date: base.date,
+    sellers: [
+      seller('ord-1001-a', 'awaitingPayment', 'شركة رقم 10', 2160, [2000, 160]),
+      seller('ord-1001-b', 'awaitingAvailability', 'شركة رقم 9', 2000, [2000]),
+    ],
   },
   {
-    ...base,
     id: 'ord-1002',
-    kind: 'request',
-    status: 'awaitingPayment',
-    seller: 'شركة رقم 9',
-    items: [item('r2-a', 2000), item('r2-b', 160)],
-    shipments: [],
-  },
-  {
-    ...base,
-    id: 'ord-1003',
-    kind: 'request',
-    status: 'quantityUnavailable',
-    seller: 'شركة رقم 9',
-    items: [item('r3-a', 2000), item('r3-b', 160)],
-    shipments: [],
+    number: base.number,
+    date: base.date,
+    sellers: [seller('ord-1002-a', 'quantityUnavailable', 'شركة رقم 9', 2000, [2000, 160])],
   },
 ]
 
-export const previousOrders: Order[] = Array.from({ length: 3 }, (_, index) => ({
-  ...base,
+/** "الطلبات المنتهية" (Figma 238:12021): paid orders that can be returned or invoiced. */
+export const previousOrders: OrderRequest[] = Array.from({ length: 3 }, (_, index) => ({
   id: `ord-90${index}`,
-  kind: 'request' as const,
-  status: 'completed' as const,
-  seller: 'شركة رقم 9',
-  items: [item(`h${index}-a`, 2000), item(`h${index}-b`, 160)],
-  shipments: [],
+  number: base.number,
+  date: base.date,
+  sellers: [seller(`ord-90${index}-a`, 'paid', 'شركة رقم 9', 2000, [2000, 160])],
 }))
 
+/** Sample shipments for the order details screen (reached from payments and the return form). */
+function placedOrder(id: string): Order {
+  return {
+    ...base,
+    id,
+    kind: 'placed',
+    status: 'preparing',
+    items: [],
+    shipments: [],
+  }
+}
+
+/** Any order id resolves to the sample details while the API does not exist yet. */
 export function findOrderDetails(id: string): OrderDetails | undefined {
-  const order = [...currentOrders, ...requestOrders, ...previousOrders].find(
-    (candidate) => candidate.id === id,
-  )
-  if (!order) {
+  if (!id) {
     return undefined
   }
   return {
-    ...order,
-    status: 'preparing',
+    ...placedOrder(id),
     shipments: [shipment(`${id}-s1`, 1, 'shipping', 2), shipment(`${id}-s2`, 2, 'delivered', 1)],
     recipient: 'فهد العتيبي',
     address: 'زهرة النرجس, الرياض, المملكة العربية السعودية',
@@ -138,6 +111,10 @@ export function findOrderDetails(id: string): OrderDetails | undefined {
 }
 
 export function orderItemsFor(id: string): OrderItem[] {
+  const listed = [...currentOrders, ...previousOrders].find((order) => order.id === id)
+  if (listed) {
+    return listed.sellers.flatMap((entry) => entry.items)
+  }
   const details = findOrderDetails(id)
   return details ? details.shipments.flatMap((entry) => entry.items) : []
 }

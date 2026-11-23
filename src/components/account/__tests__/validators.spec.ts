@@ -3,8 +3,11 @@ import { describe, expect, it } from 'vitest'
 import {
   digits,
   email,
+  formatIban,
   minLength,
+  normalizeIban,
   required,
+  saudiIban,
   saudiMobile,
   unifiedNumber,
   validate,
@@ -44,5 +47,19 @@ describe('account validators', () => {
       key: 'account.validation.minLength',
       params: { min: 3 },
     })
+  })
+})
+
+describe('IBAN helpers', () => {
+  it('accepts a Saudi IBAN with or without spaces and rejects other shapes', () => {
+    expect(saudiIban('SA03 8000 0000 6080 1016 7519')).toBeNull()
+    expect(saudiIban('sa0380000000608010167519')).toBeNull()
+    expect(saudiIban('SA038000000060801016751')).toEqual({ key: 'account.validation.iban' })
+    expect(saudiIban('GB0380000000608010167519')).not.toBeNull()
+  })
+
+  it('normalizes and groups an IBAN in blocks of four', () => {
+    expect(normalizeIban(' sa03 8000 0000 6080 1016 7519 ')).toBe('SA0380000000608010167519')
+    expect(formatIban('SA0380000000608010167519')).toBe('SA03 8000 0000 6080 1016 7519')
   })
 })

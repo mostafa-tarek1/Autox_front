@@ -22,6 +22,8 @@ export interface Product {
   origin: PartOrigin
   price: number
   highlight?: ProductHighlight
+  /** Other suppliers' parts that can replace this one (Figma "القطع البديلة"). */
+  alternatives?: Product[]
 }
 
 export type SortOption = 'priceAsc' | 'mostRequested' | 'originalOnly'
