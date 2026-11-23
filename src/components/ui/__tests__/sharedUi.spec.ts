@@ -60,6 +60,21 @@ describe('BaseModal', () => {
     expect(wrapper.emitted('update:open')).toEqual([[false]])
     wrapper.unmount()
   })
+
+  it('opens as a full-height panel at the inline start with the side placement', async () => {
+    const wrapper = mount(BaseModal, {
+      props: { open: true, title: 'عروض', placement: 'side' },
+      global,
+      attachTo: document.body,
+    })
+    await nextTick()
+    const dialog = document.querySelector('[role="dialog"]')!
+
+    expect(dialog.parentElement?.classList.contains('justify-start')).toBe(true)
+    expect(dialog.classList.contains('min-h-full')).toBe(true)
+    expect(dialog.classList.contains('rounded-3xl')).toBe(false)
+    wrapper.unmount()
+  })
 })
 
 describe('AppFooter', () => {

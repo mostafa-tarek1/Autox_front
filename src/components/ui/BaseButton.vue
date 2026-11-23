@@ -18,12 +18,15 @@ const props = withDefaults(
   { variant: 'accent', size: 'md', type: 'button', block: false },
 )
 
-/** Variants match the Figma "button" component set. */
+/**
+ * Variants match the Figma "button" component set, hover states included: the lime button turns
+ * primary green with white text, the bordered one turns lime (both on a 0.3s ease-out dissolve).
+ */
 const variantClasses: Record<ButtonVariant, string> = {
-  accent: 'bg-accent text-primary hover:brightness-95',
+  accent: 'bg-accent text-primary hover:bg-primary hover:text-white',
   primary: 'bg-primary text-white hover:bg-primary-deep',
   outline: 'bg-surface text-primary border border-accent hover:bg-accent/20',
-  soft: 'bg-surface text-primary border border-line hover:border-accent',
+  soft: 'bg-surface text-primary border border-line hover:border-accent hover:bg-accent',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -34,7 +37,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 const isInactive = computed(() => props.disabled || props.loading)
 
 const classes = computed(() => [
-  'inline-flex items-center justify-center gap-2 rounded-xl text-button whitespace-nowrap transition',
+  'inline-flex items-center justify-center gap-2 rounded-xl text-button whitespace-nowrap transition duration-300 ease-out',
   'disabled:cursor-not-allowed disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50',
   variantClasses[props.variant],
   sizeClasses[props.size],

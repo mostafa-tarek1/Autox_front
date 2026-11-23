@@ -27,7 +27,13 @@ const cheapestId = computed(
 </script>
 
 <template>
-  <BaseModal v-model:open="open" panel-class="max-w-[644px] p-6 sm:p-8" close-class="top-4 end-4">
+  <!-- Figma "العروض" 588:12844: a full-height white side panel at the inline start. -->
+  <BaseModal
+    v-model:open="open"
+    placement="side"
+    panel-class="max-w-[644px] p-6 sm:p-8"
+    close-class="top-4 end-4"
+  >
     <div class="flex flex-col gap-6">
       <header class="flex flex-col gap-2">
         <h2 class="text-h3 text-ink">{{ t('quotes.submittedOffers') }}</h2>

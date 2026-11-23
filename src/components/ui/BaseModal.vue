@@ -24,6 +24,8 @@ const props = withDefaults(
     titleClass?: string
     closeClass?: string
     dismissible?: boolean
+    /** `side`: a full-height panel at the inline start (e.g. the trader's submitted offers). */
+    placement?: 'center' | 'side'
   }>(),
   {
     tone: 'white',
@@ -31,6 +33,7 @@ const props = withDefaults(
     titleClass: 'mb-4 text-h3',
     closeClass: 'top-4 start-4',
     dismissible: true,
+    placement: 'center',
   },
 )
 
@@ -42,7 +45,9 @@ const isLocked = useScrollLock(typeof document === 'undefined' ? null : document
 let previouslyFocused: HTMLElement | null = null
 
 /** A radius in `panelClass` (e.g. rounded-2xl) replaces the default one. */
-const radiusClass = computed(() => (/(^|\s)rounded-/.test(props.panelClass) ? '' : 'rounded-3xl'))
+const radiusClass = computed(() =>
+  props.placement === 'side' || /(^|\s)rounded-/.test(props.panelClass) ? '' : 'rounded-3xl',
+)
 
 const ariaLabelledBy = computed(() => props.labelledBy ?? (props.title ? titleId : undefined))
 
@@ -83,7 +88,10 @@ onKeyStroke('Escape', () => open.value && close())
     >
       <div
         v-if="open"
-        class="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/40 p-4 sm:items-center"
+        class="fixed inset-0 z-50 flex overflow-y-auto bg-ink/40"
+        :class="
+          placement === 'side' ? 'justify-start' : 'items-start justify-center p-4 sm:items-center'
+        "
         @click.self="close"
       >
         <div
@@ -92,8 +100,14 @@ onKeyStroke('Escape', () => open.value && close())
           aria-modal="true"
           tabindex="-1"
           :aria-labelledby="ariaLabelledBy"
-          class="relative my-auto w-full shadow-card outline-none"
-          :class="[radiusClass, panelClass, width, tone === 'surface' ? 'bg-surface' : 'bg-white']"
+          class="relative w-full shadow-card outline-none"
+          :class="[
+            placement === 'side' ? 'min-h-full' : 'my-auto',
+            radiusClass,
+            panelClass,
+            width,
+            tone === 'surface' ? 'bg-surface' : 'bg-white',
+          ]"
         >
           <button
             v-if="dismissible"
