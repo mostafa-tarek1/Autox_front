@@ -40,7 +40,7 @@ const socials = [
     <div class="relative pt-[66px]" :class="variant === 'guest' ? 'pb-[21px]' : 'pb-[23px]'">
       <div class="page-container flex flex-col items-center gap-8">
         <RouterLink :to="{ name: 'home' }" :aria-label="t('nav.home')">
-          <AppLogo tone="accent" class="h-10 w-[141px]" />
+          <AppLogo tone="accent" class="h-10 w-[149px]" />
         </RouterLink>
 
         <ul v-if="variant === 'default'" class="flex flex-wrap items-center justify-center gap-8">
@@ -86,7 +86,7 @@ const socials = [
       >
         <i18n-t keypath="footer.rights" tag="p" scope="global" class="text-body-sm">
           <template #brand>
-            <bdi dir="ltr">© {{ year }} Auto X</bdi>
+            <bdi dir="ltr">© {{ year }} Parts X</bdi>
           </template>
         </i18n-t>
       </div>

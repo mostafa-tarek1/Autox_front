@@ -72,6 +72,6 @@ describe('AppFooter', () => {
     const wrapper = mount(AppFooter, { props: { variant }, global: { plugins: [i18n, router] } })
 
     expect(wrapper.find('a[href="/terms"]').exists()).toBe(hasLinks)
-    expect(wrapper.text()).toContain(`© ${new Date().getFullYear()} Auto X`)
+    expect(wrapper.text()).toContain(`© ${new Date().getFullYear()} Parts X`)
   })
 })

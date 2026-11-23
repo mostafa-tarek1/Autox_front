@@ -73,11 +73,11 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'مرحبًا بك في Auto X، المنصة الإلكترونية المتخصصة في ربط موردي قطع غيار السيارات بتجار التجزئة، وتسهيل البحث عن المنتجات وطلبها وطلب عروض الأسعار وإدارة عمليات الشراء والمدفوعات والفواتير.',
+          text: 'مرحبًا بك في Parts X، المنصة الإلكترونية المتخصصة في ربط موردي قطع غيار السيارات بتجار التجزئة، وتسهيل البحث عن المنتجات وطلبها وطلب عروض الأسعار وإدارة عمليات الشراء والمدفوعات والفواتير.',
         },
         {
           type: 'paragraph',
-          text: 'تحترم Auto X خصوصية المستخدمين وتلتزم بحماية البيانات الشخصية والتجارية التي يتم جمعها من خلال الموقع والخدمات المرتبطة به. توضح هذه السياسة أنواع البيانات التي نجمعها، وكيفية استخدامها وحمايتها ومشاركتها، والخيارات والحقوق المتاحة للمستخدمين بشأن بياناتهم.',
+          text: 'تحترم Parts X خصوصية المستخدمين وتلتزم بحماية البيانات الشخصية والتجارية التي يتم جمعها من خلال الموقع والخدمات المرتبطة به. توضح هذه السياسة أنواع البيانات التي نجمعها، وكيفية استخدامها وحمايتها ومشاركتها، والخيارات والحقوق المتاحة للمستخدمين بشأن بياناتهم.',
         },
         {
           type: 'paragraph',
@@ -89,7 +89,7 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
       id: 'scope',
       title: 'نطاق تطبيق السياسة',
       blocks: [
-        { type: 'paragraph', text: 'تسري هذه السياسة على جميع مستخدمي منصة Auto X، بما في ذلك:' },
+        { type: 'paragraph', text: 'تسري هذه السياسة على جميع مستخدمي منصة Parts X، بما في ذلك:' },
         {
           type: 'list',
           items: [
@@ -104,7 +104,7 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
       id: 'data-collected',
       title: 'البيانات التي نجمعها',
       blocks: [
-        { type: 'paragraph', text: 'تسري هذه السياسة على جميع مستخدمي منصة Auto X، بما في ذلك:' },
+        { type: 'paragraph', text: 'تسري هذه السياسة على جميع مستخدمي منصة Parts X، بما في ذلك:' },
         {
           type: 'list',
           items: [
@@ -214,11 +214,11 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'Welcome to Auto X, the online platform that connects car-parts suppliers with retailers and makes it easier to find and order products, request quotations and manage purchases, payments and invoices.',
+          text: 'Welcome to Parts X, the online platform that connects car-parts suppliers with retailers and makes it easier to find and order products, request quotations and manage purchases, payments and invoices.',
         },
         {
           type: 'paragraph',
-          text: 'Auto X respects user privacy and is committed to protecting the personal and business data collected through the website and its related services. This policy explains what data we collect, how we use, protect and share it, and the choices and rights users have over their data.',
+          text: 'Parts X respects user privacy and is committed to protecting the personal and business data collected through the website and its related services. This policy explains what data we collect, how we use, protect and share it, and the choices and rights users have over their data.',
         },
         {
           type: 'paragraph',
@@ -232,7 +232,7 @@ export const privacyPolicy: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'This policy applies to all users of the Auto X platform, including:',
+          text: 'This policy applies to all users of the Parts X platform, including:',
         },
         {
           type: 'list',
@@ -363,7 +363,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'باستخدامك منصة Auto X فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق عليها، يرجى عدم استخدام المنصة.',
+          text: 'باستخدامك منصة Parts X فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق عليها، يرجى عدم استخدام المنصة.',
         },
       ],
     },
@@ -409,7 +409,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'By using the Auto X platform you agree to these terms and conditions. If you do not agree, please do not use the platform.',
+          text: 'By using the Parts X platform you agree to these terms and conditions. If you do not agree, please do not use the platform.',
         },
       ],
     },

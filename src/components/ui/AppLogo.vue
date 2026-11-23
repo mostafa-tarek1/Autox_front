@@ -6,6 +6,6 @@ withDefaults(defineProps<{ tone?: 'primary' | 'accent' }>(), { tone: 'primary' }
 </script>
 
 <template>
-  <LogoPrimary v-if="tone === 'primary'" role="img" aria-label="Auto X" />
-  <LogoAccent v-else role="img" aria-label="Auto X" />
+  <LogoPrimary v-if="tone === 'primary'" role="img" aria-label="Parts X" />
+  <LogoAccent v-else role="img" aria-label="Parts X" />
 </template>

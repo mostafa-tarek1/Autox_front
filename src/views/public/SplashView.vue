@@ -22,6 +22,6 @@ onMounted(() => {
     <XPattern
       class="absolute right-0 bottom-0 -z-10 h-[474px] w-[531px] max-w-[80vw] text-accent opacity-[0.08]"
     />
-    <AppLogo tone="accent" class="-mt-[208px] h-14 w-[197px]" />
+    <AppLogo tone="accent" class="-mt-[208px] h-14 w-[209px]" />
   </main>
 </template>

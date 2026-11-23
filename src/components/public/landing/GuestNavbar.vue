@@ -24,8 +24,8 @@ const links = [
 <template>
   <header class="sticky top-0 z-40 bg-white/90 shadow-soft backdrop-blur-[16px]">
     <div class="page-container flex h-[72px] items-center justify-between gap-4">
-      <RouterLink :to="{ name: 'landing' }" class="shrink-0" aria-label="Auto X">
-        <AppLogo class="h-8 w-28" />
+      <RouterLink :to="{ name: 'landing' }" class="shrink-0" aria-label="Parts X">
+        <AppLogo class="h-8 w-[119px]" />
       </RouterLink>
 
       <nav :aria-label="t('nav.mainMenu')" class="hidden lg:block">

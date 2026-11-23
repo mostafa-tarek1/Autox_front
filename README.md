@@ -1,4 +1,4 @@
-# Auto-X Frontend
+# Parts X Frontend
 
 Vue 3 + TypeScript + Vite + Tailwind CSS v4 + Pinia + Vue Router + vue-i18n (Arabic RTL / English).
 

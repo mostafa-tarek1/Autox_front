@@ -6,7 +6,7 @@
 @import '@fontsource/noto-sans-arabic/500.css';
 
 /*
- * Design tokens from the Auto-X Figma file ("Design System" page + values used on screens).
+ * Design tokens from the Parts X Figma file ("Design System" page + values used on screens).
  * Components read these through Tailwind utilities (bg-primary, text-h3, shadow-card...).
  * Never hard-code a hex value in a component.
  */

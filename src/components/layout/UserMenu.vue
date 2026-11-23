@@ -7,7 +7,7 @@ import CardIcon from '@/assets/icons/credit-card-validation--stroke-rounded.svg'
 import LogoutIcon from '@/assets/icons/logout-03--stroke-rounded.svg'
 import BasketIcon from '@/assets/icons/shopping-basket-01--stroke-rounded.svg'
 import AccountIcon from '@/assets/icons/user-account--stroke-rounded.svg'
-import WalletIcon from '@/assets/icons/wallet-02--duotone-rounded.svg'
+import WalletIcon from '@/assets/icons/wallet-02--stroke-rounded.svg'
 import UserIcon from '@/assets/icons/user--duotone-rounded.svg'
 import BaseDropdown from '@/components/ui/BaseDropdown.vue'
 import DropdownItem from '@/components/ui/DropdownItem.vue'
@@ -19,7 +19,7 @@ const open = ref(false)
 </script>
 
 <template>
-  <BaseDropdown v-model:open="open" align="end" width="w-[164px]">
+  <BaseDropdown v-model:open="open" align="end" width="w-[194px]">
     <template #trigger="{ toggle, menuId }">
       <button
         type="button"
@@ -47,13 +47,13 @@ const open = ref(false)
       <template #icon><BasketIcon class="size-5" aria-hidden="true" /></template>
       {{ t('nav.orders') }}
     </DropdownItem>
-    <DropdownItem to="/payments">
-      <template #icon><CardIcon class="size-5" aria-hidden="true" /></template>
-      {{ t('nav.payments') }}
-    </DropdownItem>
     <DropdownItem :to="{ name: 'wallet' }">
       <template #icon><WalletIcon class="size-5" aria-hidden="true" /></template>
       {{ t('nav.wallet') }}
+    </DropdownItem>
+    <DropdownItem to="/payments">
+      <template #icon><CardIcon class="size-5" aria-hidden="true" /></template>
+      {{ t('nav.payments') }}
     </DropdownItem>
     <DropdownItem @select="emit('logout')">
       <template #icon><LogoutIcon class="size-5" aria-hidden="true" /></template>

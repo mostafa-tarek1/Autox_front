@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "أوتو إكس"
+    "name": "بارتس اكس"
   },
   "common": {
     "quantity": "الكمية",
@@ -35,7 +35,8 @@
     "logout": "تسجيل الخروج",
     "userMenu": "قائمة المستخدم",
     "breadcrumb": "مسار التنقل",
-    "wallet": "المحفظة"
+    "wallet": "المحفظة",
+    "quoteRequest": "طلب عرض سعر"
   },
   "footer": {
     "terms": "الشروط والاحكام",
@@ -47,7 +48,6 @@
   },
   "features": {
     "securePayments": "عمليات الدفع آمنه",
-    "returns": "مدة استرجاع 7 ايام",
     "trustedSuppliers": "موردين موثوقين",
     "support": "مساعدة 24 ساعه"
   },

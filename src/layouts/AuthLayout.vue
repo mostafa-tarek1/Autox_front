@@ -14,8 +14,8 @@ import XPattern from '@/components/ui/XPattern.vue'
     />
 
     <header class="page-container flex items-center justify-between pt-[33px]">
-      <RouterLink :to="{ name: 'home' }" aria-label="Auto X">
-        <AppLogo tone="accent" class="h-10 w-[141px]" />
+      <RouterLink :to="{ name: 'home' }" aria-label="Parts X">
+        <AppLogo tone="accent" class="h-10 w-[149px]" />
       </RouterLink>
       <LanguageSwitcher class="[&>button]:bg-surface" align="end" />
     </header>

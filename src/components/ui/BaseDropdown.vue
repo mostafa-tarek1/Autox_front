@@ -32,7 +32,7 @@ onKeyStroke('Escape', () => open.value && close())
         v-if="open"
         :id="menuId"
         role="menu"
-        class="absolute top-full z-30 mt-2 flex flex-col gap-3 rounded-2xl bg-white p-2 shadow-card"
+        class="absolute top-full z-30 mt-2 flex flex-col gap-3 rounded-2xl border border-line bg-white p-2 shadow-soft"
         :class="[width, align === 'start' ? 'start-0' : 'end-0']"
         @click="close"
       >

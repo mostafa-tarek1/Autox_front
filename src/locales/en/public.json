@@ -5,7 +5,7 @@
     "privacy": "Privacy policy",
     "terms": "Terms & conditions",
     "excelSearch": "Excel search",
-    "splash": "Auto X"
+    "splash": "Parts X"
   },
   "public": {
     "breadcrumb": "Breadcrumb",
@@ -36,7 +36,7 @@
       },
       "features": {
         "badge": "Features",
-        "title": "Why work with Auto X",
+        "title": "Why work with Parts X",
         "cta": "Get started now",
         "items": {
           "smartSearch": {
@@ -63,7 +63,7 @@
       },
       "cta": {
         "title": "Ready to upgrade how you buy spare parts?",
-        "description": "Join Auto X and discover an easier way to find products and do business with suppliers.",
+        "description": "Join Parts X and discover an easier way to find products and do business with suppliers.",
         "button": "Create your account"
       }
     },

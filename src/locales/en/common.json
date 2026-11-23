@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Auto-X"
+    "name": "Parts X"
   },
   "common": {
     "quantity": "Quantity",
@@ -35,7 +35,8 @@
     "logout": "Log out",
     "userMenu": "User menu",
     "breadcrumb": "Breadcrumb",
-    "wallet": "Wallet"
+    "wallet": "Wallet",
+    "quoteRequest": "Request a quote"
   },
   "footer": {
     "terms": "Terms & conditions",
@@ -47,7 +48,6 @@
   },
   "features": {
     "securePayments": "Secure payments",
-    "returns": "7-day returns",
     "trustedSuppliers": "Trusted suppliers",
     "support": "24-hour support"
   },

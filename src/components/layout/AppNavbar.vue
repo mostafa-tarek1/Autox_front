@@ -44,13 +44,15 @@ function logout(): void {
 
 <template>
   <header class="sticky top-0 z-40 bg-white/90 shadow-soft backdrop-blur-[16px]">
-    <div class="page-container flex h-[72px] items-center justify-between gap-4">
+    <div
+      class="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 xl:px-14"
+    >
       <RouterLink :to="{ name: 'home' }" class="shrink-0" :aria-label="t('nav.home')">
-        <AppLogo class="h-8 w-28" />
+        <AppLogo class="h-8 w-[119px]" />
       </RouterLink>
 
       <nav :aria-label="t('nav.mainMenu')" class="hidden lg:block">
-        <ul class="flex items-center gap-2">
+        <ul class="flex items-center gap-3">
           <li v-for="item in navItems" :key="item.key">
             <RouterLink
               :to="item.to"

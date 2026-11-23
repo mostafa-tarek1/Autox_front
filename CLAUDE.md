@@ -1,6 +1,6 @@
-# Auto-X frontend
+# Parts X frontend
 
-Vue 3 SPA for the Auto-X project. The Laravel API lives in a separate repo (`../Autox`).
+Vue 3 SPA for the Parts X project. The Laravel API lives in a separate repo (`../Autox`).
 The current phase is **UI only**: screens use local mock data and are wired to the API later.
 
 ## Design source

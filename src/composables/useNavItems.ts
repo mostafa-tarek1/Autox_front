@@ -1,7 +1,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 
 export interface NavItem {
-  key: 'home' | 'orders' | 'quotes' | 'vouchers' | 'contact'
+  key: 'home' | 'orders' | 'quoteRequest' | 'quotes' | 'vouchers' | 'contact'
   to: RouteLocationRaw
 }
 
@@ -9,6 +9,7 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   { key: 'home', to: { name: 'home' } },
   { key: 'orders', to: '/orders' },
+  { key: 'quoteRequest', to: '/quotes/request' },
   { key: 'quotes', to: '/quotes' },
   { key: 'vouchers', to: '/vouchers' },
   { key: 'contact', to: '/contact' },
