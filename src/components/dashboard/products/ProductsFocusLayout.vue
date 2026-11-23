@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import DashboardNotifications from '@/components/dashboard/layout/DashboardNotifications.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 
-import NotificationIcon from '@/assets/icons/notification-02--stroke-rounded.svg'
 import DashboardUserMenu from '@/components/dashboard/layout/DashboardUserMenu.vue'
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher.vue'
-import NavIconButton from '@/components/layout/NavIconButton.vue'
 import SupportFab from '@/components/layout/SupportFab.vue'
 import AppLogo from '@/components/ui/AppLogo.vue'
 
@@ -33,9 +33,7 @@ const supplier = { name: 'فهد العتيبي' }
           <AppLogo class="h-8 w-[119px]" />
         </RouterLink>
         <div class="flex items-center gap-2 sm:gap-4">
-          <NavIconButton :label="t('nav.notifications')" :count="3">
-            <NotificationIcon class="size-6 text-primary" aria-hidden="true" />
-          </NavIconButton>
+          <DashboardNotifications />
           <LanguageSwitcher class="hidden sm:block" />
           <DashboardUserMenu :name="supplier.name" @logout="router.push({ name: 'login' })" />
         </div>
@@ -44,6 +42,7 @@ const supplier = { name: 'فهد العتيبي' }
     <main id="main" class="flex-1 pb-16">
       <RouterView />
     </main>
+    <AppFooter />
     <SupportFab />
   </div>
 </template>

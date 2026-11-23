@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { onClickOutside } from '@vueuse/core'
-import { computed, ref, useTemplateRef, watch } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
-import NotificationIcon from '@/assets/icons/notification-02--stroke-rounded.svg'
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher.vue'
-import NavIconButton from '@/components/layout/NavIconButton.vue'
-import { mockSupplierNotifications } from '@/components/layout/notifications'
-import NotificationsMenu from '@/components/layout/NotificationsMenu.vue'
 
+import DashboardNotifications from './DashboardNotifications.vue'
 import DashboardUserMenu from './DashboardUserMenu.vue'
 
 const emit = defineEmits<{ openMenu: [] }>()
@@ -19,15 +15,6 @@ const router = useRouter()
 
 /** Mock session data for the UI phase. */
 const supplier = { name: 'فهد العتيبي' }
-const notifications = mockSupplierNotifications
-
-const isNotificationsOpen = ref(false)
-const notificationsRoot = useTemplateRef<HTMLElement>('notificationsRoot')
-onClickOutside(notificationsRoot, () => (isNotificationsOpen.value = false))
-watch(
-  () => route.fullPath,
-  () => (isNotificationsOpen.value = false),
-)
 
 const title = computed(() => {
   const key = `pageTitles.${route.meta.title}`
@@ -59,30 +46,7 @@ function logout(): void {
       <h1 class="truncate text-h4 text-ink">{{ title }}</h1>
     </div>
     <div class="flex items-center gap-2 sm:gap-4">
-      <div ref="notificationsRoot" class="relative">
-        <NavIconButton
-          :label="t('nav.notifications')"
-          :count="notifications.length"
-          aria-haspopup="dialog"
-          :aria-expanded="isNotificationsOpen"
-          @click="isNotificationsOpen = !isNotificationsOpen"
-        >
-          <NotificationIcon class="size-6 text-primary" aria-hidden="true" />
-        </NavIconButton>
-        <Transition
-          enter-active-class="transition duration-150 ease-out"
-          enter-from-class="opacity-0 -translate-y-1"
-          leave-active-class="transition duration-100 ease-in"
-          leave-to-class="opacity-0 -translate-y-1"
-        >
-          <NotificationsMenu
-            v-if="isNotificationsOpen"
-            :notifications="notifications"
-            class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-3"
-            @close="isNotificationsOpen = false"
-          />
-        </Transition>
-      </div>
+      <DashboardNotifications />
       <LanguageSwitcher class="hidden sm:block" />
       <DashboardUserMenu :name="supplier.name" @logout="logout" />
     </div>
