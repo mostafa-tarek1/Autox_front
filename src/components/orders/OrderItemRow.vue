@@ -3,6 +3,7 @@ import PriceTag from '@/components/ui/PriceTag.vue'
 import { useI18n } from 'vue-i18n'
 
 import SecurityCheckIcon from '@/assets/icons/security-check--stroke-rounded.svg'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import type { OrderItem } from './types'
 
@@ -15,6 +16,7 @@ withDefaults(defineProps<{ item: OrderItem; variant?: 'rich' | 'compact'; border
   bordered: false,
 })
 const { t } = useI18n()
+const localized = useLocalizedText()
 </script>
 
 <template>
@@ -29,7 +31,7 @@ const { t } = useI18n()
       >
         <img
           :src="item.brandLogo"
-          :alt="item.brandName"
+          :alt="localized(item.brandName)"
           width="55"
           height="28"
           class="h-7 w-[55px] object-contain"

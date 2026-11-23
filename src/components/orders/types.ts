@@ -1,3 +1,4 @@
+import type { LocalizedText } from '@/composables/useLocalizedText'
 import type { PartOrigin } from '@/types/catalog'
 
 /** Order-level and shipment-level states shown as status chips. */
@@ -22,7 +23,7 @@ export interface OrderItem {
   title: string
   partNumber: string
   origin: PartOrigin
-  brandName: string
+  brandName: LocalizedText
   brandLogo: string
   quantity: number
   /** Unit price in SAR. */

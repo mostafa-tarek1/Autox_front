@@ -8,6 +8,7 @@ import CancelIcon from '@/assets/icons/cancel-circle--stroke-rounded.svg'
 import CartDuotoneIcon from '@/assets/icons/shopping-cart-01--duotone-rounded.svg'
 import CartIcon from '@/assets/icons/shopping-cart-01--stroke-standard.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { useCartStore } from '@/stores/cart'
 
 import BrandThumb from './BrandThumb.vue'
@@ -18,6 +19,7 @@ import BrandThumb from './BrandThumb.vue'
  */
 const emit = defineEmits<{ close: [] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 const cart = useCartStore()
 const { items } = storeToRefs(cart)
 </script>
@@ -54,7 +56,7 @@ const { items } = storeToRefs(cart)
           class="flex h-[85px] items-center justify-between gap-4 rounded-2xl border-[0.5px] border-line bg-white p-2"
         >
           <div class="flex min-w-0 flex-1 items-start gap-4">
-            <BrandThumb :logo="item.brandLogo" :name="item.brandName" size="sm" tone="surface" />
+            <BrandThumb :logo="item.brandLogo" :name="localized(item.brandName)" size="sm" tone="surface" />
             <div class="flex min-w-0 flex-1 flex-col items-start gap-2">
               <p class="w-full truncate text-body-md text-ink" :title="item.title">
                 {{ item.title }}

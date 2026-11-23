@@ -4,14 +4,15 @@
 import hyundai from '@/assets/images/car-brands/hyundai.webp'
 import bankAlrajhi from '@/assets/images/shop/bank-alrajhi.webp'
 import type { BankAccount, CartItem, PaymentSummary } from '@/components/shop/types'
+import { brandNames, supplierName } from '@/mocks/names'
 
 function cartItem(id: string, overrides: Partial<CartItem>): CartItem {
   return {
     id,
     title: 'رفرف ونيت ايسوزو19/23أصلي',
     partNumber: '04465-0K240',
-    supplier: 'الشركة رقم 9',
-    brandName: 'هيونداي',
+    supplier: supplierName(9),
+    brandName: brandNames.hyundai,
     brandLogo: hyundai,
     origin: 'original',
     unitPrice: 200,
@@ -27,7 +28,7 @@ function cartItem(id: string, overrides: Partial<CartItem>): CartItem {
 export const initialCartItems: CartItem[] = [
   cartItem('cart-1', { quantity: 3, unitPrice: 2000 / 3 }),
   cartItem('cart-2', { quantity: 1, unitPrice: 160 }),
-  cartItem('cart-3', { quantity: 3, unitPrice: 200 / 3, supplier: 'الشركة رقم 4' }),
+  cartItem('cart-3', { quantity: 3, unitPrice: 200 / 3, supplier: supplierName(4) }),
 ]
 
 export const VAT_AMOUNT = 100

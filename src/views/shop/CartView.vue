@@ -7,6 +7,7 @@ import { useRouter } from 'vue-router'
 import CartIcon from '@/assets/icons/shopping-cart-01--duotone-rounded.svg'
 import CartSupplierGroup from '@/components/shop/CartSupplierGroup.vue'
 import CheckoutLayout from '@/components/shop/CheckoutLayout.vue'
+import { localizedKey } from '@/composables/useLocalizedText'
 import { validateDeliveryAddress } from '@/components/shop/deliveryAddress'
 import DeliveryAddressForm from '@/components/shop/DeliveryAddressForm.vue'
 import OrderSummary from '@/components/shop/OrderSummary.vue'
@@ -59,7 +60,7 @@ function trackOrder(): void {
       <template v-else>
         <CartSupplierGroup
           v-for="group in groups"
-          :key="group.supplier"
+          :key="localizedKey(group.supplier)"
           :group="group"
           @quantity="(id, value) => cart.setQuantity(id, value)"
         />

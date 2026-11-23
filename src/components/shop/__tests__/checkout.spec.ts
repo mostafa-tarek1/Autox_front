@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { validateDeliveryAddress } from '@/components/shop/deliveryAddress'
 import type { DeliveryAddress } from '@/components/shop/types'
+import { localizedKey } from '@/composables/useLocalizedText'
 import { useCartStore } from '@/stores/cart'
 
 const address: DeliveryAddress = {
@@ -37,7 +38,7 @@ describe('cart store', () => {
   it('groups lines per supplier with each group total', () => {
     const cart = useCartStore()
 
-    expect(cart.groups.map((group) => [group.supplier, Math.round(group.total)])).toEqual([
+    expect(cart.groups.map((group) => [localizedKey(group.supplier), Math.round(group.total)])).toEqual([
       ['الشركة رقم 9', 2160],
       ['الشركة رقم 4', 200],
     ])

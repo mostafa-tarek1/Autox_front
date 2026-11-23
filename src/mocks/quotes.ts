@@ -1,6 +1,9 @@
 /**
  * Local mock data for quotation requests (UI phase only).
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { supplierName } from '@/mocks/names'
+
 export type QuoteStatus = 'offersReceived' | 'awaitingOffers'
 
 export interface QuoteItem {
@@ -13,7 +16,7 @@ export interface QuoteItem {
 
 export interface QuoteOffer {
   id: string
-  supplier: string
+  supplier: LocalizedText
   price: number
 }
 
@@ -50,7 +53,7 @@ export const quoteRequests: QuoteRequest[] = [
     items,
     offers: [1, 2, 3, 4].map((n) => ({
       id: `offer-${n}`,
-      supplier: `الشركه رقم ${n}`,
+      supplier: supplierName(n),
       price: 200,
     })),
   },

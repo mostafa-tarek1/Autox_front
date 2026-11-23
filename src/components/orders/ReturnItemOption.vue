@@ -5,6 +5,7 @@ import { useId, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import TickIcon from '@/assets/icons/tick-02--solid-standard.svg'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import type { OrderItem } from './types'
 
@@ -12,6 +13,7 @@ defineProps<{ item: OrderItem }>()
 const selected = defineModel<boolean>('selected', { default: false })
 const quantity = defineModel<number>('quantity', { default: 1 })
 const { t } = useI18n()
+const localized = useLocalizedText()
 const checkboxId = useId()
 
 /** Picking a quantity implies the line is part of the return. */
@@ -44,7 +46,7 @@ watch(quantity, () => (selected.value = true))
           height="20"
           class="h-5 w-[38px] object-contain"
         />
-        <span class="text-[9.7px] leading-[14px] text-muted">{{ item.brandName }}</span>
+        <span class="text-[9.7px] leading-[14px] text-muted">{{ localized(item.brandName) }}</span>
       </span>
       <span class="flex min-w-0 flex-col items-start gap-2">
         <span class="text-body-md text-ink">{{ item.title }}</span>

@@ -1,11 +1,12 @@
+import type { LocalizedText } from '@/composables/useLocalizedText'
 import type { PartOrigin } from '@/types/catalog'
 
 export interface CartItem {
   id: string
   title: string
   partNumber: string
-  supplier: string
-  brandName: string
+  supplier: LocalizedText
+  brandName: LocalizedText
   brandLogo: string
   origin: PartOrigin
   unitPrice: number
@@ -14,7 +15,7 @@ export interface CartItem {
 
 /** Cart lines grouped per supplier, as the cart screen shows them (Figma 588:16341). */
 export interface CartSupplierGroup {
-  supplier: string
+  supplier: LocalizedText
   total: number
   items: CartItem[]
 }

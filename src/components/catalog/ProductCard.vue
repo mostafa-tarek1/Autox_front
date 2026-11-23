@@ -9,6 +9,7 @@ import TickIcon from '@/assets/icons/tick-02--solid-rounded.svg'
 import BaseChip from '@/components/ui/BaseChip.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
 import QuantityStepper from '@/components/ui/QuantityStepper.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import type { Product } from '@/types/catalog'
 
 /**
@@ -29,6 +30,7 @@ const props = withDefaults(
 const emit = defineEmits<{ 'update:alternativeQuantity': [product: Product, quantity: number] }>()
 const quantity = defineModel<number>('quantity', { default: 0 })
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const panelId = useId()
 const isExpanded = ref(false)
@@ -74,7 +76,7 @@ const cardClass = computed(() => {
           </BaseChip>
         </div>
         <p dir="ltr" class="text-body-md text-primary">{{ product.partNumber }}</p>
-        <p class="text-body-md text-muted">{{ product.supplier }}</p>
+        <p class="text-body-md text-muted">{{ localized(product.supplier) }}</p>
         <BaseChip :tone="isOriginal || isAlternative ? 'primary' : 'neutral'">
           <template v-if="isOriginal" #icon>
             <SecurityCheckIcon class="size-4" aria-hidden="true" />

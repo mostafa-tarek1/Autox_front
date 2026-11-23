@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 
 import DashboardSidebar from '@/components/dashboard/layout/DashboardSidebar.vue'
-import AppFooter from '@/components/layout/AppFooter.vue'
+import DashboardFooter from '@/components/dashboard/layout/DashboardFooter.vue'
 import DashboardTopbar from '@/components/dashboard/layout/DashboardTopbar.vue'
 
 /** Supplier dashboard shell (Figma "Dashboard" page): 228px sidebar at the start, 72px top bar, 24px content padding. */
@@ -24,7 +24,7 @@ watch(
       <main id="main" class="flex-1 p-4 pb-16 sm:p-6 sm:pb-16">
         <RouterView />
       </main>
-      <AppFooter />
+      <DashboardFooter />
     </div>
   </div>
 </template>

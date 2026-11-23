@@ -9,6 +9,7 @@ import CouponIcon from '@/assets/icons/coupon-01--stroke-rounded.svg'
 import MoneyIcon from '@/assets/icons/money-01--stroke-rounded.svg'
 import CartIcon from '@/assets/icons/shopping-cart-01--stroke-rounded.svg'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import type { AppNotification } from './notifications'
 
@@ -24,6 +25,14 @@ const kindIcons: Record<AppNotification['kind'], Component> = {
 }
 const emit = defineEmits<{ close: [] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
+
+/** Message parameters in the current locale (supplier names come localized with the data). */
+function messageParams(notification: AppNotification): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(notification.params).map(([key, value]) => [key, localized(value)]),
+  )
+}
 </script>
 
 <template>
@@ -60,7 +69,7 @@ const { t } = useI18n()
         </span>
         <div class="flex min-w-0 flex-1 flex-col items-start gap-1">
           <p class="text-body-sm text-ink">
-            {{ t(`notifications.kinds.${notification.kind}.title`, notification.params) }}
+            {{ t(`notifications.kinds.${notification.kind}.title`, messageParams(notification)) }}
           </p>
           <PriceTag
             v-if="notification.amount !== undefined"

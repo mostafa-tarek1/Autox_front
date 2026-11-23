@@ -7,12 +7,14 @@ import HotPriceIcon from '@/assets/icons/hot-price--solid-rounded.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseChip from '@/components/ui/BaseChip.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import type { QuoteOffer, QuoteRequest } from '@/mocks/quotes'
 
 const props = defineProps<{ request: QuoteRequest | null }>()
 const open = defineModel<boolean>('open', { default: false })
 const emit = defineEmits<{ accept: [offer: QuoteOffer] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const offers = computed(() => props.request?.offers ?? [])
 const cheapestId = computed(
@@ -39,7 +41,7 @@ const cheapestId = computed(
           :class="offer.id === cheapestId ? 'border-accent' : 'border-line'"
         >
           <div class="flex flex-wrap items-center gap-6">
-            <span class="text-body-sm text-ink">{{ offer.supplier }}</span>
+            <span class="text-body-sm text-ink">{{ localized(offer.supplier) }}</span>
             <BaseChip v-if="offer.id === cheapestId" tone="success" class="h-6 px-2 py-1">
               <template #icon><HotPriceIcon class="size-3.5" aria-hidden="true" /></template>
               {{ t('quotes.lowestPrice') }}

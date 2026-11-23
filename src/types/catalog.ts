@@ -1,3 +1,5 @@
+import type { LocalizedText } from '@/composables/useLocalizedText'
+
 /** Where a part comes from; drives the neutral chip on the product card. */
 export type PartOrigin = 'original' | 'korean' | 'japanese' | 'chinese' | 'taiwanese'
 
@@ -6,7 +8,7 @@ export type ProductHighlight = 'cheapest' | 'matchesRequest'
 
 export interface CarBrand {
   id: string
-  name: string
+  name: LocalizedText
   logo: string
   /** First model year with parts available. */
   fromYear: number
@@ -17,7 +19,7 @@ export interface Product {
   id: string
   title: string
   partNumber: string
-  supplier: string
+  supplier: LocalizedText
   brandLogo: string
   origin: PartOrigin
   price: number

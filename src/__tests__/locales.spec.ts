@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest'
 import { defineComponent, h, nextTick } from 'vue'
 
 import { useDocumentLocale, useLocale } from '@/composables/useLocale'
+import { useLocalizedText } from '@/composables/useLocalizedText'
+import { brandNames, supplierName } from '@/mocks/names'
 import { directionFor, i18n, SUPPORTED_LOCALES } from '@/plugins/i18n'
 
 type Messages = Record<string, unknown>
@@ -64,6 +66,34 @@ describe('locales', () => {
     expect(directionFor('ur')).toBe('rtl')
     expect(document.documentElement.lang).toBe('ur')
     expect(document.documentElement.dir).toBe('rtl')
+
+    wrapper.vm.setLocale('ar')
+    wrapper.unmount()
+  })
+
+  it('shows brand and supplier names in the current locale', async () => {
+    const Probe = defineComponent({
+      setup() {
+        const { setLocale } = useLocale()
+        const localized = useLocalizedText()
+        return { setLocale, localized }
+      },
+      render: () => h('span'),
+    })
+    const wrapper = mount(Probe, { global: { plugins: [i18n] } })
+    const names = () => [
+      wrapper.vm.localized(brandNames.hyundai),
+      wrapper.vm.localized(supplierName(1)),
+      wrapper.vm.localized('فهد العتيبي'),
+    ]
+
+    expect(names()).toEqual(['هيونداي', 'الشركة رقم 1', 'فهد العتيبي'])
+
+    wrapper.vm.setLocale('en')
+    expect(names()).toEqual(['Hyundai', 'Company 1', 'فهد العتيبي'])
+
+    wrapper.vm.setLocale('ur')
+    expect(names()).toEqual(['ہنڈائی', 'کمپنی نمبر 1', 'فهد العتيبي'])
 
     wrapper.vm.setLocale('ar')
     wrapper.unmount()

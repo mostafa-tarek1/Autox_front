@@ -12,6 +12,7 @@ import type {
   SellerOrder,
   Shipment,
 } from '@/components/orders/types'
+import { brandNames } from '@/mocks/names'
 
 function item(id: string, price = 200, quantity = 3): OrderItem {
   return {
@@ -19,7 +20,7 @@ function item(id: string, price = 200, quantity = 3): OrderItem {
     title: 'رفرف ونيت ايسوزو19/23أصلي',
     partNumber: '04465-0K240',
     origin: 'original',
-    brandName: 'هيونداي',
+    brandName: brandNames.hyundai,
     brandLogo: hyundai,
     quantity,
     price,

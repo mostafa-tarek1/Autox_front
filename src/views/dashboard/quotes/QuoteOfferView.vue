@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppFooter from '@/components/layout/AppFooter.vue'
+import DashboardFooter from '@/components/dashboard/layout/DashboardFooter.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
@@ -169,7 +169,7 @@ function decline(): void {
         </BaseButton>
       </form>
     </main>
-    <AppFooter />
+    <DashboardFooter />
 
     <QuoteOfferResultModal
       v-model:open="isResultOpen"

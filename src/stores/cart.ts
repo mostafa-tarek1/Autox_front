@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
 import type { CartItem, CartSupplierGroup, DeliveryAddress } from '@/components/shop/types'
+import { localizedKey } from '@/composables/useLocalizedText'
 import { initialCartItems, VAT_AMOUNT } from '@/mocks/shop'
 import type { Product } from '@/types/catalog'
 
@@ -30,14 +31,15 @@ export const useCartStore = defineStore('cart', () => {
   const groups = computed<CartSupplierGroup[]>(() => {
     const bySupplier = new Map<string, CartSupplierGroup>()
     for (const item of items.value) {
-      const group = bySupplier.get(item.supplier) ?? {
+      const key = localizedKey(item.supplier)
+      const group = bySupplier.get(key) ?? {
         supplier: item.supplier,
         total: 0,
         items: [],
       }
       group.items.push(item)
       group.total += lineTotal(item)
-      bySupplier.set(item.supplier, group)
+      bySupplier.set(key, group)
     }
     return [...bySupplier.values()]
   })

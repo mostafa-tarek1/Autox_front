@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { productBrands, productOrigins } from '@/mocks/dashboard-products'
 import type { PartOrigin } from '@/types/catalog'
 
@@ -14,6 +15,7 @@ import type { ProductDraft } from './useSupplierProducts'
 const props = defineProps<{ initial?: ProductDraft; submitLabel: string }>()
 const emit = defineEmits<{ submit: [draft: ProductDraft] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const form = reactive({
   partNumber: props.initial?.partNumber ?? '',
@@ -27,7 +29,9 @@ const submitted = ref(false)
 const originOptions = computed(() =>
   productOrigins.map((origin) => ({ value: origin, label: t(`catalog.origins.${origin}`) })),
 )
-const brandOptions = productBrands.map((brand) => ({ value: brand.id, label: brand.name }))
+const brandOptions = computed(() =>
+  productBrands.map((brand) => ({ value: brand.id, label: localized(brand.name) })),
+)
 
 const errors = computed(() => {
   if (!submitted.value) {

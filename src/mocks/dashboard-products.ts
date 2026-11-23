@@ -2,6 +2,8 @@
  * Supplier dashboard — spare parts (Figma "Products" section 976:9917). Mock data for the UI phase;
  * replaced by the supplier catalog API later.
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { brandNames, type BrandId } from '@/mocks/names'
 import type { PartOrigin } from '@/types/catalog'
 
 export interface SupplierProduct {
@@ -78,13 +80,13 @@ export const productOrigins: PartOrigin[] = [
   'taiwanese',
 ]
 
-export const productBrands: Array<{ id: string; name: string }> = [
-  { id: 'toyota', name: 'تويوتا' },
-  { id: 'hyundai', name: 'هيونداي' },
-  { id: 'kia', name: 'كيا' },
-  { id: 'nissan', name: 'نيسان' },
-  { id: 'isuzu', name: 'ايسوزو' },
-  { id: 'mercedes', name: 'مرسيدس' },
-  { id: 'bmw', name: 'بي ام دبليو' },
-  { id: 'ford', name: 'فورد' },
+export const productBrands: Array<{ id: BrandId; name: LocalizedText }> = [
+  { id: 'toyota', name: brandNames.toyota },
+  { id: 'hyundai', name: brandNames.hyundai },
+  { id: 'kia', name: brandNames.kia },
+  { id: 'nissan', name: brandNames.nissan },
+  { id: 'isuzu', name: brandNames.isuzu },
+  { id: 'mercedes', name: brandNames.mercedes },
+  { id: 'bmw', name: brandNames.bmw },
+  { id: 'ford', name: brandNames.ford },
 ]

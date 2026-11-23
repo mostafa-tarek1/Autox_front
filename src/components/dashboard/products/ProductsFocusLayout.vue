@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DashboardNotifications from '@/components/dashboard/layout/DashboardNotifications.vue'
-import AppFooter from '@/components/layout/AppFooter.vue'
+import DashboardFooter from '@/components/dashboard/layout/DashboardFooter.vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 
@@ -42,7 +42,7 @@ const supplier = { name: 'فهد العتيبي' }
     <main id="main" class="flex-1 pb-16">
       <RouterView />
     </main>
-    <AppFooter />
+    <DashboardFooter />
     <SupportFab />
   </div>
 </template>
