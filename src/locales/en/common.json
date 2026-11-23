@@ -66,6 +66,17 @@
       "availabilityConfirmed": {
         "title": "Availability confirmed for order {order}",
         "body": "Pay for the order now to complete the purchase"
+      },
+      "newOrder": {
+        "title": "New order {order} is waiting for your reply",
+        "body": "Review the order and confirm the parts are available"
+      },
+      "quoteRequest": {
+        "title": "New quotation request from {customer}",
+        "body": "Add your offer from the quotations page"
+      },
+      "payout": {
+        "title": "An amount was transferred to your bank account"
       }
     }
   }

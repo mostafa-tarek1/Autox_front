@@ -1,15 +1,27 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import CancelIcon from '@/assets/icons/cancel-circle--stroke-rounded.svg'
 import HotPriceIcon from '@/assets/icons/hot-price--stroke-standard.svg'
 import CartCheckIcon from '@/assets/icons/shopping-cart-check-01--stroke-standard.svg'
+import CouponIcon from '@/assets/icons/coupon-01--stroke-rounded.svg'
+import MoneyIcon from '@/assets/icons/money-01--stroke-rounded.svg'
+import CartIcon from '@/assets/icons/shopping-cart-01--stroke-rounded.svg'
 import PriceTag from '@/components/ui/PriceTag.vue'
 
 import type { AppNotification } from './notifications'
 
 /** Bell dropdown (Figma "notifications" 1008:10947). */
 defineProps<{ notifications: AppNotification[] }>()
+
+const kindIcons: Record<AppNotification['kind'], Component> = {
+  quoteOffer: HotPriceIcon,
+  availabilityConfirmed: CartCheckIcon,
+  newOrder: CartIcon,
+  quoteRequest: CouponIcon,
+  payout: MoneyIcon,
+}
 const emit = defineEmits<{ close: [] }>()
 const { t } = useI18n()
 </script>
@@ -44,12 +56,7 @@ const { t } = useI18n()
         <span
           class="grid size-10 shrink-0 place-items-center self-center rounded-xl bg-white p-2 text-ink shadow-card"
         >
-          <HotPriceIcon
-            v-if="notification.kind === 'quoteOffer'"
-            class="size-6"
-            aria-hidden="true"
-          />
-          <CartCheckIcon v-else class="size-6" aria-hidden="true" />
+          <component :is="kindIcons[notification.kind]" class="size-6" aria-hidden="true" />
         </span>
         <div class="flex min-w-0 flex-1 flex-col items-start gap-1">
           <p class="text-body-sm text-ink">
