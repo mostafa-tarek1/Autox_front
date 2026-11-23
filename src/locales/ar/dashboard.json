@@ -133,6 +133,29 @@
           "date": "التاريخ",
           "actions": "التحكم"
         }
+      },
+      "withdraw": {
+        "title": "طلب سحب",
+        "addAccountTitle": "اضافة حساب جديد",
+        "available": "رصيد قابل للسحب",
+        "amount": "ادخل المبلغ",
+        "account": "الحساب البنكي",
+        "addAnother": "اضف حساب اخر",
+        "submit": "ارسال الطلب",
+        "bankName": "اسم البنك",
+        "beneficiary": "اسم المستفيد",
+        "beneficiaryPlaceholder": "مثال:  فهد العتيبي",
+        "iban": "رقم الحساب  IBAN",
+        "add": "اضافة",
+        "errors": {
+          "amountRequired": "ادخل المبلغ المطلوب سحبه",
+          "amountPositive": "المبلغ يجب ان يكون اكبر من صفر",
+          "amountTooHigh": "المبلغ اكبر من الرصيد القابل للسحب",
+          "accountRequired": "اختر الحساب البنكي",
+          "bankRequired": "اختر البنك",
+          "beneficiaryRequired": "ادخل اسم المستفيد",
+          "ibanInvalid": "رقم IBAN غير صحيح (SA متبوعا بـ 22 رقما)"
+        }
       }
     },
     "home": {

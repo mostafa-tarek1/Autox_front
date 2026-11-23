@@ -12,7 +12,23 @@ import ArrowIcon from '@/assets/icons/arrow-right-02--stroke-rounded.svg'
  * Slots: default (body), `header-end` (e.g. a status chip opposite the title), `subheader` (extra
  * lines inside the header block), `footer` (sticky actions).
  */
-const props = withDefaults(defineProps<{ title: string; width?: number }>(), { width: 472 })
+const props = withDefaults(
+  defineProps<{
+    title: string
+    width?: number
+    /** Runs instead of closing when the back arrow is pressed (e.g. to leave a nested step). */
+    onBack?: () => void
+  }>(),
+  { width: 472, onBack: undefined },
+)
+
+function goBack(): void {
+  if (props.onBack) {
+    props.onBack()
+  } else {
+    open.value = false
+  }
+}
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const titleId = useId()
@@ -81,7 +97,7 @@ onKeyStroke('Escape', () => {
               type="button"
               class="grid size-[34px] shrink-0 place-items-center rounded-xl border border-line p-2 text-primary transition-colors hover:border-accent"
               :aria-label="t('common.close')"
-              @click="open = false"
+              @click="goBack"
             >
               <ArrowIcon class="size-4 ltr:-scale-x-100" aria-hidden="true" />
             </button>

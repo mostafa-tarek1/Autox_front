@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import WithdrawDrawer from '@/components/dashboard/finance/WithdrawDrawer.vue'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -27,12 +28,13 @@ const { t } = useI18n()
 const sort = ref<FinanceSort | null>(null)
 const page = ref(1)
 const totalPages = 20
+const isWithdrawOpen = ref(false)
 const isWithdrawSent = ref(false)
 
 const rows = computed(() => sortFinanceRows(supplierTransactions, sort.value))
 
-/** Mock: the request goes to the supplier's default bank account; the API will take it from here. */
-function requestWithdrawal(): void {
+/** Mock: the API will receive the amount and the chosen bank account. */
+function onWithdrawSubmitted(): void {
   isWithdrawSent.value = true
 }
 
@@ -77,7 +79,7 @@ function downloadExcel(): void {
         :icon="WalletDoneIcon"
       >
         <template #aside>
-          <BaseButton :disabled="supplierBalance.withdrawable <= 0" @click="requestWithdrawal">
+          <BaseButton :disabled="supplierBalance.withdrawable <= 0" @click="isWithdrawOpen = true">
             {{ t('dashboard.finance.balance.withdraw') }}
           </BaseButton>
         </template>
@@ -114,6 +116,12 @@ function downloadExcel(): void {
       <BasePagination v-model="page" :total="totalPages" />
     </section>
   </div>
+
+  <WithdrawDrawer
+    v-model:open="isWithdrawOpen"
+    :withdrawable="supplierBalance.withdrawable"
+    @submitted="onWithdrawSubmitted"
+  />
 
   <BaseModal
     v-model:open="isWithdrawSent"

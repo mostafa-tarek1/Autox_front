@@ -133,6 +133,29 @@
           "date": "Date",
           "actions": "Actions"
         }
+      },
+      "withdraw": {
+        "title": "Withdrawal request",
+        "addAccountTitle": "Add a new account",
+        "available": "Withdrawable balance",
+        "amount": "Enter the amount",
+        "account": "Bank account",
+        "addAnother": "Add another account",
+        "submit": "Send request",
+        "bankName": "Bank name",
+        "beneficiary": "Beneficiary name",
+        "beneficiaryPlaceholder": "e.g. Fahad Al-Otaibi",
+        "iban": "Account number (IBAN)",
+        "add": "Add",
+        "errors": {
+          "amountRequired": "Enter the amount to withdraw",
+          "amountPositive": "The amount must be greater than zero",
+          "amountTooHigh": "The amount is more than the withdrawable balance",
+          "accountRequired": "Choose a bank account",
+          "bankRequired": "Choose a bank",
+          "beneficiaryRequired": "Enter the beneficiary name",
+          "ibanInvalid": "Invalid IBAN (SA followed by 22 digits)"
+        }
       }
     },
     "home": {
