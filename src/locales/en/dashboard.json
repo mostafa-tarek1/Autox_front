@@ -1,0 +1,32 @@
+{
+  "dashboard": {
+    "profile": "Profile",
+    "nav": {
+      "label": "Supplier dashboard menu",
+      "home": "Home",
+      "products": "Spare parts",
+      "quotes": "Quotations",
+      "balance": "Balance & transactions",
+      "invoices": "Invoices"
+    },
+    "stats": {
+      "label": "Account summary",
+      "orders": "Orders",
+      "sales": "Total sales",
+      "withdrawable": "Withdrawable balance",
+      "pending": "Pending balance"
+    }
+  },
+  "pageTitles": {
+    "dashboardHome": "Home",
+    "dashboardProducts": "Spare parts",
+    "dashboardCatalog": "Catalog",
+    "dashboardProductNew": "Add spare parts",
+    "dashboardExcelReview": "Excel results review",
+    "dashboardQuotes": "Quotations",
+    "dashboardQuoteOffer": "Add a quotation",
+    "dashboardBalance": "Balance & transactions",
+    "dashboardInvoices": "Invoices",
+    "dashboardProfile": "Profile"
+  }
+}

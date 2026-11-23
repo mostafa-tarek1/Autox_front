@@ -1,0 +1,32 @@
+{
+  "dashboard": {
+    "profile": "الصفحة الشخصية",
+    "nav": {
+      "label": "قائمة لوحة المورد",
+      "home": "الرئيسية",
+      "products": "قطع الغيار",
+      "quotes": "عروض الاسعار",
+      "balance": "الرصيد والمعاملات",
+      "invoices": "الفواتير"
+    },
+    "stats": {
+      "label": "ملخص الحساب",
+      "orders": "عدد الطلبات",
+      "sales": "اجمالي المبيعات",
+      "withdrawable": "رصيد قابل للسحب",
+      "pending": "رصيد معلق"
+    }
+  },
+  "pageTitles": {
+    "dashboardHome": "الصفحة الرئيسية",
+    "dashboardProducts": "قطع الغيار",
+    "dashboardCatalog": "الكتالوج",
+    "dashboardProductNew": "اضافة قطع غيار",
+    "dashboardExcelReview": "مراجعة نتائج Excel",
+    "dashboardQuotes": "عروض الاسعار",
+    "dashboardQuoteOffer": "اضافة عرض سعر",
+    "dashboardBalance": "الرصيد والمعاملات",
+    "dashboardInvoices": "الفواتير",
+    "dashboardProfile": "الصفحة الشخصية"
+  }
+}

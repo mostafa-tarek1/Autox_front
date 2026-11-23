@@ -5,3 +5,4 @@
  */
 export const DefaultLayout = () => import('@/layouts/DefaultLayout.vue')
 export const AuthLayout = () => import('@/layouts/AuthLayout.vue')
+export const DashboardLayout = () => import('@/layouts/DashboardLayout.vue')

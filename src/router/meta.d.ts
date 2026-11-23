@@ -12,5 +12,7 @@ declare module 'vue-router' {
     footerGap?: number
     /** Auth pages: space between the card and the parts image on desktop, from the Figma frame. */
     authBannerGap?: number
+    /** Supplier dashboard: sidebar link highlighted for this route. */
+    dashboardSection?: 'home' | 'products' | 'quotes' | 'balance' | 'invoices'
   }
 }
