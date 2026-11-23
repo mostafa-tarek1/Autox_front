@@ -1,0 +1,38 @@
+{
+  "search": {
+    "title": "بہترین قیمتوں پر اسپیئر پارٹس تلاش کریں",
+    "placeholder": "پارٹ نمبر یا نام سے تلاش کریں",
+    "submit": "تلاش",
+    "recent": "حالیہ تلاش:",
+    "removeRecent": "{term} کو حالیہ تلاش سے ہٹائیں"
+  },
+  "catalog": {
+    "carBrands": "گاڑیوں کے برانڈز",
+    "searchBrand": "برانڈ تلاش کریں...",
+    "results": "تلاش کے نتائج",
+    "resultsCount": "{count} پرزے",
+    "quantityFor": "پرزہ {part} کی مقدار",
+    "origins": {
+      "original": "اصلی",
+      "korean": "کوریائی",
+      "japanese": "جاپانی",
+      "chinese": "چینی",
+      "taiwanese": "تائیوانی"
+    },
+    "badges": {
+      "cheapest": "سب سے کم قیمت",
+      "matchesRequest": "آپ کی درخواست کے مطابق"
+    },
+    "sort": {
+      "priceAsc": "کم قیمت پہلے",
+      "mostRequested": "سب سے زیادہ مانگ",
+      "originalOnly": "اصلی پرزے"
+    },
+    "alternatives": {
+      "title": "متبادل پرزے",
+      "show": "متبادل پرزے دکھائیں",
+      "hide": "متبادل پرزے چھپائیں",
+      "for": "{part} کے متبادل پرزے"
+    }
+  }
+}

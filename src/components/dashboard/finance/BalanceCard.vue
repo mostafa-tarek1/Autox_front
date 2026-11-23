@@ -12,7 +12,7 @@ defineProps<{ label: string; amount: number; icon: Component; iconClass?: string
 
 <template>
   <div
-    class="flex min-h-[94px] items-center justify-between gap-3 rounded-3xl bg-white px-5 py-[19px] shadow-card"
+    class="flex min-h-[94px] flex-wrap items-center justify-between gap-3 rounded-3xl bg-white px-5 py-[19px] shadow-card"
   >
     <div class="flex min-w-0 items-center gap-3">
       <span

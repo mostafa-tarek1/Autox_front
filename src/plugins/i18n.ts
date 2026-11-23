@@ -3,13 +3,13 @@ import { createI18n } from 'vue-i18n'
 import arCommon from '@/locales/ar/common.json'
 
 export type MessageSchema = typeof arCommon
-export type AppLocale = 'ar' | 'en'
+export type AppLocale = 'ar' | 'en' | 'ur'
 
-export const SUPPORTED_LOCALES: readonly AppLocale[] = ['ar', 'en']
+export const SUPPORTED_LOCALES: readonly AppLocale[] = ['ar', 'en', 'ur']
 export const DEFAULT_LOCALE: AppLocale = 'ar'
 export const LOCALE_STORAGE_KEY = 'autox.locale'
 
-const RTL_LOCALES: readonly AppLocale[] = ['ar']
+const RTL_LOCALES: readonly AppLocale[] = ['ar', 'ur']
 
 /**
  * Messages are split per feature (locales/<locale>/<feature>.json) so screens can be built in
@@ -39,7 +39,7 @@ function mergeInto(target: Messages, source: Messages): void {
 }
 
 function loadMessages(): Record<AppLocale, Record<string, unknown>> {
-  const messages: Record<AppLocale, Record<string, unknown>> = { ar: {}, en: {} }
+  const messages: Record<AppLocale, Record<string, unknown>> = { ar: {}, en: {}, ur: {} }
   for (const [path, content] of Object.entries(files)) {
     const locale = path.split('/').at(-2) as AppLocale
     if (messages[locale]) {

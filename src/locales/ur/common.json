@@ -1,0 +1,83 @@
+{
+  "app": {
+    "name": "پارٹس ایکس"
+  },
+  "common": {
+    "quantity": "مقدار",
+    "increase": "اضافہ کریں",
+    "decrease": "کم کریں",
+    "currency": "سعودی ریال",
+    "pagination": "صفحات کے درمیان نیویگیشن",
+    "previous": "پچھلا",
+    "next": "اگلا",
+    "close": "بند کریں",
+    "comingSoon": "جلد آ رہا ہے"
+  },
+  "form": {
+    "attach": "منسلک کریں",
+    "allowedFiles": "PNG، JPG یا PDF",
+    "fileTooLarge": "فائل کا سائز {size} میگابائٹ سے زیادہ نہیں ہونا چاہیے",
+    "choose": "منتخب کریں"
+  },
+  "nav": {
+    "home": "ہوم",
+    "orders": "آرڈرز",
+    "quotes": "کوٹیشنز",
+    "vouchers": "خریداری واؤچرز",
+    "contact": "ہم سے رابطہ کریں",
+    "notifications": "اطلاعات",
+    "cart": "شاپنگ کارٹ",
+    "mainMenu": "مرکزی مینو",
+    "openMenu": "مینو کھولیں",
+    "language": "زبان",
+    "account": "میرا اکاؤنٹ",
+    "payments": "ادائیگیاں",
+    "logout": "لاگ آؤٹ",
+    "userMenu": "صارف مینو",
+    "breadcrumb": "نیویگیشن کا راستہ",
+    "wallet": "والیٹ",
+    "quoteRequest": "کوٹیشن کی درخواست"
+  },
+  "footer": {
+    "terms": "شرائط و ضوابط",
+    "privacy": "رازداری کی پالیسی",
+    "contact": "ہم سے رابطہ کریں",
+    "taxNumber": "ٹیکس نمبر",
+    "rights": "جملہ حقوق بحق {brand} محفوظ ہیں",
+    "social": "سوشل میڈیا پر ہمارے اکاؤنٹس"
+  },
+  "features": {
+    "securePayments": "محفوظ ادائیگیاں",
+    "trustedSuppliers": "قابلِ اعتماد سپلائرز",
+    "support": "24 گھنٹے معاونت"
+  },
+  "support": {
+    "open": "تکنیکی معاونت",
+    "call": "ہمیں کال کریں",
+    "whatsapp": "واٹس ایپ"
+  },
+  "notifications": {
+    "title": "اطلاعات",
+    "empty": "کوئی نئی اطلاع نہیں ہے",
+    "kinds": {
+      "quoteOffer": {
+        "title": "{supplier} کی جانب سے کوٹیشن موصول ہوئی ہے"
+      },
+      "availabilityConfirmed": {
+        "title": "آرڈر نمبر {order} کی دستیابی کی تصدیق ہو گئی ہے",
+        "body": "خریداری مکمل کرنے کے لیے ابھی آرڈر کی ادائیگی کریں"
+      },
+      "newOrder": {
+        "title": "نیا آرڈر نمبر {order} آپ کے جواب کا منتظر ہے",
+        "body": "آرڈر کا جائزہ لیں اور پرزوں کی دستیابی کی تصدیق کریں"
+      },
+      "quoteRequest": {
+        "title": "{customer} کی جانب سے کوٹیشن کی نئی درخواست",
+        "body": "کوٹیشنز کے صفحے سے اپنی پیشکش شامل کریں"
+      },
+      "payout": {
+        "title": "آپ کے بینک اکاؤنٹ میں رقم منتقل کر دی گئی ہے"
+      }
+    }
+  }
+}

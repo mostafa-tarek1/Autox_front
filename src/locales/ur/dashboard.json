@@ -1,0 +1,291 @@
+{
+  "dashboard": {
+    "profile": "پروفائل",
+    "nav": {
+      "label": "سپلائر ڈیش بورڈ مینو",
+      "home": "ہوم",
+      "products": "اسپیئر پارٹس",
+      "quotes": "کوٹیشنز",
+      "balance": "بیلنس اور ٹرانزیکشنز",
+      "invoices": "انوائسز"
+    },
+    "stats": {
+      "label": "اکاؤنٹ کا خلاصہ",
+      "orders": "آرڈرز کی تعداد",
+      "sales": "کل سیلز",
+      "withdrawable": "نکلوانے کے قابل بیلنس",
+      "pending": "زیرِ التوا بیلنس"
+    },
+    "quotes": {
+      "statsLabel": "کوٹیشنز کا خلاصہ",
+      "stats": {
+        "sent": "بھیجی گئی آفرز",
+        "accepted": "قبول شدہ آفرز",
+        "rejected": "نامنظور آفرز"
+      },
+      "listTitle": "آفرز",
+      "sort": {
+        "label": "ترتیب دیں",
+        "placeholder": "منتخب کریں",
+        "newest": "تازہ ترین",
+        "oldest": "پرانے ترین",
+        "priceHigh": "زیادہ قیمت",
+        "priceLow": "کم قیمت"
+      },
+      "columns": {
+        "number": "نمبر",
+        "customer": "کسٹمر",
+        "date": "آفر کی تاریخ",
+        "offer": "پیش کردہ آفر",
+        "status": "حیثیت",
+        "actions": "کارروائیاں"
+      },
+      "view": "دیکھیں",
+      "viewQuote": "درخواست نمبر {number} دیکھیں",
+      "empty": "فی الحال کوٹیشن کی کوئی درخواست نہیں ہے",
+      "status": {
+        "awaitingOffer": "آپ کی آفر کا انتظار",
+        "offerSent": "آفر بھیج دی گئی",
+        "awaitingPayment": "ادائیگی کا انتظار",
+        "accepted": "آپ کی آفر قبول ہو گئی",
+        "approved": "منظور شدہ",
+        "closed": "بند"
+      },
+      "details": {
+        "title": "آفر کی تفصیلات",
+        "customerRequests": "کسٹمر کی درخواستیں",
+        "offered": "پیش کردہ آفر",
+        "customerData": "کسٹمر کی معلومات",
+        "name": "نام",
+        "phone": "موبائل نمبر",
+        "address": "پتہ",
+        "pieces": "{count} پارٹس"
+      },
+      "offer": {
+        "requestDate": "درخواست کی تاریخ:",
+        "quantity": "تعداد: {count}",
+        "unavailable": "یہ تعداد فی الحال میرے پاس دستیاب نہیں ہے",
+        "priceTitle": "تعداد کی قیمت مقرر کریں",
+        "priceLabel": "تعداد کی قیمت (ریال میں)",
+        "priceRequired": "تعداد کی قیمت درج کریں",
+        "submit": "تصدیق کریں اور بھیجیں",
+        "sentTitle": "آفر کسٹمر کو بھیج دی گئی",
+        "declinedTitle": "کسٹمر کو تعداد دستیاب نہ ہونے سے آگاہ کر دیا گیا",
+        "backToQuotes": "کوٹیشنز پر واپس جائیں",
+        "notFound": "کوٹیشن کی درخواست موجود نہیں ہے",
+        "home": "ہوم پیج",
+        "items": "مطلوبہ پارٹس"
+      }
+    },
+    "finance": {
+      "label": "بیلنس اور ٹرانزیکشنز",
+      "transactions": "ٹرانزیکشنز",
+      "downloadExcel": "Excel ڈاؤن لوڈ کریں",
+      "sortBy": "ترتیب دیں",
+      "sort": {
+        "newest": "تازہ ترین",
+        "oldest": "پرانے ترین",
+        "amountDesc": "رقم: زیادہ سے کم",
+        "amountAsc": "رقم: کم سے زیادہ"
+      },
+      "empty": "کوئی ٹرانزیکشن نہیں",
+      "noNote": "کوئی نہیں",
+      "columns": {
+        "reference": "نمبر",
+        "amount": "رقم",
+        "type": "ٹرانزیکشن",
+        "date": "تاریخ",
+        "note": "نوٹس",
+        "status": "حیثیت"
+      },
+      "types": {
+        "partsSale": "اسپیئر پارٹس کی فروخت",
+        "returns": "واپسیاں",
+        "platformFee": "پلیٹ فارم کمیشن کی کٹوتی",
+        "cardFee": "پیمنٹ کارڈ فیس کی کٹوتی",
+        "withdrawal": "بیلنس سے رقم نکلوانا"
+      },
+      "statuses": {
+        "pending": "زیرِ التوا",
+        "deducted": "کٹوتی ہو گئی",
+        "accepted": "منظور شدہ"
+      },
+      "balance": {
+        "label": "بیلنس کا خلاصہ",
+        "total": "کل بیلنس",
+        "withdrawable": "نکلوانے کے قابل بیلنس",
+        "pending": "زیرِ التوا بیلنس",
+        "withdraw": "رقم نکلوائیں",
+        "withdrawSent": "درخواست بھیج دی گئی",
+        "pendingHint": "ڈیلیوری اور واپسی کی مدت گزرنے کے بعد یہ بیلنس جاری کر دیا جائے گا",
+        "pendingHintLabel": "زیرِ التوا بیلنس کے بارے میں"
+      },
+      "invoices": {
+        "title": "انوائسز",
+        "empty": "کوئی انوائس نہیں",
+        "view": "دیکھیں",
+        "download": "ڈاؤن لوڈ کریں",
+        "detailsTitle": "انوائس کی تفصیلات",
+        "columns": {
+          "orderNumber": "آرڈر نمبر",
+          "amount": "رقم",
+          "customer": "کسٹمر",
+          "date": "تاریخ",
+          "actions": "کارروائیاں"
+        }
+      },
+      "withdraw": {
+        "title": "رقم نکلوانے کی درخواست",
+        "addAccountTitle": "نیا اکاؤنٹ شامل کریں",
+        "available": "نکلوانے کے قابل بیلنس",
+        "amount": "رقم درج کریں",
+        "account": "بینک اکاؤنٹ",
+        "addAnother": "دوسرا اکاؤنٹ شامل کریں",
+        "submit": "درخواست بھیجیں",
+        "bankName": "بینک کا نام",
+        "beneficiary": "وصول کنندہ کا نام",
+        "beneficiaryPlaceholder": "مثال: فہد العتیبی",
+        "iban": "اکاؤنٹ نمبر IBAN",
+        "add": "شامل کریں",
+        "errors": {
+          "amountRequired": "نکلوانے کے لیے رقم درج کریں",
+          "amountPositive": "رقم صفر سے زیادہ ہونی چاہیے",
+          "amountTooHigh": "رقم نکلوانے کے قابل بیلنس سے زیادہ ہے",
+          "accountRequired": "بینک اکاؤنٹ منتخب کریں",
+          "bankRequired": "بینک منتخب کریں",
+          "beneficiaryRequired": "وصول کنندہ کا نام درج کریں",
+          "ibanInvalid": "IBAN نمبر درست نہیں ہے (SA کے بعد 22 ہندسے)"
+        }
+      }
+    },
+    "home": {
+      "orders": "آرڈرز",
+      "search": "تلاش",
+      "sortBy": "ترتیب دیں",
+      "sort": {
+        "newest": "تازہ ترین",
+        "oldest": "پرانے ترین",
+        "highest": "زیادہ مالیت"
+      },
+      "columns": {
+        "number": "آرڈر نمبر",
+        "customer": "کسٹمر",
+        "date": "آرڈر کی تاریخ",
+        "total": "آرڈر کی کل رقم",
+        "status": "حیثیت",
+        "actions": "کارروائیاں"
+      },
+      "view": "دیکھیں",
+      "cancel": "منسوخ",
+      "empty": "کوئی آرڈر نہیں",
+      "status": {
+        "awaitingResponse": "آپ کے جواب کا انتظار",
+        "awaitingPayment": "ادائیگی کا انتظار",
+        "awaitingTransferConfirmation": "ٹرانسفر کی تصدیق کا انتظار",
+        "paidReadyToShip": "ادا شدہ اور شپنگ کے لیے تیار",
+        "inDeliveryPeriod": "ڈیلیوری کی مدت میں",
+        "inReturnPeriod": "واپسی کی مدت میں",
+        "returnRequested": "واپسی کی درخواست دی گئی",
+        "returned": "واپس کر دیا گیا",
+        "returnRejected": "واپسی مسترد",
+        "cancelled": "منسوخ کر دیا گیا"
+      },
+      "details": {
+        "title": "آرڈر کی تفصیلات",
+        "reference": "آرڈر نمبر:",
+        "date": "آرڈر کی تاریخ:",
+        "items": "آرڈرز",
+        "pieces": "{count} پارٹس",
+        "total": "کل رقم:",
+        "customer": "کسٹمر کی معلومات",
+        "name": "نام",
+        "phone": "موبائل نمبر",
+        "address": "پتہ",
+        "hiddenCustomer": "ادائیگی مکمل ہونے کے بعد معلومات ظاہر کی جائیں گی"
+      },
+      "welcome": {
+        "title": "ابھی اپنے اسپیئر پارٹس شامل کریں",
+        "action": "اسپیئر پارٹس شامل کریں"
+      },
+      "pendingInfo": "واپسی کی مدت ختم ہونے کا منتظر بیلنس"
+    },
+    "products": {
+      "addTitle": "اسپیئر پارٹس شامل کریں",
+      "addFromCatalog": "کیٹلاگ سے شامل کریں",
+      "addManual": "دستی طور پر شامل کریں",
+      "addExcel": "Excel سے شامل کریں",
+      "listTitle": "اسپیئر پارٹس",
+      "search": "پارٹس تلاش کریں",
+      "sortBy": "ترتیب دیں",
+      "sort": {
+        "newest": "تازہ ترین",
+        "priceAsc": "کم قیمت",
+        "priceDesc": "زیادہ قیمت"
+      },
+      "columns": {
+        "partNumber": "پارٹ نمبر",
+        "name": "پارٹ کا نام",
+        "type": "قسم",
+        "price": "پارٹ کی قیمت",
+        "controls": "کارروائیاں"
+      },
+      "carBrand": "گاڑی کا برانڈ",
+      "namePlaceholder": "آئسوزو پک اپ فینڈر 19/23 اوریجنل",
+      "edit": "ترمیم کریں",
+      "manageAlternatives": "متبادل کا انتظام",
+      "empty": "کوئی اسپیئر پارٹ نہیں",
+      "delete": {
+        "label": "پارٹ {part} حذف کریں",
+        "title": "کیا آپ یہ پروڈکٹ حذف کرنا چاہتے ہیں؟",
+        "yes": "ہاں",
+        "no": "نہیں"
+      },
+      "back": "واپس",
+      "add": "شامل کریں",
+      "save": "محفوظ کریں",
+      "newTitle": "نیا پارٹ شامل کریں",
+      "editTitle": "پارٹ میں ترمیم کریں",
+      "newAlternativeTitle": "نیا متبادل شامل کریں",
+      "addedSuccess": "کامیابی سے شامل کر دیا گیا",
+      "savedSuccess": "کامیابی سے محفوظ کر دیا گیا",
+      "catalogSearch": "کیٹلاگ میں تلاش کریں",
+      "catalogPlaceholder": "پارٹ نمبر یا نام سے تلاش کریں",
+      "selectedCount": "{count} پارٹس منتخب کیے گئے",
+      "excel": {
+        "title": "EXCEL فائل اپ لوڈ کریں",
+        "pick": "فائل اپ لوڈ کریں",
+        "invalidType": "براہ کرم Excel یا CSV فائل منتخب کریں",
+        "required": "براہ کرم Excel فائل اپ لوڈ کریں"
+      },
+      "excelReviewTitle": "Excel نتائج کا جائزہ",
+      "excelCount": "آپ نے {count} پارٹس شامل کیے ہیں",
+      "confirmAdd": "تصدیق کریں اور شامل کریں",
+      "mainPart": "بنیادی پارٹ",
+      "alternatives": "متبادل",
+      "noAlternatives": "اس پارٹ کا ابھی تک کوئی متبادل نہیں ہے",
+      "addAnotherAlternative": "ایک اور متبادل شامل کریں",
+      "addMethod": "شامل کرنے کا طریقہ",
+      "errors": {
+        "partNumber": "براہ کرم پارٹ نمبر درج کریں",
+        "name": "براہ کرم پارٹ کا نام درج کریں",
+        "origin": "براہ کرم قسم منتخب کریں",
+        "brand": "براہ کرم گاڑی کا برانڈ منتخب کریں",
+        "price": "براہ کرم درست قیمت درج کریں",
+        "selectOne": "براہ کرم کم از کم ایک پارٹ منتخب کریں",
+        "prices": "براہ کرم ہر منتخب پارٹ کی قیمت درج کریں"
+      }
+    }
+  },
+  "pageTitles": {
+    "dashboardHome": "ہوم پیج",
+    "dashboardProducts": "اسپیئر پارٹس",
+    "dashboardCatalog": "کیٹلاگ",
+    "dashboardProductNew": "اسپیئر پارٹس شامل کریں",
+    "dashboardExcelReview": "Excel نتائج کا جائزہ",
+    "dashboardQuotes": "کوٹیشنز",
+    "dashboardQuoteOffer": "کوٹیشن شامل کریں",
+    "dashboardBalance": "بیلنس اور ٹرانزیکشنز",
+    "dashboardInvoices": "انوائسز",
+    "dashboardProfile": "پروفائل"
+  }
+}

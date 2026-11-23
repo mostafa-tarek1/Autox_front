@@ -1,0 +1,139 @@
+{
+  "pageTitles": {
+    "payments": "ادائیگیاں",
+    "vouchers": "خریداری واؤچرز",
+    "voucherCreate": "خریداری واؤچر بنائیں",
+    "voucherTransactions": "ٹرانزیکشنز کی تفصیلات"
+  },
+  "billing": {
+    "breadcrumb": "نیویگیشن راستہ",
+    "payments": "ادائیگیاں",
+    "vouchers": "خریداری واؤچرز",
+    "createVoucher": "واؤچر بنائیں",
+    "transactionsDetails": "ٹرانزیکشنز کی تفصیلات",
+    "summary": "خلاصہ",
+    "totalInvoices": "کل انوائسز",
+    "pendingAmount": "ادائیگی کی منتظر رقوم",
+    "totalPaid": "کل ادائیگیاں",
+    "paymentsHistory": "ادائیگیوں کی تاریخ",
+    "searchOrder": "آرڈر تلاش کریں",
+    "noResults": "کوئی مماثل نتائج نہیں ملے",
+    "orderNumber": "آرڈر نمبر:",
+    "completePayment": "ادائیگی مکمل کریں",
+    "orderDetails": "آرڈر کی تفصیلات",
+    "amount": "رقم",
+    "paymentMethod": "ادائیگی کا طریقہ",
+    "transactionDate": "ٹرانزیکشن کی تاریخ",
+    "paymentStatus": {
+      "pending": "ادائیگی کا انتظار",
+      "paid": "ادا شدہ",
+      "failed": "ادائیگی ناکام"
+    },
+    "paymentMethods": {
+      "bankTransfer": "بینک ٹرانسفر",
+      "card": "پیمنٹ کارڈ"
+    },
+    "totalSales": "کل سیلز",
+    "currentBalance": "موجودہ بیلنس",
+    "installmentRequests": "اقساط کی درخواستیں",
+    "downloadExcel": "Excel ڈاؤن لوڈ کریں",
+    "filters": {
+      "search": "تلاش",
+      "status": "انوائس کی حیثیت",
+      "startDate": "شروع ہونے کی تاریخ",
+      "endDate": "ختم ہونے کی تاریخ"
+    },
+    "table": {
+      "provider": "اقساط فراہم کنندہ",
+      "orderNumber": "آرڈر نمبر",
+      "name": "نام",
+      "phone": "موبائل نمبر",
+      "amount": "رقم",
+      "date": "تاریخ",
+      "notes": "نوٹس",
+      "status": "حیثیت",
+      "none": "کوئی نہیں"
+    },
+    "installmentStatus": {
+      "paid": "ادائیگی ہو گئی",
+      "processing": "کارروائی جاری ہے",
+      "rejected": "مسترد"
+    },
+    "providers": {
+      "tabby": "tabby",
+      "tamara": "tamara"
+    },
+    "installments": {
+      "heroTitle": "PARTS X کے ساتھ اقساط کی سہولت",
+      "heroSubtitle": "سروس فراہم کنندگان کے تعاون سے پیش کی جانے والی ہماری اقساط کی سہولت کے ذریعے اپنے کسٹمرز کے لیے خریداری آسان بنائیں",
+      "requestService": "سروس کے لیے رابطہ کریں",
+      "advantagesTitle": "PARTS X کے ساتھ اقساط کے فوائد",
+      "advantagesSubtitle": "اپنی ضرورت کی چیزیں خریدنے کے لیے لچکدار آپشنز اور واضح مراحل",
+      "advantages": {
+        "speed": {
+          "title": "تیز اور آسان",
+          "text": "آپ کی دکان میں سروس کا فوری آغاز"
+        },
+        "commission": {
+          "title": "کم ترین کمیشن",
+          "text": "ہم آپ کو اقساط کی سروس پر کم ترین کمیشن ریٹ پیش کرتے ہیں"
+        },
+        "sales": {
+          "title": "سیلز میں اضافہ",
+          "text": "سیلز میں فوری اضافہ"
+        },
+        "customers": {
+          "title": "نئے کسٹمرز حاصل کریں",
+          "text": "اقساط کے متنوع اور آسان آپشنز فراہم کر کے"
+        }
+      },
+      "stepsTitle": "خریداری واؤچر بنانے کے مراحل",
+      "stepsSubtitle": "والیٹ بنانے سے خریداری واؤچر تک",
+      "step": "مرحلہ {number}",
+      "steps": {
+        "create": {
+          "title": "ادائیگی بنائیں",
+          "text": "وہ رقم درج کریں جسے آپ اقساط میں تقسیم کرنا چاہتے ہیں"
+        },
+        "customer": {
+          "title": "کسٹمر کی معلومات درج کریں",
+          "text": "کسٹمر کی معلومات جیسے نام اور موبائل نمبر درج کریں"
+        },
+        "payment": {
+          "title": "کسٹمر کی جانب سے ادائیگی",
+          "text": "کسٹمر ادائیگی کرے گا اور آپ کو تفصیلات سے آگاہ کر دیا جائے گا"
+        }
+      },
+      "ctaTitle": "کیا آپ ابھی اپنا والیٹ بنانا چاہتے ہیں؟",
+      "ctaText": "اپنا ای-والیٹ بنانے اور tabby یا tamara کے ساتھ اقساط کی سروس فعال کرنے میں مدد کے لیے کسٹمر سروس ٹیم سے رابطہ کریں"
+    },
+    "voucherForm": {
+      "welcome": "خوش آمدید!",
+      "intro": "ابھی خریداری واؤچر بنائیں",
+      "customerInfo": "کسٹمر کی معلومات",
+      "customerName": "کسٹمر کا نام",
+      "customerNamePlaceholder": "فہد العتیبی",
+      "phone": "موبائل نمبر",
+      "note": "نوٹ",
+      "notePlaceholder": "نوٹ لکھیں",
+      "amountTitle": "رقم اور اقساط کا طریقہ",
+      "amountLabel": "VAT سمیت رقم درج کریں",
+      "invoiceMatches": "انوائس کے مطابق",
+      "confirmation": "تصدیق",
+      "acceptTerms": "میں نے {terms} پڑھ لی ہیں اور ان سے متفق ہوں",
+      "terms": "شرائط و ضوابط",
+      "submit": "واؤچر بنائیں",
+      "success": "واؤچر بن گیا",
+      "viewRequests": "اقساط کی درخواستیں دیکھیں",
+      "errors": {
+        "customerName": "کسٹمر کا نام درج کریں",
+        "phone": "5 سے شروع ہونے والا 9 ہندسوں کا درست موبائل نمبر درج کریں",
+        "amount": "صفر سے زیادہ رقم درج کریں",
+        "terms": "شرائط و ضوابط سے اتفاق کرنا ضروری ہے",
+        "provider": "اقساط کا طریقہ منتخب کریں"
+      },
+      "installmentMethod": "اقساط کا طریقہ منتخب کریں"
+    },
+    "createPurchaseVoucher": "خریداری واؤچر بنائیں"
+  }
+}

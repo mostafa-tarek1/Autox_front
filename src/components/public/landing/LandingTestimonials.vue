@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { AppLocale } from '@/plugins/i18n'
 import { useMediaQuery } from '@vueuse/core'
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -15,7 +16,7 @@ const isDesktop = useMediaQuery('(min-width: 1024px)')
 
 const perPage = computed(() => (isDesktop.value ? 3 : 1))
 const page = ref(1)
-const items = computed(() => testimonials[locale.value as 'ar' | 'en'] ?? testimonials.ar)
+const items = computed(() => testimonials[locale.value as AppLocale] ?? testimonials.ar)
 const totalPages = computed(() => Math.max(1, Math.ceil(items.value.length / perPage.value)))
 const visible = computed(() =>
   items.value.slice((page.value - 1) * perPage.value, page.value * perPage.value),

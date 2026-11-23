@@ -18,6 +18,7 @@ const open = ref(false)
 const languages: Array<{ code: AppLocale; label: string }> = [
   { code: 'ar', label: 'عربي' },
   { code: 'en', label: 'English' },
+  { code: 'ur', label: 'Urdu' },
 ]
 
 const currentLabel = (code: AppLocale) =>

@@ -1,0 +1,148 @@
+{
+  "pageTitles": {
+    "account": "میرا اکاؤنٹ",
+    "accountCompany": "ادارے کی معلومات",
+    "accountAddresses": "ترسیل کے پتے",
+    "wallet": "والیٹ",
+    "walletWithdraw": "والیٹ سے رقم نکلوانے کی درخواست",
+    "accountBank": "بینک اکاؤنٹ"
+  },
+  "account": {
+    "title": "میرا اکاؤنٹ",
+    "breadcrumb": "نیویگیشن راستہ",
+    "verified": "تصدیق شدہ",
+    "sections": "اکاؤنٹ کے حصے",
+    "edit": "ترمیم کریں",
+    "save": "محفوظ کریں",
+    "nav": {
+      "personal": "ذاتی معلومات",
+      "company": "ادارے کی معلومات",
+      "addresses": "ترسیل کے پتے",
+      "bank": "بینک اکاؤنٹ"
+    },
+    "personal": {
+      "title": "ذاتی تفصیلات",
+      "name": "نام",
+      "fullName": "پورا نام",
+      "phone": "موبائل نمبر",
+      "email": "ای میل",
+      "saved": "ذاتی تفصیلات محفوظ ہو گئیں"
+    },
+    "company": {
+      "title": "ادارے کی معلومات",
+      "formTitle": "کمپنی کی تفصیلات",
+      "name": "ادارے کا نام",
+      "companyName": "کمپنی کا نام",
+      "unifiedNumber": "یونیفائیڈ نمبر",
+      "commercialRegister": "کمرشل رجسٹریشن نمبر",
+      "taxNumber": "ٹیکس رجسٹریشن نمبر",
+      "nationalAddress": "قومی پتہ (نیشنل ایڈریس)",
+      "nationalAddressPlaceholder": "پتہ",
+      "documents": "دستاویزات",
+      "companyDocuments": "ادارے کی دستاویزات",
+      "documentsHint": "براہ کرم کمرشل رجسٹریشن، ٹیکس رجسٹریشن سرٹیفکیٹ (اگر ہو) اور قومی پتے کا ثبوت منسلک کریں",
+      "submit": "تفصیلات شامل کریں",
+      "viewDocument": "{name} دیکھیں",
+      "replaceDocument": "{name} تبدیل کریں",
+      "documentKinds": {
+        "commercialRegister": "کمرشل رجسٹریشن",
+        "taxRegister": "ٹیکس رجسٹریشن",
+        "nationalAddress": "قومی پتے کا ثبوت"
+      }
+    },
+    "addresses": {
+      "title": "ترسیل کے پتے",
+      "add": "نیا شامل کریں",
+      "addTitle": "ترسیل کا پتہ شامل کریں",
+      "editTitle": "ترسیل کے پتے میں ترمیم کریں",
+      "label": "پتے کا نام",
+      "labelPlaceholder": "مثلاً: مرکزی گودام",
+      "address": "مکمل پتہ",
+      "addressPlaceholder": "علاقہ، شہر، ملک",
+      "editAddress": "{name} میں ترمیم کریں",
+      "empty": "ابھی تک ترسیل کا کوئی پتہ نہیں",
+      "defaultLabel": "پتہ {number}",
+      "default": "ڈیفالٹ پتہ",
+      "setDefault": "ڈیفالٹ پتہ بنائیں"
+    },
+    "validation": {
+      "required": "یہ خانہ لازمی ہے",
+      "minLength": "کم از کم {min} حروف ہونے چاہئیں",
+      "phone": "05 سے شروع ہونے والا درست سعودی موبائل نمبر درج کریں",
+      "email": "درست ای میل ایڈریس درج کریں",
+      "digits": "{length} ہندسوں پر مشتمل ہونا چاہیے",
+      "taxNumber": "ٹیکس نمبر 15 ہندسوں پر مشتمل ہوتا ہے اور 3 سے شروع اور 3 پر ختم ہوتا ہے",
+      "unifiedNumber": "یونیفائیڈ نمبر 10 ہندسوں پر مشتمل ہوتا ہے اور 7 سے شروع ہوتا ہے",
+      "iban": "درست سعودی IBAN درج کریں جو SA سے شروع ہو اور اس کے بعد 22 ہندسے ہوں"
+    },
+    "bank": {
+      "title": "بینک اکاؤنٹس",
+      "add": "نیا شامل کریں",
+      "addTitle": "نیا اکاؤنٹ شامل کریں",
+      "editTitle": "بینک اکاؤنٹ میں ترمیم کریں",
+      "bankName": "بینک کا نام",
+      "beneficiary": "وصول کنندہ کا نام",
+      "beneficiaryPlaceholder": "مثلاً: فہد العتیبی",
+      "iban": "اکاؤنٹ نمبر IBAN",
+      "default": "ڈیفالٹ اکاؤنٹ",
+      "setDefault": "ڈیفالٹ اکاؤنٹ بنائیں",
+      "copy": "کاپی کریں",
+      "copyField": "{field} کاپی کریں",
+      "copied": "کاپی ہو گیا",
+      "delete": "حذف کریں",
+      "editAccount": "{name} اکاؤنٹ میں ترمیم کریں",
+      "deleteAccount": "{name} اکاؤنٹ حذف کریں",
+      "submitAdd": "شامل کریں",
+      "empty": "ابھی تک کوئی بینک اکاؤنٹ نہیں",
+      "saved": "درخواست بھیج دی گئی"
+    }
+  },
+  "wallet": {
+    "title": "والیٹ",
+    "balance": "والیٹ بیلنس",
+    "transactions": "لین دین",
+    "startDate": "آغاز کی تاریخ",
+    "endDate": "اختتام کی تاریخ",
+    "downloadExcel": "Excel ڈاؤن لوڈ کریں",
+    "empty": "اس مدت میں کوئی لین دین نہیں",
+    "columns": {
+      "reference": "آرڈر نمبر",
+      "operation": "لین دین",
+      "amount": "رقم",
+      "date": "تاریخ",
+      "note": "نوٹس",
+      "status": "صورتحال"
+    },
+    "operations": {
+      "walletWithdrawal": "والیٹ سے رقم نکلوانا",
+      "returnRefund": "واپسی کی رقم جمع",
+      "cardFee": "کارڈ ادائیگی کی فیس کی کٹوتی",
+      "deposit": "رقم جمع",
+      "purchase": "خریداری",
+      "withdrawal": "رقم نکلوانا"
+    },
+    "statuses": {
+      "accepted": "منظور شدہ",
+      "rejected": "مسترد",
+      "pending": "زیرِ جائزہ"
+    },
+    "noNote": "کوئی نہیں",
+    "withdrawForm": {
+      "title": "والیٹ سے رقم نکلوانے کی درخواست",
+      "subtitle": "درج ذیل تفصیلات پُر کریں",
+      "amountStep": "نکلوانے کی رقم",
+      "amount": "رقم درج کریں",
+      "bankStep": "بینک اکاؤنٹ",
+      "submit": "درخواست بھیجیں",
+      "amountInvalid": "صفر سے زیادہ رقم درج کریں",
+      "amountTooHigh": "رقم نکلوانے کے قابل بیلنس سے زیادہ ہے",
+      "sent": "درخواست بھیج دی گئی"
+    },
+    "balances": "والیٹ کے بیلنس",
+    "pendingBalance": "زیرِ التوا بیلنس",
+    "withdrawableBalance": "نکلوانے کے قابل بیلنس",
+    "pendingInfo": "رقم نکلوانے کی درخواست انتظامیہ کے زیرِ جائزہ ہے",
+    "pendingInfoLabel": "زیرِ التوا بیلنس کیا ہے؟",
+    "requestWithdraw": "رقم نکلوانے کی درخواست"
+  }
+}
