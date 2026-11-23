@@ -5,6 +5,7 @@ import DeleteIcon from '@/assets/icons/delete-01--stroke-rounded.svg'
 import EditIcon from '@/assets/icons/pencil-edit-02--stroke-rounded.svg'
 import ReloadIcon from '@/assets/icons/reload--stroke-rounded.svg'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import type { SupplierProduct } from '@/mocks/dashboard-products'
 
 /**
@@ -14,6 +15,7 @@ import type { SupplierProduct } from '@/mocks/dashboard-products'
 defineProps<{ products: SupplierProduct[] }>()
 const emit = defineEmits<{ edit: [id: string]; alternatives: [id: string]; delete: [id: string] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const columns =
   'lg:grid lg:grid-cols-[178px_260px_99px_156px_258px] lg:items-center lg:justify-between lg:gap-10'
@@ -48,7 +50,7 @@ const action =
           <span class="sr-only lg:hidden">{{ t('dashboard.products.columns.partNumber') }}: </span
           >{{ product.partNumber }}
         </span>
-        <span class="text-body-sm text-ink">{{ product.name }}</span>
+        <span class="text-body-sm text-ink">{{ localized(product.name) }}</span>
         <span class="text-body-sm text-ink">{{ t(`catalog.origins.${product.origin}`) }}</span>
         <PriceTag :amount="product.price" decimals class="text-h4 text-ink" />
         <span class="flex flex-wrap items-center gap-3 lg:justify-end lg:gap-6">

@@ -6,6 +6,7 @@ import BuildingIcon from '@/assets/icons/building-03--stroke-rounded.svg'
 import BorderIcon from '@/assets/icons/border-full--stroke-rounded.svg'
 import CalendarIcon from '@/assets/icons/calendar-02--stroke-rounded.svg'
 import PaymentIcon from '@/assets/icons/payment-02--stroke-rounded.svg'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import OrderMeta from './OrderMeta.vue'
 import OrderStatusChip from './OrderStatusChip.vue'
@@ -14,6 +15,7 @@ import type { Order } from './types'
 /** Grey header strip of an order: status, seller, number, date, total + actions slot. */
 withDefaults(defineProps<{ order: Order; hideStatus?: boolean }>(), { hideStatus: false })
 const { t } = useI18n()
+const localized = useLocalizedText()
 </script>
 
 <template>
@@ -23,7 +25,7 @@ const { t } = useI18n()
     <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
       <OrderStatusChip v-if="!hideStatus" :status="order.status" />
       <OrderMeta v-if="order.seller" :icon="BuildingIcon" :label="t('orders.meta.seller')">{{
-        order.seller
+        localized(order.seller)
       }}</OrderMeta>
       <OrderMeta :icon="BorderIcon" :label="t('orders.meta.orderNumber')">
         <span dir="ltr">{{ order.number }}</span>

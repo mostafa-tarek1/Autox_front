@@ -61,7 +61,7 @@ const cardClass = computed(() => {
               class="h-[19px] w-[19.5px] object-contain"
             />
           </span>
-          <h3 class="text-body-md text-ink">{{ product.title }}</h3>
+          <h3 class="text-body-md text-ink">{{ localized(product.title) }}</h3>
           <BaseChip v-if="product.highlight === 'cheapest'" tone="success" class="h-6! px-2! py-1!">
             <template #icon><HotPriceIcon class="size-3.5" aria-hidden="true" /></template>
             {{ t('catalog.badges.cheapest') }}

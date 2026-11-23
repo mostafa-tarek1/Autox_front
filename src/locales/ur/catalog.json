@@ -13,7 +13,7 @@
     "resultsCount": "{count} پرزے",
     "quantityFor": "پرزہ {part} کی مقدار",
     "origins": {
-      "original": "اصلی",
+      "original": "اوریجنل",
       "korean": "کوریائی",
       "japanese": "جاپانی",
       "chinese": "چینی",
@@ -26,7 +26,7 @@
     "sort": {
       "priceAsc": "کم قیمت پہلے",
       "mostRequested": "سب سے زیادہ مانگ",
-      "originalOnly": "اصلی پرزے"
+      "originalOnly": "صرف اوریجنل پرزے"
     },
     "alternatives": {
       "title": "متبادل پرزے",

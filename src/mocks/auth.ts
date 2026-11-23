@@ -2,6 +2,8 @@
  * Mock auth service for the UI phase. Each call simulates network latency; replace the bodies
  * with API calls once the backend endpoints are wired.
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { cityNames, type CityId } from '@/mocks/names'
 
 export type AuthFlow = 'login' | 'register'
 
@@ -21,22 +23,22 @@ export interface RegistrationPayload {
 }
 
 export interface City {
-  id: string
-  name: string
+  id: CityId
+  name: LocalizedText
 }
 
 /** Mock cities list (the backend exposes a cities endpoint). */
 export const cities: City[] = [
-  { id: 'riyadh', name: 'الرياض' },
-  { id: 'jeddah', name: 'جدة' },
-  { id: 'makkah', name: 'مكة المكرمة' },
-  { id: 'madinah', name: 'المدينة المنورة' },
-  { id: 'dammam', name: 'الدمام' },
-  { id: 'khobar', name: 'الخبر' },
-  { id: 'qassim', name: 'القصيم' },
-  { id: 'abha', name: 'أبها' },
-  { id: 'tabuk', name: 'تبوك' },
-  { id: 'hail', name: 'حائل' },
+  { id: 'riyadh', name: cityNames.riyadh },
+  { id: 'jeddah', name: cityNames.jeddah },
+  { id: 'makkah', name: cityNames.makkah },
+  { id: 'madinah', name: cityNames.madinah },
+  { id: 'dammam', name: cityNames.dammam },
+  { id: 'khobar', name: cityNames.khobar },
+  { id: 'qassim', name: cityNames.qassim },
+  { id: 'abha', name: cityNames.abha },
+  { id: 'tabuk', name: cityNames.tabuk },
+  { id: 'hail', name: cityNames.hail },
 ]
 
 /** Code the mock rejects, so the error state can be previewed. */

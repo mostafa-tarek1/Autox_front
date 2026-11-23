@@ -8,6 +8,7 @@ import InfoIcon from '@/assets/icons/information-circle--duotone-rounded.svg'
 import FileDropzone from '@/components/form/FileDropzone.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import CopyableValue from './CopyableValue.vue'
 import type { BankAccount } from './types'
@@ -18,6 +19,7 @@ const emit = defineEmits<{
   submitted: [payload: { reference: string; date: string; receipt: File }]
 }>()
 const { t, tm, rt } = useI18n()
+const localized = useLocalizedText()
 
 const form = reactive({ reference: '', date: '', receipt: null as File | null })
 const isSubmitting = ref(false)
@@ -64,7 +66,7 @@ async function submit(): Promise<void> {
             <span class="grid h-14 w-32 shrink-0 place-items-center rounded-xl bg-white p-2">
               <img
                 :src="account.bankLogo"
-                :alt="account.bankName"
+                :alt="localized(account.bankName)"
                 width="112"
                 height="40"
                 class="h-10 w-28 object-contain"
@@ -72,10 +74,10 @@ async function submit(): Promise<void> {
             </span>
             <div class="flex flex-col items-start gap-1">
               <dt class="text-body-md text-secondary">{{ t('shop.bankTransfer.bankName') }}</dt>
-              <dd class="text-h4 text-ink">{{ account.bankName }}</dd>
+              <dd class="text-h4 text-ink">{{ localized(account.bankName) }}</dd>
             </div>
           </div>
-          <CopyableValue :label="t('shop.bankTransfer.beneficiary')" :value="account.beneficiary" />
+          <CopyableValue :label="t('shop.bankTransfer.beneficiary')" :value="localized(account.beneficiary)" />
           <CopyableValue :label="t('shop.bankTransfer.iban')" :value="account.iban" ltr />
         </dl>
 

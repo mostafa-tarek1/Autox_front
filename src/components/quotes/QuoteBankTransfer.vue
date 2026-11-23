@@ -9,6 +9,7 @@ import FormField from '@/components/form/FormField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { quoteBankAccount } from '@/mocks/quotes'
 
 import CopyableDetail from './CopyableDetail.vue'
@@ -17,6 +18,7 @@ import CopyableDetail from './CopyableDetail.vue'
 defineProps<{ amount: number }>()
 const emit = defineEmits<{ submitted: [] }>()
 const { t, tm, rt } = useI18n()
+const localized = useLocalizedText()
 const dateId = useId()
 
 const form = reactive({ reference: '', date: '', receipt: null as File | null })
@@ -83,13 +85,13 @@ async function submit(): Promise<void> {
               </span>
               <div class="flex flex-col items-start gap-1">
                 <span class="text-body-md text-secondary">{{ t('quotes.payment.bankName') }}</span>
-                <span class="text-h4 text-ink">{{ quoteBankAccount.bankName }}</span>
+                <span class="text-h4 text-ink">{{ localized(quoteBankAccount.bankName) }}</span>
               </div>
             </div>
             <hr class="border-line" />
             <CopyableDetail
               :label="t('quotes.payment.beneficiary')"
-              :value="quoteBankAccount.beneficiary"
+              :value="localized(quoteBankAccount.beneficiary)"
             />
             <hr class="border-line" />
             <CopyableDetail :label="t('quotes.payment.iban')" :value="quoteBankAccount.iban" ltr />

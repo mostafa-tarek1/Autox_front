@@ -3,6 +3,8 @@
  * phase; replaced by the supplier RFQ endpoints). Values follow the Figma frames 768:16897,
  * 863:13271, 780:10870 and 910:16321.
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { partNames } from '@/mocks/names'
 import type { PartOrigin } from '@/types/catalog'
 
 /**
@@ -17,7 +19,7 @@ export type SupplierQuoteStatus =
 
 export interface SupplierQuoteItem {
   id: string
-  title: string
+  title: LocalizedText
   partNumber: string
   origin: PartOrigin
   quantity: number
@@ -59,14 +61,14 @@ const customer: SupplierQuoteCustomer = {
 const offerItems: SupplierQuoteItem[] = [
   {
     id: 'item-1',
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     origin: 'original',
     quantity: 3,
   },
   {
     id: 'item-2',
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     origin: 'original',
     quantity: 3,
@@ -75,7 +77,7 @@ const offerItems: SupplierQuoteItem[] = [
 
 const requestItems: SupplierQuoteItem[] = Array.from({ length: 3 }, (_, index) => ({
   id: `request-item-${index + 1}`,
-  title: 'مقص امامي يسار النترا 2020',
+  title: partNames.elantraControlArm,
   partNumber: '54500-AA100',
   origin: 'original',
   quantity: 2,

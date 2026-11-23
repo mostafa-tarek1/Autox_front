@@ -4,12 +4,19 @@
 import hyundai from '@/assets/images/car-brands/hyundai.webp'
 import bankAlrajhi from '@/assets/images/shop/bank-alrajhi.webp'
 import type { BankAccount, CartItem, PaymentSummary } from '@/components/shop/types'
-import { brandNames, supplierName } from '@/mocks/names'
+import {
+  bankNames,
+  brandNames,
+  cityNames,
+  companyNamePlaceholder,
+  partNames,
+  supplierName,
+} from '@/mocks/names'
 
 function cartItem(id: string, overrides: Partial<CartItem>): CartItem {
   return {
     id,
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     supplier: supplierName(9),
     brandName: brandNames.hyundai,
@@ -34,11 +41,11 @@ export const initialCartItems: CartItem[] = [
 export const VAT_AMOUNT = 100
 
 export const deliveryCities = [
-  { value: 'riyadh', label: 'الرياض' },
-  { value: 'jeddah', label: 'جدة' },
-  { value: 'dammam', label: 'الدمام' },
-  { value: 'makkah', label: 'مكة المكرمة' },
-  { value: 'madinah', label: 'المدينة المنورة' },
+  { value: 'riyadh', label: cityNames.riyadh },
+  { value: 'jeddah', label: cityNames.jeddah },
+  { value: 'dammam', label: cityNames.dammam },
+  { value: 'makkah', label: cityNames.makkah },
+  { value: 'madinah', label: cityNames.madinah },
 ]
 
 /** Order being paid from the orders list ("ادفع الآن"), values from Figma 622:9608. */
@@ -48,8 +55,8 @@ export const paymentSummary: PaymentSummary = { count: 9, subtotal: 8900, vat: 1
 export const walletBalance = 200_000
 
 export const bankAccount: BankAccount = {
-  bankName: 'مصرف الراجحي',
+  bankName: bankNames.alrajhi,
   bankLogo: bankAlrajhi,
-  beneficiary: 'اسم الشركة',
+  beneficiary: companyNamePlaceholder,
   iban: 'SA00 0000 0000 0000 0000 0000',
 }

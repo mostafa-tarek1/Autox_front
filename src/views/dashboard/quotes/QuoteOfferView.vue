@@ -12,6 +12,7 @@ import { formatQuoteDate } from '@/components/dashboard/quotes/formatDate'
 import QuoteOfferResultModal from '@/components/dashboard/quotes/QuoteOfferResultModal.vue'
 import AppLogo from '@/components/ui/AppLogo.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { findSupplierQuote, quoteRequestDate } from '@/mocks/dashboard-quotes'
 
 /**
@@ -19,6 +20,7 @@ import { findSupplierQuote, quoteRequestDate } from '@/mocks/dashboard-quotes'
  * the logo in the header so it also works from a notification link.
  */
 const { t } = useI18n()
+const localized = useLocalizedText()
 const route = useRoute()
 
 const quote = computed(() => findSupplierQuote(String(route.params.id)))
@@ -99,7 +101,7 @@ function decline(): void {
               class="flex items-center justify-between gap-2 rounded-lg border border-line p-3"
             >
               <div class="flex min-w-0 flex-col items-start gap-2">
-                <span class="text-body-md text-ink">{{ item.title }}</span>
+                <span class="text-body-md text-ink">{{ localized(item.title) }}</span>
                 <span class="text-body-md text-muted">
                   <bdi dir="ltr">{{ item.partNumber }}</bdi> ·
                   {{ t(`catalog.origins.${item.origin}`) }}

@@ -10,7 +10,7 @@ import mercedes from '@/assets/images/car-brands/mercedes.webp'
 import nissan from '@/assets/images/car-brands/nissan.webp'
 import opel from '@/assets/images/car-brands/opel.webp'
 import toyota from '@/assets/images/car-brands/toyota.webp'
-import { brandNames, supplierName } from '@/mocks/names'
+import { brandNames, partNames, supplierName } from '@/mocks/names'
 import type { CarBrand, PartOrigin, Product } from '@/types/catalog'
 
 const defaultOrigins: CarBrand['origins'] = [
@@ -21,8 +21,20 @@ const defaultOrigins: CarBrand['origins'] = [
 ]
 
 export const carBrands: CarBrand[] = [
-  { id: 'hyundai', name: brandNames.hyundai, logo: hyundai, fromYear: 2000, origins: defaultOrigins },
-  { id: 'mercedes', name: brandNames.mercedes, logo: mercedes, fromYear: 2000, origins: defaultOrigins },
+  {
+    id: 'hyundai',
+    name: brandNames.hyundai,
+    logo: hyundai,
+    fromYear: 2000,
+    origins: defaultOrigins,
+  },
+  {
+    id: 'mercedes',
+    name: brandNames.mercedes,
+    logo: mercedes,
+    fromYear: 2000,
+    origins: defaultOrigins,
+  },
   { id: 'toyota', name: brandNames.toyota, logo: toyota, fromYear: 2000, origins: defaultOrigins },
   { id: 'kia', name: brandNames.kia, logo: kia, fromYear: 2000, origins: defaultOrigins },
   { id: 'bmw', name: brandNames.bmw, logo: bmw, fromYear: 2000, origins: defaultOrigins },
@@ -41,7 +53,7 @@ function product(
 ): Product {
   return {
     id: `part-${index}`,
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     supplier: supplierName(supplierNumber),
     brandLogo: hyundai,
@@ -53,7 +65,7 @@ function product(
 
 const alternativeParts: Product[] = [1, 2].map((index) => ({
   id: `alt-${index}`,
-  title: 'بنز بستم ايسوزو اصلي',
+  title: partNames.isuzuPiston,
   partNumber: '04465-0K240',
   supplier: supplierName(8),
   brandLogo: hyundai,

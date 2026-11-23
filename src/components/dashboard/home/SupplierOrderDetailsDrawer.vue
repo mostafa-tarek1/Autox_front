@@ -8,6 +8,7 @@ import PaymentIcon from '@/assets/icons/payment-02--stroke-rounded.svg'
 import SecurityCheckIcon from '@/assets/icons/security-check--stroke-rounded.svg'
 import DashboardDrawer from '@/components/dashboard/shared/DashboardDrawer.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { hiddenCustomerStatuses, type SupplierOrder } from '@/mocks/dashboard'
 
 import SupplierOrderStatus from './SupplierOrderStatus.vue'
@@ -16,6 +17,7 @@ import SupplierOrderStatus from './SupplierOrderStatus.vue'
 const props = defineProps<{ order: SupplierOrder | null }>()
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const isCustomerVisible = computed(
   () => !!props.order && !hiddenCustomerStatuses.includes(props.order.status),
@@ -62,7 +64,7 @@ const formatDate = (iso: string) => {
             class="flex items-start justify-between gap-8 rounded-xl border border-line p-3"
           >
             <div class="flex min-w-0 flex-col items-start gap-2">
-              <p class="text-body-md text-ink">{{ item.title }}</p>
+              <p class="text-body-md text-ink">{{ localized(item.title) }}</p>
               <p dir="ltr" class="text-body-md text-primary">{{ item.partNumber }}</p>
               <span
                 class="inline-flex h-8 items-center gap-1 rounded-full bg-surface px-2 py-1 text-body-sm text-primary"

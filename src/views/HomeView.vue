@@ -51,7 +51,11 @@ const totalResults = 300
   </div>
 
   <div class="page-container mt-[52px] flex flex-col gap-6 lg:flex-row lg:items-start">
-    <BrandFilter v-model="brandSelection" :brands="carBrands" class="lg:w-[292px] lg:shrink-0" />
+    <BrandFilter
+      v-model="brandSelection"
+      :brands="carBrands"
+      class="lg:sticky lg:top-24 lg:max-h-[calc(100dvh-7rem)] lg:w-[292px] lg:shrink-0 lg:overflow-y-auto"
+    />
 
     <section
       class="flex min-w-0 flex-1 flex-col items-center gap-5"

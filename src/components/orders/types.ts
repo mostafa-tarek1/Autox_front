@@ -20,7 +20,7 @@ export type OrdersTab = 'current' | 'previous' | 'returns'
 
 export interface OrderItem {
   id: string
-  title: string
+  title: LocalizedText
   partNumber: string
   origin: PartOrigin
   brandName: LocalizedText
@@ -47,7 +47,7 @@ export interface Order {
   number: string
   kind: 'request' | 'placed'
   status: OrderStatus
-  seller?: string
+  seller?: LocalizedText
   date: string
   total: number
   /** Placed orders: tracking number of the grouped `items` block. */
@@ -61,7 +61,7 @@ export interface Order {
 /** One seller's part of an order: its own status, total and actions (Figma 235:10299). */
 export interface SellerOrder {
   id: string
-  seller: string
+  seller: LocalizedText
   status: OrderStatus
   total: number
   items: OrderItem[]

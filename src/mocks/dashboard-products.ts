@@ -3,13 +3,13 @@
  * replaced by the supplier catalog API later.
  */
 import type { LocalizedText } from '@/composables/useLocalizedText'
-import { brandNames, type BrandId } from '@/mocks/names'
+import { brandNames, partNames, type BrandId } from '@/mocks/names'
 import type { PartOrigin } from '@/types/catalog'
 
 export interface SupplierProduct {
   id: string
   partNumber: string
-  name: string
+  name: LocalizedText
   origin: PartOrigin
   brandId: string
   price: number
@@ -20,18 +20,18 @@ export interface SupplierProduct {
 export interface CatalogEntry {
   id: string
   partNumber: string
-  name: string
+  name: LocalizedText
   origin: PartOrigin
 }
 
 export interface ExcelImportRow {
   partNumber: string
-  name: string
+  name: LocalizedText
   origin: PartOrigin
   price: number
 }
 
-const partName = 'رفرف ونيت ايسوزو19/23أصلي'
+const partName = partNames.isuzuFender
 const partNumber = '04465-0K240'
 
 export const supplierProducts: SupplierProduct[] = Array.from({ length: 10 }, (_, index) => ({

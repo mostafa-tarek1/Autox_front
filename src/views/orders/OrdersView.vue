@@ -8,9 +8,11 @@ import OrderRequestCard from '@/components/orders/OrderRequestCard.vue'
 import OrdersToolbar from '@/components/orders/OrdersToolbar.vue'
 import ReturnPolicyDialog from '@/components/orders/ReturnPolicyDialog.vue'
 import type { OrderRequest } from '@/components/orders/types'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { currentOrders, previousOrders } from '@/mocks/orders'
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 const route = useRoute()
 
 type ListTab = 'current' | 'previous'
@@ -37,7 +39,7 @@ const orders = computed(() => {
         order.sellers.length &&
         (!term ||
           order.number.toLowerCase().includes(term) ||
-          order.sellers.some((entry) => entry.seller.includes(term))),
+          order.sellers.some((entry) => localized(entry.seller).toLowerCase().includes(term))),
     )
 })
 

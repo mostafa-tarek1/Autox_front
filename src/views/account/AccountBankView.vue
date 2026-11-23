@@ -16,9 +16,11 @@ import { useAccountState, type BankAccountValues } from '@/components/account/us
 import { formatIban } from '@/components/account/validators'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { saudiBanks, type BankAccount } from '@/mocks/account'
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 const { state, saveBankAccount, removeBankAccount, setDefaultBankAccount } = useAccountState()
 const { copy, copied } = useClipboard({ legacy: true })
 
@@ -39,7 +41,10 @@ const editedAccount = computed(() =>
   editing.value && editing.value !== 'new' ? editing.value : undefined,
 )
 
-const bankName = (bankId: string) => saudiBanks.find((bank) => bank.id === bankId)?.name ?? bankId
+const bankName = (bankId: string) => {
+  const bank = saudiBanks.find((entry) => entry.id === bankId)
+  return bank ? localized(bank.name) : bankId
+}
 
 async function copyValue(key: string, value: string): Promise<void> {
   await copy(value)
@@ -84,12 +89,12 @@ function save(values: BankAccountValues): void {
           <div class="flex flex-col gap-1">
             <dt class="text-body-md text-secondary">{{ t('account.bank.beneficiary') }}</dt>
             <dd class="flex items-center justify-between gap-4">
-              <span class="min-w-0 text-h4 break-words text-ink">{{ account.beneficiary }}</span>
+              <span class="min-w-0 text-h4 break-words text-ink">{{ localized(account.beneficiary) }}</span>
               <button
                 type="button"
                 class="flex shrink-0 items-center gap-1 text-body-md text-secondary hover:text-primary"
                 :aria-label="t('account.bank.copyField', { field: t('account.bank.beneficiary') })"
-                @click="copyValue(`${account.id}-beneficiary`, account.beneficiary)"
+                @click="copyValue(`${account.id}-beneficiary`, localized(account.beneficiary))"
               >
                 <TickIcon
                   v-if="copied && copiedKey === `${account.id}-beneficiary`"

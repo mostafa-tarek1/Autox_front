@@ -2,6 +2,9 @@
  * Local mock data for the account and wallet screens (UI phase only).
  * Replaced by API calls once the backend endpoints are wired.
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { bankNames, companyNamePlaceholder, type BankId } from '@/mocks/names'
+
 export interface AccountProfile {
   name: string
   phone: string
@@ -35,22 +38,22 @@ export interface ShippingAddress {
 export interface BankAccount {
   id: string
   bankId: string
-  beneficiary: string
+  beneficiary: LocalizedText
   /** IBAN without spaces, e.g. SA0380000000608010167519. */
   iban: string
   isDefault: boolean
 }
 
 /** Saudi banks offered in the bank account and withdrawal forms. */
-export const saudiBanks: Array<{ id: string; name: string }> = [
-  { id: 'alrajhi', name: 'مصرف الراجحي' },
-  { id: 'snb', name: 'البنك الأهلي السعودي' },
-  { id: 'riyad', name: 'بنك الرياض' },
-  { id: 'sab', name: 'البنك السعودي الأول' },
-  { id: 'alinma', name: 'مصرف الإنماء' },
-  { id: 'albilad', name: 'بنك البلاد' },
-  { id: 'aljazira', name: 'بنك الجزيرة' },
-  { id: 'anb', name: 'البنك العربي الوطني' },
+export const saudiBanks: Array<{ id: BankId; name: LocalizedText }> = [
+  { id: 'alrajhi', name: bankNames.alrajhi },
+  { id: 'snb', name: bankNames.snb },
+  { id: 'riyad', name: bankNames.riyad },
+  { id: 'sab', name: bankNames.sab },
+  { id: 'alinma', name: bankNames.alinma },
+  { id: 'albilad', name: bankNames.albilad },
+  { id: 'aljazira', name: bankNames.aljazira },
+  { id: 'anb', name: bankNames.anb },
 ]
 
 export type WalletOperation =
@@ -65,7 +68,7 @@ export interface WalletTransaction {
   amount: number
   /** ISO date (yyyy-mm-dd). */
   date: string
-  note: string | null
+  note: LocalizedText | null
   status: WalletStatus
 }
 
@@ -108,14 +111,14 @@ export const bankAccounts: BankAccount[] = [
   {
     id: 'bank-1',
     bankId: 'alrajhi',
-    beneficiary: 'اسم الشركة',
+    beneficiary: companyNamePlaceholder,
     iban: 'SA0000000000000000000000',
     isDefault: true,
   },
   {
     id: 'bank-2',
     bankId: 'alrajhi',
-    beneficiary: 'اسم الشركة',
+    beneficiary: companyNamePlaceholder,
     iban: 'SA0000000000000000000000',
     isDefault: false,
   },
@@ -128,11 +131,27 @@ export const walletBalances = {
   withdrawable: 200_000,
 }
 
+/** System notes on wallet transactions, in every locale. */
+const walletNotes = {
+  withdrawal: { ar: 'سحب من المحفظة', en: 'Wallet withdrawal', ur: 'والیٹ سے رقم نکلوائی گئی' },
+  purchase: { ar: 'دفع في عملية شراء', en: 'Purchase payment', ur: 'خریداری کی ادائیگی' },
+  customerDeposit: {
+    ar: 'ايداع مبلغ من العميل',
+    en: 'Deposit from customer',
+    ur: 'کسٹمر کی جانب سے رقم جمع',
+  },
+  returnAccepted: {
+    ar: 'تم قبول ارجاع المنتج',
+    en: 'Product return accepted',
+    ur: 'پروڈکٹ کی واپسی منظور ہو گئی',
+  },
+} satisfies Record<string, LocalizedText>
+
 function transaction(
   index: number,
   operation: WalletOperation,
   amount: number,
-  note: string | null,
+  note: LocalizedText | null,
   status: WalletStatus = 'accepted',
 ): WalletTransaction {
   return {
@@ -147,12 +166,12 @@ function transaction(
 }
 
 export const walletTransactions: WalletTransaction[] = [
-  transaction(1, 'walletWithdrawal', -2000, 'سحب من المحفظة'),
-  transaction(2, 'returnRefund', 2000, 'دفع في عملية شراء'),
-  transaction(3, 'returnRefund', 2000, 'ايداع مبلغ من العميل'),
-  transaction(4, 'cardFee', -20, 'دفع في عملية شراء'),
-  transaction(5, 'returnRefund', 2000, 'تم قبول ارجاع المنتج'),
-  transaction(6, 'deposit', 2000, 'دفع في عملية شراء'),
+  transaction(1, 'walletWithdrawal', -2000, walletNotes.withdrawal),
+  transaction(2, 'returnRefund', 2000, walletNotes.purchase),
+  transaction(3, 'returnRefund', 2000, walletNotes.customerDeposit),
+  transaction(4, 'cardFee', -20, walletNotes.purchase),
+  transaction(5, 'returnRefund', 2000, walletNotes.returnAccepted),
+  transaction(6, 'deposit', 2000, walletNotes.purchase),
   transaction(7, 'purchase', -20, null),
   transaction(8, 'returnRefund', 2000, null),
   transaction(9, 'walletWithdrawal', -2000, null),

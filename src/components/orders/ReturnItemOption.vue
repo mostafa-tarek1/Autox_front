@@ -49,7 +49,7 @@ watch(quantity, () => (selected.value = true))
         <span class="text-[9.7px] leading-[14px] text-muted">{{ localized(item.brandName) }}</span>
       </span>
       <span class="flex min-w-0 flex-col items-start gap-2">
-        <span class="text-body-md text-ink">{{ item.title }}</span>
+        <span class="text-body-md text-ink">{{ localized(item.title) }}</span>
         <span dir="ltr" class="text-body-sm text-primary">{{ item.partNumber }}</span>
       </span>
     </label>

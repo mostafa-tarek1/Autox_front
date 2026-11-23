@@ -6,11 +6,13 @@ import DeleteIcon from '@/assets/icons/delete-01--stroke-standard.svg'
 import { formatDate } from '@/components/billing/formatDate'
 import StatusChip from '@/components/ui/StatusChip.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import type { QuoteRequest } from '@/mocks/quotes'
 
 defineProps<{ request: QuoteRequest }>()
 const emit = defineEmits<{ viewOffers: [request: QuoteRequest]; remove: [request: QuoteRequest] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 </script>
 
 <template>
@@ -44,7 +46,7 @@ const { t } = useI18n()
         class="flex items-center justify-between gap-2 rounded-lg border border-line p-3"
       >
         <div class="flex min-w-0 flex-col gap-2">
-          <p class="text-body-sm text-ink">{{ item.name }}</p>
+          <p class="text-body-sm text-ink">{{ localized(item.name) }}</p>
           <p class="text-body-sm text-muted">
             <bdi dir="ltr">{{ item.partNumber }}</bdi> · {{ t(`catalog.origins.${item.origin}`) }}
           </p>

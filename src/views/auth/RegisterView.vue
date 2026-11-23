@@ -19,11 +19,13 @@ import PhoneField from '@/components/form/PhoneField.vue'
 import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { cities, registerTrader } from '@/mocks/auth'
 
 type DocumentKey = 'commercialRegister' | 'taxRegister' | 'nationalAddress'
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 const router = useRouter()
 
 const form = reactive({
@@ -35,7 +37,9 @@ const form = reactive({
   cityId: null as string | null,
 })
 
-const cityOptions = cities.map((city) => ({ value: city.id, label: city.name }))
+const cityOptions = computed(() =>
+  cities.map((city) => ({ value: city.id, label: localized(city.name) })),
+)
 
 const documents = reactive<Record<DocumentKey, File | null>>({
   commercialRegister: null,

@@ -15,9 +15,11 @@ import ProductsSortSelect, {
 import ProductsTable from '@/components/dashboard/products/ProductsTable.vue'
 import { useSupplierProducts } from '@/components/dashboard/products/useSupplierProducts'
 import BasePagination from '@/components/ui/BasePagination.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 /** Supplier spare parts (754:15902). */
 const { t } = useI18n()
+const localized = useLocalizedText()
 const router = useRouter()
 const store = useSupplierProducts()
 
@@ -38,7 +40,7 @@ const filtered = computed(() => {
     (product) =>
       !term ||
       product.partNumber.toLowerCase().includes(term) ||
-      product.name.toLowerCase().includes(term),
+      localized(product.name).toLowerCase().includes(term),
   )
   if (sort.value === 'priceAsc') {
     return [...list].sort((a, b) => a.price - b.price)

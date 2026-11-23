@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { saudiBanks, type BankAccount } from '@/mocks/account'
 
 import type { BankAccountValues } from './useAccountState'
@@ -20,13 +22,16 @@ const props = withDefaults(
 )
 const emit = defineEmits<{ save: [values: BankAccountValues] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
-const bankOptions = saudiBanks.map((bank) => ({ value: bank.id, label: bank.name }))
+const bankOptions = computed(() =>
+  saudiBanks.map((bank) => ({ value: bank.id, label: localized(bank.name) })),
+)
 
 const { values, errors, check } = useFormValidation(
   {
     bankId: props.account?.bankId ?? '',
-    beneficiary: props.account?.beneficiary ?? '',
+    beneficiary: props.account ? localized(props.account.beneficiary) : '',
     iban: props.account ? formatIban(props.account.iban) : '',
   },
   { bankId: [required], beneficiary: [required, minLength(3)], iban: [required, saudiIban] },

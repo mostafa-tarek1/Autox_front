@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
@@ -19,13 +19,17 @@ import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { saudiBanks } from '@/mocks/account'
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 const router = useRouter()
 const { state } = useAccountState()
 
-const bankOptions = saudiBanks.map((bank) => ({ value: bank.id, label: bank.name }))
+const bankOptions = computed(() =>
+  saudiBanks.map((bank) => ({ value: bank.id, label: localized(bank.name) })),
+)
 
 /** A positive amount that the withdrawable balance can cover. */
 const withdrawableAmount: Validator = (value) => {

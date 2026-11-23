@@ -3,7 +3,7 @@ import type { PartOrigin } from '@/types/catalog'
 
 export interface CartItem {
   id: string
-  title: string
+  title: LocalizedText
   partNumber: string
   supplier: LocalizedText
   brandName: LocalizedText
@@ -34,9 +34,9 @@ export interface DeliveryAddress {
 }
 
 export interface BankAccount {
-  bankName: string
+  bankName: LocalizedText
   bankLogo: string
-  beneficiary: string
+  beneficiary: LocalizedText
   iban: string
 }
 

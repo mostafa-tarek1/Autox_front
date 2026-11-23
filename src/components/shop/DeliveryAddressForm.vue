@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import PhoneField from '@/components/form/PhoneField.vue'
 import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { deliveryCities } from '@/mocks/shop'
 
 import { validateDeliveryAddress } from './deliveryAddress'
@@ -15,6 +16,10 @@ import type { DeliveryAddress } from './types'
 const props = defineProps<{ showErrors: boolean }>()
 const address = defineModel<DeliveryAddress>({ required: true })
 const { t } = useI18n()
+const localized = useLocalizedText()
+const cityOptions = computed(() =>
+  deliveryCities.map((city) => ({ value: city.value, label: localized(city.label) })),
+)
 
 const errors = computed(() => (props.showErrors ? validateDeliveryAddress(address.value) : {}))
 const message = (field: keyof DeliveryAddress) => {
@@ -42,7 +47,7 @@ const message = (field: keyof DeliveryAddress) => {
     />
     <SelectField
       v-model="address.city"
-      :options="deliveryCities"
+      :options="cityOptions"
       :label="t('shop.address.city')"
       :placeholder="t('shop.address.cityPlaceholder')"
       :error="message('city')"

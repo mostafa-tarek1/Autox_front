@@ -2,6 +2,9 @@
  * Supplier dashboard mock data for the UI phase. Screen-specific mocks live next to this file
  * (dashboard-*.ts) and are replaced by API calls once the supplier endpoints exist.
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { partNames } from '@/mocks/names'
+
 export interface DashboardStatsData {
   ordersCount: number
   totalSales: number
@@ -42,7 +45,7 @@ export type SupplierOrderStatus =
 
 export interface SupplierOrderItem {
   id: string
-  title: string
+  title: LocalizedText
   partNumber: string
   origin: 'original' | 'korean' | 'japanese' | 'chinese' | 'taiwanese'
   quantity: number
@@ -80,7 +83,7 @@ export const hiddenCustomerStatuses: readonly SupplierOrderStatus[] = [
 const orderItems: SupplierOrderItem[] = [
   {
     id: 'i-1',
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     origin: 'original',
     quantity: 3,
@@ -88,7 +91,7 @@ const orderItems: SupplierOrderItem[] = [
   },
   {
     id: 'i-2',
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     origin: 'original',
     quantity: 3,

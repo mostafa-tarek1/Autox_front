@@ -9,10 +9,12 @@ import { useSupplierProducts } from '@/components/dashboard/products/useSupplier
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BasePagination from '@/components/ui/BasePagination.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { excelImportRows } from '@/mocks/dashboard-products'
 
 /** "مراجعة نتائج Excel" (976:9925): rows read from the uploaded file, confirmed in one go. */
 const { t } = useI18n()
+const localized = useLocalizedText()
 const router = useRouter()
 const store = useSupplierProducts()
 
@@ -57,7 +59,7 @@ function confirm(): void {
           class="flex flex-col gap-1 border-b border-line p-4 md:grid md:min-h-[61px] md:grid-cols-[178px_260px_99px_156px] md:items-center md:gap-20"
         >
           <span class="text-body-sm text-ink rtl:text-right" dir="ltr">{{ row.partNumber }}</span>
-          <span class="text-body-sm text-ink">{{ row.name }}</span>
+          <span class="text-body-sm text-ink">{{ localized(row.name) }}</span>
           <span class="text-body-sm text-ink">{{ t(`catalog.origins.${row.origin}`) }}</span>
           <PriceTag :amount="row.price" decimals class="text-h4 text-ink" />
         </li>

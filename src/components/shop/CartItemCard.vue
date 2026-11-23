@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 
 import PriceTag from '@/components/ui/PriceTag.vue'
 import QuantityStepper from '@/components/ui/QuantityStepper.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import OriginChip from './OriginChip.vue'
 import type { CartItem } from './types'
@@ -12,6 +13,7 @@ import type { CartItem } from './types'
 const props = defineProps<{ item: CartItem }>()
 const emit = defineEmits<{ 'update:quantity': [value: number] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const quantity = computed({
   get: () => props.item.quantity,
@@ -24,7 +26,7 @@ const quantity = computed({
     class="flex flex-col gap-4 rounded-xl border border-line bg-white p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
   >
     <div class="flex min-w-0 flex-col items-start gap-2">
-      <h3 class="text-body-md text-ink">{{ item.title }}</h3>
+      <h3 class="text-body-md text-ink">{{ localized(item.title) }}</h3>
       <p dir="ltr" class="text-body-md text-primary">{{ item.partNumber }}</p>
       <OriginChip :origin="item.origin" />
     </div>

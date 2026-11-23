@@ -58,8 +58,8 @@ const { items } = storeToRefs(cart)
           <div class="flex min-w-0 flex-1 items-start gap-4">
             <BrandThumb :logo="item.brandLogo" :name="localized(item.brandName)" size="sm" tone="surface" />
             <div class="flex min-w-0 flex-1 flex-col items-start gap-2">
-              <p class="w-full truncate text-body-md text-ink" :title="item.title">
-                {{ item.title }}
+              <p class="w-full truncate text-body-md text-ink" :title="localized(item.title)">
+                {{ localized(item.title) }}
               </p>
               <p dir="ltr" class="text-body-sm text-primary">{{ item.partNumber }}</p>
             </div>

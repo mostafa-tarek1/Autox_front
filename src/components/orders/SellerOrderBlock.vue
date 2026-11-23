@@ -6,6 +6,7 @@ import BuildingIcon from '@/assets/icons/building-03--stroke-rounded.svg'
 import DeleteIcon from '@/assets/icons/delete-01--stroke-standard.svg'
 import PaymentIcon from '@/assets/icons/payment-02--stroke-rounded.svg'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 
 import OrderActionButton from './OrderActionButton.vue'
 import OrderItemRow from './OrderItemRow.vue'
@@ -17,6 +18,7 @@ import type { SellerOrder } from './types'
 const props = defineProps<{ entry: SellerOrder; orderId: string }>()
 const emit = defineEmits<{ delete: [id: string] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const isPaid = computed(() => props.entry.status === 'paid')
 </script>
@@ -29,7 +31,7 @@ const isPaid = computed(() => props.entry.status === 'paid')
       <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
         <OrderStatusChip :status="entry.status" />
         <OrderMeta :icon="BuildingIcon" :label="t('orders.meta.seller')">{{
-          entry.seller
+          localized(entry.seller)
         }}</OrderMeta>
         <span class="inline-flex items-center gap-1 text-body-sm whitespace-nowrap">
           <PaymentIcon class="size-4 text-primary" aria-hidden="true" />
@@ -60,7 +62,7 @@ const isPaid = computed(() => props.entry.status === 'paid')
           </OrderActionButton>
           <OrderActionButton
             icon-only
-            :label="t('orders.actions.deleteSeller', { seller: entry.seller })"
+            :label="t('orders.actions.deleteSeller', { seller: localized(entry.seller) })"
             @click="emit('delete', entry.id)"
           >
             <DeleteIcon class="size-4 text-error" aria-hidden="true" />

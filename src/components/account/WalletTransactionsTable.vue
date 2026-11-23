@@ -2,12 +2,14 @@
 import { useI18n } from 'vue-i18n'
 
 import StatusChip, { type StatusTone } from '@/components/ui/StatusChip.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import type { WalletStatus, WalletTransaction } from '@/mocks/account'
 
 import SignedAmount from './SignedAmount.vue'
 
 defineProps<{ transactions: WalletTransaction[] }>()
 const { t } = useI18n()
+const localized = useLocalizedText()
 
 const walletTones: Record<WalletStatus, StatusTone> = {
   accepted: 'success',
@@ -49,7 +51,7 @@ const columns = ['reference', 'amount', 'operation', 'date', 'note', 'status'] a
           <dt class="text-secondary">{{ t('wallet.columns.date') }}</dt>
           <dd class="text-ink tabular-nums">{{ formatDate(transaction.date) }}</dd>
           <dt class="text-secondary">{{ t('wallet.columns.note') }}</dt>
-          <dd class="text-ink">{{ transaction.note ?? t('wallet.noNote') }}</dd>
+          <dd class="text-ink">{{ transaction.note ? localized(transaction.note) : t('wallet.noNote') }}</dd>
         </dl>
       </li>
     </ul>
@@ -96,7 +98,7 @@ const columns = ['reference', 'amount', 'operation', 'date', 'note', 'status'] a
               {{ formatDate(transaction.date) }}
             </td>
             <td class="text-body-md text-secondary">
-              {{ transaction.note ?? t('wallet.noNote') }}
+              {{ transaction.note ? localized(transaction.note) : t('wallet.noNote') }}
             </td>
             <td>
               <StatusChip :tone="walletTones[transaction.status]" :with-icon="false">{{

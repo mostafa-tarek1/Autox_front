@@ -17,6 +17,7 @@ import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import PriceTag from '@/components/ui/PriceTag.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { saudiBanks } from '@/mocks/account'
 
 /**
@@ -28,6 +29,7 @@ const emit = defineEmits<{ submitted: [payload: { amount: number; bankAccountId:
 const open = defineModel<boolean>('open', { default: false })
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 const { state, saveBankAccount } = useAccountState()
 
 type Step = 'withdraw' | 'addAccount'
@@ -40,8 +42,13 @@ const errors = reactive<{ amount?: string; account?: string }>({})
 const newAccount = reactive({ bankId: null as string | null, beneficiary: '', iban: '' })
 const accountErrors = reactive<{ bankId?: string; beneficiary?: string; iban?: string }>({})
 
-const bankOptions = computed(() => saudiBanks.map((bank) => ({ value: bank.id, label: bank.name })))
-const bankName = (bankId: string) => saudiBanks.find((bank) => bank.id === bankId)?.name ?? ''
+const bankOptions = computed(() =>
+  saudiBanks.map((bank) => ({ value: bank.id, label: localized(bank.name) })),
+)
+const bankName = (bankId: string) => {
+  const bank = saudiBanks.find((entry) => entry.id === bankId)
+  return bank ? localized(bank.name) : ''
+}
 
 function defaultAccountId(): string | null {
   return (

@@ -12,12 +12,13 @@ import type {
   SellerOrder,
   Shipment,
 } from '@/components/orders/types'
-import { brandNames } from '@/mocks/names'
+import type { LocalizedText } from '@/composables/useLocalizedText'
+import { brandNames, partNames, supplierName } from '@/mocks/names'
 
 function item(id: string, price = 200, quantity = 3): OrderItem {
   return {
     id,
-    title: 'رفرف ونيت ايسوزو19/23أصلي',
+    title: partNames.isuzuFender,
     partNumber: '04465-0K240',
     origin: 'original',
     brandName: brandNames.hyundai,
@@ -42,7 +43,7 @@ const base = { number: '#AX-10248', date: '15/10/2027', total: 2000 }
 function seller(
   id: string,
   status: SellerOrder['status'],
-  name: string,
+  name: LocalizedText,
   total: number,
   prices: number[],
 ): SellerOrder {
@@ -62,15 +63,15 @@ export const currentOrders: OrderRequest[] = [
     number: base.number,
     date: base.date,
     sellers: [
-      seller('ord-1001-a', 'awaitingPayment', 'شركة رقم 10', 2160, [2000, 160]),
-      seller('ord-1001-b', 'awaitingAvailability', 'شركة رقم 9', 2000, [2000]),
+      seller('ord-1001-a', 'awaitingPayment', supplierName(10), 2160, [2000, 160]),
+      seller('ord-1001-b', 'awaitingAvailability', supplierName(9), 2000, [2000]),
     ],
   },
   {
     id: 'ord-1002',
     number: base.number,
     date: base.date,
-    sellers: [seller('ord-1002-a', 'quantityUnavailable', 'شركة رقم 9', 2000, [2000, 160])],
+    sellers: [seller('ord-1002-a', 'quantityUnavailable', supplierName(9), 2000, [2000, 160])],
   },
 ]
 
@@ -79,7 +80,7 @@ export const previousOrders: OrderRequest[] = Array.from({ length: 3 }, (_, inde
   id: `ord-90${index}`,
   number: base.number,
   date: base.date,
-  sellers: [seller(`ord-90${index}-a`, 'paid', 'شركة رقم 9', 2000, [2000, 160])],
+  sellers: [seller(`ord-90${index}-a`, 'paid', supplierName(9), 2000, [2000, 160])],
 }))
 
 /** Sample shipments for the order details screen (reached from payments and the return form). */

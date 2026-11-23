@@ -2,13 +2,13 @@
  * Local mock data for quotation requests (UI phase only).
  */
 import type { LocalizedText } from '@/composables/useLocalizedText'
-import { supplierName } from '@/mocks/names'
+import { bankNames, companyNamePlaceholder, partNames, supplierName } from '@/mocks/names'
 
 export type QuoteStatus = 'offersReceived' | 'awaitingOffers'
 
 export interface QuoteItem {
   id: string
-  name: string
+  name: LocalizedText
   partNumber: string
   origin: 'original' | 'korean' | 'japanese' | 'chinese'
   quantity: number
@@ -31,14 +31,14 @@ export interface QuoteRequest {
 const items: QuoteItem[] = [
   {
     id: 'item-1',
-    name: 'مقص امامي يسار النترا 2020',
+    name: partNames.elantraControlArm,
     partNumber: '54500-AA100',
     origin: 'original',
     quantity: 2,
   },
   {
     id: 'item-2',
-    name: 'مقص امامي يسار النترا 2020',
+    name: partNames.elantraControlArm,
     partNumber: '54500-AA100',
     origin: 'original',
     quantity: 2,
@@ -77,7 +77,7 @@ export const quotePaymentSummary: QuotePaymentSummary = {
 
 /** Bank account the trader transfers to (placeholder until the backend provides it). */
 export const quoteBankAccount = {
-  bankName: 'مصرف الراجحي',
-  beneficiary: 'اسم الشركة',
+  bankName: bankNames.alrajhi,
+  beneficiary: companyNamePlaceholder,
   iban: 'SA00 0000 0000 0000 0000 0000',
 }

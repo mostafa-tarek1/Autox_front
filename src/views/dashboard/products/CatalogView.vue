@@ -13,10 +13,12 @@ import ProductsSuccessModal from '@/components/dashboard/products/ProductsSucces
 import { useSupplierProducts } from '@/components/dashboard/products/useSupplierProducts'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BasePagination from '@/components/ui/BasePagination.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { catalogEntries } from '@/mocks/dashboard-products'
 
 /** "اضافة قطع غيار" from the platform catalog (910:16426): pick parts and set a price for each. */
 const { t } = useI18n()
+const localized = useLocalizedText()
 const route = useRoute()
 const router = useRouter()
 const store = useSupplierProducts()
@@ -45,7 +47,7 @@ const visible = computed(() => {
     (entry) =>
       !term ||
       entry.partNumber.toLowerCase().includes(term) ||
-      entry.name.toLowerCase().includes(term),
+      localized(entry.name).toLowerCase().includes(term),
   )
 })
 const selectedEntries = computed(() =>

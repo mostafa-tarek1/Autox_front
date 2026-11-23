@@ -39,7 +39,7 @@ const localized = useLocalizedText()
       </span>
       <div class="flex min-w-0 flex-1 flex-col items-start gap-2">
         <h3 :class="variant === 'rich' ? 'text-h4' : 'text-body-md'" class="text-ink">
-          {{ item.title }}
+          {{ localized(item.title) }}
         </h3>
         <p dir="ltr" class="text-body-md text-primary">{{ item.partNumber }}</p>
         <span

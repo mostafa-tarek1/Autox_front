@@ -14,9 +14,11 @@ import WalletBalanceCard from '@/components/account/WalletBalanceCard.vue'
 import WalletTransactionsTable from '@/components/account/WalletTransactionsTable.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BasePagination from '@/components/ui/BasePagination.vue'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { walletTransactions } from '@/mocks/account'
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 const { state } = useAccountState()
 
 const startDate = ref('')
@@ -56,7 +58,7 @@ function downloadExcel(): void {
     formatSignedAmount(transaction.amount),
     t(`wallet.operations.${transaction.operation}`),
     transaction.date,
-    transaction.note ?? t('wallet.noNote'),
+    transaction.note ? localized(transaction.note) : t('wallet.noNote'),
     t(`wallet.statuses.${transaction.status}`),
   ])
   const csv = [header, ...rows]

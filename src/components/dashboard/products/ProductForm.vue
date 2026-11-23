@@ -19,7 +19,7 @@ const localized = useLocalizedText()
 
 const form = reactive({
   partNumber: props.initial?.partNumber ?? '',
-  name: props.initial?.name ?? '',
+  name: props.initial ? localized(props.initial.name) : '',
   origin: (props.initial?.origin ?? 'original') as PartOrigin | null,
   brandId: (props.initial?.brandId ?? 'toyota') as string | null,
   price: props.initial ? String(props.initial.price) : '0',

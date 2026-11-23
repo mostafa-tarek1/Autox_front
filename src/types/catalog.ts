@@ -17,7 +17,7 @@ export interface CarBrand {
 
 export interface Product {
   id: string
-  title: string
+  title: LocalizedText
   partNumber: string
   supplier: LocalizedText
   brandLogo: string
