@@ -16,7 +16,8 @@ defineProps<{ step: number; title: string; titleId: string }>()
       </span>
       <h2 :id="titleId" class="text-h2 text-ink">{{ title }}</h2>
     </header>
-    <div class="flex flex-col gap-6 sm:pe-4">
+    <!-- 20px between fields: the design stacks 76px input frames whose content is 80px tall. -->
+    <div class="flex flex-col gap-5 sm:pe-4">
       <slot />
     </div>
   </section>

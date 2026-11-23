@@ -97,15 +97,18 @@ async function submit(): Promise<void> {
             <CopyableDetail :label="t('quotes.payment.iban')" :value="quoteBankAccount.iban" ltr />
           </div>
 
+          <!-- pb 11px: the design clips the instructions text box 5px under its last line. -->
           <div
-            class="flex flex-col items-start gap-2 rounded-xl border border-line bg-surface px-6 py-4"
+            class="flex flex-col items-start gap-2 rounded-xl border border-line bg-surface px-6 pt-4 pb-[11px]"
           >
             <p class="flex items-center gap-2 text-h4 text-ink">
               <InfoIcon class="size-6 text-orange" aria-hidden="true" />
               {{ t('quotes.payment.instructionsTitle') }}
             </p>
-            <ul class="list-inside list-disc text-body-sm text-muted marker:text-muted">
-              <li v-for="line in instructions" :key="line">{{ line }}</li>
+            <ul class="text-body-sm text-muted">
+              <li v-for="line in instructions" :key="line" class="before:content-['•_']">
+                {{ line }}
+              </li>
             </ul>
           </div>
         </div>

@@ -11,7 +11,7 @@ const { t } = useI18n()
 
 <template>
   <section class="flex flex-col gap-4 rounded-2xl bg-white" aria-labelledby="quote-summary-title">
-    <h2 id="quote-summary-title" class="border-b border-line p-6 text-h3 text-black">
+    <h2 id="quote-summary-title" class="border-b border-line px-6 py-5 text-h3 text-black">
       {{ t('quotes.payment.summary') }}
     </h2>
     <div class="flex flex-col gap-4 px-6 pb-6">

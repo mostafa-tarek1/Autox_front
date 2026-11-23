@@ -97,7 +97,12 @@ async function submit(): Promise<void> {
   </div>
 
   <form class="page-container flex flex-col gap-6" novalidate @submit.prevent="submit">
-    <StepCard :step="1" :title="t('billing.voucherForm.customerInfo')" title-id="voucher-customer">
+    <StepCard
+      :step="1"
+      :title="t('billing.voucherForm.customerInfo')"
+      title-id="voucher-customer"
+      class="sm:pb-7"
+    >
       <TextField
         v-model="form.customerName"
         :label="t('billing.voucherForm.customerName')"
@@ -121,7 +126,12 @@ async function submit(): Promise<void> {
       />
     </StepCard>
 
-    <StepCard :step="2" :title="t('billing.voucherForm.amountTitle')" title-id="voucher-amount">
+    <StepCard
+      :step="2"
+      :title="t('billing.voucherForm.amountTitle')"
+      title-id="voucher-amount"
+      class="sm:pb-7"
+    >
       <TextField
         v-model="form.amount"
         type="number"
@@ -133,7 +143,7 @@ async function submit(): Promise<void> {
       <CheckboxField v-model="form.invoiceMatches">{{
         t('billing.voucherForm.invoiceMatches')
       }}</CheckboxField>
-      <hr class="my-[7px] border-line" />
+      <hr class="my-[11px] border-line" />
       <InstallmentProviderPicker
         v-model="form.provider"
         :label="t('billing.voucherForm.installmentMethod')"
@@ -142,7 +152,11 @@ async function submit(): Promise<void> {
     </StepCard>
 
     <StepCard :step="3" :title="t('billing.voucherForm.confirmation')" title-id="voucher-confirm">
-      <CheckboxField v-model="form.acceptedTerms" :error="errors.acceptedTerms">
+      <CheckboxField
+        v-model="form.acceptedTerms"
+        :error="errors.acceptedTerms"
+        class="min-h-7 justify-center"
+      >
         <i18n-t keypath="billing.voucherForm.acceptTerms" tag="span" scope="global">
           <template #terms>
             <RouterLink to="/terms" class="text-match underline underline-offset-2" target="_blank">

@@ -181,7 +181,7 @@
       "status": {
         "awaitingResponse": "Awaiting your reply",
         "awaitingPayment": "Awaiting payment",
-        "awaitingTransferConfirmation": "Awaiting transfer confirmation",
+        "awaitingTransferConfirmation": "Confirming transfer",
         "paidReadyToShip": "Paid, ready to ship",
         "inDeliveryPeriod": "In delivery period",
         "inReturnPeriod": "In return period",

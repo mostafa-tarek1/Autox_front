@@ -81,8 +81,9 @@ async function submit(): Promise<void> {
           <CopyableValue :label="t('shop.bankTransfer.iban')" :value="account.iban" ltr />
         </dl>
 
+        <!-- pb 11px: the design clips the instructions text box 5px under its last line. -->
         <aside
-          class="flex flex-col items-start gap-2 rounded-xl border border-line bg-surface px-6 py-4"
+          class="flex flex-col items-start gap-2 rounded-xl border border-line bg-surface px-6 pt-4 pb-[11px]"
         >
           <h4 class="flex items-center gap-2 text-h4 text-ink">
             <InfoIcon class="size-6 text-orange" aria-hidden="true" />
@@ -98,7 +99,7 @@ async function submit(): Promise<void> {
 
       <h3 class="text-h4 text-ink">{{ t('shop.bankTransfer.confirmTitle') }}</h3>
       <div
-        class="flex flex-col gap-8 rounded-xl border border-line bg-white px-6 py-4 [&_label]:leading-5"
+        class="flex flex-col gap-8 rounded-xl border border-line bg-white px-6 py-4"
       >
         <TextField
           v-model="form.reference"
@@ -110,9 +111,7 @@ async function submit(): Promise<void> {
           "
         />
         <label class="flex flex-col gap-2">
-          <span class="font-label text-label leading-5 text-secondary">{{
-            t('shop.bankTransfer.date')
-          }}</span>
+          <span class="text-body-sm text-ink">{{ t('shop.bankTransfer.date') }}</span>
           <span
             class="relative flex h-12 items-center rounded-xl border bg-white px-4 focus-within:border-accent"
             :class="showErrors && !form.date ? 'border-error' : 'border-line'"

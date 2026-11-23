@@ -61,7 +61,7 @@ async function submit(): Promise<void> {
   <form class="flex flex-col gap-6 p-6 sm:p-12" novalidate @submit.prevent="submit">
     <h2 class="text-h2 text-ink">{{ t('public.contact.formTitle') }}</h2>
 
-    <div class="flex flex-col gap-5 [&_label]:leading-5">
+    <div class="flex flex-col gap-5">
       <!-- These labels are Plex 400 14/24 ink in the design; the message label keeps the Noto label style. -->
       <div
         class="contents [&_label]:font-sans [&_label]:text-body-sm [&_label]:font-normal [&_label]:text-ink"
@@ -98,15 +98,20 @@ async function submit(): Promise<void> {
           accept=".png,.jpg,.jpeg,.pdf"
         />
       </div>
-      <TextField
-        v-model="form.message"
-        multiline
-        :rows="4"
-        :label="t('public.contact.fields.message')"
-        :placeholder="t('public.contact.placeholders.subject')"
-        :error="errors.message"
-        class="h-[97px] placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
-      />
+      <!-- The message label is the Noto label style (14/20, secondary) in the design. -->
+      <div
+        class="[&_label]:font-label [&_label]:text-label [&_label]:leading-5 [&_label]:text-secondary"
+      >
+        <TextField
+          v-model="form.message"
+          multiline
+          :rows="4"
+          :label="t('public.contact.fields.message')"
+          :placeholder="t('public.contact.placeholders.subject')"
+          :error="errors.message"
+          class="h-[97px] placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
+        />
+      </div>
 
       <div class="flex flex-wrap items-center gap-4">
         <BaseButton type="submit" :loading="isSending">

@@ -73,16 +73,16 @@ const socials = [
             height="43"
             class="h-[43px] w-[34px] object-contain"
           />
-          <div class="flex flex-col items-start gap-2">
-            <span class="text-body-sm text-white/60">{{ t('footer.taxNumber') }}</span>
-            <span class="text-body-sm tabular-nums">1234567890</span>
+          <div class="flex flex-col items-start gap-2 font-label text-[14px] leading-5 font-normal">
+            <span class="text-white/60">{{ t('footer.taxNumber') }}</span>
+            <span class="tabular-nums">1234567890</span>
           </div>
         </div>
       </div>
 
       <div
         class="border-t border-line/10 pt-[15px] text-center"
-        :class="variant === 'guest' ? 'mt-10' : 'page-container mt-6'"
+        :class="variant === 'guest' ? 'mt-10' : 'page-container mt-8'"
       >
         <i18n-t keypath="footer.rights" tag="p" scope="global" class="text-body-sm">
           <template #brand>
