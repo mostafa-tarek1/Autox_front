@@ -43,9 +43,7 @@ onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-  <div
-    class="page-container flex flex-col gap-8 pt-10 pb-16 lg:flex-row lg:items-start lg:pb-[203px]"
-  >
+  <div class="page-container flex flex-col gap-8 pt-10 lg:flex-row lg:items-start">
     <nav
       :aria-label="t('public.legal.contents')"
       class="rounded-2xl bg-white py-2 shadow-card lg:sticky lg:top-24 lg:w-[282px] lg:shrink-0"

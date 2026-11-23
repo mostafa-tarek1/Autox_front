@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { computed, type StyleValue } from 'vue'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 
 import partsBanner from '@/assets/images/parts-banner.webp'
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher.vue'
 import AppLogo from '@/components/ui/AppLogo.vue'
 import XPattern from '@/components/ui/XPattern.vue'
+
+const route = useRoute()
+
+/** Space between the card and the parts image on desktop (Figma: 91px on login, 52px on register). */
+const bannerGapStyle = computed<StyleValue>(() => ({
+  '--banner-gap': `${route.meta.authBannerGap ?? 91}px`,
+}))
 </script>
 
 <template>
@@ -27,7 +35,8 @@ import XPattern from '@/components/ui/XPattern.vue'
         alt=""
         width="598"
         height="224"
-        class="mt-auto h-auto w-full max-w-[598px] pt-16 pb-24 sm:pt-[91px]"
+        class="mt-auto h-auto w-full max-w-[598px] pt-16 pb-24 sm:pt-(--banner-gap)"
+        :style="bannerGapStyle"
         fetchpriority="low"
       />
     </main>

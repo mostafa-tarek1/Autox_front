@@ -401,6 +401,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         },
         {
           type: 'list',
+          ordered: true,
           items: [
             'تقديم بيانات صحيحة ودقيقة وكاملة عند التسجيل.',
             'أن يكون المستخدم مؤهلًا قانونيًا لممارسة النشاط التجاري أو استخدام المنصة.',
@@ -452,6 +453,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         },
         {
           type: 'list',
+          ordered: true,
           items: [
             'التأكد من صحة بيانات الطلبات والكميات المطلوبة.',
             'مراجعة مواصفات المنتجات وأرقام القطع قبل تأكيد الطلب.',
@@ -474,6 +476,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         },
         {
           type: 'list',
+          ordered: true,
           items: [
             'تقديم بيانات صحيحة عن المنتجات المعروضة.',
             'التأكد من دقة أرقام القطع والمواصفات الفنية والصور.',
@@ -551,6 +554,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         },
         {
           type: 'list',
+          ordered: true,
           items: [
             'Provide accurate, correct and complete information when registering.',
             'Be legally qualified to carry out business or use the platform.',
@@ -602,6 +606,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         },
         {
           type: 'list',
+          ordered: true,
           items: [
             'Check that order details and requested quantities are correct.',
             'Review product specifications and part numbers before confirming an order.',
@@ -624,6 +629,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         },
         {
           type: 'list',
+          ordered: true,
           items: [
             'Provide accurate information about the products offered.',
             'Make sure part numbers, technical specifications and photos are accurate.',

@@ -10,5 +10,7 @@ declare module 'vue-router' {
     featureStrip?: boolean
     /** Space in px between the page content and the footer, from the page's Figma frame. */
     footerGap?: number
+    /** Auth pages: space between the card and the parts image on desktop, from the Figma frame. */
+    authBannerGap?: number
   }
 }
