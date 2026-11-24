@@ -26,11 +26,7 @@ const breadcrumbs = computed(() => {
 <template>
   <PageHero :title="t('account.title')" :breadcrumbs="breadcrumbs" />
   <div class="page-container mt-12 flex flex-col gap-6 lg:flex-row lg:items-start">
-    <AccountSidebar
-      :name="state.profile.name"
-      :is-verified="state.profile.isVerified"
-      class="lg:w-[282px] lg:shrink-0"
-    />
+    <AccountSidebar :name="state.profile.name" class="lg:w-[282px] lg:shrink-0" />
     <div class="min-w-0 flex-1">
       <RouterView />
     </div>

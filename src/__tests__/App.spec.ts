@@ -17,7 +17,8 @@ describe('App', () => {
     const wrapper = mount(App, { global: { plugins: [createPinia(), i18n, router, createHead()] } })
     await vi.waitFor(
       () => expect(wrapper.text()).toContain('ابحث، قارن، واطلب قطع غيار السيارات بسهولة'),
-      { timeout: 5000 },
+      // The home route and its layout are lazy chunks; a cold run transforms them first.
+      { timeout: 15000 },
     )
     // <html lang/dir> are written by the head manager on its next flush.
     await vi.waitFor(() => {

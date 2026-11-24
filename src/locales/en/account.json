@@ -10,7 +10,6 @@
   "account": {
     "title": "My account",
     "breadcrumb": "Breadcrumb",
-    "verified": "Verified",
     "sections": "Account sections",
     "edit": "Edit",
     "save": "Save",

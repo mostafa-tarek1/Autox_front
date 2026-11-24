@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 
 import tailwindcss from '@tailwindcss/vite'
 
-import { svgComponents } from './vite.shared'
+import { svgComponents } from './vite.shared.ts'
 
 /**
  * Public path the app is served from: `/` locally, a cPanel folder for the static build

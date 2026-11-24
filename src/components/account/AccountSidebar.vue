@@ -2,10 +2,9 @@
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 
-import SecurityCheckIcon from '@/assets/icons/security-check--solid-rounded.svg'
 import UserIcon from '@/assets/icons/user--duotone-rounded.svg'
 
-defineProps<{ name: string; isVerified: boolean }>()
+defineProps<{ name: string }>()
 const { t } = useI18n()
 
 const links = [
@@ -24,16 +23,7 @@ const links = [
       >
         <UserIcon class="size-6" aria-hidden="true" />
       </span>
-      <div class="flex min-w-0 flex-1 items-center justify-between gap-2">
-        <p class="truncate text-h4 text-ink">{{ name }}</p>
-        <span
-          v-if="isVerified"
-          class="inline-flex h-8 shrink-0 items-center gap-1 rounded-full bg-surface px-2 py-1 text-body-sm text-primary"
-        >
-          <SecurityCheckIcon class="size-4" aria-hidden="true" />
-          {{ t('account.verified') }}
-        </span>
-      </div>
+      <p class="min-w-0 flex-1 truncate text-h4 text-ink">{{ name }}</p>
     </div>
 
     <hr class="border-line" />
