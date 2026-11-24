@@ -22,7 +22,7 @@ watch(quantity, () => (selected.value = true))
 
 <template>
   <div
-    class="flex items-center gap-4 rounded-2xl border-[0.5px] bg-white p-2 transition-colors"
+    class="flex flex-wrap items-center gap-4 rounded-2xl border-[0.5px] bg-white p-2 transition-colors sm:flex-nowrap"
     :class="selected ? 'border-accent' : 'border-line'"
   >
     <input :id="checkboxId" v-model="selected" type="checkbox" class="peer sr-only" />
@@ -49,12 +49,15 @@ watch(quantity, () => (selected.value = true))
         <span class="text-[9.7px] leading-[14px] text-muted">{{ localized(item.brandName) }}</span>
       </span>
       <span class="flex min-w-0 flex-col items-start gap-2">
-        <span class="text-body-md text-ink">{{ localized(item.title) }}</span>
+        <span class="text-body-md wrap-anywhere text-ink">{{ localized(item.title) }}</span>
         <span dir="ltr" class="text-body-sm text-primary">{{ item.partNumber }}</span>
       </span>
     </label>
 
-    <div class="flex w-[82px] shrink-0 flex-col items-center gap-2">
+    <!-- Phones: price and quantity on their own row under the part (aligned past the checkbox). -->
+    <div
+      class="flex w-full items-center justify-between gap-2 ps-10 sm:w-[82px] sm:shrink-0 sm:flex-col sm:justify-start sm:ps-0"
+    >
       <PriceTag :grouping="false" :amount="item.price" class="text-h4 text-ink" />
       <QuantityStepper
         variant="surface"

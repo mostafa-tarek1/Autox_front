@@ -20,11 +20,12 @@ const tabs: Array<{ key: OrdersTab; to: RouteLocationRaw }> = [
 <template>
   <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
     <nav :aria-label="t('orders.tabs.label')">
-      <ul class="flex flex-wrap items-center gap-2 sm:gap-[21px]">
+      <!-- Phones: the tabs share one row in equal columns. -->
+      <ul class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-[21px]">
         <li v-for="tab in tabs" :key="tab.key">
           <RouterLink
             :to="tab.to"
-            class="inline-flex h-[46px] items-center justify-center rounded-xl border px-4 py-2 sm:px-6 text-button whitespace-nowrap transition"
+            class="inline-flex h-[46px] w-full items-center justify-center rounded-xl border px-2 py-1 text-center text-button transition max-sm:leading-tight sm:px-6 sm:py-2 sm:whitespace-nowrap"
             :class="
               tab.key === active
                 ? 'border-accent bg-accent text-primary'

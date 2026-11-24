@@ -68,6 +68,7 @@ function view(quote: SupplierQuote): void {
         :value="supplierQuoteStats.rejected"
         :icon="CancelIcon"
         icon-class="text-orange"
+        class="col-span-2 sm:col-span-1"
       />
     </section>
 

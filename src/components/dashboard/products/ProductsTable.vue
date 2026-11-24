@@ -17,6 +17,9 @@ const emit = defineEmits<{ edit: [id: string]; alternatives: [id: string]; delet
 const { t } = useI18n()
 const localized = useLocalizedText()
 
+/** Phone: label and value on one row; lg: the bare value in its table column. */
+const cell = 'flex items-center justify-between gap-4 lg:contents'
+const cellLabel = 'text-body-sm text-secondary lg:hidden'
 const columns =
   'lg:grid lg:grid-cols-[178px_260px_99px_156px_258px] lg:items-center lg:justify-between lg:gap-10'
 const action =
@@ -46,13 +49,26 @@ const action =
         class="flex flex-col gap-3 p-4 transition-colors hover:bg-surface lg:min-h-[73px]"
         :class="[columns, index < products.length - 1 && 'border-b border-line']"
       >
-        <span class="text-body-sm text-ink rtl:text-right" dir="ltr">
-          <span class="sr-only lg:hidden">{{ t('dashboard.products.columns.partNumber') }}: </span
-          >{{ product.partNumber }}
+        <!-- Phones show each value with its column label (like the orders and invoices cards);
+          from lg the labels hide and the values line up under the table header. -->
+        <span :class="cell">
+          <span :class="cellLabel">{{ t('dashboard.products.columns.partNumber') }}</span>
+          <span class="text-body-sm text-ink rtl:text-right" dir="ltr">{{
+            product.partNumber
+          }}</span>
         </span>
-        <span class="text-body-sm text-ink">{{ localized(product.name) }}</span>
-        <span class="text-body-sm text-ink">{{ t(`catalog.origins.${product.origin}`) }}</span>
-        <PriceTag :amount="product.price" decimals class="text-h4 text-ink" />
+        <span :class="cell">
+          <span :class="cellLabel">{{ t('dashboard.products.columns.name') }}</span>
+          <span class="text-body-sm text-ink">{{ localized(product.name) }}</span>
+        </span>
+        <span :class="cell">
+          <span :class="cellLabel">{{ t('dashboard.products.columns.type') }}</span>
+          <span class="text-body-sm text-ink">{{ t(`catalog.origins.${product.origin}`) }}</span>
+        </span>
+        <span :class="cell">
+          <span :class="cellLabel">{{ t('dashboard.products.columns.price') }}</span>
+          <PriceTag :amount="product.price" decimals class="text-h4 text-ink" />
+        </span>
         <span class="flex flex-wrap items-center gap-3 lg:justify-end lg:gap-6">
           <button type="button" :class="action" @click="emit('edit', product.id)">
             <EditIcon class="size-5" aria-hidden="true" />

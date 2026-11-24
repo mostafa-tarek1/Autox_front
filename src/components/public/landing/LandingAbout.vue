@@ -3,11 +3,13 @@ import { useI18n } from 'vue-i18n'
 
 import storeCounterSm from '@/assets/images/public/store-counter-sm.webp'
 import storeCounter from '@/assets/images/public/store-counter.webp'
+import { useLocalizedText } from '@/composables/useLocalizedText'
 import { landingStats } from '@/mocks/public'
 
 import SectionBadge from '../SectionBadge.vue'
 
 const { t } = useI18n()
+const localized = useLocalizedText()
 </script>
 
 <template>
@@ -49,7 +51,7 @@ const { t } = useI18n()
               {{ t(`public.landing.stats.${stat.key}`) }}
             </dt>
             <dd class="order-1 text-h1 leading-10 text-accent tabular-nums" dir="ltr">
-              {{ stat.value }}
+              {{ localized(stat.value) }}
             </dd>
           </div>
         </dl>

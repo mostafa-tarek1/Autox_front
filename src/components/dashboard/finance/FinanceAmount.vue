@@ -3,13 +3,16 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import RiyalIcon from '@/assets/brand/riyal.svg'
+import { useLocale } from '@/composables/useLocale'
 
 /**
- * Table amount (16/28 semibold, two decimals, no grouping). `signed` shows "3000.00+" in green or
- * "10.00-" in red — the sign follows the number, as in the design (read right to left); otherwise ink.
+ * Table amount (16/28 semibold, two decimals, no grouping). `signed` shows the amount in green or red
+ * with its sign on the reading-end side: "3000.00+" in Arabic/Urdu as in the design, "+3000.00" in
+ * English; otherwise ink.
  */
 const props = withDefaults(defineProps<{ amount: number; signed?: boolean }>(), { signed: false })
 const { t } = useI18n()
+const { isRtl } = useLocale()
 
 const tone = computed(() => {
   if (!props.signed) {
@@ -23,7 +26,8 @@ const formatted = computed(() => {
   if (!props.signed) {
     return value
   }
-  return `${value}${props.amount >= 0 ? '+' : '-'}`
+  const sign = props.amount >= 0 ? '+' : '-'
+  return isRtl.value ? `${value}${sign}` : `${sign}${value}`
 })
 </script>
 

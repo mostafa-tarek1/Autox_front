@@ -42,7 +42,7 @@ const { t } = useI18n()
       </div>
     </div>
 
-    <dl class="grid gap-8 rounded-2xl border border-line p-3 sm:grid-cols-2">
+    <dl class="grid grid-cols-1 gap-8 rounded-2xl border border-line p-3 sm:grid-cols-2">
       <div class="flex flex-col gap-2">
         <dt class="text-h4 text-ink">{{ t('returns.reason') }}</dt>
         <dd class="text-body-md text-secondary">{{ request.reason }}</dd>
@@ -55,11 +55,12 @@ const { t } = useI18n()
 
     <section class="flex flex-col gap-2 rounded-2xl border border-line p-3">
       <h3 class="text-h4 text-ink">{{ t('returns.photos') }}</h3>
-      <ul class="flex flex-wrap gap-2">
+      <!-- Phones: two photos per row, each filling its column. -->
+      <ul class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
         <li
           v-for="(photo, index) in request.photos"
           :key="index"
-          class="h-[126px] w-[156px] overflow-hidden bg-surface"
+          class="aspect-[156/126] overflow-hidden bg-surface sm:h-[126px] sm:w-[156px]"
         >
           <img
             :src="photo"

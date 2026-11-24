@@ -112,7 +112,8 @@ const contactLink = '/contact'
     </div>
   </section>
 
-  <section class="mt-[76px] bg-surface py-16" aria-labelledby="steps-title">
+  <!-- Same background as the page: on phones its padding alone separates it from its neighbours. -->
+  <section class="bg-surface py-12 lg:mt-[76px] lg:py-16" aria-labelledby="steps-title">
     <div class="page-container flex flex-col gap-12">
       <SectionHeading
         id="steps-title"
@@ -156,7 +157,7 @@ const contactLink = '/contact'
     </div>
   </section>
 
-  <section class="mt-[76px] bg-primary py-20" aria-labelledby="cta-title">
+  <section class="bg-primary py-20 lg:mt-[76px]" aria-labelledby="cta-title">
     <div class="page-container flex flex-col items-center gap-8 text-center">
       <span class="grid size-20 place-items-center rounded-full bg-accent p-5 text-primary">
         <SupportLargeIcon class="size-10" aria-hidden="true" />

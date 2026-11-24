@@ -115,8 +115,10 @@ const chip = computed(() =>
 </script>
 
 <template>
+  <!-- One line from sm; on phones a long label (English) may wrap inside the panel. The 16px
+    radius equals the pill radius at the 32px single-line height. -->
   <span
-    class="inline-flex h-8 shrink-0 items-center justify-center gap-1 rounded-full px-2 py-1 text-body-sm whitespace-nowrap"
+    class="inline-flex min-h-8 max-w-full items-center justify-center gap-1 rounded-2xl px-2 py-1 text-center text-body-sm sm:shrink-0 sm:whitespace-nowrap"
     :class="[chip.style.surface, chip.style.text]"
   >
     <component

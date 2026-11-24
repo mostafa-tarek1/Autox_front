@@ -30,6 +30,10 @@ function confirm(): void {
   store.addFromExcel(rows)
   isSuccessOpen.value = true
 }
+
+/** Phone: label and value on one row; md: the bare value in its column. */
+const cell = 'flex items-center justify-between gap-4 md:contents'
+const cellLabel = 'text-body-sm text-secondary md:hidden'
 </script>
 
 <template>
@@ -56,12 +60,25 @@ function confirm(): void {
         <li
           v-for="(row, index) in visible"
           :key="`${page}-${index}`"
-          class="flex flex-col gap-1 border-b border-line p-4 md:grid md:min-h-[61px] md:grid-cols-[178px_260px_99px_156px] md:items-center md:gap-20"
+          class="flex flex-col gap-2 border-b border-line p-4 md:grid md:min-h-[61px] md:grid-cols-[178px_260px_99px_156px] md:items-center md:gap-20"
         >
-          <span class="text-body-sm text-ink rtl:text-right" dir="ltr">{{ row.partNumber }}</span>
-          <span class="text-body-sm text-ink">{{ localized(row.name) }}</span>
-          <span class="text-body-sm text-ink">{{ t(`catalog.origins.${row.origin}`) }}</span>
-          <PriceTag :amount="row.price" decimals class="text-h4 text-ink" />
+          <!-- Phones: label and value per row; from md the values sit under the column header. -->
+          <span :class="cell">
+            <span :class="cellLabel">{{ t('dashboard.products.columns.partNumber') }}</span>
+            <span class="text-body-sm text-ink rtl:text-right" dir="ltr">{{ row.partNumber }}</span>
+          </span>
+          <span :class="cell">
+            <span :class="cellLabel">{{ t('dashboard.products.columns.name') }}</span>
+            <span class="text-body-sm text-ink">{{ localized(row.name) }}</span>
+          </span>
+          <span :class="cell">
+            <span :class="cellLabel">{{ t('dashboard.products.columns.type') }}</span>
+            <span class="text-body-sm text-ink">{{ t(`catalog.origins.${row.origin}`) }}</span>
+          </span>
+          <span :class="cell">
+            <span :class="cellLabel">{{ t('dashboard.products.columns.price') }}</span>
+            <PriceTag :amount="row.price" decimals class="text-h4 text-ink" />
+          </span>
         </li>
       </ul>
       <BasePagination v-model="page" :total="totalPages" class="self-center" />

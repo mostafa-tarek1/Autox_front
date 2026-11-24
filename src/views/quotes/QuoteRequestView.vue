@@ -70,7 +70,7 @@ async function submit(): Promise<void> {
       class="flex flex-col items-start gap-8 rounded-xl border border-line bg-white px-4 py-4 sm:px-6"
       aria-labelledby="quote-request-heading"
     >
-      <h2 id="quote-request-heading" class="text-h3 text-ink">
+      <h2 id="quote-request-heading" class="text-h3 text-pretty text-ink">
         {{ t('quotes.request.heading') }}
       </h2>
 

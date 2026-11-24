@@ -101,7 +101,7 @@ function decline(): void {
               class="flex items-center justify-between gap-2 rounded-lg border border-line p-3"
             >
               <div class="flex min-w-0 flex-col items-start gap-2">
-                <span class="text-body-md text-ink">{{ localized(item.title) }}</span>
+                <span class="text-body-md text-pretty text-ink">{{ localized(item.title) }}</span>
                 <span class="text-body-md text-muted">
                   <bdi dir="ltr">{{ item.partNumber }}</bdi> ·
                   {{ t(`catalog.origins.${item.origin}`) }}

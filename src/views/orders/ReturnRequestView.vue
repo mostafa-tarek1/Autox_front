@@ -97,7 +97,8 @@ async function submit(): Promise<void> {
 
       <hr class="w-full border-line" />
 
-      <fieldset class="flex w-full flex-col gap-6">
+      <!-- min-w-0: a fieldset otherwise grows to its widest unbreakable line and leaves the card. -->
+      <fieldset class="flex w-full min-w-0 flex-col gap-6">
         <legend class="mb-6 text-h4 text-black">{{ t('returns.form.itemsTitle') }}</legend>
         <ul class="flex flex-col gap-4">
           <li v-for="item in items" :key="item.id">

@@ -2,16 +2,18 @@
  * Mock content for the public pages during the UI phase. Legal texts and contact details move to
  * the backend (CMS/settings) once the API is wired.
  */
+import type { LocalizedText } from '@/composables/useLocalizedText'
 import type { AppLocale } from '@/plugins/i18n'
 
 /* ------------------------------------------------------------------ Landing */
 
-export const landingStats = [
-  { key: 'parts', value: '+50.000' },
+/** Arabic writes the figure as the design does (+50.000); English and Urdu as 50,000+. */
+export const landingStats: readonly { key: string; value: LocalizedText }[] = [
+  { key: 'parts', value: { ar: '+50.000', en: '50,000+', ur: '50,000+' } },
   { key: 'categories', value: '14' },
   { key: 'brands', value: '22' },
   { key: 'carMakes', value: '24' },
-] as const
+]
 
 export interface Testimonial {
   id: string

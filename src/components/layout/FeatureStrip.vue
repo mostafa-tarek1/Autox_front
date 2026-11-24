@@ -16,7 +16,7 @@ const features = [
 
 <template>
   <ul
-    class="page-container grid grid-cols-3 gap-2 rounded-xl bg-white p-3 sm:gap-4 sm:p-4 lg:flex lg:justify-between lg:gap-6"
+    class="page-container grid grid-cols-3 gap-2 rounded-xl bg-white px-4 py-3 sm:gap-4 sm:p-4 lg:flex lg:justify-between lg:gap-6"
   >
     <li
       v-for="(feature, index) in features"

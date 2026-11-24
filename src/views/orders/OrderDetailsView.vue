@@ -62,7 +62,7 @@ const completedSteps = computed(() => {
 
       <OrderTracker :completed="completedSteps" />
 
-      <div class="grid gap-4 lg:grid-cols-2">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <section
           class="flex flex-col gap-4 rounded-2xl border border-line bg-white"
           aria-labelledby="summary-title"
@@ -118,9 +118,13 @@ const completedSteps = computed(() => {
             </h2>
             <div class="flex flex-col items-start gap-2 px-6">
               <p class="text-body-md text-ink">{{ order.recipient }}</p>
-              <OrderMeta :icon="LocationIcon" :label="t('orders.details.address')">{{
-                order.address
-              }}</OrderMeta>
+              <!-- The address may be long: let it wrap inside the card on phones. -->
+              <OrderMeta
+                :icon="LocationIcon"
+                :label="t('orders.details.address')"
+                class="max-w-full flex-wrap whitespace-normal!"
+                >{{ order.address }}</OrderMeta
+              >
             </div>
           </section>
           <section

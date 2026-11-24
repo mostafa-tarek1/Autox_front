@@ -37,7 +37,7 @@ const statusTone = computed<StatusTone>(() => {
     <header
       class="flex flex-col gap-3 rounded-lg bg-surface px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
     >
-      <div class="flex flex-wrap items-center gap-6">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-6">
         <StatusChip :tone="statusTone">{{
           t(`billing.paymentStatus.${payment.status}`)
         }}</StatusChip>
@@ -47,11 +47,14 @@ const statusTone = computed<StatusTone>(() => {
           <span dir="ltr" class="text-ink">#{{ payment.orderNumber }}</span>
         </p>
       </div>
-      <div class="flex flex-wrap items-center gap-6">
+      <!-- Phones: the actions share one row in equal columns. -->
+      <div
+        class="grid auto-cols-fr grid-flow-col gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-6"
+      >
         <BaseButton
           variant="outline"
           size="sm"
-          class="h-[38px] px-6!"
+          class="h-[38px] px-2! sm:px-6!"
           :to="`/orders/${payment.orderNumber}`"
         >
           {{ t('billing.orderDetails') }}
@@ -59,7 +62,7 @@ const statusTone = computed<StatusTone>(() => {
         <BaseButton
           v-if="payment.status === 'pending'"
           size="sm"
-          class="h-9 px-6!"
+          class="h-9 self-center px-2! sm:px-6!"
           @click="emit('pay', payment)"
         >
           {{ t('billing.completePayment') }}

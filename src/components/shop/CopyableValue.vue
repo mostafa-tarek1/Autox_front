@@ -14,7 +14,7 @@ const { copy, copied, isSupported } = useClipboard({ legacy: true })
   <div class="flex items-end justify-between gap-4 py-4 last:pb-0">
     <div class="flex min-w-0 flex-col items-start gap-1">
       <dt class="text-body-md text-secondary">{{ label }}</dt>
-      <dd :dir="ltr ? 'ltr' : undefined" class="text-h4 break-all text-ink">{{ value }}</dd>
+      <dd :dir="ltr ? 'ltr' : undefined" class="text-h4 wrap-break-word text-ink">{{ value }}</dd>
     </div>
     <button
       v-if="isSupported"

@@ -14,7 +14,7 @@ const { copy, copied, isSupported } = useClipboard({ copiedDuring: 1500, legacy:
   <div class="flex flex-col items-start gap-1">
     <span class="text-body-md text-secondary">{{ label }}</span>
     <div class="flex w-full items-center justify-between gap-4">
-      <span class="text-h4 break-all text-ink" :dir="props.ltr ? 'ltr' : undefined">{{
+      <span class="min-w-0 text-h4 wrap-break-word text-ink" :dir="props.ltr ? 'ltr' : undefined">{{
         value
       }}</span>
       <button

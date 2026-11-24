@@ -5,8 +5,9 @@ import CheckoutHero from './CheckoutHero.vue'
 defineProps<{
   title: string
   /**
-   * Space (px) the design leaves between the content and the features strip. DefaultLayout puts
-   * 106px there; the cart uses 81, the bank transfer 235.
+   * Space (px) the design leaves between the content and the features strip on desktop.
+   * DefaultLayout puts 106px there; the cart uses 81, the bank transfer 235. Phones keep the
+   * layout's own gap.
    */
   stripGap?: number
 }>()
@@ -18,9 +19,9 @@ const LAYOUT_STRIP_GAP = 106
 <template>
   <CheckoutHero :title="title" />
   <div
-    class="page-container mt-12 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_385px]"
+    class="page-container mt-12 grid grid-cols-1 items-start gap-8 lg:mb-(--strip-gap) lg:grid-cols-[minmax(0,1fr)_385px]"
     :style="
-      stripGap === undefined ? undefined : { marginBottom: `${stripGap - LAYOUT_STRIP_GAP}px` }
+      stripGap === undefined ? undefined : { '--strip-gap': `${stripGap - LAYOUT_STRIP_GAP}px` }
     "
   >
     <div class="flex min-w-0 flex-col gap-8">

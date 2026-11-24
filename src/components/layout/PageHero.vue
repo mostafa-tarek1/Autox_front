@@ -31,11 +31,16 @@ const trail = computed<Breadcrumb[]>(
       class="page-container flex min-h-[152px] flex-col-reverse items-start justify-center gap-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10"
     >
       <h1 class="text-[28px]/[44px] font-bold text-white sm:text-display">{{ title }}</h1>
-      <nav :aria-label="t('nav.breadcrumb')">
+      <nav :aria-label="t('nav.breadcrumb')" class="max-w-full">
         <ol
-          class="flex h-[34px] w-fit items-center gap-2 rounded-3xl border border-white/30 bg-linear-to-r from-white/30 to-white/10 px-3 py-1 backdrop-blur-[8px]"
+          class="flex h-[34px] w-fit max-w-full items-center gap-2 overflow-x-auto rounded-3xl border border-white/30 bg-linear-to-r from-white/30 to-white/10 px-3 py-1 [scrollbar-width:none] backdrop-blur-[8px]"
         >
-          <li v-for="(crumb, index) in trail" :key="index" class="flex items-center gap-2">
+          <!-- Items never wrap; a trail wider than a phone scrolls inside the pill. -->
+          <li
+            v-for="(crumb, index) in trail"
+            :key="index"
+            class="flex shrink-0 items-center gap-2 whitespace-nowrap"
+          >
             <ArrowLeftIcon
               v-if="index > 0"
               class="size-4 text-white ltr:-scale-x-100"
