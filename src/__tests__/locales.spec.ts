@@ -1,5 +1,6 @@
+import { createHead } from '@unhead/vue/client'
 import { mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { defineComponent, h, nextTick } from 'vue'
 
 import { useDocumentLocale, useLocale } from '@/composables/useLocale'
@@ -58,14 +59,16 @@ describe('locales', () => {
       },
       render: () => h('span'),
     })
-    const wrapper = mount(Probe, { global: { plugins: [i18n] } })
+    const wrapper = mount(Probe, { global: { plugins: [i18n, createHead()] } })
 
     wrapper.vm.setLocale('ur')
     await nextTick()
 
     expect(directionFor('ur')).toBe('rtl')
-    expect(document.documentElement.lang).toBe('ur')
-    expect(document.documentElement.dir).toBe('rtl')
+    await vi.waitFor(() => {
+      expect(document.documentElement.lang).toBe('ur')
+      expect(document.documentElement.dir).toBe('rtl')
+    })
 
     wrapper.vm.setLocale('ar')
     wrapper.unmount()

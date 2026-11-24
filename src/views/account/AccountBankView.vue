@@ -89,7 +89,9 @@ function save(values: BankAccountValues): void {
           <div class="flex flex-col gap-1">
             <dt class="text-body-md text-secondary">{{ t('account.bank.beneficiary') }}</dt>
             <dd class="flex items-center justify-between gap-4">
-              <span class="min-w-0 text-h4 break-words text-ink">{{ localized(account.beneficiary) }}</span>
+              <span class="min-w-0 text-h4 break-words text-ink">{{
+                localized(account.beneficiary)
+              }}</span>
               <button
                 type="button"
                 class="flex shrink-0 items-center gap-1 text-body-md text-secondary hover:text-primary"

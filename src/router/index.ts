@@ -1,6 +1,10 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-
-import { i18n } from '@/plugins/i18n'
+import {
+  createMemoryHistory,
+  createRouter,
+  type RouterHistory,
+  type RouterScrollBehavior,
+  type RouteRecordRaw,
+} from 'vue-router'
 
 /**
  * Routes are split per feature (router/routes/<feature>.ts, each default-exporting an array) so
@@ -34,7 +38,8 @@ function mergeLayoutRoots(records: RouteRecordRaw[]): RouteRecordRaw[] {
   return merged
 }
 
-const routes: RouteRecordRaw[] = [
+/** Every app route; Nuxt receives these through src/router.options.ts. */
+export const routes: RouteRecordRaw[] = [
   ...mergeLayoutRoots(Object.values(modules).flat()),
   {
     path: '/:pathMatch(.*)*',
@@ -44,24 +49,14 @@ const routes: RouteRecordRaw[] = [
   },
 ]
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
-  scrollBehavior(to, _from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    return to.hash ? { el: to.hash, behavior: 'smooth' } : { top: 0 }
-  },
-})
+export const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
+  if (savedPosition) {
+    return savedPosition
+  }
+  return to.hash ? { el: to.hash, behavior: 'smooth' } : { top: 0 }
+}
 
-router.afterEach((to) => {
-  const appName = i18n.global.t('app.name')
-  const titleKey = to.meta.title
-  document.title =
-    titleKey && i18n.global.te(`pageTitles.${titleKey}`)
-      ? `${i18n.global.t(`pageTitles.${titleKey}`)} | ${appName}`
-      : appName
-})
-
-export default router
+/** A standalone router over the same routes, for tests (the app's router is Nuxt's). */
+export function createAppRouter(history: RouterHistory = createMemoryHistory()) {
+  return createRouter({ history, routes, scrollBehavior })
+}

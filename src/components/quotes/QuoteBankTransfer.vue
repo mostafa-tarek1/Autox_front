@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, useId } from 'vue'
+import { computed, onMounted, reactive, ref, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import InfoIcon from '@/assets/icons/information-circle--duotone-rounded.svg'
@@ -24,7 +24,12 @@ const dateId = useId()
 const form = reactive({ reference: '', date: '', receipt: null as File | null })
 const submitted = ref(false)
 const isSubmitting = ref(false)
-const today = new Date().toISOString().slice(0, 10)
+/**
+ * Latest selectable transfer date. Set once mounted: a pre-rendered page would otherwise keep the
+ * build day as the limit (attributes are not patched on hydration).
+ */
+const today = ref<string>()
+onMounted(() => (today.value = new Date().toISOString().slice(0, 10)))
 
 const instructions = computed(() =>
   (tm('quotes.payment.instructions') as unknown[]).map((line) => rt(line as never)),

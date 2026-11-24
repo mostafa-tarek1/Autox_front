@@ -7,7 +7,7 @@ import CopyIcon from '@/assets/icons/copy-01--duotone-rounded.svg'
 /** Bank detail row with a copy action (Figma 686:8517). */
 const props = defineProps<{ label: string; value: string; ltr?: boolean }>()
 const { t } = useI18n()
-const { copy, copied, isSupported } = useClipboard({ copiedDuring: 1500 })
+const { copy, copied, isSupported } = useClipboard({ copiedDuring: 1500, legacy: true })
 </script>
 
 <template>

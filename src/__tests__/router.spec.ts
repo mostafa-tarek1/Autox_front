@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
-import router from '@/router'
+import { createAppRouter } from '@/router'
 import { AuthLayout, DefaultLayout } from '@/router/layouts'
+
+const router = createAppRouter()
 
 describe('router', () => {
   it('keeps one parent record per layout so the layout is not remounted between features', () => {

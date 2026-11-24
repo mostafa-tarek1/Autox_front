@@ -1,18 +1,64 @@
-# Single-page app on Apache (cPanel): serve real files, send every other path to index.html.
-# The target is relative, so this works from the domain root or from any sub-folder.
+# Nuxt static build (`nuxt generate`) on Apache / cPanel. Works from the domain root or any
+# sub-folder: every rewrite target below is relative to this folder.
+
+# Pre-compressed copies (*.br / *.gz) are sent as-is with the right type and encoding.
+AddEncoding br .br
+AddEncoding gzip .gz
+<FilesMatch "\.(js|mjs)\.(br|gz)$">
+  ForceType application/javascript
+</FilesMatch>
+<FilesMatch "\.css\.(br|gz)$">
+  ForceType text/css
+</FilesMatch>
+<FilesMatch "\.html\.(br|gz)$">
+  ForceType text/html
+</FilesMatch>
+<FilesMatch "\.json\.(br|gz)$">
+  ForceType application/json
+</FilesMatch>
+<FilesMatch "\.svg\.(br|gz)$">
+  ForceType image/svg+xml
+</FilesMatch>
+
+# Page folders are served by the rewrite below, without Apache's /orders -> /orders/ redirect.
+# The app folder itself (the only one holding 200.html) keeps it: /autox -> /autox/.
+DirectorySlash Off
+<If "-f '%{REQUEST_FILENAME}/200.html'">
+  DirectorySlash On
+</If>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Never let Apache compress an already compressed file again.
+  RewriteRule \.(br|gz)$ - [E=no-gzip:1,E=no-brotli:1]
+
+  # A pre-rendered page lives in its own folder: /orders -> orders/index.html.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+  # Serve the brotli / gzip copy when the browser accepts it and the copy exists.
+  RewriteCond %{HTTP:Accept-Encoding} br
+  RewriteCond %{REQUEST_FILENAME}.br -f
+  RewriteRule ^(.+)$ $1.br [L]
+  RewriteCond %{HTTP:Accept-Encoding} gzip
+  RewriteCond %{REQUEST_FILENAME}.gz -f
+  RewriteRule ^(.+)$ $1.gz [L]
+
+  # Any other path (e.g. an order id that was not pre-rendered) opens the client-rendered app.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.html [L]
+  RewriteRule . 200.html [L]
 </IfModule>
 
-# Hashed build assets never change; index.html must always be revalidated.
 <IfModule mod_headers.c>
-  <FilesMatch "\.(js|css|woff2?|webp|png|svg)$">
+  Header append Vary Accept-Encoding
+  # Build files under _nuxt/ are content-hashed and never change; pages are always revalidated.
+  <If "%{REQUEST_URI} =~ m#/_nuxt/#">
     Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
-  <FilesMatch "\.html$">
+  </If>
+  <FilesMatch "\.html(\.br|\.gz)?$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>

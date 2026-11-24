@@ -1,6 +1,7 @@
 # Parts X Frontend
 
-Vue 3 + TypeScript + Vite + Tailwind CSS v4 + Pinia + Vue Router + vue-i18n (Arabic RTL / English).
+Nuxt 4 (Vue 3 + TypeScript) + Tailwind CSS v4 + Pinia + Vue Router + vue-i18n (Arabic RTL / English / Urdu).
+Pages are pre-rendered as static HTML (`nuxt generate`).
 
 ## Setup
 
@@ -13,8 +14,9 @@ npm run dev
 
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Dev server on http://localhost:5173 |
-| `npm run build` | Type-check and production build |
+| `npm run dev` | Nuxt dev server (server-rendered) on http://localhost:5173 |
+| `npm run build` | Type-check and static build into `.output/public` |
+| `npm run build:cpanel` | Same, for the cPanel folder https://domain/autox/ |
 | `npm run test:unit` | Vitest |
 | `npm run lint` | oxlint + ESLint (auto-fix) |
 | `npm run format` | Prettier |

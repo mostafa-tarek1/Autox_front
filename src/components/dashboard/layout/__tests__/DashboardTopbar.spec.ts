@@ -4,7 +4,9 @@ import { describe, expect, it } from 'vitest'
 
 import DashboardTopbar from '@/components/dashboard/layout/DashboardTopbar.vue'
 import { i18n } from '@/plugins/i18n'
-import router from '@/router'
+import { createAppRouter } from '@/router'
+
+const router = createAppRouter()
 
 describe('DashboardTopbar', () => {
   it('opens the supplier notifications from the bell and closes them again', async () => {

@@ -83,7 +83,8 @@ describe('AppFooter', () => {
     ['guest', false],
   ] as const)('%s variant renders the links row: %s', async (variant, hasLinks) => {
     const { default: AppFooter } = await import('@/components/layout/AppFooter.vue')
-    const { default: router } = await import('@/router')
+    const { createAppRouter } = await import('@/router')
+    const router = createAppRouter()
     const wrapper = mount(AppFooter, { props: { variant }, global: { plugins: [i18n, router] } })
 
     expect(wrapper.find('a[href="/terms"]').exists()).toBe(hasLinks)

@@ -57,7 +57,8 @@ export function directionFor(locale: AppLocale): 'rtl' | 'ltr' {
   return RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr'
 }
 
-function readStoredLocale(): AppLocale {
+/** The locale the visitor picked last time (browser only; Arabic on the server). */
+export function readStoredLocale(): AppLocale {
   try {
     const stored = localStorage.getItem(LOCALE_STORAGE_KEY)
     return isSupportedLocale(stored) ? stored : DEFAULT_LOCALE
@@ -68,7 +69,11 @@ function readStoredLocale(): AppLocale {
 
 export const i18n = createI18n({
   legacy: false,
-  locale: readStoredLocale(),
+  /**
+   * Pages are pre-rendered in Arabic, so the app always starts in Arabic to hydrate that markup;
+   * src/nuxt/plugins/i18n.ts then switches to the stored locale.
+   */
+  locale: DEFAULT_LOCALE,
   fallbackLocale: DEFAULT_LOCALE,
   messages: loadMessages() as Record<AppLocale, MessageSchema>,
 })

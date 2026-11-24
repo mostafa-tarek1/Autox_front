@@ -51,7 +51,9 @@ const columns = ['reference', 'amount', 'operation', 'date', 'note', 'status'] a
           <dt class="text-secondary">{{ t('wallet.columns.date') }}</dt>
           <dd class="text-ink tabular-nums">{{ formatDate(transaction.date) }}</dd>
           <dt class="text-secondary">{{ t('wallet.columns.note') }}</dt>
-          <dd class="text-ink">{{ transaction.note ? localized(transaction.note) : t('wallet.noNote') }}</dd>
+          <dd class="text-ink">
+            {{ transaction.note ? localized(transaction.note) : t('wallet.noNote') }}
+          </dd>
         </dl>
       </li>
     </ul>

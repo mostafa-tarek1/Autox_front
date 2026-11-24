@@ -2,7 +2,10 @@
 {
   "extends": "@tsconfig/node24/tsconfig.json",
   "include": [
-    "vite.config.*",
+    // Declares defineNuxtConfig for nuxt.config.ts.
+    "./.nuxt/nuxt.node.d.ts",
+    "nuxt.config.*",
+    "vite.shared.*",
     "vitest.config.*",
     "cypress.config.*",
     "playwright.config.*",

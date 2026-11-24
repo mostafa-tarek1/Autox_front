@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PriceTag from '@/components/ui/PriceTag.vue'
-import { computed, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import ArrowDownIcon from '@/assets/icons/arrow-down-01--stroke-standard.svg'
@@ -30,7 +30,12 @@ const isValid = computed(() => Boolean(form.reference.trim() && form.date && for
 const instructions = computed(() =>
   (tm('shop.bankTransfer.instructions') as unknown as string[]).map((line) => rt(line)),
 )
-const today = new Date().toISOString().slice(0, 10)
+/**
+ * Latest selectable transfer date. Set once mounted: a pre-rendered page would otherwise keep the
+ * build day as the limit (attributes are not patched on hydration).
+ */
+const today = ref<string>()
+onMounted(() => (today.value = new Date().toISOString().slice(0, 10)))
 
 async function submit(): Promise<void> {
   if (!isValid.value || !form.receipt) {
@@ -77,7 +82,10 @@ async function submit(): Promise<void> {
               <dd class="text-h4 text-ink">{{ localized(account.bankName) }}</dd>
             </div>
           </div>
-          <CopyableValue :label="t('shop.bankTransfer.beneficiary')" :value="localized(account.beneficiary)" />
+          <CopyableValue
+            :label="t('shop.bankTransfer.beneficiary')"
+            :value="localized(account.beneficiary)"
+          />
           <CopyableValue :label="t('shop.bankTransfer.iban')" :value="account.iban" ltr />
         </dl>
 
@@ -98,9 +106,7 @@ async function submit(): Promise<void> {
       </div>
 
       <h3 class="text-h4 text-ink">{{ t('shop.bankTransfer.confirmTitle') }}</h3>
-      <div
-        class="flex flex-col gap-8 rounded-xl border border-line bg-white px-6 py-4"
-      >
+      <div class="flex flex-col gap-8 rounded-xl border border-line bg-white px-6 py-4">
         <TextField
           v-model="form.reference"
           :label="t('shop.bankTransfer.reference')"

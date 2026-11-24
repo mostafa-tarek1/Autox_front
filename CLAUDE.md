@@ -1,6 +1,6 @@
 # Parts X frontend
 
-Vue 3 SPA for the Parts X project. The Laravel API lives in a separate repo (`../Autox`).
+Nuxt 4 app (Vue 3, pre-rendered with `nuxt generate`) for the Parts X project. The Laravel API lives in a separate repo (`../Autox`).
 The current phase is **UI only**: screens use local mock data and are wired to the API later.
 
 ## Design source
@@ -21,7 +21,15 @@ The current phase is **UI only**: screens use local mock data and are wired to t
   vue-i18n (`src/locales/*.json`), never inline strings.
 - Views in `src/views` are lazy-loaded routes; shared building blocks go in `src/components/ui`,
   app chrome (header, footer, sidebar) in `src/components/layout`, page shells in `src/layouts`.
-- Before finishing: `npm run type-check`, `npm run lint`, `npx vitest run`, `npm run build-only`.
+- Nuxt is only the shell: routes still come from `src/router/routes/*.ts` (passed in by
+  `src/router.options.ts`), layouts are route components, imports are explicit (auto-imports off).
+  Nuxt plugins live in `src/nuxt/plugins`; `src/plugins` is plain Vue code.
+- Every page is rendered on the server first, then hydrated. Browser-only APIs (`window`,
+  `document`, `localStorage`, `history.state`) go in `onMounted` or event handlers, never in
+  `setup` or module scope, and the first client render must match the server's (Arabic, desktop
+  media queries). A page that needs browser state at setup gets `ssr: false` in `routeRules`.
+- Before finishing: `npm run type-check`, `npm run lint`, `npx vitest run`, `npm run build-only`
+  (fails on any page that errors while pre-rendering).
 - Install packages with npm 11 (`npx -y npm@11 install`); npm 10.9 crashes on this dependency tree.
 
 ## Icon sources
