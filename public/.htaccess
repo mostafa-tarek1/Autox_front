@@ -1,0 +1,18 @@
+# Single-page app on Apache (cPanel): serve real files, send every other path to index.html.
+# The target is relative, so this works from the domain root or from any sub-folder.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . index.html [L]
+</IfModule>
+
+# Hashed build assets never change; index.html must always be revalidated.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|webp|png|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

@@ -8,6 +8,11 @@ import svgLoader from 'vite-svg-loader'
 
 // https://vite.dev/config/
 export default defineConfig({
+  /**
+   * Public path the app is served from. `/` locally; a cPanel folder build sets it, e.g.
+   * `APP_BASE=/autox/ npm run build` for https://domain/autox/ (see `npm run build:cpanel`).
+   */
+  base: process.env.APP_BASE ?? '/',
   plugins: [
     vue(),
     tailwindcss(),
