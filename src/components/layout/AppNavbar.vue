@@ -73,6 +73,7 @@ function logout(): void {
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Cart and notification popovers are centred under their icon, as in Figma. -->
         <div ref="cartRoot" class="relative">
           <NavIconButton
             :label="t('nav.cart')"
@@ -91,7 +92,7 @@ function logout(): void {
           >
             <CartPopover
               v-if="isCartOpen"
-              class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-3"
+              class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:top-full sm:left-1/2 sm:mt-3 sm:-translate-x-1/2"
               @close="isCartOpen = false"
             />
           </Transition>
@@ -115,7 +116,7 @@ function logout(): void {
             <NotificationsMenu
               v-if="isNotificationsOpen"
               :notifications="notifications"
-              class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-3"
+              class="fixed inset-x-4 top-[84px] z-40 sm:absolute sm:inset-x-auto sm:top-full sm:left-1/2 sm:mt-3 sm:-translate-x-1/2"
               @close="isNotificationsOpen = false"
             />
           </Transition>

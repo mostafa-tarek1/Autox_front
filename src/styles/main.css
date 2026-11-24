@@ -105,6 +105,18 @@
   @apply mx-auto w-full max-w-page px-4 sm:px-6 xl:px-0;
 }
 
+/*
+ * Hero X pattern: the design puts its right edge 120px past the 1200px content column (flush
+ * with the 1440px frame). Anchoring it to the column keeps the page title over the X on wider
+ * screens instead of letting the X drift to the window edge. `--x-shift` offsets it further.
+ */
+@utility hero-x-end {
+  right: max(
+    var(--x-shift, 0px),
+    calc((100% - var(--container-page)) / 2 - 120px + var(--x-shift, 0px))
+  );
+}
+
 /* 5px accent scrollbar on a surface track (brands list in the design). */
 @utility scrollbar-accent {
   &::-webkit-scrollbar {

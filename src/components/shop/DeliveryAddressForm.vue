@@ -49,6 +49,7 @@ const message = (field: keyof DeliveryAddress) => {
       v-model="address.city"
       :options="cityOptions"
       :label="t('shop.address.city')"
+      required-mark
       :placeholder="t('shop.address.cityPlaceholder')"
       :error="message('city')"
     />

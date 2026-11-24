@@ -97,7 +97,7 @@
     "address": {
       "fullName": "Full name",
       "phone": "Mobile number",
-      "city": "City *",
+      "city": "City",
       "cityPlaceholder": "Choose",
       "district": "District",
       "districtPlaceholder": "e.g. Al Olaya",

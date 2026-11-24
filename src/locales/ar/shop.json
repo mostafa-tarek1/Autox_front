@@ -97,7 +97,7 @@
     "address": {
       "fullName": "الاسم كامل",
       "phone": "رقم الجوال",
-      "city": "المدينة *",
+      "city": "المدينة",
       "cityPlaceholder": "اختر",
       "district": "الحي",
       "districtPlaceholder": "مثال: حي العليا",

@@ -97,7 +97,7 @@
     "address": {
       "fullName": "پورا نام",
       "phone": "موبائل نمبر",
-      "city": "شہر *",
+      "city": "شہر",
       "cityPlaceholder": "منتخب کریں",
       "district": "علاقہ",
       "districtPlaceholder": "مثلاً: العلیا",

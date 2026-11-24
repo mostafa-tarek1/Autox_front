@@ -17,6 +17,8 @@ withDefaults(
     placeholder?: string
     error?: string
     required?: boolean
+    /** Red asterisk after the label, as on the delivery city field. */
+    requiredMark?: boolean
     disabled?: boolean
     surface?: boolean
   }>(),
@@ -28,7 +30,13 @@ const id = useId()
 </script>
 
 <template>
-  <FormField :label="label" :error="error" :for-id="id" :required="required">
+  <FormField
+    :label="label"
+    :error="error"
+    :for-id="id"
+    :required="required"
+    :required-mark="requiredMark"
+  >
     <div class="relative">
       <select
         :id="id"

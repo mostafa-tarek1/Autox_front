@@ -12,7 +12,7 @@ const { t } = useI18n()
     class="relative isolate overflow-hidden bg-primary-deep pt-12 pb-24 sm:pt-[75px] sm:pb-[89px]"
   >
     <XPattern
-      class="absolute top-px -right-[91px] -z-10 hidden h-[484px] w-[543px] text-accent opacity-[0.08] md:block"
+      class="hero-x-end absolute top-px -z-10 hidden h-[484px] w-[543px] text-accent opacity-[0.08] [--x-shift:-91px] md:block"
     />
     <div
       class="absolute top-[175px] left-1/2 -z-10 h-[171px] w-[263px] -translate-x-1/2 rounded-full bg-accent/30 blur-[50px]"

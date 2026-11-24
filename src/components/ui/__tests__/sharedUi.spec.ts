@@ -91,3 +91,16 @@ describe('AppFooter', () => {
     expect(wrapper.text()).toContain(`© ${new Date().getFullYear()} Parts X`)
   })
 })
+
+describe('FormField', () => {
+  it('adds the red required mark only when asked', async () => {
+    const { default: FormField } = await import('@/components/form/FormField.vue')
+    const marked = mount(FormField, {
+      props: { label: 'المدينة', forId: 'city', requiredMark: true },
+    })
+    const plain = mount(FormField, { props: { label: 'الحي', forId: 'district', required: true } })
+
+    expect(marked.find('label .text-error').text()).toBe('*')
+    expect(plain.find('label .text-error').exists()).toBe(false)
+  })
+})

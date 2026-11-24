@@ -7,7 +7,7 @@ defineProps<{ title: string }>()
 
 <template>
   <section class="relative isolate overflow-hidden bg-primary">
-    <XPattern class="absolute top-0 right-0 -z-10 h-[237px] w-[333px] text-accent opacity-10" />
+    <XPattern class="hero-x-end absolute top-0 -z-10 h-[237px] w-[333px] text-accent opacity-10" />
     <div class="page-container flex min-h-[152px] items-center py-8 lg:py-10">
       <h1 class="text-[32px] leading-[48px] font-bold text-white sm:text-display">{{ title }}</h1>
     </div>
