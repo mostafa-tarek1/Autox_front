@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-s type-check \"build-only {@}\" --",
     "build-only": "nuxt generate",
-    "build:cpanel": "NUXT_APP_BASE_URL=/autox/ run-p type-check \"build-only {@}\" -- && rm -f .output/public/.htaccess.br .output/public/.htaccess.gz",
+    "build:cpanel": "NUXT_APP_BASE_URL=/partsx/ run-s type-check \"build-only {@}\" -- && rm -f .output/public/.htaccess.br .output/public/.htaccess.gz",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test:unit": "vitest",

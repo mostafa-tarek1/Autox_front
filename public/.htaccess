@@ -21,7 +21,7 @@ AddEncoding gzip .gz
 </FilesMatch>
 
 # Page folders are served by the rewrite below, without Apache's /orders -> /orders/ redirect.
-# The app folder itself (the only one holding 200.html) keeps it: /autox -> /autox/.
+# The app folder itself (the only one holding 200.html) keeps it: /partsx -> /partsx/.
 DirectorySlash Off
 <If "-f '%{REQUEST_FILENAME}/200.html'">
   DirectorySlash On

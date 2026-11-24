@@ -6,7 +6,7 @@ import { svgComponents } from './vite.shared'
 
 /**
  * Public path the app is served from: `/` locally, a cPanel folder for the static build
- * (`npm run build:cpanel` → https://domain/autox/).
+ * (`npm run build:cpanel` → https://domain/partsx/).
  */
 const baseURL = process.env.NUXT_APP_BASE_URL ?? '/'
 

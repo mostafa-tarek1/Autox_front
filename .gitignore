@@ -42,7 +42,7 @@ __screenshots__/
 design-exports/
 
 # cPanel upload package (npm run build:cpanel, then zip dist)
-autox-cpanel.zip
+partsx-cpanel.zip
 
 # Nuxt migration screenshots (local only)
 .migration-baseline/

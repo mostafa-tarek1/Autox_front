@@ -16,7 +16,7 @@ npm run dev
 | --- | --- |
 | `npm run dev` | Nuxt dev server (server-rendered) on http://localhost:5173 |
 | `npm run build` | Type-check and static build into `.output/public` |
-| `npm run build:cpanel` | Same, for the cPanel folder https://domain/autox/ |
+| `npm run build:cpanel` | Same, for the cPanel folder https://domain/partsx/ |
 | `npm run test:unit` | Vitest |
 | `npm run lint` | oxlint + ESLint (auto-fix) |
 | `npm run format` | Prettier |
