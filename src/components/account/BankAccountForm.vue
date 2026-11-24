@@ -82,7 +82,8 @@ defineExpose({ submit })
         inputmode="text"
         autocomplete="off"
         spellcheck="false"
-        class="rtl:text-right"
+        class="rtl:text-right placeholder:font-semibold!"
+        sample-placeholder
         @update:model-value="onIbanInput"
       />
     </div>

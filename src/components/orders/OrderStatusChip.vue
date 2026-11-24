@@ -15,7 +15,7 @@ import VanIcon from '@/assets/icons/van--stroke-standard.svg'
 import type { OrderStatus, ReturnStatus } from './types'
 
 interface ChipStyle {
-  /** Some chips ("تم الدفع") have no icon in the design. */
+  /** Optional: a chip may have no icon. */
   icon?: Component | string
   /** Background, text and icon classes, all from design tokens. */
   surface: string
@@ -49,6 +49,7 @@ const orderStyles: Record<OrderStatus, ChipStyle> = {
     iconColor: 'text-success',
   },
   paid: {
+    icon: CheckmarkCircleIcon,
     surface: 'bg-success/10',
     text: 'text-success',
     iconColor: 'text-success',

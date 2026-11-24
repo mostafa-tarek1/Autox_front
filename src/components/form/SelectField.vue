@@ -21,6 +21,8 @@ withDefaults(
     requiredMark?: boolean
     disabled?: boolean
     surface?: boolean
+    /** Placeholder drawn as a greyed sample value (16px body, ink at 50%), as on some design fields. */
+    samplePlaceholder?: boolean
   }>(),
   { surface: false },
 )
@@ -48,7 +50,13 @@ const id = useId()
         :class="[
           error ? 'border-error' : 'border-line',
           surface ? 'bg-surface' : 'bg-white',
-          value === null ? 'font-label text-secondary/50' : 'text-ink',
+          value === null
+            ? samplePlaceholder
+              ? 'font-sans text-body-md text-ink/50'
+              : 'font-label text-secondary/50'
+            : surface
+              ? 'font-normal text-ink'
+              : 'text-ink',
         ]"
       >
         <option :value="null" disabled>{{ placeholder }}</option>
@@ -62,7 +70,7 @@ const id = useId()
         </option>
       </select>
       <ArrowDownIcon
-        class="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-ink"
+        class="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-secondary"
         aria-hidden="true"
       />
     </div>

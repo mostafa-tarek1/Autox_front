@@ -47,10 +47,10 @@ const isPaid = computed(() => props.entry.status === 'paid')
 
       <div class="flex flex-wrap items-center gap-4">
         <template v-if="isPaid">
+          <OrderActionButton>{{ t('orders.actions.invoice') }}</OrderActionButton>
           <OrderActionButton :to="{ name: 'order-return', params: { id: orderId } }">
             {{ t('orders.actions.returnOrder') }}
           </OrderActionButton>
-          <OrderActionButton>{{ t('orders.actions.invoice') }}</OrderActionButton>
         </template>
         <template v-else>
           <OrderActionButton

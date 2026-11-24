@@ -87,7 +87,8 @@ const formatDate = (iso: string) => {
             </div>
           </li>
         </ul>
-        <p class="flex items-center gap-1 text-body-sm text-secondary">
+        <!-- The total sits at the end of the row (left in RTL), as in Figma "Order details". -->
+        <p class="flex items-center justify-end gap-1 text-body-sm text-secondary">
           <PaymentIcon class="size-4 text-primary" aria-hidden="true" />
           {{ t('dashboard.home.details.total') }}
           <PriceTag :amount="order.total" :grouping="false" class="text-h4 text-primary" />

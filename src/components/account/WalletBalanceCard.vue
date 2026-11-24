@@ -8,8 +8,15 @@ import PriceTag from '@/components/ui/PriceTag.vue'
  * action (withdraw button) or hint (info icon) on the far side.
  */
 withDefaults(
-  defineProps<{ label: string; amount: number; icon: Component; tone?: 'ink' | 'success' }>(),
-  { tone: 'ink' },
+  defineProps<{
+    label: string
+    amount: number
+    icon: Component
+    tone?: 'ink' | 'success'
+    /** Icon colour; the pending balance uses orange in the design. */
+    iconClass?: string
+  }>(),
+  { tone: 'ink', iconClass: 'text-primary' },
 )
 const labelId = useId()
 </script>
@@ -20,7 +27,10 @@ const labelId = useId()
     :aria-labelledby="labelId"
   >
     <div class="flex min-w-0 items-center gap-2">
-      <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-surface p-3 text-primary">
+      <span
+        class="grid size-12 shrink-0 place-items-center rounded-xl bg-surface p-3"
+        :class="iconClass"
+      >
         <component :is="icon" class="size-6" aria-hidden="true" />
       </span>
       <div class="flex min-w-0 flex-col gap-2">

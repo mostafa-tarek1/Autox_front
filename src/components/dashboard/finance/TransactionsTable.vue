@@ -11,7 +11,8 @@ defineProps<{ transactions: SupplierTransaction[] }>()
 const { t } = useI18n()
 
 const columns = ['reference', 'amount', 'type', 'date', 'note', 'status'] as const
-const grid = 'grid grid-cols-[98px_175px_178px_175px_194px_112px] gap-x-10 px-4'
+const grid =
+  'grid grid-cols-[minmax(0,98fr)_minmax(0,175fr)_minmax(0,178fr)_minmax(0,175fr)_minmax(0,194fr)_minmax(0,112fr)] gap-x-10 px-4'
 </script>
 
 <template>

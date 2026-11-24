@@ -64,6 +64,7 @@
       "reference": "Transfer reference number",
       "referencePlaceholder": "Enter the transfer reference number",
       "date": "Transfer date",
+      "datePlaceholder": "Date",
       "receipt": "Transfer receipt",
       "receiptUpload": "Upload transfer receipt",
       "submit": "Confirm transfer and send receipt",

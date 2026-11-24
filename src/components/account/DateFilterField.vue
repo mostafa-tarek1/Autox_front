@@ -32,7 +32,7 @@ function openPicker(): void {
   <label
     class="relative flex h-12 w-full items-center gap-2 rounded-xl border border-line bg-white px-4 py-3 transition-colors focus-within:border-accent sm:w-[184px]"
   >
-    <CalendarIcon class="size-4 shrink-0 text-ink" aria-hidden="true" />
+    <CalendarIcon class="size-4 shrink-0 text-secondary" aria-hidden="true" />
     <span
       class="truncate text-body-md"
       :class="date ? 'text-ink' : 'text-ink/50'"

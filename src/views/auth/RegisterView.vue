@@ -134,7 +134,7 @@ async function submit(): Promise<void> {
         :label="t('auth.fields.phone')"
         :placeholder="t('auth.placeholders.phone')"
         :error="errors.phone"
-        class="[&_label]:font-label [&_label]:leading-5"
+        class="[&_input]:placeholder:text-secondary/50 [&_label]:font-label [&_label]:leading-5"
       />
       <div class="contents [&_label]:font-sans [&_label]:text-body-sm [&_label]:font-normal">
         <TextField

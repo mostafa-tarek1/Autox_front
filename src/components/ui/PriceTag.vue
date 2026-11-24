@@ -56,8 +56,9 @@ const isSmallSymbol = computed(() => props.smallSymbol || props.size === 'sm')
 <template>
   <span class="inline-flex items-center gap-1" :class="[sizeClasses[size], toneClasses[tone]]">
     <span class="tabular-nums">{{ formatted }}</span>
+    <!-- The design draws the riyal sign in secondary grey next to every price colour. -->
     <RiyalIcon
-      class="shrink-0"
+      class="shrink-0 text-secondary"
       :class="isSmallSymbol ? 'h-3 w-[11px]' : 'h-4 w-3.5'"
       role="img"
       :aria-label="t('common.currency')"

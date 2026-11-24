@@ -4,6 +4,8 @@ import { useI18n } from 'vue-i18n'
 
 import type { LegalSection } from '@/mocks/public'
 
+import RichText from './RichText.vue'
+
 const props = defineProps<{ sections: LegalSection[] }>()
 const { t } = useI18n()
 
@@ -76,22 +78,24 @@ onBeforeUnmount(() => observer?.disconnect())
         <h2 :id="`${section.id}-title`" class="text-h2 text-ink">
           {{ index + 1 }}. {{ section.title }}
         </h2>
-        <div class="text-body-sm text-ink marker:text-[10px]">
+        <div class="text-body-sm text-ink">
           <template v-for="(block, blockIndex) in section.blocks" :key="blockIndex">
-            <p v-if="block.type === 'paragraph'">{{ block.text }}</p>
+            <p v-if="block.type === 'paragraph'"><RichText :text="block.text" /></p>
             <h3 v-else-if="block.type === 'subheading'" class="text-body-sm">{{ block.text }}</h3>
             <component
               :is="block.ordered ? 'ol' : 'ul'"
               v-else
               class="ps-6"
-              :class="block.ordered ? 'list-decimal' : 'list-disc'"
+              :class="block.ordered ? 'list-decimal' : 'list-disc marker:text-[10px]'"
             >
               <li v-for="(item, itemIndex) in block.items" :key="itemIndex">
-                <template v-if="typeof item === 'string'">{{ item }}</template>
+                <RichText v-if="typeof item === 'string'" :text="item" />
                 <template v-else>
-                  {{ item.text }}
-                  <ul class="list-disc ps-6">
-                    <li v-for="(child, childIndex) in item.items" :key="childIndex">{{ child }}</li>
+                  <RichText :text="item.text" />
+                  <ul class="list-disc ps-6 marker:text-[10px]">
+                    <li v-for="(child, childIndex) in item.items" :key="childIndex">
+                      <RichText :text="child" />
+                    </li>
                   </ul>
                 </template>
               </li>

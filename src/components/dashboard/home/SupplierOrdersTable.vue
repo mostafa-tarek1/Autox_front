@@ -53,7 +53,8 @@ const formatDate = (iso: string) => {
 const canCancel = (order: SupplierOrder) => cancellableStatuses.includes(order.status)
 
 const columns = ['number', 'customer', 'date', 'total', 'status', 'actions'] as const
-const grid = 'grid grid-cols-[98px_175px_174px_199px_112px_158px] items-center gap-10 px-4'
+const grid =
+  'grid grid-cols-[minmax(0,98fr)_minmax(0,175fr)_minmax(0,174fr)_minmax(0,199fr)_minmax(0,112fr)_minmax(0,158fr)] items-center gap-10 px-4'
 </script>
 
 <template>

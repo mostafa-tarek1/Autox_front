@@ -8,7 +8,7 @@ defineProps<{ status: SupplierQuoteStatus }>()
 const { t } = useI18n()
 
 const toneClasses: Record<SupplierQuoteStatus, string> = {
-  awaitingOffer: 'bg-waiting/15 text-waiting',
+  awaitingOffer: 'bg-orange/10 text-waiting',
   awaitingPayment: 'bg-waiting/15 text-waiting',
   offerSent: 'bg-info/10 text-match',
   accepted: 'bg-success/10 text-success',

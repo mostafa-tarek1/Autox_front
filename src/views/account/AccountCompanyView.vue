@@ -47,7 +47,7 @@ function save(values: CompanyFormValues): void {
               class="flex h-12 items-center gap-6 rounded-lg bg-surface p-3"
             >
               <span class="flex items-center gap-1">
-                <span class="grid size-6 place-items-center rounded-lg bg-white p-1 text-primary">
+                <span class="grid size-6 place-items-center rounded-lg bg-white p-1 text-secondary">
                   <FileIcon class="size-4" aria-hidden="true" />
                 </span>
                 <span class="text-body-sm text-primary">

@@ -3,7 +3,7 @@ import { useClipboard } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AddIcon from '@/assets/icons/add-01--solid-standard.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
 import BankIcon from '@/assets/icons/bank--stroke-rounded.svg'
 import CopyIcon from '@/assets/icons/copy-01--duotone-rounded.svg'
 import DeleteIcon from '@/assets/icons/delete-01--stroke-standard.svg'

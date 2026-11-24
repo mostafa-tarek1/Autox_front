@@ -18,7 +18,13 @@ const { t } = useI18n()
       <dl class="flex flex-col gap-4 text-body-md text-secondary">
         <div class="flex h-7 items-center justify-between">
           <dt>{{ t('quotes.payment.pieces') }}</dt>
-          <dd>{{ t('quotes.payment.piecesCount', { count: summary.pieces }) }}</dd>
+          <dd>
+            <i18n-t keypath="quotes.payment.piecesCount" tag="span" scope="global">
+              <template #count>
+                <bdi class="font-semibold text-ink">{{ summary.pieces }}</bdi>
+              </template>
+            </i18n-t>
+          </dd>
         </div>
         <div class="flex h-7 items-center justify-between">
           <dt>{{ t('quotes.payment.subtotal') }}</dt>

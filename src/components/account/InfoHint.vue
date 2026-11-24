@@ -32,7 +32,7 @@ const tooltipId = useId()
     <span
       :id="tooltipId"
       role="tooltip"
-      class="absolute end-0 top-full z-20 mt-1.5 w-max max-w-[260px] rounded-lg border border-line bg-white px-3 py-2 text-body-sm text-secondary shadow-soft"
+      class="absolute end-0 top-full z-20 mt-1.5 w-max max-w-[320px] rounded-lg border border-line bg-white px-3 py-2 text-body-sm text-secondary shadow-soft"
       :class="isOpen ? 'block' : 'hidden'"
     >
       {{ text }}

@@ -15,7 +15,7 @@ const { t } = useI18n()
     aria-labelledby="welcome-title"
   >
     <div
-      class="flex w-full max-w-[315px] flex-col items-center gap-6 rounded-2xl border border-line bg-surface px-10 py-6 text-center"
+      class="flex w-full max-w-[315px] flex-col items-center gap-6 rounded-2xl border border-dashed border-line bg-surface px-10 py-6 text-center"
     >
       <span class="grid size-[68px] place-items-center rounded-full bg-white p-[18px] text-primary">
         <StoreAddIcon class="size-8" aria-hidden="true" />

@@ -134,7 +134,7 @@ async function submit(): Promise<void> {
             />
             <ArrowDownIcon
               v-if="!isDateFocused && !form.date"
-              class="pointer-events-none absolute end-4 size-4 text-ink"
+              class="pointer-events-none absolute end-4 size-4 text-secondary"
               aria-hidden="true"
             />
           </span>

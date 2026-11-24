@@ -16,8 +16,10 @@ const props = withDefaults(
     error?: string
     maxSizeMb?: number
     required?: boolean
+    /** Upload icon colour: grey on most forms, primary green in the company-info dialog. */
+    iconTone?: 'secondary' | 'primary'
   }>(),
-  { accept: '.png,.jpg,.jpeg,.pdf', maxSizeMb: 5 },
+  { accept: '.png,.jpg,.jpeg,.pdf', maxSizeMb: 5, iconTone: 'secondary' },
 )
 
 const file = defineModel<File | null>({ default: null })
@@ -59,7 +61,11 @@ function onDrop(event: DragEvent): void {
       @dragleave="isDragging = false"
       @drop.prevent="onDrop"
     >
-      <FileUploadIcon class="size-8 text-ink" aria-hidden="true" />
+      <FileUploadIcon
+        class="size-8"
+        :class="iconTone === 'primary' ? 'text-primary' : 'text-secondary'"
+        aria-hidden="true"
+      />
       <span class="text-label leading-5 text-ink">{{
         file ? file.name : (title ?? t('form.attach'))
       }}</span>

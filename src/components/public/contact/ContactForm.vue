@@ -109,7 +109,8 @@ async function submit(): Promise<void> {
           :label="t('public.contact.fields.message')"
           :placeholder="t('public.contact.placeholders.subject')"
           :error="errors.message"
-          class="h-[97px] placeholder:font-sans! placeholder:text-body-md! placeholder:font-normal! placeholder:text-ink/50!"
+          sample-placeholder
+          class="h-[97px]"
         />
       </div>
 

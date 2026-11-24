@@ -58,6 +58,7 @@ export const contactSender = {
 
 /* -------------------------------------------------------------------- Legal */
 
+/** Legal copy. Text may mark bold runs with `**…**` (rendered as <strong>, never as HTML). */
 export type LegalBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'subheading'; text: string }
@@ -514,7 +515,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'مرحبًا بك في منصة Parts X، المنصة المتخصصة في ربط موردي وتجار قطع غيار السيارات، وتسهيل عمليات البحث عن المنتجات وطلبها وتبادل عروض الأسعار وإتمام المعاملات التجارية.',
+          text: 'مرحبًا بك في منصة **Parts X**، المنصة المتخصصة في ربط موردي وتجار قطع غيار السيارات، وتسهيل عمليات البحث عن المنتجات وطلبها وتبادل عروض الأسعار وإتمام المعاملات التجارية.',
         },
         {
           type: 'paragraph',
@@ -533,12 +534,12 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         {
           type: 'list',
           items: [
-            'المنصة: Parts X، وتشمل الموقع الإلكتروني والتطبيق والخدمات الرقمية المرتبطة بهما.',
-            'المستخدم: أي شخص أو منشأة تقوم باستخدام المنصة.',
-            'التاجر: المستخدم الذي يبحث عن قطع الغيار ويقوم بطلبها من الموردين.',
-            'المورد: الشخص أو المنشأة التي تعرض قطع غيار السيارات وتقدم عروض الأسعار من خلال المنصة.',
-            'الحساب: الحساب الإلكتروني الذي يتم إنشاؤه للوصول إلى خدمات المنصة.',
-            'الطلب: طلب شراء يقدمه التاجر للحصول على منتج أو مجموعة من المنتجات.',
+            '**المنصة:** Parts X، وتشمل الموقع الإلكتروني والتطبيق والخدمات الرقمية المرتبطة بهما.',
+            '**المستخدم:** أي شخص أو منشأة تقوم باستخدام المنصة.',
+            '**التاجر:** المستخدم الذي يبحث عن قطع الغيار ويقوم بطلبها من الموردين.',
+            '**المورد:** الشخص أو المنشأة التي تعرض قطع غيار السيارات وتقدم عروض الأسعار من خلال المنصة.',
+            '**الحساب:** الحساب الإلكتروني الذي يتم إنشاؤه للوصول إلى خدمات المنصة.',
+            '**الطلب:** طلب شراء يقدمه التاجر للحصول على منتج أو مجموعة من المنتجات.',
           ],
         },
       ],
@@ -667,7 +668,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'Welcome to Parts X, the platform that connects car-parts suppliers and traders and makes it easier to find and order products, exchange quotations and complete business transactions.',
+          text: 'Welcome to **Parts X**, the platform that connects car-parts suppliers and traders and makes it easier to find and order products, exchange quotations and complete business transactions.',
         },
         {
           type: 'paragraph',
@@ -686,12 +687,12 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         {
           type: 'list',
           items: [
-            'Platform: Parts X, including the website, the app and the related digital services.',
-            'User: any person or business that uses the platform.',
-            'Trader: a user who searches for spare parts and orders them from suppliers.',
-            'Supplier: a person or business that offers car parts and sends quotations through the platform.',
-            'Account: the online account created to access the platform services.',
-            'Order: a purchase request a trader places for one or more products.',
+            '**Platform:** Parts X, including the website, the app and the related digital services.',
+            '**User:** any person or business that uses the platform.',
+            '**Trader:** a user who searches for spare parts and orders them from suppliers.',
+            '**Supplier:** a person or business that offers car parts and sends quotations through the platform.',
+            '**Account:** the online account created to access the platform services.',
+            '**Order:** a purchase request a trader places for one or more products.',
           ],
         },
       ],
@@ -820,7 +821,7 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'Parts X پلیٹ فارم میں خوش آمدید، یہ گاڑیوں کے اسپیئر پارٹس کے سپلائرز اور تاجروں کو آپس میں جوڑنے، اور مصنوعات کی تلاش، آرڈر دینے، کوٹیشنز کے تبادلے اور تجارتی لین دین کی تکمیل کو آسان بنانے والا خصوصی پلیٹ فارم ہے۔',
+          text: '**Parts X** پلیٹ فارم میں خوش آمدید، یہ گاڑیوں کے اسپیئر پارٹس کے سپلائرز اور تاجروں کو آپس میں جوڑنے، اور مصنوعات کی تلاش، آرڈر دینے، کوٹیشنز کے تبادلے اور تجارتی لین دین کی تکمیل کو آسان بنانے والا خصوصی پلیٹ فارم ہے۔',
         },
         {
           type: 'paragraph',
@@ -839,12 +840,12 @@ export const termsAndConditions: Record<AppLocale, LegalSection[]> = {
         {
           type: 'list',
           items: [
-            'پلیٹ فارم: Parts X، جس میں ویب سائٹ، ایپ اور ان سے منسلک ڈیجیٹل خدمات شامل ہیں۔',
-            'صارف: کوئی بھی شخص یا ادارہ جو پلیٹ فارم استعمال کرتا ہے۔',
-            'تاجر: وہ صارف جو اسپیئر پارٹس تلاش کرتا ہے اور سپلائرز سے انہیں آرڈر کرتا ہے۔',
-            'سپلائر: وہ شخص یا ادارہ جو پلیٹ فارم کے ذریعے گاڑیوں کے اسپیئر پارٹس پیش کرتا ہے اور کوٹیشنز فراہم کرتا ہے۔',
-            'اکاؤنٹ: پلیٹ فارم کی خدمات تک رسائی کے لیے بنایا گیا الیکٹرانک اکاؤنٹ۔',
-            'آرڈر: خریداری کی وہ درخواست جو تاجر کسی پروڈکٹ یا مصنوعات کے مجموعے کے حصول کے لیے جمع کراتا ہے۔',
+            '**پلیٹ فارم:** Parts X، جس میں ویب سائٹ، ایپ اور ان سے منسلک ڈیجیٹل خدمات شامل ہیں۔',
+            '**صارف:** کوئی بھی شخص یا ادارہ جو پلیٹ فارم استعمال کرتا ہے۔',
+            '**تاجر:** وہ صارف جو اسپیئر پارٹس تلاش کرتا ہے اور سپلائرز سے انہیں آرڈر کرتا ہے۔',
+            '**سپلائر:** وہ شخص یا ادارہ جو پلیٹ فارم کے ذریعے گاڑیوں کے اسپیئر پارٹس پیش کرتا ہے اور کوٹیشنز فراہم کرتا ہے۔',
+            '**اکاؤنٹ:** پلیٹ فارم کی خدمات تک رسائی کے لیے بنایا گیا الیکٹرانک اکاؤنٹ۔',
+            '**آرڈر:** خریداری کی وہ درخواست جو تاجر کسی پروڈکٹ یا مصنوعات کے مجموعے کے حصول کے لیے جمع کراتا ہے۔',
           ],
         },
       ],

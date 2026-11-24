@@ -67,6 +67,7 @@ function view(quote: SupplierQuote): void {
         :label="t('dashboard.quotes.stats.rejected')"
         :value="supplierQuoteStats.rejected"
         :icon="CancelIcon"
+        icon-class="text-orange"
       />
     </section>
 

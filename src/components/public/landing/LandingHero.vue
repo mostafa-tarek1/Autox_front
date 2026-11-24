@@ -39,7 +39,7 @@ const { t } = useI18n()
     </div>
     <div class="relative mx-auto mt-[35px] w-full max-w-[623px] px-4 pt-[35px] pb-[41px] sm:px-0">
       <div
-        class="absolute inset-x-[48px] top-0 -z-10 h-[286px] rounded-full bg-accent/15 blur-[100px]"
+        class="absolute inset-x-[48px] top-0 -z-10 h-[286px] rounded-full bg-accent/25 blur-[50px]"
         aria-hidden="true"
       />
       <img

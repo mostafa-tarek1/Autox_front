@@ -16,7 +16,8 @@ const emit = defineEmits<{
 const { t } = useI18n()
 
 const columns = ['orderNumber', 'amount', 'customer', 'date', 'actions'] as const
-const grid = 'grid grid-cols-[98px_175px_175px_199px_194px] gap-x-10 px-4'
+const grid =
+  'grid grid-cols-[minmax(0,98fr)_minmax(0,175fr)_minmax(0,175fr)_minmax(0,199fr)_minmax(0,194fr)] gap-x-10 px-4'
 const action =
   'inline-flex h-8 items-center gap-1 rounded-lg bg-surface px-2 py-1 text-body-sm text-primary transition-colors hover:bg-accent/30'
 </script>

@@ -13,7 +13,7 @@ const id = useId()
   <div class="relative">
     <label :for="id" class="sr-only">{{ label }}</label>
     <CalendarIcon
-      class="pointer-events-none absolute start-4 top-1/2 size-4 -translate-y-1/2 text-ink"
+      class="pointer-events-none absolute start-4 top-1/2 size-4 -translate-y-1/2 text-secondary"
       aria-hidden="true"
     />
     <input

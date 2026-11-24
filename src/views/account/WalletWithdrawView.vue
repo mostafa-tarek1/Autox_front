@@ -105,6 +105,7 @@ watch(isDone, (open, wasOpen) => {
             :model-value="values.amount"
             :label="t('wallet.withdrawForm.amount')"
             placeholder="0"
+            sample-placeholder
             inputmode="decimal"
             :error="errors.amount"
             @update:model-value="onAmountInput"
@@ -137,7 +138,8 @@ watch(isDone, (open, wasOpen) => {
             dir="ltr"
             autocomplete="off"
             spellcheck="false"
-            class="rtl:text-right"
+            class="rtl:text-right placeholder:font-semibold!"
+            sample-placeholder
             @update:model-value="onIbanInput"
           />
         </div>

@@ -107,7 +107,7 @@ const cardClass = computed(() => {
 
     <div
       v-if="alternatives.length"
-      class="flex flex-col rounded-xl border-[0.5px] border-accent bg-surface p-3"
+      class="flex flex-col rounded-xl border-[0.5px] border-accent/50 bg-surface p-3"
       :class="isExpanded && 'gap-6'"
     >
       <button

@@ -10,7 +10,8 @@ import AccountPersonalView from '@/views/account/AccountPersonalView.vue'
 </script>
 
 <template>
-  <div class="flex flex-col gap-6">
+  <!-- The dashboard profile uses 20px (H3) section titles; the trader's account pages use H2. -->
+  <div class="flex flex-col gap-6 [&_h2]:text-h3">
     <AccountPersonalView />
     <AccountCompanyView />
     <AccountBankView />

@@ -13,7 +13,7 @@ import PageHero from '@/components/layout/PageHero.vue'
 import StatCard from '@/components/billing/StatCard.vue'
 import SelectField from '@/components/form/SelectField.vue'
 import TextField from '@/components/form/TextField.vue'
-import AddIcon from '@/assets/icons/add-01--solid-standard.svg'
+import AddIcon from '@/assets/icons/add-01--stroke-standard.svg'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BasePagination from '@/components/ui/BasePagination.vue'
 import { installmentRequests, installmentSummary, type InstallmentStatus } from '@/mocks/billing'
@@ -60,7 +60,10 @@ const filteredRequests = computed(() => {
   <div class="page-container flex flex-col gap-10 pt-10">
     <section class="grid grid-cols-1 gap-6 md:grid-cols-2" :aria-label="t('billing.summary')">
       <StatCard size="lg" :label="t('billing.currentBalance')" :icon="WalletIcon">
-        <PriceTag :amount="installmentSummary.currentBalance" class="text-primary" />
+        <PriceTag
+          :amount="installmentSummary.currentBalance"
+          class="text-primary [&_svg]:text-secondary"
+        />
       </StatCard>
       <StatCard
         size="lg"
@@ -68,7 +71,10 @@ const filteredRequests = computed(() => {
         :icon="CartCheckIcon"
         icon-color="text-orange"
       >
-        <PriceTag :amount="installmentSummary.totalSales" class="text-primary" />
+        <PriceTag
+          :amount="installmentSummary.totalSales"
+          class="text-primary [&_svg]:text-secondary"
+        />
       </StatCard>
     </section>
 
@@ -91,12 +97,14 @@ const filteredRequests = computed(() => {
             v-model="query"
             type="search"
             :placeholder="t('billing.filters.search')"
+            sample-placeholder
             :icon="SearchIcon"
           />
           <SelectField
             v-model="status"
             :options="statusOptions"
             :placeholder="t('billing.filters.status')"
+            sample-placeholder
           />
           <DateFilter v-model="startDate" :label="t('billing.filters.startDate')" />
           <DateFilter v-model="endDate" :label="t('billing.filters.endDate')" />
@@ -106,13 +114,18 @@ const filteredRequests = computed(() => {
           </BaseButton>
         </div>
 
-        <InstallmentsTable v-if="filteredRequests.length" :requests="filteredRequests" />
+        <InstallmentsTable v-if="filteredRequests.length" :requests="filteredRequests">
+          <template #footer>
+            <BasePagination v-model="page" :total="20" />
+          </template>
+        </InstallmentsTable>
         <p v-else class="rounded-3xl bg-white p-8 text-center text-body-md text-secondary">
           {{ t('billing.noResults') }}
         </p>
       </div>
 
-      <div class="max-w-full self-center overflow-x-auto pb-1">
+      <!-- Phones: the list has no card, so the pagination follows it. -->
+      <div class="max-w-full self-center overflow-x-auto pb-1 md:hidden">
         <BasePagination v-model="page" :total="20" />
       </div>
     </section>

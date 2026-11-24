@@ -64,6 +64,7 @@
       "reference": "رقم مرجع التحويل",
       "referencePlaceholder": "ادخل رقم مرجع التحويل",
       "date": "تاريخ التحويل",
+      "datePlaceholder": "التاريخ",
       "receipt": "ايصال التحويل",
       "receiptUpload": "رفع ايصال التحويل",
       "submit": "تأكيد التحويل وارسال الايصال",

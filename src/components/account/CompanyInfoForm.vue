@@ -90,7 +90,7 @@ function submit(): void {
           {{ t('account.company.companyDocuments') }}
         </p>
         <p class="text-body-sm text-secondary/80">{{ t('account.company.documentsHint') }}</p>
-        <FileDropzone v-model="attachment" class="mt-1" />
+        <FileDropzone v-model="attachment" icon-tone="primary" class="mt-1" />
       </div>
     </div>
     <BaseButton type="submit" class="self-start">{{ t('account.company.submit') }}</BaseButton>

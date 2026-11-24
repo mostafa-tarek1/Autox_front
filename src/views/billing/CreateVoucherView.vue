@@ -107,6 +107,7 @@ async function submit(): Promise<void> {
         v-model="form.customerName"
         :label="t('billing.voucherForm.customerName')"
         :placeholder="t('billing.voucherForm.customerNamePlaceholder')"
+        sample-placeholder
         :icon="UserIcon"
         :error="errors.customerName"
         autocomplete="name"
@@ -122,6 +123,7 @@ async function submit(): Promise<void> {
         v-model="form.note"
         :label="t('billing.voucherForm.note')"
         :placeholder="t('billing.voucherForm.notePlaceholder')"
+        sample-placeholder
         :icon="NoteIcon"
       />
     </StepCard>
@@ -137,6 +139,7 @@ async function submit(): Promise<void> {
         type="number"
         :label="t('billing.voucherForm.amountLabel')"
         placeholder="0"
+        sample-placeholder
         :error="errors.amount"
         required
       />
@@ -159,7 +162,11 @@ async function submit(): Promise<void> {
       >
         <i18n-t keypath="billing.voucherForm.acceptTerms" tag="span" scope="global">
           <template #terms>
-            <RouterLink to="/terms" class="text-match underline underline-offset-2" target="_blank">
+            <RouterLink
+              to="/terms"
+              class="font-semibold text-match underline underline-offset-2"
+              target="_blank"
+            >
               {{ t('billing.voucherForm.terms') }}
             </RouterLink>
           </template>

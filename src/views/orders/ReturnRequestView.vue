@@ -98,7 +98,7 @@ async function submit(): Promise<void> {
       <hr class="w-full border-line" />
 
       <fieldset class="flex w-full flex-col gap-6">
-        <legend class="mb-6 text-h4 text-ink">{{ t('returns.form.itemsTitle') }}</legend>
+        <legend class="mb-6 text-h4 text-black">{{ t('returns.form.itemsTitle') }}</legend>
         <ul class="flex flex-col gap-4">
           <li v-for="item in items" :key="item.id">
             <ReturnItemOption

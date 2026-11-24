@@ -35,10 +35,7 @@ const { t } = useI18n()
           decoding="async"
           class="h-[420px] w-full object-cover object-[50%_42%] sm:h-[534px]"
         />
-        <div
-          class="absolute inset-0 bg-linear-to-b from-success/0 from-12% to-black"
-          aria-hidden="true"
-        />
+        <div class="photo-fade-about absolute inset-0" aria-hidden="true" />
         <dl
           class="absolute inset-x-4 bottom-6 grid grid-cols-2 gap-y-4 rounded-3xl border border-white/30 bg-linear-to-r from-white/30 to-neutral-400/30 p-5 backdrop-blur-[8px] sm:inset-x-auto sm:bottom-12 sm:left-1/2 sm:w-[837px] sm:max-w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:grid-cols-4 sm:gap-y-0"
         >

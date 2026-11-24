@@ -39,11 +39,11 @@ const { t } = useI18n()
 
     <button
       type="button"
-      class="flex items-center gap-2 self-start text-button text-primary hover:underline"
+      class="flex items-center gap-2 self-start text-button text-primary"
       @click="emit('showPolicy')"
     >
       <PolicyIcon class="size-5" aria-hidden="true" />
-      {{ t('orders.returnPolicy.open') }}
+      <span class="underline underline-offset-2">{{ t('orders.returnPolicy.open') }}</span>
     </button>
   </article>
 </template>

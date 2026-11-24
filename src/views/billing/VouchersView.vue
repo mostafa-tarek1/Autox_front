@@ -54,7 +54,7 @@ const contactLink = '/contact'
         class="absolute inset-0 -z-20 size-full object-cover object-[center_25%] xl:inset-auto xl:top-[-112px] xl:left-[3px] xl:h-[798px] xl:w-[1197px] xl:max-w-none"
       />
       <div
-        class="absolute inset-0 -z-10 bg-linear-to-b from-success/10 to-black xl:inset-auto xl:top-0 xl:left-[3px] xl:h-[562px] xl:w-[1197px]"
+        class="photo-fade-vouchers absolute inset-0 -z-10 xl:inset-auto xl:top-0 xl:left-[3px] xl:h-[562px] xl:w-[1197px]"
         aria-hidden="true"
       />
       <div

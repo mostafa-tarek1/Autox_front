@@ -91,8 +91,13 @@ function downloadExcel(): void {
         :label="t('wallet.pendingBalance')"
         :amount="state.wallet.pending"
         :icon="WalletRemoveIcon"
+        icon-class="text-orange"
       >
-        <InfoHint :label="t('wallet.pendingInfoLabel')" :text="t('wallet.pendingInfo')" />
+        <InfoHint
+          class="[&_button]:text-orange"
+          :label="t('wallet.pendingInfoLabel')"
+          :text="t('wallet.pendingInfo')"
+        />
       </WalletBalanceCard>
       <WalletBalanceCard
         :label="t('wallet.withdrawableBalance')"

@@ -73,8 +73,9 @@ function sanitizePrice(value: string): string {
       v-model="form.partNumber"
       :label="t('dashboard.products.columns.partNumber')"
       placeholder="04465-0K240"
+      sample-placeholder
       dir="ltr"
-      class="rtl:text-right"
+      class="rtl:text-right placeholder:text-ink/60!"
       :error="errors.partNumber"
     />
     <TextField
@@ -82,6 +83,8 @@ function sanitizePrice(value: string): string {
       v-model="form.name"
       :label="t('dashboard.products.columns.name')"
       :placeholder="t('dashboard.products.namePlaceholder')"
+      sample-placeholder
+      class="placeholder:text-ink/60!"
       :error="errors.name"
     />
     <SelectField

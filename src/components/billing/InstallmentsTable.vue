@@ -82,7 +82,7 @@ const columns = ['orderNumber', 'name', 'phone', 'amount', 'date', 'notes', 'sta
           <td class="border-b-[0.6px] border-line pe-6">{{ request.customerName }}</td>
           <td class="border-b-[0.6px] border-line pe-6 tabular-nums">{{ request.phone }}</td>
           <td class="border-b-[0.6px] border-line pe-6 text-h4 text-primary">
-            <PriceTag :amount="request.amount" />
+            <PriceTag :amount="request.amount" class="[&_svg]:text-secondary" />
           </td>
           <td class="border-b-[0.6px] border-line pe-6 tabular-nums">
             {{ formatDate(request.date) }}
@@ -98,6 +98,10 @@ const columns = ['orderNumber', 'name', 'phone', 'amount', 'date', 'notes', 'sta
         </tr>
       </tbody>
     </table>
+    <!-- Desktop pagination sits inside the white card, under the last row (Figma 490:8428). -->
+    <div v-if="$slots.footer" class="flex justify-center pt-6 pb-3.5">
+      <slot name="footer" />
+    </div>
   </div>
 
   <!-- Mobile: one card per request. -->

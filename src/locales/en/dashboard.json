@@ -207,7 +207,7 @@
         "title": "Add your spare parts now",
         "action": "Add spare parts"
       },
-      "pendingInfo": "Balance held until the return period ends"
+      "pendingInfo": "Released once the delivery and return period has passed"
     },
     "products": {
       "addTitle": "Add spare parts",

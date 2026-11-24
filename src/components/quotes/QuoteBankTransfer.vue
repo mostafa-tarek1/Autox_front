@@ -2,6 +2,7 @@
 import { computed, onMounted, reactive, ref, useId } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import ArrowDownIcon from '@/assets/icons/arrow-down-01--stroke-standard.svg'
 import InfoIcon from '@/assets/icons/information-circle--duotone-rounded.svg'
 import alrajhiLogo from '@/assets/images/billing/alrajhi.webp'
 import FileDropzone from '@/components/form/FileDropzone.vue'
@@ -28,6 +29,7 @@ const isSubmitting = ref(false)
  * Latest selectable transfer date. Set once mounted: a pre-rendered page would otherwise keep the
  * build day as the limit (attributes are not patched on hydration).
  */
+const isDateFocused = ref(false)
 const today = ref<string>()
 onMounted(() => (today.value = new Date().toISOString().slice(0, 10)))
 
@@ -133,16 +135,30 @@ async function submit(): Promise<void> {
             class="rtl:text-right"
           />
           <FormField :label="t('quotes.payment.date')" :error="errors.date" :for-id="dateId">
-            <input
-              :id="dateId"
-              v-model="form.date"
-              type="date"
-              :max="today"
-              :aria-invalid="errors.date ? true : undefined"
-              :aria-describedby="errors.date ? `${dateId}-error` : undefined"
-              class="h-12 w-full rounded-xl border bg-white px-4 text-body-md text-ink outline-none focus:border-accent"
+            <!-- Like the checkout transfer form (Figma): a "التاريخ" placeholder and a chevron until
+              the field is focused or filled, then the native date picker. -->
+            <span
+              class="relative flex h-12 items-center rounded-xl border bg-white px-4 focus-within:border-accent"
               :class="errors.date ? 'border-error' : 'border-line'"
-            />
+            >
+              <input
+                :id="dateId"
+                v-model="form.date"
+                :type="isDateFocused || form.date ? 'date' : 'text'"
+                :max="today"
+                :placeholder="t('quotes.payment.datePlaceholder')"
+                :aria-invalid="errors.date ? true : undefined"
+                :aria-describedby="errors.date ? `${dateId}-error` : undefined"
+                class="min-w-0 flex-1 bg-transparent pe-6 text-label text-ink outline-none placeholder:text-secondary/50"
+                @focus="isDateFocused = true"
+                @blur="isDateFocused = false"
+              />
+              <ArrowDownIcon
+                v-if="!isDateFocused && !form.date"
+                class="pointer-events-none absolute end-4 size-4 text-secondary"
+                aria-hidden="true"
+              />
+            </span>
           </FormField>
           <FileDropzone
             v-model="form.receipt"
