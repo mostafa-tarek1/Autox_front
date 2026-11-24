@@ -103,7 +103,7 @@ function save(values: BankAccountValues): void {
                   class="size-6 text-success"
                   aria-hidden="true"
                 />
-                <CopyIcon v-else class="size-6" aria-hidden="true" />
+                <CopyIcon v-else class="size-6 text-primary" aria-hidden="true" />
                 {{ t('account.bank.copy') }}
               </button>
             </dd>
@@ -128,7 +128,7 @@ function save(values: BankAccountValues): void {
                   class="size-6 text-success"
                   aria-hidden="true"
                 />
-                <CopyIcon v-else class="size-6" aria-hidden="true" />
+                <CopyIcon v-else class="size-6 text-primary" aria-hidden="true" />
                 <span class="hidden sm:inline">{{ t('account.bank.copy') }}</span>
               </button>
             </dd>
