@@ -16,13 +16,14 @@ const grid =
 </script>
 
 <template>
-  <div class="rounded-2xl bg-white p-2">
+  <!-- Cards until the table has 1000px (tablets, 1280 laptops), the table from there. -->
+  <div class="@container rounded-2xl bg-white p-2">
     <p v-if="!transactions.length" class="py-10 text-center text-body-md text-secondary">
       {{ t('dashboard.finance.empty') }}
     </p>
 
     <!-- Phones and tablets: one card per transaction. -->
-    <ul v-if="transactions.length" class="flex flex-col gap-2 lg:hidden">
+    <ul v-if="transactions.length" class="flex flex-col gap-2 @min-[1000px]:hidden">
       <li
         v-for="row in transactions"
         :key="row.id"
@@ -45,8 +46,8 @@ const grid =
       </li>
     </ul>
 
-    <div v-if="transactions.length" class="hidden overflow-x-auto lg:block">
-      <table class="w-full min-w-[1148px] text-start">
+    <div v-if="transactions.length" class="hidden overflow-x-auto @min-[1000px]:block">
+      <table class="w-full min-w-[1000px] text-start">
         <thead>
           <tr :class="[grid, 'h-14 items-center rounded-xl bg-surface']">
             <th

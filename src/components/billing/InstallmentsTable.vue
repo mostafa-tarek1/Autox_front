@@ -21,7 +21,8 @@ const columns = ['orderNumber', 'name', 'phone', 'amount', 'date', 'notes', 'sta
 
 <template>
   <!-- Desktop: table (Figma "row" component). -->
-  <div class="hidden overflow-x-auto rounded-3xl bg-white p-2 md:block">
+  <!-- The table's columns need the 1200px page; smaller screens get cards, two per row from md. -->
+  <div class="hidden overflow-x-auto rounded-3xl bg-white p-2 xl:block">
     <table class="w-full min-w-[900px] table-fixed border-separate border-spacing-0 text-start">
       <caption class="sr-only">
         {{
@@ -105,7 +106,7 @@ const columns = ['orderNumber', 'name', 'phone', 'amount', 'date', 'notes', 'sta
   </div>
 
   <!-- Mobile: one card per request. -->
-  <ul class="flex flex-col gap-3 md:hidden">
+  <ul class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:hidden">
     <li
       v-for="request in requests"
       :key="request.id"

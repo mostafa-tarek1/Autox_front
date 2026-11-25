@@ -19,8 +19,9 @@ const widths = ['w-[98px]', 'w-[175px]', 'w-[174px]', 'w-[199px]', 'w-[112px]', 
 </script>
 
 <template>
-  <div>
-    <ul class="flex flex-col gap-3 md:hidden">
+  <!-- Cards until the table has 1000px (tablets, 1280 laptops), the table from there. -->
+  <div class="@container">
+    <ul class="flex flex-col gap-3 @min-[1000px]:hidden">
       <li
         v-for="quote in quotes"
         :key="quote.id"
@@ -52,13 +53,13 @@ const widths = ['w-[98px]', 'w-[175px]', 'w-[174px]', 'w-[199px]', 'w-[112px]', 
           :aria-label="t('dashboard.quotes.viewQuote', { number: quote.number })"
           @click="emit('view', quote)"
         >
-          <ViewIcon class="size-5" aria-hidden="true" />
+          <ViewIcon class="size-5 shrink-0" aria-hidden="true" />
           {{ t('dashboard.quotes.view') }}
         </button>
       </li>
     </ul>
 
-    <table class="hidden w-full border-separate border-spacing-0 text-start md:table">
+    <table class="hidden w-full border-separate border-spacing-0 text-start @min-[1000px]:table">
       <thead>
         <tr>
           <th
@@ -109,7 +110,7 @@ const widths = ['w-[98px]', 'w-[175px]', 'w-[174px]', 'w-[199px]', 'w-[112px]', 
               :aria-label="t('dashboard.quotes.viewQuote', { number: quote.number })"
               @click="emit('view', quote)"
             >
-              <ViewIcon class="size-5" aria-hidden="true" />
+              <ViewIcon class="size-5 shrink-0" aria-hidden="true" />
               {{ t('dashboard.quotes.view') }}
             </button>
           </td>

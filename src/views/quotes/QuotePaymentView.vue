@@ -36,7 +36,7 @@ const showSuccess = ref(false)
     <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
       <QuoteBankTransfer
         :amount="quotePaymentSummary.total"
-        class="min-w-0 lg:w-[783px] lg:shrink-0"
+        class="min-w-0 lg:flex-1"
         @submitted="showSuccess = true"
       />
       <QuoteOrderSummary :summary="quotePaymentSummary" class="lg:w-[385px] lg:shrink-0" />

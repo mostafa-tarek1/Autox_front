@@ -121,7 +121,7 @@ const contactLink = '/contact'
         :subtitle="t('billing.installments.stepsSubtitle')"
       />
       <ol
-        class="flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-0"
+        class="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-center md:gap-4 lg:gap-0"
       >
         <template v-for="(step, index) in steps" :key="step.key">
           <li

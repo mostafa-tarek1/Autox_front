@@ -60,9 +60,10 @@ const cellLabel = 'text-body-sm text-secondary md:hidden'
         <li
           v-for="(row, index) in visible"
           :key="`${page}-${index}`"
-          class="flex flex-col gap-2 border-b border-line p-4 md:grid md:min-h-[61px] md:grid-cols-[178px_260px_99px_156px] md:items-center md:gap-20"
+          class="flex flex-col gap-2 border-b border-line p-4 md:grid md:min-h-[61px] md:grid-cols-[1.2fr_2fr_0.7fr_1fr] md:items-center md:gap-6 xl:grid-cols-[178px_260px_99px_156px] xl:gap-20"
         >
-          <!-- Phones: label and value per row; from md the values sit under the column header. -->
+          <!-- Phones: label and value per row; from md the values sit in columns, proportional until
+            xl where the design's pixel widths fit. -->
           <span :class="cell">
             <span :class="cellLabel">{{ t('dashboard.products.columns.partNumber') }}</span>
             <span class="text-body-sm text-ink rtl:text-right" dir="ltr">{{ row.partNumber }}</span>

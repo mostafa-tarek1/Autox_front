@@ -79,7 +79,7 @@ function downloadExcel(): void {
 
   <div class="page-container mt-12 flex flex-col gap-12 xl:max-w-[1208px]">
     <section
-      class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6"
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3"
       :aria-label="t('wallet.balances')"
     >
       <WalletBalanceCard
@@ -104,6 +104,7 @@ function downloadExcel(): void {
         :amount="state.wallet.withdrawable"
         :icon="WalletDoneIcon"
         tone="success"
+        class="md:col-span-2 lg:col-span-1"
       >
         <BaseButton size="sm" :to="{ name: 'wallet-withdraw' }" class="shrink-0">
           {{ t('wallet.requestWithdraw') }}

@@ -20,16 +20,24 @@ const localized = useLocalizedText()
 /** Phone: label and value on one row; lg: the bare value in its table column. */
 const cell = 'flex items-center justify-between gap-4 lg:contents'
 const cellLabel = 'text-body-sm text-secondary lg:hidden'
+/**
+ * Table columns from lg. A table of 1120px or more uses the design's pixel widths (capped, so a
+ * desktop scrollbar only narrows them slightly); a narrower one (tablets, small laptops) uses
+ * proportional columns with icon-only actions instead of overflowing.
+ */
 const columns =
-  'lg:grid lg:grid-cols-[178px_260px_99px_156px_258px] lg:items-center lg:justify-between lg:gap-10'
+  'lg:grid lg:grid-cols-[1.2fr_2fr_0.7fr_1fr_140px] lg:items-center lg:gap-4 lg:@min-[1120px]:grid-cols-[minmax(0,178px)_minmax(0,260px)_minmax(0,99px)_minmax(0,156px)_minmax(0,258px)] lg:@min-[1120px]:justify-between lg:@min-[1120px]:gap-10'
+/** Action text stays for screen readers when the narrow table shows the icons only. */
+const actionText = 'lg:@max-[1120px]:sr-only'
 const action =
   'inline-flex h-10 items-center gap-1 rounded-lg bg-surface p-2 text-body-sm text-primary transition-colors hover:bg-accent/30'
 </script>
 
 <template>
-  <div class="rounded-2xl bg-white p-2">
+  <div class="@container rounded-2xl bg-white p-2">
     <div
-      class="hidden h-14 rounded-xl bg-surface p-4 text-body-md text-ink lg:grid lg:grid-cols-[178px_260px_99px_156px_258px] lg:items-center lg:justify-between lg:gap-10"
+      class="hidden h-14 rounded-xl bg-surface p-4 text-body-md text-ink"
+      :class="columns"
       aria-hidden="true"
     >
       <span>{{ t('dashboard.products.columns.partNumber') }}</span>
@@ -69,14 +77,14 @@ const action =
           <span :class="cellLabel">{{ t('dashboard.products.columns.price') }}</span>
           <PriceTag :amount="product.price" decimals class="text-h4 text-ink" />
         </span>
-        <span class="flex flex-wrap items-center gap-3 lg:justify-end lg:gap-6">
+        <span class="flex flex-wrap items-center gap-3 lg:justify-end lg:@min-[1120px]:gap-6">
           <button type="button" :class="action" @click="emit('edit', product.id)">
             <EditIcon class="size-5" aria-hidden="true" />
-            {{ t('dashboard.products.edit') }}
+            <span :class="actionText">{{ t('dashboard.products.edit') }}</span>
           </button>
           <button type="button" :class="action" @click="emit('alternatives', product.id)">
             <ReloadIcon class="size-5" aria-hidden="true" />
-            {{ t('dashboard.products.manageAlternatives') }}
+            <span :class="actionText">{{ t('dashboard.products.manageAlternatives') }}</span>
           </button>
           <button
             type="button"

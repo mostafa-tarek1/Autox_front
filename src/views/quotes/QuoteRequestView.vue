@@ -62,7 +62,7 @@ async function submit(): Promise<void> {
   />
 
   <form
-    class="mx-auto mt-10 flex w-full max-w-[767px] flex-col gap-8 px-4 sm:mt-16"
+    class="mx-auto mt-10 flex w-full max-w-[767px] flex-col gap-8 px-4 sm:mt-16 sm:px-6 lg:px-4"
     novalidate
     @submit.prevent="submit"
   >

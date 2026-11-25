@@ -18,7 +18,7 @@ const tabs: Array<{ key: OrdersTab; to: RouteLocationRaw }> = [
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+  <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
     <nav :aria-label="t('orders.tabs.label')">
       <!-- Phones: the tabs share one row in equal columns. -->
       <ul class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-[21px]">
@@ -41,7 +41,7 @@ const tabs: Array<{ key: OrdersTab; to: RouteLocationRaw }> = [
     <!-- The returns tab has a wider search box than the orders tabs in the design. -->
     <label
       class="flex h-[41px] w-full items-center gap-2 rounded-lg border-[0.5px] border-line bg-white p-2"
-      :class="active === 'returns' ? 'md:w-[486px]' : 'md:w-[355px]'"
+      :class="active === 'returns' ? 'lg:w-[486px]' : 'lg:w-[355px]'"
     >
       <SearchIcon class="size-4 shrink-0 text-secondary" aria-hidden="true" />
       <span class="sr-only">{{ t('orders.search') }}</span>

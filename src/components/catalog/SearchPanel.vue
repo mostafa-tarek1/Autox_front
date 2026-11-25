@@ -54,8 +54,8 @@ function submit(): void {
           class="w-full bg-transparent text-body-sm text-ink outline-none placeholder:text-secondary"
         />
       </label>
-      <BaseButton type="submit" class="sm:w-[105px]">
-        <template #icon><SearchSolidIcon class="size-5" aria-hidden="true" /></template>
+      <BaseButton type="submit" class="sm:w-auto sm:min-w-[105px]">
+        <template #icon><SearchSolidIcon class="size-5 shrink-0" aria-hidden="true" /></template>
         {{ t('search.submit') }}
       </BaseButton>
     </form>

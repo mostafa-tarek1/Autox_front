@@ -64,7 +64,7 @@ function decline(): void {
 </script>
 
 <template>
-  <div class="min-h-dvh bg-surface">
+  <div class="flex min-h-dvh flex-col bg-surface">
     <header
       class="sticky top-0 z-30 flex h-20 items-center justify-center bg-white/90 px-4 shadow-soft backdrop-blur-[16px]"
     >
@@ -73,7 +73,7 @@ function decline(): void {
       </RouterLink>
     </header>
 
-    <main id="main" class="page-container pt-12 pb-16 lg:pb-[196px]">
+    <main id="main" class="page-container flex-1 pt-12 pb-16 lg:pb-[196px]">
       <div
         v-if="!quote"
         class="grid min-h-[320px] place-items-center rounded-2xl bg-white p-8 text-center shadow-card"

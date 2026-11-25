@@ -58,7 +58,12 @@ const grid =
 </script>
 
 <template>
-  <section class="flex flex-col items-center gap-4" aria-labelledby="supplier-orders-title">
+  <!-- The table needs about 1050px; a narrower section (tablets, 1280 laptops) lists the orders as
+    cards, two per row from md. -->
+  <section
+    class="@container flex flex-col items-center gap-4"
+    aria-labelledby="supplier-orders-title"
+  >
     <header class="flex w-full flex-wrap items-center justify-between gap-4">
       <h2 id="supplier-orders-title" class="text-h3 text-ink">{{ t('dashboard.home.orders') }}</h2>
       <div class="flex w-full flex-wrap items-start gap-4 sm:w-auto sm:gap-6">
@@ -106,7 +111,7 @@ const grid =
     </header>
 
     <!-- Desktop table (Figma 754:15667). -->
-    <div class="hidden w-full rounded-2xl bg-white p-2 lg:block">
+    <div class="hidden w-full rounded-2xl bg-white p-2 @min-[1050px]:block">
       <!-- Rows are CSS grids, so explicit roles keep the table semantics for screen readers. -->
       <table class="w-full border-collapse text-start" role="table">
         <thead>
@@ -181,9 +186,12 @@ const grid =
       </table>
     </div>
 
-    <!-- Phones and tablets: one card per order. -->
-    <ul class="flex w-full flex-col gap-3 lg:hidden">
-      <li v-if="!visibleOrders.length" class="py-10 text-center text-body-md text-secondary">
+    <!-- Phones and tablets: one card per order, two per row from md. -->
+    <ul class="grid w-full grid-cols-1 gap-3 md:grid-cols-2 @min-[1050px]:hidden">
+      <li
+        v-if="!visibleOrders.length"
+        class="py-10 text-center text-body-md text-secondary md:col-span-2"
+      >
         {{ t('dashboard.home.empty') }}
       </li>
       <li

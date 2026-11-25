@@ -57,7 +57,8 @@ function logout(): void {
         <AppLogo class="h-8 w-[119px]" />
       </RouterLink>
 
-      <nav :aria-label="t('nav.mainMenu')" class="hidden lg:block">
+      <!-- The six links fit from xl (the design's 1200px column); narrower screens use the menu. -->
+      <nav :aria-label="t('nav.mainMenu')" class="hidden xl:block">
         <ul class="flex items-center gap-3">
           <li v-for="item in navItems" :key="item.key">
             <RouterLink
@@ -125,7 +126,7 @@ function logout(): void {
         <UserMenu class="hidden sm:block" :name="user.name" @logout="logout" />
         <button
           type="button"
-          class="grid size-10 place-items-center rounded-full border-[0.5px] border-line bg-surface lg:hidden"
+          class="grid size-10 place-items-center rounded-full border-[0.5px] border-line bg-surface xl:hidden"
           :aria-label="t('nav.openMenu')"
           :aria-expanded="isMenuOpen"
           aria-controls="mobile-menu"
@@ -143,7 +144,7 @@ function logout(): void {
     <nav
       v-if="isMenuOpen"
       id="mobile-menu"
-      class="border-t border-line bg-white lg:hidden"
+      class="border-t border-line bg-white xl:hidden"
       :aria-label="t('nav.mainMenu')"
     >
       <ul class="page-container flex flex-col py-2">

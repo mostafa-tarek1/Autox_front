@@ -28,8 +28,12 @@ const columns = ['reference', 'amount', 'operation', 'date', 'note', 'status'] a
 <template>
   <div>
     <!-- Phones: one card per transaction. -->
-    <ul class="flex flex-col gap-3 md:hidden">
-      <li v-if="!transactions.length" class="py-10 text-center text-body-md text-secondary">
+    <!-- Cards until xl (two per row from md): the table's columns need the 1200px page. -->
+    <ul class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:hidden">
+      <li
+        v-if="!transactions.length"
+        class="py-10 text-center text-body-md text-secondary md:col-span-2"
+      >
         {{ t('wallet.empty') }}
       </li>
       <li
@@ -58,7 +62,7 @@ const columns = ['reference', 'amount', 'operation', 'date', 'note', 'status'] a
       </li>
     </ul>
 
-    <div class="hidden overflow-x-auto md:block">
+    <div class="hidden overflow-x-auto xl:block">
       <table class="w-full min-w-[880px] table-fixed border-separate border-spacing-0 text-start">
         <thead>
           <tr>

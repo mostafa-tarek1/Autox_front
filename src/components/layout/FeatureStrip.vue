@@ -15,24 +15,29 @@ const features = [
 </script>
 
 <template>
-  <ul
-    class="page-container grid grid-cols-3 gap-2 rounded-xl bg-white px-4 py-3 sm:gap-4 sm:p-4 lg:flex lg:justify-between lg:gap-6"
-  >
-    <li
-      v-for="(feature, index) in features"
-      :key="feature.key"
-      class="relative flex flex-col items-center gap-2 rounded-2xl bg-surface/50 p-3 text-center sm:flex-row sm:gap-3 sm:bg-transparent sm:p-6 sm:text-start lg:w-[282px]"
-      :class="
-        index > 0 &&
-        'lg:before:absolute lg:before:-start-20 lg:before:top-1/2 lg:before:h-[60px] lg:before:w-px lg:before:-translate-y-1/2 lg:before:bg-line'
-      "
+  <!-- An inset white card inside the page gutter at every width, as at 1440. -->
+  <div class="page-container">
+    <ul
+      class="grid grid-cols-3 gap-2 rounded-xl bg-white px-3 py-3 sm:gap-4 sm:p-4 lg:flex lg:justify-between lg:gap-6"
     >
-      <span
-        class="grid size-12 shrink-0 place-items-center rounded-2xl bg-surface p-3 text-primary"
+      <li
+        v-for="(feature, index) in features"
+        :key="feature.key"
+        class="relative flex flex-col items-center gap-2 rounded-2xl bg-surface/50 p-3 text-center sm:flex-row sm:gap-3 sm:bg-transparent sm:p-6 sm:text-start lg:w-[282px]"
+        :class="
+          index > 0 &&
+          'lg:before:absolute lg:before:-start-20 lg:before:top-1/2 lg:before:h-[60px] lg:before:w-px lg:before:-translate-y-1/2 lg:before:bg-line'
+        "
       >
-        <component :is="feature.icon" class="size-6" aria-hidden="true" />
-      </span>
-      <span class="text-body-sm text-ink sm:text-body-lg">{{ t(`features.${feature.key}`) }}</span>
-    </li>
-  </ul>
+        <span
+          class="grid size-12 shrink-0 place-items-center rounded-2xl bg-surface p-3 text-primary"
+        >
+          <component :is="feature.icon" class="size-6" aria-hidden="true" />
+        </span>
+        <span class="text-body-sm text-ink sm:text-body-lg">{{
+          t(`features.${feature.key}`)
+        }}</span>
+      </li>
+    </ul>
+  </div>
 </template>

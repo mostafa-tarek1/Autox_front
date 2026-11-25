@@ -35,7 +35,7 @@ const statusTone = computed<StatusTone>(() => {
     class="flex flex-col gap-6 rounded-3xl border border-line bg-white px-4 pt-4 pb-3 shadow-card"
   >
     <header
-      class="flex flex-col gap-3 rounded-lg bg-surface px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+      class="flex flex-col gap-3 rounded-lg bg-surface px-4 py-3 lg:flex-row lg:items-center lg:justify-between"
     >
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-6">
         <StatusChip :tone="statusTone">{{
@@ -70,7 +70,7 @@ const statusTone = computed<StatusTone>(() => {
       </div>
     </header>
 
-    <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-36 sm:gap-y-4">
+    <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-12 sm:gap-y-4 lg:gap-x-36">
       <InfoItem :label="t('billing.amount')" :icon="MoneyIcon">
         <PriceTag :amount="payment.amount" class="text-primary [&_svg]:text-secondary" />
       </InfoItem>

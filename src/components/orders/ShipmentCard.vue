@@ -21,7 +21,7 @@ const { t } = useI18n()
     :aria-label="t('orders.shipment', { number: shipment.number })"
   >
     <header
-      class="flex flex-col gap-3 rounded-xl bg-surface p-3 md:flex-row md:items-center md:justify-between"
+      class="flex flex-col gap-3 rounded-xl bg-surface p-3 lg:flex-row lg:items-center lg:justify-between"
     >
       <div class="flex flex-wrap items-center gap-x-8 gap-y-2">
         <h3 class="text-h4 text-ink">{{ t('orders.shipment', { number: shipment.number }) }}</h3>

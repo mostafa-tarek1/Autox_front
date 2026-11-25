@@ -65,7 +65,7 @@ function downloadExcel(): void {
 <template>
   <div class="flex flex-col gap-8">
     <section
-      class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:gap-6"
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-6"
       :aria-label="t('dashboard.finance.balance.label')"
     >
       <BalanceCard
@@ -89,6 +89,7 @@ function downloadExcel(): void {
         :amount="supplierBalance.pending"
         :icon="WalletRemoveIcon"
         icon-class="text-orange"
+        class="md:col-span-2 xl:col-span-1"
       >
         <template #aside>
           <InfoHint
